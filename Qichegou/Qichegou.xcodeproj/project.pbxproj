@@ -44,6 +44,10 @@
 		A886FFCE1D9239340028F102 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A886FFCD1D9239340028F102 /* CoreGraphics.framework */; };
 		A886FFD01D9239450028F102 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A886FFCF1D9239450028F102 /* Social.framework */; };
 		A886FFD21D92394A0028F102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A886FFD11D92394A0028F102 /* AVFoundation.framework */; };
+		A886FFDC1D92606F0028F102 /* HomeBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFD51D92606F0028F102 /* HomeBannerCell.m */; };
+		A886FFDD1D92606F0028F102 /* HomeCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFD71D92606F0028F102 /* HomeCarCell.m */; };
+		A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFD91D92606F0028F102 /* HomeMenuCell.m */; };
+		A886FFDF1D92606F0028F102 /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFDB1D92606F0028F102 /* HomeOperationCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +190,14 @@
 		A886FFCD1D9239340028F102 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A886FFCF1D9239450028F102 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A886FFD11D92394A0028F102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A886FFD41D92606F0028F102 /* HomeBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBannerCell.h; sourceTree = "<group>"; };
+		A886FFD51D92606F0028F102 /* HomeBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBannerCell.m; sourceTree = "<group>"; };
+		A886FFD61D92606F0028F102 /* HomeCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCarCell.h; sourceTree = "<group>"; };
+		A886FFD71D92606F0028F102 /* HomeCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCarCell.m; sourceTree = "<group>"; };
+		A886FFD81D92606F0028F102 /* HomeMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMenuCell.h; sourceTree = "<group>"; };
+		A886FFD91D92606F0028F102 /* HomeMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMenuCell.m; sourceTree = "<group>"; };
+		A886FFDA1D92606F0028F102 /* HomeOperationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeOperationCell.h; sourceTree = "<group>"; };
+		A886FFDB1D92606F0028F102 /* HomeOperationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeOperationCell.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -506,6 +518,7 @@
 		A886FF2C1D922FFC0028F102 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A886FFD31D92605E0028F102 /* HomeCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -687,6 +700,21 @@
 			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
+		A886FFD31D92605E0028F102 /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				A886FFD41D92606F0028F102 /* HomeBannerCell.h */,
+				A886FFD51D92606F0028F102 /* HomeBannerCell.m */,
+				A886FFD61D92606F0028F102 /* HomeCarCell.h */,
+				A886FFD71D92606F0028F102 /* HomeCarCell.m */,
+				A886FFD81D92606F0028F102 /* HomeMenuCell.h */,
+				A886FFD91D92606F0028F102 /* HomeMenuCell.m */,
+				A886FFDA1D92606F0028F102 /* HomeOperationCell.h */,
+				A886FFDB1D92606F0028F102 /* HomeOperationCell.m */,
+			);
+			name = HomeCell;
+			sourceTree = "<group>";
+		};
 		D39468F114516C8CBCCD05AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +860,7 @@
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
+				A886FFDF1D92606F0028F102 /* HomeOperationCell.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
 				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
@@ -841,10 +870,13 @@
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A886FF381D9230310028F102 /* MFHomeViewController.m in Sources */,
+				A886FFDD1D92606F0028F102 /* HomeCarCell.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
+				A886FFDC1D92606F0028F102 /* HomeBannerCell.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
+				A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

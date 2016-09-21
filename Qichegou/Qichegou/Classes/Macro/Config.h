@@ -12,7 +12,6 @@
 /** 弱引用 */
 #define WEAKSELF __weak typeof(self) weakSelf = self;
 
-
 //屏幕尺寸
 #define kScreenSize             [[UIScreen mainScreen] bounds].size
 #define kScreenWidth            [UIScreen mainScreen].bounds.size.width
@@ -45,6 +44,8 @@
 #define kChineseKeyboardHeight  (252.f)
 
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry/Masonry.h>
 
 // App
 #define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
