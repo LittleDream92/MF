@@ -12,6 +12,11 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+//
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
+
+@property (nonatomic, copy) NSString *address;
 
 @end
 
