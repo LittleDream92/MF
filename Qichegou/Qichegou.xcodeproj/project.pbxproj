@@ -12,6 +12,12 @@
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
 		A886FEFD1D922A450028F102 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A886FEFC1D922A450028F102 /* Images.xcassets */; };
 		A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A886FEFE1D922A450028F102 /* LaunchScreen.storyboard */; };
+		A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF1B1D922E960028F102 /* DKBaseViewController.m */; };
+		A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF1E1D922EC60028F102 /* DKBaseNaviController.m */; };
+		A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF211D922ED80028F102 /* DKBaseTabbarController.m */; };
+		A886FF381D9230310028F102 /* MFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF371D9230310028F102 /* MFHomeViewController.m */; };
+		A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF3A1D9230490028F102 /* MFActivityViewController.m */; };
+		A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,18 @@
 		A886FEFC1D922A450028F102 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A886FEFF1D922A450028F102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A886FF011D922A450028F102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A886FF1A1D922E960028F102 /* DKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaseViewController.h; sourceTree = "<group>"; };
+		A886FF1B1D922E960028F102 /* DKBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseViewController.m; sourceTree = "<group>"; };
+		A886FF1D1D922EC60028F102 /* DKBaseNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaseNaviController.h; sourceTree = "<group>"; };
+		A886FF1E1D922EC60028F102 /* DKBaseNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseNaviController.m; sourceTree = "<group>"; };
+		A886FF201D922ED80028F102 /* DKBaseTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaseTabbarController.h; sourceTree = "<group>"; };
+		A886FF211D922ED80028F102 /* DKBaseTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseTabbarController.m; sourceTree = "<group>"; };
+		A886FF361D9230310028F102 /* MFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFHomeViewController.h; sourceTree = "<group>"; };
+		A886FF371D9230310028F102 /* MFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHomeViewController.m; sourceTree = "<group>"; };
+		A886FF391D9230490028F102 /* MFActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActivityViewController.h; sourceTree = "<group>"; };
+		A886FF3A1D9230490028F102 /* MFActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityViewController.m; sourceTree = "<group>"; };
+		A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPersonalViewController.h; sourceTree = "<group>"; };
+		A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPersonalViewController.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +148,7 @@
 		A886FF0B1D922E020028F102 /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				A886FF231D922FBC0028F102 /* MFSection */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -137,16 +156,8 @@
 		A886FF0C1D922E020028F102 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				A886FF0D1D922E020028F102 /* MFSection */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		A886FF0D1D922E020028F102 /* MFSection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MFSection;
 			sourceTree = "<group>";
 		};
 		A886FF0E1D922E020028F102 /* Resources */ = {
@@ -200,6 +211,12 @@
 		A886FF141D922E4C0028F102 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				A886FF1A1D922E960028F102 /* DKBaseViewController.h */,
+				A886FF1B1D922E960028F102 /* DKBaseViewController.m */,
+				A886FF1D1D922EC60028F102 /* DKBaseNaviController.h */,
+				A886FF1E1D922EC60028F102 /* DKBaseNaviController.m */,
+				A886FF201D922ED80028F102 /* DKBaseTabbarController.h */,
+				A886FF211D922ED80028F102 /* DKBaseTabbarController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -237,6 +254,139 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A886FF231D922FBC0028F102 /* MFSection */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF291D922FFC0028F102 /* MFHome */,
+				A886FF241D922FFC0028F102 /* MFActivity */,
+				A886FF2E1D922FFC0028F102 /* MFPersonal */,
+			);
+			path = MFSection;
+			sourceTree = "<group>";
+		};
+		A886FF241D922FFC0028F102 /* MFActivity */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF251D922FFC0028F102 /* Controller */,
+				A886FF261D922FFC0028F102 /* Model */,
+				A886FF271D922FFC0028F102 /* View */,
+				A886FF281D922FFC0028F102 /* ViewModel */,
+			);
+			path = MFActivity;
+			sourceTree = "<group>";
+		};
+		A886FF251D922FFC0028F102 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF391D9230490028F102 /* MFActivityViewController.h */,
+				A886FF3A1D9230490028F102 /* MFActivityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A886FF261D922FFC0028F102 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A886FF271D922FFC0028F102 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A886FF281D922FFC0028F102 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A886FF291D922FFC0028F102 /* MFHome */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF2A1D922FFC0028F102 /* Controller */,
+				A886FF2B1D922FFC0028F102 /* Model */,
+				A886FF2C1D922FFC0028F102 /* View */,
+				A886FF2D1D922FFC0028F102 /* ViewModel */,
+			);
+			path = MFHome;
+			sourceTree = "<group>";
+		};
+		A886FF2A1D922FFC0028F102 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF361D9230310028F102 /* MFHomeViewController.h */,
+				A886FF371D9230310028F102 /* MFHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A886FF2B1D922FFC0028F102 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A886FF2C1D922FFC0028F102 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A886FF2D1D922FFC0028F102 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A886FF2E1D922FFC0028F102 /* MFPersonal */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF2F1D922FFC0028F102 /* Controller */,
+				A886FF301D922FFC0028F102 /* Model */,
+				A886FF311D922FFC0028F102 /* View */,
+				A886FF321D922FFC0028F102 /* ViewModel */,
+			);
+			path = MFPersonal;
+			sourceTree = "<group>";
+		};
+		A886FF2F1D922FFC0028F102 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */,
+				A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A886FF301D922FFC0028F102 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A886FF311D922FFC0028F102 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A886FF321D922FFC0028F102 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D39468F114516C8CBCCD05AC /* Frameworks */ = {
@@ -368,7 +518,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
+				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
+				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
+				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
+				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
+				A886FF381D9230310028F102 /* MFHomeViewController.m in Sources */,
+				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
