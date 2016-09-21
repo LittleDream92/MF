@@ -1,0 +1,9 @@
+target ‘Qichegou’ do
+
+pod ‘AFNetworking’
+pod ’Masonry’
+pod 'MJRefresh', '~> 3.1.9'
+pod 'SDWebImage', '~> 3.8.1'
+pod 'ReactiveCocoa', '~> 2.5'
+
+end
