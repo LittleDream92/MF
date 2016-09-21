@@ -15,6 +15,7 @@
 #import "Interface.h"
 #import "Notification.h"
 #import "Config.h"
+#import "VendorMacro.h"
 
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
