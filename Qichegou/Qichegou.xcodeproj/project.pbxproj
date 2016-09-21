@@ -48,6 +48,8 @@
 		A886FFDD1D92606F0028F102 /* HomeCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFD71D92606F0028F102 /* HomeCarCell.m */; };
 		A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFD91D92606F0028F102 /* HomeMenuCell.m */; };
 		A886FFDF1D92606F0028F102 /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFDB1D92606F0028F102 /* HomeOperationCell.m */; };
+		A886FFE21D9261240028F102 /* HomeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFE11D9261240028F102 /* HomeBtn.m */; };
+		A886FFE51D9261410028F102 /* BaseFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFE41D9261410028F102 /* BaseFunction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +200,10 @@
 		A886FFD91D92606F0028F102 /* HomeMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMenuCell.m; sourceTree = "<group>"; };
 		A886FFDA1D92606F0028F102 /* HomeOperationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeOperationCell.h; sourceTree = "<group>"; };
 		A886FFDB1D92606F0028F102 /* HomeOperationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeOperationCell.m; sourceTree = "<group>"; };
+		A886FFE01D9261240028F102 /* HomeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBtn.h; sourceTree = "<group>"; };
+		A886FFE11D9261240028F102 /* HomeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBtn.m; sourceTree = "<group>"; };
+		A886FFE31D9261410028F102 /* BaseFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFunction.h; sourceTree = "<group>"; };
+		A886FFE41D9261410028F102 /* BaseFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFunction.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -426,6 +432,10 @@
 		A886FF181D922E4C0028F102 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				A886FFE01D9261240028F102 /* HomeBtn.h */,
+				A886FFE11D9261240028F102 /* HomeBtn.m */,
+				A886FFE31D9261410028F102 /* BaseFunction.h */,
+				A886FFE41D9261410028F102 /* BaseFunction.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -876,7 +886,9 @@
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 				A886FFDC1D92606F0028F102 /* HomeBannerCell.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
+				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */,
+				A886FFE21D9261240028F102 /* HomeBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
