@@ -10,4 +10,6 @@
 
 @interface MFPersonalViewController : DKBaseViewController
 
+@property (nonatomic, strong) NSArray *contrlArr;
+
 @end

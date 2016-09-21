@@ -103,16 +103,16 @@
 
 -(CLLocationManager *)locationManager {
     if (!_locationManager) {
-        self.locationManager = [[CLLocationManager alloc] init];
+        _locationManager = [[CLLocationManager alloc] init];
         if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
             [_locationManager requestWhenInUseAuthorization];
         }
         //设置代理
-        [self.locationManager setDelegate:self];
+        [_locationManager setDelegate:self];
         //设置定位精度
-        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
         //设置距离筛选
-        [self.locationManager setDistanceFilter:100];
+        [_locationManager setDistanceFilter:100];
     }
     return _locationManager;
 }

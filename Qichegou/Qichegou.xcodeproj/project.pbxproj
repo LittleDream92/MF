@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F62E1CFBC5964947920D585 /* libPods-Qichegou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */; };
+		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
 		A886FEFD1D922A450028F102 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A886FEFC1D922A450028F102 /* Images.xcassets */; };
@@ -50,6 +51,13 @@
 		A886FFDF1D92606F0028F102 /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFDB1D92606F0028F102 /* HomeOperationCell.m */; };
 		A886FFE21D9261240028F102 /* HomeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFE11D9261240028F102 /* HomeBtn.m */; };
 		A886FFE51D9261410028F102 /* BaseFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFE41D9261410028F102 /* BaseFunction.m */; };
+		A886FFEB1D9268420028F102 /* HomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFEA1D9268420028F102 /* HomeButton.m */; };
+		A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFED1D926A220028F102 /* NSMutableArray+Extention.m */; };
+		A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFEF1D926A220028F102 /* NSMutableDictionary+Extention.m */; };
+		A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF11D926A220028F102 /* UIButton+Extension.m */; };
+		A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF31D926A220028F102 /* UILabel+Extension.m */; };
+		A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF51D926A220028F102 /* UIView+ViewController.m */; };
+		A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,6 +212,22 @@
 		A886FFE11D9261240028F102 /* HomeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBtn.m; sourceTree = "<group>"; };
 		A886FFE31D9261410028F102 /* BaseFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFunction.h; sourceTree = "<group>"; };
 		A886FFE41D9261410028F102 /* BaseFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFunction.m; sourceTree = "<group>"; };
+		A886FFE91D9268420028F102 /* HomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeButton.h; sourceTree = "<group>"; };
+		A886FFEA1D9268420028F102 /* HomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeButton.m; sourceTree = "<group>"; };
+		A886FFEC1D926A220028F102 /* NSMutableArray+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Extention.h"; sourceTree = "<group>"; };
+		A886FFED1D926A220028F102 /* NSMutableArray+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Extention.m"; sourceTree = "<group>"; };
+		A886FFEE1D926A220028F102 /* NSMutableDictionary+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Extention.h"; sourceTree = "<group>"; };
+		A886FFEF1D926A220028F102 /* NSMutableDictionary+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Extention.m"; sourceTree = "<group>"; };
+		A886FFF01D926A220028F102 /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		A886FFF11D926A220028F102 /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
+		A886FFF21D926A220028F102 /* UILabel+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
+		A886FFF31D926A220028F102 /* UILabel+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extension.m"; sourceTree = "<group>"; };
+		A886FFF41D926A220028F102 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
+		A886FFF51D926A220028F102 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
+		A886FFF61D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WeChatAndAliPayMethod.h"; sourceTree = "<group>"; };
+		A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WeChatAndAliPayMethod.m"; sourceTree = "<group>"; };
+		A886FFFE1D926B850028F102 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		A886FFFF1D926B850028F102 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -411,6 +435,20 @@
 		A886FF151D922E4C0028F102 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A886FFFE1D926B850028F102 /* UIView+Extension.h */,
+				A886FFFF1D926B850028F102 /* UIView+Extension.m */,
+				A886FFEC1D926A220028F102 /* NSMutableArray+Extention.h */,
+				A886FFED1D926A220028F102 /* NSMutableArray+Extention.m */,
+				A886FFEE1D926A220028F102 /* NSMutableDictionary+Extention.h */,
+				A886FFEF1D926A220028F102 /* NSMutableDictionary+Extention.m */,
+				A886FFF01D926A220028F102 /* UIButton+Extension.h */,
+				A886FFF11D926A220028F102 /* UIButton+Extension.m */,
+				A886FFF21D926A220028F102 /* UILabel+Extension.h */,
+				A886FFF31D926A220028F102 /* UILabel+Extension.m */,
+				A886FFF41D926A220028F102 /* UIView+ViewController.h */,
+				A886FFF51D926A220028F102 /* UIView+ViewController.m */,
+				A886FFF61D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.h */,
+				A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -432,6 +470,8 @@
 		A886FF181D922E4C0028F102 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				A886FFE91D9268420028F102 /* HomeButton.h */,
+				A886FFEA1D9268420028F102 /* HomeButton.m */,
 				A886FFE01D9261240028F102 /* HomeBtn.h */,
 				A886FFE11D9261240028F102 /* HomeBtn.m */,
 				A886FFE31D9261410028F102 /* BaseFunction.h */,
@@ -869,11 +909,14 @@
 				A886FFB01D9238300028F102 /* base64.m in Sources */,
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
+				A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
 				A886FFDF1D92606F0028F102 /* HomeOperationCell.m in Sources */,
+				A886FFEB1D9268420028F102 /* HomeButton.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
 				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
+				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
@@ -881,13 +924,18 @@
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A886FF381D9230310028F102 /* MFHomeViewController.m in Sources */,
 				A886FFDD1D92606F0028F102 /* HomeCarCell.m in Sources */,
+				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
+				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
+				A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
+				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 				A886FFDC1D92606F0028F102 /* HomeBannerCell.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */,
+				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
 				A886FFE21D9261240028F102 /* HomeBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

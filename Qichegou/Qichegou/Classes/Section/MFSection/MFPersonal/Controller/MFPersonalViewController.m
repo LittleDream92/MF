@@ -8,7 +8,21 @@
 
 #import "MFPersonalViewController.h"
 
+#import "HomeButton.h"
+
+static NSString *const commentCell = @"commentCellID";
+static NSString *const latestCell = @"latestCellID";
+
 @interface MFPersonalViewController ()
+<UITableViewDataSource,
+UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+
+//data
+@property (nonatomic, strong) NSArray *titleArr;
+@property (nonatomic, strong) NSArray *imgNamesArr;
+@property (nonatomic, strong) NSArray *carIDArr;
 
 @end
 
@@ -16,22 +30,141 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUpData];
+    [self setUpViews];
 }
 
+
+#pragma mark - setUp
+- (void)setUpData {
+    self.contrlArr = [NSMutableArray array];
+    self.imgNamesArr = @[@"icon_myOrder",@"icon_activity",@"icon_changePwd",@"icon_off",@"icon_time"];
+    self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"退出登录",@"最近浏览"];
+}
+
+- (void)setUpViews {
+    [self.view addSubview:self.tableView];
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    //注册单元格
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:commentCell];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:latestCell];
+}
+
+#pragma mark - lazyloading
+-(UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+        _tableView.sectionFooterHeight = CGFLOAT_MIN;
+        _tableView.sectionHeaderHeight = 10;
+        
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _tableView.showsVerticalScrollIndicator = NO;
+    }
+    return _tableView;
+}
+
+#pragma mark - UITableViewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.titleArr.count;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return (section == 4 ? 2 : 1);
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *cellID = indexPath.row == 0 ? commentCell : latestCell;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (indexPath.section == 4) {
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (indexPath.row == 0) {
+            [self setCellWithCell:cell indexPath:indexPath];
+        }else {
+            if (self.contrlArr.count>0) {
+                //需要删除之前的control
+                for (int i = 0; i < self.contrlArr.count; i++) {
+                    
+                    NSInteger tag = [self.contrlArr[i] integerValue];
+                    HomeButton *control = (HomeButton *)[cell viewWithTag:tag];
+                    [control removeFromSuperview];
+                }
+            }
+            //最近浏览
+            if (self.carIDArr) {
+                
+                NSMutableArray *mArr = [NSMutableArray array];
+                for (NSDictionary *jsonDic in self.carIDArr) {
+                    NSInteger tagValue = [[jsonDic objectForKey:@"cid"] integerValue]+ 2016;
+                    [mArr addObject:[NSNumber numberWithInteger:tagValue]];
+                }
+                self.contrlArr = mArr;
+                
+                for (int i = 0; i < [self.carIDArr count]; i++) {
+                    //初始化自定义Control
+                    CGFloat ctrlY = 0;
+                    CGFloat ctrlWidth = (kScreenWidth - 30)/3;
+                    CGFloat ctrlHeight = 100;
+                    
+                    HomeButton *carCtrl = [[HomeButton alloc] initWithFrame:CGRectMake(15 + i*ctrlWidth, ctrlY, ctrlWidth, ctrlHeight)];
+                    NSDictionary *myDic = self.carIDArr[i];
+                    
+                    carCtrl.tag = [[myDic objectForKey:@"cid"] integerValue] + 2016;
+                    [carCtrl setUpButtonWithImageName:myDic[@"imgName"] title:myDic[@"title"]];
+//                    [carCtrl addTarget:self action:@selector(ctrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.contentView addSubview:carCtrl];
+                    
+                }
+            }
+        }
+        
+    }else {
+        [self setCellWithCell:cell indexPath:indexPath];
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right"]];
+    }
+
+    return cell;
+}
+
+- (void)setCellWithCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
+    cell.imageView.image = [UIImage imageNamed:self.imgNamesArr[indexPath.section]];
+    cell.textLabel.font = H16;
+    cell.textLabel.textColor = TEXTCOLOR;
+    cell.textLabel.text = self.titleArr[indexPath.section];
+
+}
+
+#pragma mark - UITableViewDelegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 44;
+    }else {
+        return self.carIDArr == nil ? 0 : 110;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+#pragma mark - 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
