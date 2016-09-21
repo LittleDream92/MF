@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F62E1CFBC5964947920D585 /* libPods-Qichegou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
+		A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88600051D926EA80028F102 /* PersonalViewModel.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
 		A886FEFD1D922A450028F102 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A886FEFC1D922A450028F102 /* Images.xcassets */; };
@@ -63,6 +64,8 @@
 /* Begin PBXFileReference section */
 		1570BC8E8A77435BCCBB19CE /* Pods-Qichegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.release.xcconfig"; sourceTree = "<group>"; };
 		23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qichegou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88600041D926EA80028F102 /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
+		A88600051D926EA80028F102 /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FEF11D922A450028F102 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A886FEF31D922A450028F102 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -617,6 +620,8 @@
 		A886FF321D922FFC0028F102 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A88600041D926EA80028F102 /* PersonalViewModel.h */,
+				A88600051D926EA80028F102 /* PersonalViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -936,6 +941,7 @@
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */,
 				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
+				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
 				A886FFE21D9261240028F102 /* HomeBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

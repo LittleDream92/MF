@@ -7,7 +7,7 @@
 //
 
 #import "MFPersonalViewController.h"
-
+#import "PersonalViewModel.h"
 #import "HomeButton.h"
 
 static NSString *const commentCell = @"commentCellID";
@@ -17,11 +17,19 @@ static NSString *const latestCell = @"latestCellID";
 <UITableViewDataSource,
 UITableViewDelegate>
 
+@property (nonatomic, strong) PersonalViewModel *viewModel;
+
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) UIView *footerView;
+
+//控件
+@property (nonatomic, strong) UIButton *iconBtn;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *telLabel;
+@property (nonatomic, strong) UILabel *textLabel;
 
 //data
-@property (nonatomic, strong) NSArray *titleArr;
-@property (nonatomic, strong) NSArray *imgNamesArr;
 @property (nonatomic, strong) NSArray *carIDArr;
 
 @end
@@ -39,8 +47,6 @@ UITableViewDelegate>
 #pragma mark - setUp
 - (void)setUpData {
     self.contrlArr = [NSMutableArray array];
-    self.imgNamesArr = @[@"icon_myOrder",@"icon_activity",@"icon_changePwd",@"icon_off",@"icon_time"];
-    self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"退出登录",@"最近浏览"];
 }
 
 - (void)setUpViews {
@@ -52,9 +58,19 @@ UITableViewDelegate>
     //注册单元格
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:commentCell];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:latestCell];
+    
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.tableFooterView = self.footerView;
 }
 
 #pragma mark - lazyloading
+- (PersonalViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[PersonalViewModel alloc] init];
+    }
+    return _viewModel;
+}
+
 -(UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -72,9 +88,24 @@ UITableViewDelegate>
     return _tableView;
 }
 
+-(UIView *)headerView {
+    if (!_headerView) {
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 175)];
+    }
+    return _headerView;
+}
+
+-(UIView *)footerView {
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
+        _footerView.backgroundColor = [UIColor cyanColor];
+    }
+    return _footerView;
+}
+
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.titleArr.count;
+    return self.viewModel.titleArr.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -138,11 +169,10 @@ UITableViewDelegate>
 }
 
 - (void)setCellWithCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
-    cell.imageView.image = [UIImage imageNamed:self.imgNamesArr[indexPath.section]];
+    cell.imageView.image = [UIImage imageNamed:self.viewModel.imgNamesArr[indexPath.section]];
     cell.textLabel.font = H16;
     cell.textLabel.textColor = TEXTCOLOR;
-    cell.textLabel.text = self.titleArr[indexPath.section];
-
+    cell.textLabel.text = self.viewModel.titleArr[indexPath.section];
 }
 
 #pragma mark - UITableViewDelegate
