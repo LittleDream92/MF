@@ -7,8 +7,12 @@
 //
 
 #import "MFActivityViewController.h"
+#import "ActivityViewModel.h"
 
-@interface MFActivityViewController ()
+@interface MFActivityViewController ()<UIWebViewDelegate>
+
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) ActivityViewModel *viewModel;
 
 @end
 
@@ -16,7 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setNav];
+    [self setUpViews];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +30,39 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - setUp
+- (void)setNav {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //设置标题和背景
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"团购";
 }
-*/
+
+- (void)setUpViews {
+    [self.view addSubview:self.webView];
+    [self.webView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+}
+
+#pragma mark - lazyloading
+-(UIWebView *)webView {
+    if (_webView == nil) {
+        _webView = [[UIWebView alloc] init];
+        
+        _webView.scalesPageToFit = YES;
+        //设置代理
+        _webView.delegate = self;
+    }
+    return _webView;
+}
+
+-(ActivityViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[ActivityViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 @end

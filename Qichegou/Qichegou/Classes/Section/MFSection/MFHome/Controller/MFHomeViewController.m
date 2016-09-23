@@ -41,7 +41,12 @@ UITableViewDataSource
     //接收通知
     [NotificationCenters addObserver:self selector:@selector(locationSuccess:) name:kLocationSuccess object:nil];
     
+    [self setUpNav];
     [self setUpViews];
+}
+
+- (void)setUpNav {
+    self.title = @"首页";
 }
 
 - (void)setUpViews {
