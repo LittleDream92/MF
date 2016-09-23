@@ -13,6 +13,7 @@
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
 		A84F5D3E1D94E40D002DB7F4 /* MFFindPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3D1D94E40D002DB7F4 /* MFFindPwdViewController.m */; };
 		A84F5D411D94F9B0002DB7F4 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D401D94F9B0002DB7F4 /* LoginViewModel.m */; };
+		A84F5D441D95130B002DB7F4 /* MFBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D431D95130B002DB7F4 /* MFBrandViewController.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88600051D926EA80028F102 /* PersonalViewModel.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
@@ -79,6 +80,8 @@
 		A84F5D3D1D94E40D002DB7F4 /* MFFindPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFindPwdViewController.m; sourceTree = "<group>"; };
 		A84F5D3F1D94F9B0002DB7F4 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		A84F5D401D94F9B0002DB7F4 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		A84F5D421D95130B002DB7F4 /* MFBrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBrandViewController.h; sourceTree = "<group>"; };
+		A84F5D431D95130B002DB7F4 /* MFBrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBrandViewController.m; sourceTree = "<group>"; };
 		A88600041D926EA80028F102 /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
 		A88600051D926EA80028F102 /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -574,6 +577,8 @@
 			children = (
 				A886FF361D9230310028F102 /* MFHomeViewController.h */,
 				A886FF371D9230310028F102 /* MFHomeViewController.m */,
+				A84F5D421D95130B002DB7F4 /* MFBrandViewController.h */,
+				A84F5D431D95130B002DB7F4 /* MFBrandViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -969,6 +974,7 @@
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A886FFDE1D92606F0028F102 /* HomeMenuCell.m in Sources */,
+				A84F5D441D95130B002DB7F4 /* MFBrandViewController.m in Sources */,
 				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
 				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
 				A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */,

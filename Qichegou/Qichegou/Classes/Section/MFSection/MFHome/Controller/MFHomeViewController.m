@@ -84,6 +84,7 @@ UITableViewDataSource
     
     cell.clickBrandBtn = ^{
         NSLog(@"brandBtn");
+        
     };
     
     cell.clickSaleBtn = ^ {
