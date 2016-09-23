@@ -80,7 +80,7 @@
 #define ITEMCOLOR       RGB(255, 96, 0)         //#ff6000
 #define TEXTCOLOR       RGB(51, 51, 51)         //#333333
 #define GRAYCOLOR       RGB(170, 170, 170)      //#aaaaaa
-
+#define kbgGrayColor    RGB(240, 240, 240)
 
 //字体大小
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]
