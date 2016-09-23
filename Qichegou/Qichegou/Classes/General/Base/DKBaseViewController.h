@@ -10,4 +10,6 @@
 
 @interface DKBaseViewController : UIViewController
 
+- (void)navBack:(BOOL)back;
+
 @end

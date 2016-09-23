@@ -9,6 +9,7 @@
 #import "MFPersonalViewController.h"
 #import "PersonalViewModel.h"
 #import "HomeButton.h"
+#import "MFLoginViewController.h"
 
 static NSString *const commentCell = @"commentCellID";
 static NSString *const latestCell = @"latestCellID";
@@ -79,7 +80,7 @@ UITableViewDelegate>
     [self.iconBtn makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(CGSizeMake(96, 96));
         make.centerX.equalTo(weakSelf.headerView.mas_centerX);
-        make.centerY.equalTo(weakSelf.headerView.mas_centerY);
+        make.top.equalTo(20);
     }];
     
     [self.headerView addSubview:self.nameLabel];
@@ -109,6 +110,11 @@ UITableViewDelegate>
 - (void)combineViewModel {
     [[self.naviRightBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel.settingCommand execute:nil];
+    }];
+    
+    [[self.iconBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        MFLoginViewController *loginVC = [[MFLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
     }];
 }
 
@@ -150,7 +156,7 @@ UITableViewDelegate>
 
 -(UIView *)headerView {
     if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 175)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 155)];
     }
     return _headerView;
 }
@@ -304,14 +310,15 @@ UITableViewDelegate>
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     //观察滑动视图的偏移量
     CGFloat yOffset = scrollView.contentOffset.y + 64;
+    CGFloat headerH = self.headerView.frame.size.height;
     //    NSLog(@"yOffset is %.2f", yOffset);
     if (yOffset < 0) {
         //往下拉
         //取出图片视图
         UIImageView *imgView = self.headerBgView;
         //计算宽度
-        CGFloat width = kScreenWidth/175 * (175 - yOffset);
-        imgView.frame = CGRectMake((kScreenWidth - width) / 2, yOffset, width, 175 - yOffset);
+        CGFloat width = kScreenWidth/headerH * (headerH - yOffset);
+        imgView.frame = CGRectMake((kScreenWidth - width) / 2, yOffset, width, headerH - yOffset);
     }
 }
 

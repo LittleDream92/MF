@@ -14,9 +14,9 @@
 @property (nonatomic, strong) NSArray *imgNamesArr;
 
 //命令
-@property(nonatomic, strong, readonly) RACCommand *settingCommand;
-@property(nonatomic, strong, readonly) RACCommand *myOrderCommand;
-@property(nonatomic, strong, readonly) RACCommand *myActivityCommand;
-
+@property (nonatomic, strong, readonly) RACCommand *settingCommand;
+@property (nonatomic, strong, readonly) RACCommand *myOrderCommand;
+@property (nonatomic, strong, readonly) RACCommand *myActivityCommand;
+@property (nonatomic, strong, readonly) RACCommand *loginCommand;
 
 @end
