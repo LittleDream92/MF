@@ -124,7 +124,7 @@
                     } failure:^(NSError *error) {
                         
                         NSLog(@"html error:%@", error);
-                        [PromtView showMessage:PromptWord duration:2];
+                        [PromtView showAlert:PromptWord duration:2];
                     }];
     
 }

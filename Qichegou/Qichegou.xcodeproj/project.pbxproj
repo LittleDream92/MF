@@ -76,6 +76,7 @@
 		A821E12E1D9A721D00CDF409 /* PhotoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E12D1D9A721D00CDF409 /* PhotoCollectionView.m */; };
 		A821E1311D9A724500CDF409 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1301D9A724500CDF409 /* PhotoCell.m */; };
 		A821E1341D9A726C00CDF409 /* PhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1331D9A726C00CDF409 /* PhotoScrollView.m */; };
+		A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1361D9A759600CDF409 /* DKMainWebViewController.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -260,6 +261,8 @@
 		A821E1301D9A724500CDF409 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		A821E1321D9A726C00CDF409 /* PhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoScrollView.h; sourceTree = "<group>"; };
 		A821E1331D9A726C00CDF409 /* PhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoScrollView.m; sourceTree = "<group>"; };
+		A821E1351D9A759600CDF409 /* DKMainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainWebViewController.h; sourceTree = "<group>"; };
+		A821E1361D9A759600CDF409 /* DKMainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainWebViewController.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -868,6 +871,8 @@
 				A886FFE11D9261240028F102 /* HomeBtn.m */,
 				A886FFE31D9261410028F102 /* BaseFunction.h */,
 				A886FFE41D9261410028F102 /* BaseFunction.m */,
+				A821E1351D9A759600CDF409 /* DKMainWebViewController.h */,
+				A821E1361D9A759600CDF409 /* DKMainWebViewController.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -1406,6 +1411,7 @@
 				A821E11E1D9A6AE400CDF409 /* CarInformationView.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A821E05A1D9A034F00CDF409 /* SaleCarModel.m in Sources */,
+				A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */,
 				A821E0D51D9A65BC00CDF409 /* CarListTableViewCell.m in Sources */,
 				A821E0DF1D9A667500CDF409 /* BigCarImgVC.m in Sources */,
 				A821E0591D9A034F00CDF409 /* CarModel.m in Sources */,
