@@ -16,8 +16,11 @@
 
 #import "MFBrandViewController.h"
 #import "MFSaleViewController.h"
+#import "MFSaleDetailViewController.h"
 
 #import "HomePageViewModel.h"
+
+#import "CarModel.h"
 
 static NSString *const homeBannerCellID = @"homeBannerCellID";
 static NSString *const homeMenuCellID = @"homeMenuCellID";
@@ -121,15 +124,7 @@ UITableViewDataSource
     
     cell.clickSaleBtn = ^ {
         NSLog(@"saleBtn");
-        MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
-        
-//        if (self.saleArr.count <= 8) {
-            saleVC.saleArray = self.saleArr;
-//        }else {
-//            saleVC.saleArray = nil;
-//        }
-        
-        [self.navigationController pushViewController:saleVC animated:YES];
+        [self pushToSaleController];
     };
     
     cell.clickDaiBtn = ^ {
@@ -139,24 +134,14 @@ UITableViewDataSource
     cell.clickXianBtn = ^ {
         NSLog(@"xianBtn");
     };
-    
-//    [[cell.brandBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"brandBtn");
-//    }];
-//    
-//    [[cell.saleBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"saleBtn");
-//    }];
-//    
-//    [[cell.daiBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"daiBtn");
-//    }];
-//    
-//    [[cell.xianBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"xianBtn");
-//    }];
 }
 
+
+- (void)pushToSaleController {
+    MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
+    saleVC.saleArray = self.saleArr;
+    [self.navigationController pushViewController:saleVC animated:YES];
+}
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -179,6 +164,8 @@ UITableViewDataSource
                 cell = [[HomeBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeBannerCellID];
             }
             
+            NSArray *images = @[@"home_header", @"home_header", @"home_header", @"home_header", @"home_header"];
+            [cell createHeaderViewWithImages:images];
             
             return cell;
         }else {
@@ -201,11 +188,7 @@ UITableViewDataSource
                 cell = [[HomeOperationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"moreCellID"];
             }
             
-            [[cell.moreBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-                NSLog(@"moreBtn");
-                MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
-                [self.navigationController pushViewController:saleVC animated:YES];
-            }];
+            [cell.moreBtn addTarget:self action:@selector(pushToSaleController) forControlEvents:UIControlEventTouchUpInside];
             
             return cell;
 
@@ -231,9 +214,9 @@ UITableViewDataSource
 #pragma mark - UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return indexPath.row == 0 ? 180 : 80;
+        return indexPath.row == 0 ? 155 : 100;
     }else {
-        return indexPath.row == 0 ? 50 : 100;
+        return indexPath.row == 0 ? 40 : 115;
     }
 }
 
@@ -245,6 +228,12 @@ UITableViewDataSource
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.row != 0) {
         NSLog(@"selected salecar");
+        
+        CarModel *model = self.saleArr[indexPath.row];
+        
+        MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
+        saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+        [self.navigationController pushViewController:saleDetailVC animated:YES];
     }
 }
 

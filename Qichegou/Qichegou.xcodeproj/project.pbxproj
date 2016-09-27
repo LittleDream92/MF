@@ -25,6 +25,7 @@
 		A821E07E1D9A043600CDF409 /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0791D9A043600CDF409 /* HomeMenuCell.m */; };
 		A821E07F1D9A043600CDF409 /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E07B1D9A043600CDF409 /* HomeOperationCell.m */; };
 		A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0811D9A053700CDF409 /* MFHomeViewController.m */; };
+		A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -119,6 +120,8 @@
 		A821E07B1D9A043600CDF409 /* HomeOperationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeOperationCell.m; sourceTree = "<group>"; };
 		A821E0801D9A053700CDF409 /* MFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFHomeViewController.h; sourceTree = "<group>"; };
 		A821E0811D9A053700CDF409 /* MFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHomeViewController.m; sourceTree = "<group>"; };
+		A821E0831D9A183E00CDF409 /* MFSaleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSaleDetailViewController.h; sourceTree = "<group>"; };
+		A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSaleDetailViewController.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -347,6 +350,33 @@
 				A821E0631D9A037E00CDF409 /* HotCarCollectionCell.m */,
 			);
 			name = BrandCell;
+			sourceTree = "<group>";
+		};
+		A821E0861D9A18FF00CDF409 /* SaleCar */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0511D9A030000CDF409 /* MFSaleViewController.h */,
+				A821E0521D9A030000CDF409 /* MFSaleViewController.m */,
+				A821E0831D9A183E00CDF409 /* MFSaleDetailViewController.h */,
+				A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */,
+			);
+			name = SaleCar;
+			sourceTree = "<group>";
+		};
+		A821E0871D9A191000CDF409 /* ChooseCar */ = {
+			isa = PBXGroup;
+			children = (
+				A821E04F1D9A030000CDF409 /* MFBrandViewController.h */,
+				A821E0501D9A030000CDF409 /* MFBrandViewController.m */,
+			);
+			name = ChooseCar;
+			sourceTree = "<group>";
+		};
+		A821E0881D9A192D00CDF409 /* OrderAndPayCar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = OrderAndPayCar;
 			sourceTree = "<group>";
 		};
 		A886FEE41D922A450028F102 = {
@@ -643,10 +673,9 @@
 			children = (
 				A821E0801D9A053700CDF409 /* MFHomeViewController.h */,
 				A821E0811D9A053700CDF409 /* MFHomeViewController.m */,
-				A821E04F1D9A030000CDF409 /* MFBrandViewController.h */,
-				A821E0501D9A030000CDF409 /* MFBrandViewController.m */,
-				A821E0511D9A030000CDF409 /* MFSaleViewController.h */,
-				A821E0521D9A030000CDF409 /* MFSaleViewController.m */,
+				A821E0871D9A191000CDF409 /* ChooseCar */,
+				A821E0861D9A18FF00CDF409 /* SaleCar */,
+				A821E0881D9A192D00CDF409 /* OrderAndPayCar */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1073,6 +1102,7 @@
 				A821E0651D9A037E00CDF409 /* BrandView.m in Sources */,
 				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
 				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
+				A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */,
 				A84F5D601D952595002DB7F4 /* BrandModel.m in Sources */,
 				A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */,
 				A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */,

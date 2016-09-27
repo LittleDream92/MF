@@ -68,7 +68,7 @@
 -(UIImageView *)carBgView {
     if (!_carBgView) {
         _carBgView = [[UIImageView alloc] init];
-        _carBgView.contentMode = UIViewContentModeScaleAspectFill;
+        _carBgView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _carBgView;;
 }
@@ -107,15 +107,15 @@
     if (_carModel != carModel) {
         _carModel = carModel;
         
-//        [self.carBgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]] placeholderImage:[UIImage imageNamed:@""]];
-        UIImage *bgImage = [self getImageFromURL:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]];
-        UIGraphicsBeginImageContext(self.carBgView.frame.size);
-        
-        [bgImage drawInRect:CGRectMake(0, 0, self.carBgView.frame.size.width, self.carBgView.frame.size.height)];
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        self.carBgView.image = image;
+        [self.carBgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]] placeholderImage:[UIImage imageNamed:@""]];
+//        UIImage *bgImage = [self getImageFromURL:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]];
+//        UIGraphicsBeginImageContext(self.carBgView.frame.size);
+//        
+//        [bgImage drawInRect:CGRectMake(0, 0, self.carBgView.frame.size.width, self.carBgView.frame.size.height)];
+//        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        self.carBgView.image = image;
         
         CGFloat sale = [carModel.guide_price floatValue] - [carModel.promot_price floatValue];
         

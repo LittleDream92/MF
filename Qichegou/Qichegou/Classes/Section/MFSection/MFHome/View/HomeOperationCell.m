@@ -51,7 +51,7 @@
         
         [self.contentView addSubview:self.lineView];
         [self.lineView makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.insets(UIEdgeInsetsMake(45, 0, 0, 0));
+            make.edges.insets(UIEdgeInsetsMake(self.frame.size.height-5, 0, 0, 0));
         }];
     }
     return self;
@@ -72,7 +72,7 @@
 -(UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] init];
-        _lineView.backgroundColor = [UIColor orangeColor];
+        _lineView.backgroundColor = TEXTCOLOR;
     }
     return _lineView;
 }

@@ -52,7 +52,6 @@ static NSString *const saleCellID = @"saleCellID";
 }
 
 - (void)setUpNav {
-    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"特价购车";
     [self navBack:YES];
 }

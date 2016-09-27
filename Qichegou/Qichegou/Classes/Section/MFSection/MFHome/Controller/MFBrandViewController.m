@@ -42,7 +42,6 @@
 #pragma mark - setUpViews
 - (void)setUpNav {
     self.title = @"选车";
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [self navBack:YES];
 }
@@ -107,11 +106,9 @@
 - (UIScrollView *)scrollview{
     if (_scrollview == nil) {
         _scrollview = [[UIScrollView alloc]init];
-    
-//        _scrollview.frame = CGRectMake(0, self.titleView.bottom, kScreenWidth, kScreenHeight-64-self.titleView.height);
         
-//        _scrollview.showsHorizontalScrollIndicator = NO;
-//        _scrollview.showsVerticalScrollIndicator = NO;
+        _scrollview.showsHorizontalScrollIndicator = NO;
+        _scrollview.showsVerticalScrollIndicator = NO;
         _scrollview.delegate = self;
         _scrollview.pagingEnabled = YES;//分页
         _scrollview.contentSize = CGSizeMake(kScreenWidth*2, 0);

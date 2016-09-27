@@ -80,9 +80,11 @@
     if (!_brandBtn) {
         _brandBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_brandBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
+//        [_brandBtn setImage:[UIImage imageNamed:@"home_brandBtn"] forState:UIControlStateNormal];
         [_brandBtn setTitle:@"品牌选车" forState:UIControlStateNormal];
         [_brandBtn addTarget:self action:@selector(brandAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_brandBtn setBackgroundColor:[UIColor cyanColor]];
+        [_brandBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
+//        [_brandBtn setBackgroundColor:[UIColor cyanColor]];
     }
     return _brandBtn;
 }
@@ -91,9 +93,11 @@
     if (!_saleBtn) {
         _saleBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_saleBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
+//        [_saleBtn setImage:[UIImage imageNamed:@"home_saleBtn"] forState:UIControlStateNormal];
         [_saleBtn setTitle:@"特价购车" forState:UIControlStateNormal];
         [_saleBtn addTarget:self action:@selector(saleAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_saleBtn setBackgroundColor:[UIColor brownColor]];
+        [_saleBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
+//        [_saleBtn setBackgroundColor:[UIColor brownColor]];
     }
     return _saleBtn;
 }
@@ -102,9 +106,11 @@
     if (!_daiBtn) {
         _daiBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_daiBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
+//        [_daiBtn setImage:[UIImage imageNamed:@"home_xianBtn"] forState:UIControlStateNormal];
         [_daiBtn setTitle:@"我要车险" forState:UIControlStateNormal];
         [_daiBtn addTarget:self action:@selector(daiAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_daiBtn setBackgroundColor:[UIColor redColor]];
+        [_daiBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
+//        [_daiBtn setBackgroundColor:[UIColor redColor]];
     }
     return _daiBtn;
 }
@@ -113,9 +119,11 @@
     if (!_xianBtn) {
         _xianBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_xianBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
+//        [_xianBtn setImage:[UIImage imageNamed:@"home_lastBtn"] forState:UIControlStateNormal];
         [_xianBtn setTitle:@"健康洗车" forState:UIControlStateNormal];
         [_xianBtn addTarget:self action:@selector(xianAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_xianBtn setBackgroundColor:[UIColor yellowColor]];
+        [_xianBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
+//        [_xianBtn setBackgroundColor:[UIColor yellowColor]];
     }
     return _xianBtn;
 }

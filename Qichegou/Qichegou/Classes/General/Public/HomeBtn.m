@@ -15,6 +15,7 @@
     
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.font = H14;
 }
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect {

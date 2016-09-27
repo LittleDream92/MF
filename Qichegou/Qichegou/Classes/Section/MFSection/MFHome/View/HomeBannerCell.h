@@ -10,4 +10,6 @@
 
 @interface HomeBannerCell : UITableViewCell
 
+- (void)createHeaderViewWithImages:(NSArray *)images;
+
 @end
