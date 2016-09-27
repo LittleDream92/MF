@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class SaleCarModel;
+@class CarModel;
 @interface HomeCarCell : UITableViewCell
 
 @property (nonatomic, strong) UIButton *buyBtn;
 
-@property (nonatomic, strong) SaleCarModel *model;
+@property (nonatomic, strong) CarModel *model;
 
 @end

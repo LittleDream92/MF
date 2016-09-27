@@ -1,8 +1,8 @@
 //
 //  MFHomeViewController.h
-//  Qichegou
+//  QiChegou
 //
-//  Created by Meng Fan on 16/9/21.
+//  Created by Meng Fan on 16/9/12.
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 

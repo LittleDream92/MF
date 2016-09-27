@@ -1,5 +1,5 @@
 //
-//  MFBrandViewController.h
+//  MFSaleViewController.h
 //  QiChegou
 //
 //  Created by Meng Fan on 16/9/26.
@@ -8,6 +8,8 @@
 
 #import "DKBaseViewController.h"
 
-@interface MFBrandViewController : DKBaseViewController
+@interface MFSaleViewController : DKBaseViewController
+
+@property (nonatomic, strong) NSArray *saleArray;
 
 @end

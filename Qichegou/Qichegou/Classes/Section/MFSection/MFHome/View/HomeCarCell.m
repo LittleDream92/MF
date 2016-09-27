@@ -7,6 +7,8 @@
 //
 
 #import "HomeCarCell.h"
+#import "CarModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeCarCell ()
 
@@ -39,7 +41,7 @@
         WEAKSELF
         [self.contentView addSubview:self.carImgView];
         [self.carImgView makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo(CGSizeMake(180, 90));
+            make.size.equalTo(CGSizeMake(160, 90));
             make.centerY.equalTo(weakSelf);
             make.left.equalTo(5);
         }];
@@ -54,21 +56,23 @@
         [self.describeLabel makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(weakSelf.titleLabel.mas_bottom);
             make.left.equalTo(weakSelf.titleLabel);
-        }];
-        
-        
-        [self.contentView addSubview:self.buyBtn];
-        [self.buyBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo(CGSizeMake(100, 30));
-            make.right.equalTo(-10);
-            make.bottom.equalTo(weakSelf.carImgView);
+            make.right.equalTo(-15);
         }];
         
         [self.contentView addSubview:self.priceLabel];
         [self.priceLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(-10);
-            make.bottom.equalTo(weakSelf.buyBtn.mas_top).offset(-10);
+            make.left.equalTo(weakSelf.titleLabel);
+            make.top.equalTo(weakSelf.describeLabel.mas_bottom);
         }];
+        
+        [self.contentView addSubview:self.buyBtn];
+        [self.buyBtn makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(weakSelf.titleLabel);
+            make.right.equalTo(-15);
+            make.bottom.equalTo(weakSelf.carImgView);
+        }];
+        
+       
     }
     return self;
 }
@@ -77,7 +81,8 @@
 -(UIImageView *)carImgView {
     if (!_carImgView) {
         _carImgView = [[UIImageView alloc] init];
-        _carImgView.backgroundColor = [UIColor brownColor];
+//        _carImgView.backgroundColor = [UIColor brownColor];
+        _carImgView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _carImgView;
 }
@@ -122,14 +127,17 @@
 }
 
 #pragma mark - model
--(void)setModel:(SaleCarModel *)model {
+-(void)setModel:(CarModel *)model {
     if (_model != model) {
         _model = model;
+        
+//        NSLog(@"model:%@", model);
+        [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, model.main_photo]] placeholderImage:[UIImage imageNamed:@"brand_bg"]];
+        
+        self.titleLabel.text = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+        self.describeLabel.text = model.car_subject;
+        self.priceLabel.text = [NSString stringWithFormat:@"%@万", model.promot_price];
     }
-    
-    self.titleLabel.text = @"车名称";
-    self.describeLabel.text = @"车型名称";
-    self.priceLabel.text = @"15.28万";
 }
 
 @end

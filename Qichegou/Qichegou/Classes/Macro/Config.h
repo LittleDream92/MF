@@ -46,6 +46,7 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
+#import <AFNetworking/AFNetworking.h>
 
 #import "UILabel+Extension.h"
 #import "UIView+ViewController.h"
@@ -53,6 +54,7 @@
 #import "UIViewController+WeChatAndAliPayMethod.h"
 #import "UIImageView+WebCache.h"
 #import "UIViewExt.h"
+#import "DataService.h"
 
 // App
 #define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
@@ -79,8 +81,8 @@
 
 #define ITEMCOLOR       RGB(255, 96, 0)         //#ff6000
 #define TEXTCOLOR       RGB(51, 51, 51)         //#333333
+#define BGGRAYCOLOR     RGB(240, 240, 240)
 #define GRAYCOLOR       RGB(170, 170, 170)      //#aaaaaa
-#define kbgGrayColor    RGB(240, 240, 240)
 
 //字体大小
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]

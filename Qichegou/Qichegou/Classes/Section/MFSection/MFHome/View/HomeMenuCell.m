@@ -102,7 +102,7 @@
     if (!_daiBtn) {
         _daiBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_daiBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
-        [_daiBtn setTitle:@"我要车贷" forState:UIControlStateNormal];
+        [_daiBtn setTitle:@"我要车险" forState:UIControlStateNormal];
         [_daiBtn addTarget:self action:@selector(daiAction:) forControlEvents:UIControlEventTouchUpInside];
         [_daiBtn setBackgroundColor:[UIColor redColor]];
     }
@@ -113,7 +113,7 @@
     if (!_xianBtn) {
         _xianBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_xianBtn setImage:[UIImage imageNamed:@"Menu1"] forState:UIControlStateNormal];
-        [_xianBtn setTitle:@"我要车险" forState:UIControlStateNormal];
+        [_xianBtn setTitle:@"健康洗车" forState:UIControlStateNormal];
         [_xianBtn addTarget:self action:@selector(xianAction:) forControlEvents:UIControlEventTouchUpInside];
         [_xianBtn setBackgroundColor:[UIColor yellowColor]];
     }

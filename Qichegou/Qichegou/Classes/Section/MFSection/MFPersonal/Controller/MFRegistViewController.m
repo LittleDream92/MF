@@ -43,7 +43,7 @@
 
 #pragma mark - setUp
 - (void)setUpNav {
-    self.view.backgroundColor = kbgGrayColor;
+    self.view.backgroundColor = BGGRAYCOLOR;
     
     self.title = @"注册";
     [self navBack:YES];

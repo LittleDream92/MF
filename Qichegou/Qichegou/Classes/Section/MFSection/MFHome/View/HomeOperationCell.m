@@ -11,10 +11,8 @@
 
 @interface HomeOperationCell ()
 
-@property (nonatomic, strong) UIView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *lineView;
-//@property (nonatomic, strong) UIButton *moreBtn;
 
 @end
 
@@ -37,20 +35,11 @@
     if (self) {
         WEAKSELF
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        [self.contentView addSubview:self.iconView];
-        [self.iconView makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo(CGSizeMake(5, 15));
-            make.left.equalTo(15);
-            make.centerY.equalTo(weakSelf);
-        }];
         
         [self.contentView addSubview:self.titleLabel];
         [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakSelf.iconView.mas_right).offset(5);
+            make.left.equalTo(15);
             make.centerY.equalTo(weakSelf);
-//            make.top.equalTo(weakSelf.iconView);
-//            make.size.equalTo(CGSizeMake(100, 15));
         }];
         
         [self.contentView addSubview:self.moreBtn];
@@ -86,14 +75,6 @@
         _lineView.backgroundColor = [UIColor orangeColor];
     }
     return _lineView;
-}
-
--(UIView *)iconView {
-    if (!_iconView) {
-        _iconView = [[UIView alloc] init];
-        _iconView.backgroundColor = [UIColor blueColor];
-    }
-    return _iconView;
 }
 
 -(UILabel *)titleLabel {

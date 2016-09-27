@@ -39,7 +39,7 @@
 
 #pragma mark - setUp
 - (void)setUpNav {
-    self.view.backgroundColor = kbgGrayColor;
+    self.view.backgroundColor = BGGRAYCOLOR;
     
     self.title = @"修改密码";
     [self navBack:YES];
