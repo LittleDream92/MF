@@ -9,7 +9,7 @@
 #import "MFHomeViewController.h"
 #import "AppDelegate.h"
 
-#import "HomeBannerCell.h"
+#import "HomeHeaderView.h"
 #import "HomeMenuCell.h"
 #import "HomeCarCell.h"
 #import "HomeOperationCell.h"
@@ -22,7 +22,6 @@
 
 #import "CarModel.h"
 
-static NSString *const homeBannerCellID = @"homeBannerCellID";
 static NSString *const homeMenuCellID = @"homeMenuCellID";
 static NSString *const homeCarCellID = @"homeCarCellID";
 
@@ -32,6 +31,7 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 
+@property (nonatomic, strong) HomeHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) HomePageViewModel *viewModel;
@@ -74,6 +74,12 @@ UITableViewDataSource
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+    
+    NSArray *images = @[@"home_header", @"home_header", @"home_header", @"home_header", @"home_header"];
+    
+    self.headerView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 155)];
+    [self.headerView createHeaderViewWithImages:images];
+    self.tableView.tableHeaderView = self.headerView;
 }
 
 - (void)setUpViewModel {
@@ -104,6 +110,13 @@ UITableViewDataSource
         _viewModel = [[HomePageViewModel alloc] init];
     }
     return _viewModel;
+}
+
+-(HomeHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [[HomeHeaderView alloc] init];
+    }
+    return _headerView;
 }
 
 #pragma mark - action
@@ -150,36 +163,24 @@ UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger secondRows = MIN(8, self.saleArr.count);
-    return (section == 0 ? 2 : secondRows);
+    return (section == 0 ? 1 : secondRows);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
+       
+        HomeMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:homeMenuCellID];
         
-        if (indexPath.row == 0) {
-            HomeBannerCell *cell = [tableView dequeueReusableCellWithIdentifier:homeBannerCellID];
-            
-            if (cell == nil) {
-                cell = [[HomeBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeBannerCellID];
-            }
-            
-            NSArray *images = @[@"home_header", @"home_header", @"home_header", @"home_header", @"home_header"];
-            [cell createHeaderViewWithImages:images];
-            
-            return cell;
-        }else {
-            HomeMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:homeMenuCellID];
-            
-            if (cell == nil) {
-                cell = [[HomeMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeMenuCellID];
-            }
-            
-            //action
-            [self menuActionWithCell:cell];
-            
-            return cell;
+        if (cell == nil) {
+            cell = [[HomeMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeMenuCellID];
         }
+        
+        //action
+        [self menuActionWithCell:cell];
+        
+        return cell;
+        
     }else {
         if (indexPath.row == 0) {
             HomeOperationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"moreCellID"];
@@ -214,7 +215,7 @@ UITableViewDataSource
 #pragma mark - UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return indexPath.row == 0 ? 155 : 100;
+        return 100;
     }else {
         return indexPath.row == 0 ? 40 : 115;
     }

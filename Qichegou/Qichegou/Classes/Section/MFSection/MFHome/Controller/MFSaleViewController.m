@@ -8,8 +8,9 @@
 
 #import "MFSaleViewController.h"
 #import "SaleDetailCell.h"
-
+#import "MFSaleDetailViewController.h"
 #import "SaleViewModel.h"
+#import "CarModel.h"
 
 static NSString *const saleCellID = @"saleCellID";
 @interface MFSaleViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -72,6 +73,7 @@ static NSString *const saleCellID = @"saleCellID";
         _tableView.dataSource = self;
         
         _tableView.rowHeight = 160;
+        _tableView.showsVerticalScrollIndicator = NO;
     }
     return _tableView;
 }
@@ -98,6 +100,7 @@ static NSString *const saleCellID = @"saleCellID";
         cell = [[SaleDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:saleCellID];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     cell.carModel = self.saleArray[indexPath.row];
     
@@ -105,6 +108,11 @@ static NSString *const saleCellID = @"saleCellID";
 }
 
 #pragma mark - UITableViewDelegate
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
+    CarModel *model = self.saleArray[indexPath.row];
+    saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+    [self.navigationController pushViewController:saleDetailVC animated:YES];
+}
 
 @end

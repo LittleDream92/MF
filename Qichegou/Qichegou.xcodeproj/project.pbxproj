@@ -20,12 +20,12 @@
 		A821E0711D9A03FD00CDF409 /* BrandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E06C1D9A03FD00CDF409 /* BrandViewModel.m */; };
 		A821E0721D9A03FD00CDF409 /* HomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E06E1D9A03FD00CDF409 /* HomePageViewModel.m */; };
 		A821E0731D9A03FD00CDF409 /* SaleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0701D9A03FD00CDF409 /* SaleViewModel.m */; };
-		A821E07C1D9A043600CDF409 /* HomeBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0751D9A043600CDF409 /* HomeBannerCell.m */; };
 		A821E07D1D9A043600CDF409 /* HomeCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0771D9A043600CDF409 /* HomeCarCell.m */; };
 		A821E07E1D9A043600CDF409 /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0791D9A043600CDF409 /* HomeMenuCell.m */; };
 		A821E07F1D9A043600CDF409 /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E07B1D9A043600CDF409 /* HomeOperationCell.m */; };
 		A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0811D9A053700CDF409 /* MFHomeViewController.m */; };
 		A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */; };
+		A821E08B1D9A1EE900CDF409 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E08A1D9A1EE900CDF409 /* HomeHeaderView.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -110,8 +110,6 @@
 		A821E06E1D9A03FD00CDF409 /* HomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewModel.m; sourceTree = "<group>"; };
 		A821E06F1D9A03FD00CDF409 /* SaleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaleViewModel.h; sourceTree = "<group>"; };
 		A821E0701D9A03FD00CDF409 /* SaleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaleViewModel.m; sourceTree = "<group>"; };
-		A821E0741D9A043600CDF409 /* HomeBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBannerCell.h; sourceTree = "<group>"; };
-		A821E0751D9A043600CDF409 /* HomeBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBannerCell.m; sourceTree = "<group>"; };
 		A821E0761D9A043600CDF409 /* HomeCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCarCell.h; sourceTree = "<group>"; };
 		A821E0771D9A043600CDF409 /* HomeCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCarCell.m; sourceTree = "<group>"; };
 		A821E0781D9A043600CDF409 /* HomeMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMenuCell.h; sourceTree = "<group>"; };
@@ -122,6 +120,8 @@
 		A821E0811D9A053700CDF409 /* MFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHomeViewController.m; sourceTree = "<group>"; };
 		A821E0831D9A183E00CDF409 /* MFSaleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSaleDetailViewController.h; sourceTree = "<group>"; };
 		A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSaleDetailViewController.m; sourceTree = "<group>"; };
+		A821E0891D9A1EE900CDF409 /* HomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
+		A821E08A1D9A1EE900CDF409 /* HomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -900,14 +900,14 @@
 		A886FFD31D92605E0028F102 /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
-				A821E0741D9A043600CDF409 /* HomeBannerCell.h */,
-				A821E0751D9A043600CDF409 /* HomeBannerCell.m */,
 				A821E0761D9A043600CDF409 /* HomeCarCell.h */,
 				A821E0771D9A043600CDF409 /* HomeCarCell.m */,
 				A821E0781D9A043600CDF409 /* HomeMenuCell.h */,
 				A821E0791D9A043600CDF409 /* HomeMenuCell.m */,
 				A821E07A1D9A043600CDF409 /* HomeOperationCell.h */,
 				A821E07B1D9A043600CDF409 /* HomeOperationCell.m */,
+				A821E0891D9A1EE900CDF409 /* HomeHeaderView.h */,
+				A821E08A1D9A1EE900CDF409 /* HomeHeaderView.m */,
 			);
 			name = HomeCell;
 			sourceTree = "<group>";
@@ -1073,6 +1073,7 @@
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
 				A821E07D1D9A043600CDF409 /* HomeCarCell.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
+				A821E08B1D9A1EE900CDF409 /* HomeHeaderView.m in Sources */,
 				A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */,
 				A821E0671D9A037E00CDF409 /* HotCarCollectionCell.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
@@ -1080,7 +1081,6 @@
 				A821E0591D9A034F00CDF409 /* CarModel.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
-				A821E07C1D9A043600CDF409 /* HomeBannerCell.m in Sources */,
 				A821E0711D9A03FD00CDF409 /* BrandViewModel.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,

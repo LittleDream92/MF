@@ -78,6 +78,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = H15;
         _titleLabel.textColor = white_color;
+        
     }
     return _titleLabel;
 }
@@ -86,7 +87,7 @@
     if (!_salePrice) {
         _salePrice = [[UILabel alloc] init];
         _salePrice.font = H13;
-        _salePrice.textColor = white_color;
+        _salePrice.textColor = ITEMCOLOR;
     }
     return _salePrice;
 }
@@ -127,12 +128,12 @@
 }
 
 #pragma mark - action
--(UIImage *) getImageFromURL:(NSString *)fileURL {
-    NSLog(@"执行图片下载函数");
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
-    result = [UIImage imageWithData:data];
-    return result;
-}
+//-(UIImage *) getImageFromURL:(NSString *)fileURL {
+//    NSLog(@"执行图片下载函数");
+//    UIImage * result;
+//    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+//    result = [UIImage imageWithData:data];
+//    return result;
+//}
 
 @end
