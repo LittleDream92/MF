@@ -9,7 +9,28 @@
 #import <UIKit/UIKit.h>
 
 @interface DKBaseViewController : UIViewController
+{
+    UIView *_tipView;
+    MBProgressHUD *_hud;    //hud提示加载视图
+}
 
 - (void)navBack:(BOOL)back;
+
+//弹出提示框
+- (void)presentAlertViewWithString:(NSString *)txtString;
+
+
+//-----------------HUD
+//显示或者隐藏正在加载
+- (void)showLoading:(BOOL)show;
+
+//显示加载视图（HUD）
+- (void)showHUD:(NSString *)title;
+
+//隐藏HUD
+- (void)hideHUD;
+
+//加载完成提示HUD
+- (void)completeHUD:(NSString *)title;
 
 @end

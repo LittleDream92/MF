@@ -30,10 +30,10 @@
 - (void)timerStartWithText:(NSString *)titleStr;
 
 
-///*
-// * 获取验证码的网络请求
-// * telString 手机号字符串
-// */
-//- (void)http_requestForCodeWithParams:(NSString *)telString;
+/*
+ * 获取验证码的网络请求
+ * telString 手机号字符串
+ */
+- (void)http_requestForCodeWithParams:(NSString *)telString;
 
 @end

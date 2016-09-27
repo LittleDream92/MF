@@ -52,6 +52,7 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
 #import <MJRefresh/MJRefresh.h>
+#import <MBProgressHUD.h>
 
 #import "UILabel+Extension.h"
 #import "UIView+ViewController.h"
@@ -91,6 +92,7 @@
 #define BGGRAYCOLOR     RGB(240, 240, 240)
 #define GRAYCOLOR       RGB(170, 170, 170)      //#aaaaaa
 #define kplayceGrayColor RGB(221, 221, 221)     //#dddddd
+#define kskyBlueColor   RGB(27, 140, 227)       //#1b8ce3
 
 //字体大小
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]

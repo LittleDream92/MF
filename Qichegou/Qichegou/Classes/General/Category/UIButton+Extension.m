@@ -56,40 +56,40 @@
     dispatch_resume(_timer);
 }
 
-//- (void)http_requestForCodeWithParams:(NSString *)telString
-//{
-//    //参数
-//    NSString *randomString = [BaseFunction ret32bitString];
-//    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-//    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-//    
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:randomString,@"nonce_str",
-//                            timeSp, @"time",
-//                            md5String, @"sign",
-//                            telString, @"tel", nil];
-//    
-//    [DataService http_Post:GETCODE
-//     
-//                parameters:params
-//     
-//                   success:^(id responseObject) {
-//                       
-//                       NSLog(@"POST get code 成功！:%@", responseObject);
-//                       NSLog(@"msg:%@", [responseObject objectForKey:@"msg"]);
-//                       
-//                       NSDictionary *jsonDic = responseObject;
-//                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
-//                           [PromtView showAlert:@"验证码已发送" duration:1.5];
-//                           
-//                       }else {
-//                           [PromtView showAlert:responseObject[@"msg"] duration:1.5];
-//                       }
-//                       
-//                   } failure:^(NSError *error) {
-//                       
-//                       NSLog(@"error:%@", error);
-//                       [PromtView showAlert:PromptWord duration:1.5];
-//                   }];
-//}
+- (void)http_requestForCodeWithParams:(NSString *)telString
+{
+    //参数
+    NSString *randomString = [BaseFunction ret32bitString];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
+    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:randomString,@"nonce_str",
+                            timeSp, @"time",
+                            md5String, @"sign",
+                            telString, @"tel", nil];
+    
+    [DataService http_Post:GETCODE
+     
+                parameters:params
+     
+                   success:^(id responseObject) {
+                       
+                       NSLog(@"POST get code 成功！:%@", responseObject);
+                       NSLog(@"msg:%@", [responseObject objectForKey:@"msg"]);
+                       
+                       NSDictionary *jsonDic = responseObject;
+                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
+                           [PromtView showAlert:@"验证码已发送" duration:1.5];
+                           
+                       }else {
+                           [PromtView showAlert:responseObject[@"msg"] duration:1.5];
+                       }
+                       
+                   } failure:^(NSError *error) {
+                       
+                       NSLog(@"error:%@", error);
+                       [PromtView showAlert:PromptWord duration:1.5];
+                   }];
+}
 
 @end

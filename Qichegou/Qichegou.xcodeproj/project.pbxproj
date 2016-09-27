@@ -36,6 +36,46 @@
 		A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0BB1D9A60A400CDF409 /* ActivityOrderHeaderView.m */; };
 		A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */; };
 		A821E0C11D9A61B700CDF409 /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0C01D9A61B700CDF409 /* DKMyActivityOrderVC.m */; };
+		A821E0C91D9A646E00CDF409 /* Cars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A821E0C41D9A646E00CDF409 /* Cars.storyboard */; };
+		A821E0CA1D9A646E00CDF409 /* DKCarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0C61D9A646E00CDF409 /* DKCarListViewController.m */; };
+		A821E0CB1D9A646E00CDF409 /* DKCarProViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0C81D9A646E00CDF409 /* DKCarProViewController.m */; };
+		A821E0D01D9A64F700CDF409 /* CarProTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0CE1D9A64F700CDF409 /* CarProTableViewCell.m */; };
+		A821E0D11D9A64F700CDF409 /* CarProTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0CF1D9A64F700CDF409 /* CarProTableViewCell.xib */; };
+		A821E0D51D9A65BC00CDF409 /* CarListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0D31D9A65BC00CDF409 /* CarListTableViewCell.m */; };
+		A821E0D61D9A65BC00CDF409 /* CarListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0D41D9A65BC00CDF409 /* CarListTableViewCell.xib */; };
+		A821E0DF1D9A667500CDF409 /* BigCarImgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0D81D9A667500CDF409 /* BigCarImgVC.m */; };
+		A821E0E01D9A667500CDF409 /* DKCarChooseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0DA1D9A667500CDF409 /* DKCarChooseTableViewController.m */; };
+		A821E0E11D9A667500CDF409 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0DC1D9A667500CDF409 /* ImageViewController.m */; };
+		A821E0E21D9A667500CDF409 /* ParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0DE1D9A667500CDF409 /* ParamsViewController.m */; };
+		A821E0E71D9A66F600CDF409 /* DKCarNeedsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0E41D9A66F600CDF409 /* DKCarNeedsVC.m */; };
+		A821E0E81D9A66F600CDF409 /* DKNeedsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0E61D9A66F600CDF409 /* DKNeedsTableViewController.m */; };
+		A821E0F21D9A676A00CDF409 /* BuyCarNeedsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0EA1D9A676A00CDF409 /* BuyCarNeedsFooterView.m */; };
+		A821E0F31D9A676A00CDF409 /* BuyCarNeedsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0EB1D9A676A00CDF409 /* BuyCarNeedsFooterView.xib */; };
+		A821E0F41D9A676A00CDF409 /* BuyCarNeedsHeaderview.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0ED1D9A676A00CDF409 /* BuyCarNeedsHeaderview.m */; };
+		A821E0F51D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0EE1D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib */; };
+		A821E0F61D9A676A00CDF409 /* DetailChooseCarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0F01D9A676A00CDF409 /* DetailChooseCarHeader.m */; };
+		A821E0F71D9A676A00CDF409 /* DetailChooseCarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0F11D9A676A00CDF409 /* DetailChooseCarHeader.xib */; };
+		A821E0FA1D9A68B400CDF409 /* DKBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */; };
+		A821E0FE1D9A694600CDF409 /* BuyCarNeedsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0FC1D9A694600CDF409 /* BuyCarNeedsTVC.m */; };
+		A821E0FF1D9A694600CDF409 /* BuyCarNeedsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0FD1D9A694600CDF409 /* BuyCarNeedsTVC.xib */; };
+		A821E1041D9A69D600CDF409 /* DKPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1031D9A69D600CDF409 /* DKPayMoneyVC.m */; };
+		A821E1091D9A6A0800CDF409 /* PayMoneyFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1061D9A6A0800CDF409 /* PayMoneyFooterView.m */; };
+		A821E10A1D9A6A0800CDF409 /* PaymoneyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1081D9A6A0800CDF409 /* PaymoneyTopView.m */; };
+		A821E10D1D9A6A3F00CDF409 /* ChooseCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E10C1D9A6A3F00CDF409 /* ChooseCarModel.m */; };
+		A821E1111D9A6A7100CDF409 /* DKMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E10F1D9A6A7100CDF409 /* DKMyOrderVC.m */; };
+		A821E1121D9A6A7100CDF409 /* DKMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E1101D9A6A7100CDF409 /* DKMyOrderVC.xib */; };
+		A821E1161D9A6A9900CDF409 /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1141D9A6A9900CDF409 /* MyOrderCell.m */; };
+		A821E1171D9A6A9900CDF409 /* MyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */; };
+		A821E11A1D9A6AC000CDF409 /* DKDetailOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1191D9A6AC000CDF409 /* DKDetailOrderVC.m */; };
+		A821E11E1D9A6AE400CDF409 /* CarInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E11C1D9A6AE400CDF409 /* CarInformationView.m */; };
+		A821E11F1D9A6AE400CDF409 /* CarInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E11D1D9A6AE400CDF409 /* CarInformationView.xib */; };
+		A821E1221D9A6B0800CDF409 /* CarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1211D9A6B0800CDF409 /* CarHeaderView.m */; };
+		A821E1271D9A702E00CDF409 /* AiCheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1241D9A702E00CDF409 /* AiCheModel.m */; };
+		A821E1281D9A702E00CDF409 /* OtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1261D9A702E00CDF409 /* OtherModel.m */; };
+		A821E12B1D9A708D00CDF409 /* CityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E12A1D9A708D00CDF409 /* CityDetailModel.m */; };
+		A821E12E1D9A721D00CDF409 /* PhotoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E12D1D9A721D00CDF409 /* PhotoCollectionView.m */; };
+		A821E1311D9A724500CDF409 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1301D9A724500CDF409 /* PhotoCell.m */; };
+		A821E1341D9A726C00CDF409 /* PhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1331D9A726C00CDF409 /* PhotoScrollView.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -150,6 +190,76 @@
 		A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityOrderHeaderView.xib; sourceTree = "<group>"; };
 		A821E0BF1D9A61B700CDF409 /* DKMyActivityOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyActivityOrderVC.h; sourceTree = "<group>"; };
 		A821E0C01D9A61B700CDF409 /* DKMyActivityOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyActivityOrderVC.m; sourceTree = "<group>"; };
+		A821E0C41D9A646E00CDF409 /* Cars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cars.storyboard; sourceTree = "<group>"; };
+		A821E0C51D9A646E00CDF409 /* DKCarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCarListViewController.h; sourceTree = "<group>"; };
+		A821E0C61D9A646E00CDF409 /* DKCarListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCarListViewController.m; sourceTree = "<group>"; };
+		A821E0C71D9A646E00CDF409 /* DKCarProViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCarProViewController.h; sourceTree = "<group>"; };
+		A821E0C81D9A646E00CDF409 /* DKCarProViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCarProViewController.m; sourceTree = "<group>"; };
+		A821E0CD1D9A64F700CDF409 /* CarProTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarProTableViewCell.h; sourceTree = "<group>"; };
+		A821E0CE1D9A64F700CDF409 /* CarProTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarProTableViewCell.m; sourceTree = "<group>"; };
+		A821E0CF1D9A64F700CDF409 /* CarProTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarProTableViewCell.xib; sourceTree = "<group>"; };
+		A821E0D21D9A65BC00CDF409 /* CarListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListTableViewCell.h; sourceTree = "<group>"; };
+		A821E0D31D9A65BC00CDF409 /* CarListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarListTableViewCell.m; sourceTree = "<group>"; };
+		A821E0D41D9A65BC00CDF409 /* CarListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarListTableViewCell.xib; sourceTree = "<group>"; };
+		A821E0D71D9A667500CDF409 /* BigCarImgVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigCarImgVC.h; sourceTree = "<group>"; };
+		A821E0D81D9A667500CDF409 /* BigCarImgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigCarImgVC.m; sourceTree = "<group>"; };
+		A821E0D91D9A667500CDF409 /* DKCarChooseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCarChooseTableViewController.h; sourceTree = "<group>"; };
+		A821E0DA1D9A667500CDF409 /* DKCarChooseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCarChooseTableViewController.m; sourceTree = "<group>"; };
+		A821E0DB1D9A667500CDF409 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		A821E0DC1D9A667500CDF409 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		A821E0DD1D9A667500CDF409 /* ParamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamsViewController.h; sourceTree = "<group>"; };
+		A821E0DE1D9A667500CDF409 /* ParamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamsViewController.m; sourceTree = "<group>"; };
+		A821E0E31D9A66F600CDF409 /* DKCarNeedsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCarNeedsVC.h; sourceTree = "<group>"; };
+		A821E0E41D9A66F600CDF409 /* DKCarNeedsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCarNeedsVC.m; sourceTree = "<group>"; };
+		A821E0E51D9A66F600CDF409 /* DKNeedsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKNeedsTableViewController.h; sourceTree = "<group>"; };
+		A821E0E61D9A66F600CDF409 /* DKNeedsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKNeedsTableViewController.m; sourceTree = "<group>"; };
+		A821E0E91D9A676A00CDF409 /* BuyCarNeedsFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCarNeedsFooterView.h; sourceTree = "<group>"; };
+		A821E0EA1D9A676A00CDF409 /* BuyCarNeedsFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCarNeedsFooterView.m; sourceTree = "<group>"; };
+		A821E0EB1D9A676A00CDF409 /* BuyCarNeedsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyCarNeedsFooterView.xib; sourceTree = "<group>"; };
+		A821E0EC1D9A676A00CDF409 /* BuyCarNeedsHeaderview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCarNeedsHeaderview.h; sourceTree = "<group>"; };
+		A821E0ED1D9A676A00CDF409 /* BuyCarNeedsHeaderview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCarNeedsHeaderview.m; sourceTree = "<group>"; };
+		A821E0EE1D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyCarNeedsHeaderview.xib; sourceTree = "<group>"; };
+		A821E0EF1D9A676A00CDF409 /* DetailChooseCarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailChooseCarHeader.h; sourceTree = "<group>"; };
+		A821E0F01D9A676A00CDF409 /* DetailChooseCarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailChooseCarHeader.m; sourceTree = "<group>"; };
+		A821E0F11D9A676A00CDF409 /* DetailChooseCarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailChooseCarHeader.xib; sourceTree = "<group>"; };
+		A821E0F81D9A68B400CDF409 /* DKBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaseTableViewController.h; sourceTree = "<group>"; };
+		A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseTableViewController.m; sourceTree = "<group>"; };
+		A821E0FB1D9A694600CDF409 /* BuyCarNeedsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCarNeedsTVC.h; sourceTree = "<group>"; };
+		A821E0FC1D9A694600CDF409 /* BuyCarNeedsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCarNeedsTVC.m; sourceTree = "<group>"; };
+		A821E0FD1D9A694600CDF409 /* BuyCarNeedsTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyCarNeedsTVC.xib; sourceTree = "<group>"; };
+		A821E1021D9A69D600CDF409 /* DKPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPayMoneyVC.h; sourceTree = "<group>"; };
+		A821E1031D9A69D600CDF409 /* DKPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPayMoneyVC.m; sourceTree = "<group>"; };
+		A821E1051D9A6A0800CDF409 /* PayMoneyFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayMoneyFooterView.h; sourceTree = "<group>"; };
+		A821E1061D9A6A0800CDF409 /* PayMoneyFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayMoneyFooterView.m; sourceTree = "<group>"; };
+		A821E1071D9A6A0800CDF409 /* PaymoneyTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymoneyTopView.h; sourceTree = "<group>"; };
+		A821E1081D9A6A0800CDF409 /* PaymoneyTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymoneyTopView.m; sourceTree = "<group>"; };
+		A821E10B1D9A6A3F00CDF409 /* ChooseCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCarModel.h; sourceTree = "<group>"; };
+		A821E10C1D9A6A3F00CDF409 /* ChooseCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCarModel.m; sourceTree = "<group>"; };
+		A821E10E1D9A6A7100CDF409 /* DKMyOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyOrderVC.h; sourceTree = "<group>"; };
+		A821E10F1D9A6A7100CDF409 /* DKMyOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyOrderVC.m; sourceTree = "<group>"; };
+		A821E1101D9A6A7100CDF409 /* DKMyOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMyOrderVC.xib; sourceTree = "<group>"; };
+		A821E1131D9A6A9900CDF409 /* MyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
+		A821E1141D9A6A9900CDF409 /* MyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
+		A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderCell.xib; sourceTree = "<group>"; };
+		A821E1181D9A6AC000CDF409 /* DKDetailOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKDetailOrderVC.h; sourceTree = "<group>"; };
+		A821E1191D9A6AC000CDF409 /* DKDetailOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDetailOrderVC.m; sourceTree = "<group>"; };
+		A821E11B1D9A6AE400CDF409 /* CarInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInformationView.h; sourceTree = "<group>"; };
+		A821E11C1D9A6AE400CDF409 /* CarInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInformationView.m; sourceTree = "<group>"; };
+		A821E11D1D9A6AE400CDF409 /* CarInformationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInformationView.xib; sourceTree = "<group>"; };
+		A821E1201D9A6B0800CDF409 /* CarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarHeaderView.h; sourceTree = "<group>"; };
+		A821E1211D9A6B0800CDF409 /* CarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarHeaderView.m; sourceTree = "<group>"; };
+		A821E1231D9A702E00CDF409 /* AiCheModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiCheModel.h; sourceTree = "<group>"; };
+		A821E1241D9A702E00CDF409 /* AiCheModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiCheModel.m; sourceTree = "<group>"; };
+		A821E1251D9A702E00CDF409 /* OtherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherModel.h; sourceTree = "<group>"; };
+		A821E1261D9A702E00CDF409 /* OtherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherModel.m; sourceTree = "<group>"; };
+		A821E1291D9A708D00CDF409 /* CityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDetailModel.h; sourceTree = "<group>"; };
+		A821E12A1D9A708D00CDF409 /* CityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDetailModel.m; sourceTree = "<group>"; };
+		A821E12C1D9A721D00CDF409 /* PhotoCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionView.h; sourceTree = "<group>"; };
+		A821E12D1D9A721D00CDF409 /* PhotoCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionView.m; sourceTree = "<group>"; };
+		A821E12F1D9A724500CDF409 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		A821E1301D9A724500CDF409 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		A821E1321D9A726C00CDF409 /* PhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoScrollView.h; sourceTree = "<group>"; };
+		A821E1331D9A726C00CDF409 /* PhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoScrollView.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -458,6 +568,88 @@
 			name = OrderList;
 			sourceTree = "<group>";
 		};
+		A821E0C31D9A641900CDF409 /* CarController */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0C41D9A646E00CDF409 /* Cars.storyboard */,
+				A821E0C51D9A646E00CDF409 /* DKCarListViewController.h */,
+				A821E0C61D9A646E00CDF409 /* DKCarListViewController.m */,
+				A821E0C71D9A646E00CDF409 /* DKCarProViewController.h */,
+				A821E0C81D9A646E00CDF409 /* DKCarProViewController.m */,
+				A821E0D71D9A667500CDF409 /* BigCarImgVC.h */,
+				A821E0D81D9A667500CDF409 /* BigCarImgVC.m */,
+				A821E0D91D9A667500CDF409 /* DKCarChooseTableViewController.h */,
+				A821E0DA1D9A667500CDF409 /* DKCarChooseTableViewController.m */,
+				A821E0DB1D9A667500CDF409 /* ImageViewController.h */,
+				A821E0DC1D9A667500CDF409 /* ImageViewController.m */,
+				A821E0DD1D9A667500CDF409 /* ParamsViewController.h */,
+				A821E0DE1D9A667500CDF409 /* ParamsViewController.m */,
+				A821E0E31D9A66F600CDF409 /* DKCarNeedsVC.h */,
+				A821E0E41D9A66F600CDF409 /* DKCarNeedsVC.m */,
+				A821E0E51D9A66F600CDF409 /* DKNeedsTableViewController.h */,
+				A821E0E61D9A66F600CDF409 /* DKNeedsTableViewController.m */,
+			);
+			path = CarController;
+			sourceTree = "<group>";
+		};
+		A821E0CC1D9A64F700CDF409 /* Car */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0E91D9A676A00CDF409 /* BuyCarNeedsFooterView.h */,
+				A821E0EA1D9A676A00CDF409 /* BuyCarNeedsFooterView.m */,
+				A821E0EB1D9A676A00CDF409 /* BuyCarNeedsFooterView.xib */,
+				A821E0EC1D9A676A00CDF409 /* BuyCarNeedsHeaderview.h */,
+				A821E0ED1D9A676A00CDF409 /* BuyCarNeedsHeaderview.m */,
+				A821E0EE1D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib */,
+				A821E0EF1D9A676A00CDF409 /* DetailChooseCarHeader.h */,
+				A821E0F01D9A676A00CDF409 /* DetailChooseCarHeader.m */,
+				A821E0F11D9A676A00CDF409 /* DetailChooseCarHeader.xib */,
+				A821E0D21D9A65BC00CDF409 /* CarListTableViewCell.h */,
+				A821E0D31D9A65BC00CDF409 /* CarListTableViewCell.m */,
+				A821E0D41D9A65BC00CDF409 /* CarListTableViewCell.xib */,
+				A821E0CD1D9A64F700CDF409 /* CarProTableViewCell.h */,
+				A821E0CE1D9A64F700CDF409 /* CarProTableViewCell.m */,
+				A821E0CF1D9A64F700CDF409 /* CarProTableViewCell.xib */,
+				A821E0FB1D9A694600CDF409 /* BuyCarNeedsTVC.h */,
+				A821E0FC1D9A694600CDF409 /* BuyCarNeedsTVC.m */,
+				A821E0FD1D9A694600CDF409 /* BuyCarNeedsTVC.xib */,
+				A821E12C1D9A721D00CDF409 /* PhotoCollectionView.h */,
+				A821E12D1D9A721D00CDF409 /* PhotoCollectionView.m */,
+				A821E12F1D9A724500CDF409 /* PhotoCell.h */,
+				A821E1301D9A724500CDF409 /* PhotoCell.m */,
+				A821E1321D9A726C00CDF409 /* PhotoScrollView.h */,
+				A821E1331D9A726C00CDF409 /* PhotoScrollView.m */,
+			);
+			path = Car;
+			sourceTree = "<group>";
+		};
+		A821E1001D9A696F00CDF409 /* PayMoneyController */ = {
+			isa = PBXGroup;
+			children = (
+				A821E1181D9A6AC000CDF409 /* DKDetailOrderVC.h */,
+				A821E1191D9A6AC000CDF409 /* DKDetailOrderVC.m */,
+				A821E1021D9A69D600CDF409 /* DKPayMoneyVC.h */,
+				A821E1031D9A69D600CDF409 /* DKPayMoneyVC.m */,
+			);
+			path = PayMoneyController;
+			sourceTree = "<group>";
+		};
+		A821E1011D9A698E00CDF409 /* PayMoney */ = {
+			isa = PBXGroup;
+			children = (
+				A821E1201D9A6B0800CDF409 /* CarHeaderView.h */,
+				A821E1211D9A6B0800CDF409 /* CarHeaderView.m */,
+				A821E11B1D9A6AE400CDF409 /* CarInformationView.h */,
+				A821E11C1D9A6AE400CDF409 /* CarInformationView.m */,
+				A821E11D1D9A6AE400CDF409 /* CarInformationView.xib */,
+				A821E1051D9A6A0800CDF409 /* PayMoneyFooterView.h */,
+				A821E1061D9A6A0800CDF409 /* PayMoneyFooterView.m */,
+				A821E1071D9A6A0800CDF409 /* PaymoneyTopView.h */,
+				A821E1081D9A6A0800CDF409 /* PaymoneyTopView.m */,
+			);
+			path = PayMoney;
+			sourceTree = "<group>";
+		};
 		A886FEE41D922A450028F102 = {
 			isa = PBXGroup;
 			children = (
@@ -622,6 +814,8 @@
 				A886FF1E1D922EC60028F102 /* DKBaseNaviController.m */,
 				A886FF201D922ED80028F102 /* DKBaseTabbarController.h */,
 				A886FF211D922ED80028F102 /* DKBaseTabbarController.m */,
+				A821E0F81D9A68B400CDF409 /* DKBaseTableViewController.h */,
+				A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -768,6 +962,8 @@
 				A821E0871D9A191000CDF409 /* ChooseCar */,
 				A821E0861D9A18FF00CDF409 /* SaleCar */,
 				A821E0881D9A192D00CDF409 /* OrderAndPayCar */,
+				A821E0C31D9A641900CDF409 /* CarController */,
+				A821E1001D9A696F00CDF409 /* PayMoneyController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -781,6 +977,14 @@
 				A821E0561D9A034F00CDF409 /* CarModel.m */,
 				A821E0571D9A034F00CDF409 /* SaleCarModel.h */,
 				A821E0581D9A034F00CDF409 /* SaleCarModel.m */,
+				A821E10B1D9A6A3F00CDF409 /* ChooseCarModel.h */,
+				A821E10C1D9A6A3F00CDF409 /* ChooseCarModel.m */,
+				A821E1231D9A702E00CDF409 /* AiCheModel.h */,
+				A821E1241D9A702E00CDF409 /* AiCheModel.m */,
+				A821E1251D9A702E00CDF409 /* OtherModel.h */,
+				A821E1261D9A702E00CDF409 /* OtherModel.m */,
+				A821E1291D9A708D00CDF409 /* CityDetailModel.h */,
+				A821E12A1D9A708D00CDF409 /* CityDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -790,6 +994,8 @@
 			children = (
 				A821E0681D9A03A100CDF409 /* SaleDetailCell.h */,
 				A821E0691D9A03A100CDF409 /* SaleDetailCell.m */,
+				A821E0CC1D9A64F700CDF409 /* Car */,
+				A821E1011D9A698E00CDF409 /* PayMoney */,
 				A821E05B1D9A036E00CDF409 /* BrandCell */,
 				A886FFD31D92605E0028F102 /* HomeCell */,
 			);
@@ -825,6 +1031,9 @@
 			children = (
 				A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */,
 				A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */,
+				A821E10E1D9A6A7100CDF409 /* DKMyOrderVC.h */,
+				A821E10F1D9A6A7100CDF409 /* DKMyOrderVC.m */,
+				A821E1101D9A6A7100CDF409 /* DKMyOrderVC.xib */,
 				A821E0AB1D9A431200CDF409 /* Login */,
 			);
 			path = Controller;
@@ -840,6 +1049,9 @@
 		A886FF311D922FFC0028F102 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A821E1131D9A6A9900CDF409 /* MyOrderCell.h */,
+				A821E1141D9A6A9900CDF409 /* MyOrderCell.m */,
+				A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1078,11 +1290,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A821E0D11D9A64F700CDF409 /* CarProTableViewCell.xib in Resources */,
 				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
+				A821E0C91D9A646E00CDF409 /* Cars.storyboard in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
+				A821E1121D9A6A7100CDF409 /* DKMyOrderVC.xib in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
+				A821E0F31D9A676A00CDF409 /* BuyCarNeedsFooterView.xib in Resources */,
+				A821E0F51D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib in Resources */,
+				A821E0D61D9A65BC00CDF409 /* CarListTableViewCell.xib in Resources */,
+				A821E0FF1D9A694600CDF409 /* BuyCarNeedsTVC.xib in Resources */,
 				A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */,
+				A821E11F1D9A6AE400CDF409 /* CarInformationView.xib in Resources */,
+				A821E1171D9A6A9900CDF409 /* MyOrderCell.xib in Resources */,
+				A821E0F71D9A676A00CDF409 /* DetailChooseCarHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,51 +1363,75 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A821E0E01D9A667500CDF409 /* DKCarChooseTableViewController.m in Sources */,
 				A886FFB01D9238300028F102 /* base64.m in Sources */,
+				A821E1281D9A702E00CDF409 /* OtherModel.m in Sources */,
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A821E0B11D9A59C300CDF409 /* MFPayActivityOrderViewController.m in Sources */,
+				A821E0E81D9A66F600CDF409 /* DKNeedsTableViewController.m in Sources */,
 				A821E06A1D9A03A100CDF409 /* SaleDetailCell.m in Sources */,
+				A821E1111D9A6A7100CDF409 /* DKMyOrderVC.m in Sources */,
 				A821E0641D9A037E00CDF409 /* BrandCell.m in Sources */,
 				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
+				A821E1311D9A724500CDF409 /* PhotoCell.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
 				A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */,
+				A821E11A1D9A6AC000CDF409 /* DKDetailOrderVC.m in Sources */,
+				A821E0CB1D9A646E00CDF409 /* DKCarProViewController.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
 				A821E07E1D9A043600CDF409 /* HomeMenuCell.m in Sources */,
+				A821E0F41D9A676A00CDF409 /* BuyCarNeedsHeaderview.m in Sources */,
 				A886FFEB1D9268420028F102 /* HomeButton.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
 				A821E0B51D9A5EB500CDF409 /* PayOrderCell.m in Sources */,
+				A821E12B1D9A708D00CDF409 /* CityDetailModel.m in Sources */,
+				A821E0E71D9A66F600CDF409 /* DKCarNeedsVC.m in Sources */,
+				A821E0FE1D9A694600CDF409 /* BuyCarNeedsTVC.m in Sources */,
 				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
 				A821E0661D9A037E00CDF409 /* HotCarCell.m in Sources */,
+				A821E0CA1D9A646E00CDF409 /* DKCarListViewController.m in Sources */,
 				A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */,
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */,
+				A821E1161D9A6A9900CDF409 /* MyOrderCell.m in Sources */,
 				A84F5D411D94F9B0002DB7F4 /* LoginViewModel.m in Sources */,
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
+				A821E10A1D9A6A0800CDF409 /* PaymoneyTopView.m in Sources */,
 				A821E07D1D9A043600CDF409 /* HomeCarCell.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
 				A821E08B1D9A1EE900CDF409 /* HomeHeaderView.m in Sources */,
 				A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */,
 				A821E0671D9A037E00CDF409 /* HotCarCollectionCell.m in Sources */,
+				A821E11E1D9A6AE400CDF409 /* CarInformationView.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A821E05A1D9A034F00CDF409 /* SaleCarModel.m in Sources */,
+				A821E0D51D9A65BC00CDF409 /* CarListTableViewCell.m in Sources */,
+				A821E0DF1D9A667500CDF409 /* BigCarImgVC.m in Sources */,
 				A821E0591D9A034F00CDF409 /* CarModel.m in Sources */,
 				A821E0C11D9A61B700CDF409 /* DKMyActivityOrderVC.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A821E0711D9A03FD00CDF409 /* BrandViewModel.m in Sources */,
+				A821E10D1D9A6A3F00CDF409 /* ChooseCarModel.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
+				A821E0D01D9A64F700CDF409 /* CarProTableViewCell.m in Sources */,
 				A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */,
+				A821E12E1D9A721D00CDF409 /* PhotoCollectionView.m in Sources */,
+				A821E0F61D9A676A00CDF409 /* DetailChooseCarHeader.m in Sources */,
 				A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */,
 				A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */,
 				A821E0721D9A03FD00CDF409 /* HomePageViewModel.m in Sources */,
+				A821E1271D9A702E00CDF409 /* AiCheModel.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
 				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,
+				A821E0F21D9A676A00CDF409 /* BuyCarNeedsFooterView.m in Sources */,
 				A821E0541D9A030000CDF409 /* MFSaleViewController.m in Sources */,
 				A821E07F1D9A043600CDF409 /* HomeOperationCell.m in Sources */,
+				A821E0E11D9A667500CDF409 /* ImageViewController.m in Sources */,
 				A84F5D3E1D94E40D002DB7F4 /* MFFindPwdViewController.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 				A821E0731D9A03FD00CDF409 /* SaleViewModel.m in Sources */,
@@ -1196,6 +1442,9 @@
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A821E0651D9A037E00CDF409 /* BrandView.m in Sources */,
 				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
+				A821E0E21D9A667500CDF409 /* ParamsViewController.m in Sources */,
+				A821E1341D9A726C00CDF409 /* PhotoScrollView.m in Sources */,
+				A821E1041D9A69D600CDF409 /* DKPayMoneyVC.m in Sources */,
 				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
 				A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */,
 				A84F5D601D952595002DB7F4 /* BrandModel.m in Sources */,
@@ -1203,6 +1452,9 @@
 				A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */,
 				A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */,
 				A886FFE21D9261240028F102 /* HomeBtn.m in Sources */,
+				A821E0FA1D9A68B400CDF409 /* DKBaseTableViewController.m in Sources */,
+				A821E1221D9A6B0800CDF409 /* CarHeaderView.m in Sources */,
+				A821E1091D9A6A0800CDF409 /* PayMoneyFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
