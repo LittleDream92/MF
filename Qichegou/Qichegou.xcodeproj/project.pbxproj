@@ -77,6 +77,29 @@
 		A821E1311D9A724500CDF409 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1301D9A724500CDF409 /* PhotoCell.m */; };
 		A821E1341D9A726C00CDF409 /* PhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1331D9A726C00CDF409 /* PhotoScrollView.m */; };
 		A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1361D9A759600CDF409 /* DKMainWebViewController.m */; };
+		A821E13A1D9A765100CDF409 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1381D9A765100CDF409 /* 37x-Checkmark.png */; };
+		A821E13B1D9A765100CDF409 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1391D9A765100CDF409 /* 37x-Checkmark@2x.png */; };
+		A821E1501D9A778B00CDF409 /* 2014按钮-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E13C1D9A778B00CDF409 /* 2014按钮-拷贝@2x.png */; };
+		A821E1511D9A778B00CDF409 /* 2014按钮-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E13D1D9A778B00CDF409 /* 2014按钮-拷贝@3x.png */; };
+		A821E1521D9A778B00CDF409 /* 2015按钮-点击状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E13E1D9A778B00CDF409 /* 2015按钮-点击状态@2x.png */; };
+		A821E1531D9A778B00CDF409 /* 2015按钮-点击状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E13F1D9A778B00CDF409 /* 2015按钮-点击状态@3x.png */; };
+		A821E1541D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1401D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png */; };
+		A821E1551D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1411D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png */; };
+		A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1421D9A778B00CDF409 /* 官方图按钮@2x.png */; };
+		A821E1571D9A778B00CDF409 /* 官方图按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1431D9A778B00CDF409 /* 官方图按钮@3x.png */; };
+		A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1441D9A778B00CDF409 /* 空间按钮-点击状态@2x.png */; };
+		A821E1591D9A778B00CDF409 /* 空间按钮-点击状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1451D9A778B00CDF409 /* 空间按钮-点击状态@3x.png */; };
+		A821E15A1D9A778B00CDF409 /* 空间按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1461D9A778B00CDF409 /* 空间按钮@2x.png */; };
+		A821E15B1D9A778B00CDF409 /* 空间按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1471D9A778B00CDF409 /* 空间按钮@3x.png */; };
+		A821E15C1D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1481D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png */; };
+		A821E15D1D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1491D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png */; };
+		A821E15E1D9A778B00CDF409 /* 内饰按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14A1D9A778B00CDF409 /* 内饰按钮@2x.png */; };
+		A821E15F1D9A778B00CDF409 /* 内饰按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14B1D9A778B00CDF409 /* 内饰按钮@3x.png */; };
+		A821E1601D9A778B00CDF409 /* 外观按钮-点击状态@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14C1D9A778B00CDF409 /* 外观按钮-点击状态@2x.png */; };
+		A821E1611D9A778B00CDF409 /* 外观按钮-点击状态@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14D1D9A778B00CDF409 /* 外观按钮-点击状态@3x.png */; };
+		A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14E1D9A778B00CDF409 /* 外观按钮@2x.png */; };
+		A821E1631D9A778B00CDF409 /* 外观按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */; };
+		A821E1651D9A77FC00CDF409 /* location.plist in Resources */ = {isa = PBXBuildFile; fileRef = A821E1641D9A77FC00CDF409 /* location.plist */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -263,6 +286,29 @@
 		A821E1331D9A726C00CDF409 /* PhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoScrollView.m; sourceTree = "<group>"; };
 		A821E1351D9A759600CDF409 /* DKMainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainWebViewController.h; sourceTree = "<group>"; };
 		A821E1361D9A759600CDF409 /* DKMainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainWebViewController.m; sourceTree = "<group>"; };
+		A821E1381D9A765100CDF409 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		A821E1391D9A765100CDF409 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		A821E13C1D9A778B00CDF409 /* 2014按钮-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2014按钮-拷贝@2x.png"; sourceTree = "<group>"; };
+		A821E13D1D9A778B00CDF409 /* 2014按钮-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2014按钮-拷贝@3x.png"; sourceTree = "<group>"; };
+		A821E13E1D9A778B00CDF409 /* 2015按钮-点击状态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2015按钮-点击状态@2x.png"; sourceTree = "<group>"; };
+		A821E13F1D9A778B00CDF409 /* 2015按钮-点击状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2015按钮-点击状态@3x.png"; sourceTree = "<group>"; };
+		A821E1401D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "官方图按钮-点击状态@2x.png"; sourceTree = "<group>"; };
+		A821E1411D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "官方图按钮-点击状态@3x.png"; sourceTree = "<group>"; };
+		A821E1421D9A778B00CDF409 /* 官方图按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "官方图按钮@2x.png"; sourceTree = "<group>"; };
+		A821E1431D9A778B00CDF409 /* 官方图按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "官方图按钮@3x.png"; sourceTree = "<group>"; };
+		A821E1441D9A778B00CDF409 /* 空间按钮-点击状态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空间按钮-点击状态@2x.png"; sourceTree = "<group>"; };
+		A821E1451D9A778B00CDF409 /* 空间按钮-点击状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空间按钮-点击状态@3x.png"; sourceTree = "<group>"; };
+		A821E1461D9A778B00CDF409 /* 空间按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空间按钮@2x.png"; sourceTree = "<group>"; };
+		A821E1471D9A778B00CDF409 /* 空间按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空间按钮@3x.png"; sourceTree = "<group>"; };
+		A821E1481D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内饰按钮-点击状态@2x.png"; sourceTree = "<group>"; };
+		A821E1491D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内饰按钮-点击状态@3x.png"; sourceTree = "<group>"; };
+		A821E14A1D9A778B00CDF409 /* 内饰按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内饰按钮@2x.png"; sourceTree = "<group>"; };
+		A821E14B1D9A778B00CDF409 /* 内饰按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内饰按钮@3x.png"; sourceTree = "<group>"; };
+		A821E14C1D9A778B00CDF409 /* 外观按钮-点击状态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮-点击状态@2x.png"; sourceTree = "<group>"; };
+		A821E14D1D9A778B00CDF409 /* 外观按钮-点击状态@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮-点击状态@3x.png"; sourceTree = "<group>"; };
+		A821E14E1D9A778B00CDF409 /* 外观按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮@2x.png"; sourceTree = "<group>"; };
+		A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮@3x.png"; sourceTree = "<group>"; };
+		A821E1641D9A77FC00CDF409 /* location.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = location.plist; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -681,6 +727,7 @@
 				A886FEFE1D922A450028F102 /* LaunchScreen.storyboard */,
 				A886FF011D922A450028F102 /* Info.plist */,
 				A886FF3F1D9230980028F102 /* Qichegou.pch */,
+				A821E1641D9A77FC00CDF409 /* location.plist */,
 				A886FEF01D922A450028F102 /* Supporting Files */,
 			);
 			path = Qichegou;
@@ -781,6 +828,28 @@
 		A886FF101D922E020028F102 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A821E13C1D9A778B00CDF409 /* 2014按钮-拷贝@2x.png */,
+				A821E13D1D9A778B00CDF409 /* 2014按钮-拷贝@3x.png */,
+				A821E13E1D9A778B00CDF409 /* 2015按钮-点击状态@2x.png */,
+				A821E13F1D9A778B00CDF409 /* 2015按钮-点击状态@3x.png */,
+				A821E1401D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png */,
+				A821E1411D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png */,
+				A821E1421D9A778B00CDF409 /* 官方图按钮@2x.png */,
+				A821E1431D9A778B00CDF409 /* 官方图按钮@3x.png */,
+				A821E1441D9A778B00CDF409 /* 空间按钮-点击状态@2x.png */,
+				A821E1451D9A778B00CDF409 /* 空间按钮-点击状态@3x.png */,
+				A821E1461D9A778B00CDF409 /* 空间按钮@2x.png */,
+				A821E1471D9A778B00CDF409 /* 空间按钮@3x.png */,
+				A821E1481D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png */,
+				A821E1491D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png */,
+				A821E14A1D9A778B00CDF409 /* 内饰按钮@2x.png */,
+				A821E14B1D9A778B00CDF409 /* 内饰按钮@3x.png */,
+				A821E14C1D9A778B00CDF409 /* 外观按钮-点击状态@2x.png */,
+				A821E14D1D9A778B00CDF409 /* 外观按钮-点击状态@3x.png */,
+				A821E14E1D9A778B00CDF409 /* 外观按钮@2x.png */,
+				A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */,
+				A821E1381D9A765100CDF409 /* 37x-Checkmark.png */,
+				A821E1391D9A765100CDF409 /* 37x-Checkmark@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1297,19 +1366,42 @@
 			files = (
 				A821E0D11D9A64F700CDF409 /* CarProTableViewCell.xib in Resources */,
 				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
+				A821E1521D9A778B00CDF409 /* 2015按钮-点击状态@2x.png in Resources */,
+				A821E1611D9A778B00CDF409 /* 外观按钮-点击状态@3x.png in Resources */,
 				A821E0C91D9A646E00CDF409 /* Cars.storyboard in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
+				A821E15A1D9A778B00CDF409 /* 空间按钮@2x.png in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
+				A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */,
 				A821E1121D9A6A7100CDF409 /* DKMyOrderVC.xib in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
+				A821E1591D9A778B00CDF409 /* 空间按钮-点击状态@3x.png in Resources */,
+				A821E1511D9A778B00CDF409 /* 2014按钮-拷贝@3x.png in Resources */,
+				A821E1601D9A778B00CDF409 /* 外观按钮-点击状态@2x.png in Resources */,
 				A821E0F31D9A676A00CDF409 /* BuyCarNeedsFooterView.xib in Resources */,
+				A821E1541D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png in Resources */,
+				A821E15B1D9A778B00CDF409 /* 空间按钮@3x.png in Resources */,
 				A821E0F51D9A676A00CDF409 /* BuyCarNeedsHeaderview.xib in Resources */,
+				A821E15D1D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png in Resources */,
 				A821E0D61D9A65BC00CDF409 /* CarListTableViewCell.xib in Resources */,
 				A821E0FF1D9A694600CDF409 /* BuyCarNeedsTVC.xib in Resources */,
 				A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */,
+				A821E15E1D9A778B00CDF409 /* 内饰按钮@2x.png in Resources */,
+				A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */,
+				A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */,
+				A821E1651D9A77FC00CDF409 /* location.plist in Resources */,
+				A821E1531D9A778B00CDF409 /* 2015按钮-点击状态@3x.png in Resources */,
+				A821E13B1D9A765100CDF409 /* 37x-Checkmark@2x.png in Resources */,
+				A821E13A1D9A765100CDF409 /* 37x-Checkmark.png in Resources */,
+				A821E1501D9A778B00CDF409 /* 2014按钮-拷贝@2x.png in Resources */,
 				A821E11F1D9A6AE400CDF409 /* CarInformationView.xib in Resources */,
+				A821E1571D9A778B00CDF409 /* 官方图按钮@3x.png in Resources */,
 				A821E1171D9A6A9900CDF409 /* MyOrderCell.xib in Resources */,
 				A821E0F71D9A676A00CDF409 /* DetailChooseCarHeader.xib in Resources */,
+				A821E1631D9A778B00CDF409 /* 外观按钮@3x.png in Resources */,
+				A821E15F1D9A778B00CDF409 /* 内饰按钮@3x.png in Resources */,
+				A821E1551D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png in Resources */,
+				A821E15C1D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

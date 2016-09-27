@@ -11,7 +11,7 @@
 @interface PromtView : NSObject
 
 #pragma mark - 一、显示定制View的消息，定时消失
-//+(void)showMessage:(NSString *)message duration:(NSTimeInterval)time;
++(void)showMessage:(NSString *)message duration:(NSTimeInterval)time;
 
 
 
