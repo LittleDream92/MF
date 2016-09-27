@@ -121,7 +121,7 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
         NSString *htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"成功: %@", htmlStr);
+//        NSLog(@"成功: %@", htmlStr);
         blockS(htmlStr);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

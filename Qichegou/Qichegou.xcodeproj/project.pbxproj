@@ -26,6 +26,9 @@
 		A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0811D9A053700CDF409 /* MFHomeViewController.m */; };
 		A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */; };
 		A821E08B1D9A1EE900CDF409 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E08A1D9A1EE900CDF409 /* HomeHeaderView.m */; };
+		A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */; };
+		A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */; };
+		A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A91D9A426E00CDF409 /* UserModel.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -122,6 +125,12 @@
 		A821E0841D9A183E00CDF409 /* MFSaleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSaleDetailViewController.m; sourceTree = "<group>"; };
 		A821E0891D9A1EE900CDF409 /* HomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
 		A821E08A1D9A1EE900CDF409 /* HomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
+		A821E0A21D9A3ECF00CDF409 /* MFActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActivityDetailViewController.h; sourceTree = "<group>"; };
+		A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityDetailViewController.m; sourceTree = "<group>"; };
+		A821E0A51D9A406700CDF409 /* MFThirdActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFThirdActivityViewController.h; sourceTree = "<group>"; };
+		A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFThirdActivityViewController.m; sourceTree = "<group>"; };
+		A821E0A81D9A426E00CDF409 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		A821E0A91D9A426E00CDF409 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -578,6 +587,8 @@
 		A886FF171D922E4C0028F102 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A821E0A81D9A426E00CDF409 /* UserModel.h */,
+				A821E0A91D9A426E00CDF409 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,6 +641,10 @@
 			children = (
 				A886FF391D9230490028F102 /* MFActivityViewController.h */,
 				A886FF3A1D9230490028F102 /* MFActivityViewController.m */,
+				A821E0A21D9A3ECF00CDF409 /* MFActivityDetailViewController.h */,
+				A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */,
+				A821E0A51D9A406700CDF409 /* MFThirdActivityViewController.h */,
+				A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1057,6 +1072,7 @@
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A821E06A1D9A03A100CDF409 /* SaleDetailCell.m in Sources */,
 				A821E0641D9A037E00CDF409 /* BrandCell.m in Sources */,
+				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
 				A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
@@ -1080,12 +1096,14 @@
 				A821E05A1D9A034F00CDF409 /* SaleCarModel.m in Sources */,
 				A821E0591D9A034F00CDF409 /* CarModel.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
+				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A821E0711D9A03FD00CDF409 /* BrandViewModel.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
 				A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */,
 				A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */,
+				A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */,
 				A821E0721D9A03FD00CDF409 /* HomePageViewModel.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
