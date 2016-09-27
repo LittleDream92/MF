@@ -724,10 +724,8 @@
 				A886FF071D922E020028F102 /* Classes */,
 				A886FF0E1D922E020028F102 /* Resources */,
 				A886FEFC1D922A450028F102 /* Images.xcassets */,
-				A886FEFE1D922A450028F102 /* LaunchScreen.storyboard */,
 				A886FF011D922A450028F102 /* Info.plist */,
 				A886FF3F1D9230980028F102 /* Qichegou.pch */,
-				A821E1641D9A77FC00CDF409 /* location.plist */,
 				A886FEF01D922A450028F102 /* Supporting Files */,
 			);
 			path = Qichegou;
@@ -736,6 +734,8 @@
 		A886FEF01D922A450028F102 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A821E1641D9A77FC00CDF409 /* location.plist */,
+				A886FEFE1D922A450028F102 /* LaunchScreen.storyboard */,
 				A886FEF11D922A450028F102 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1338,6 +1338,7 @@
 				TargetAttributes = {
 					A886FEEC1D922A450028F102 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = S36MBZ2R78;
 					};
 				};
 			};
@@ -1659,6 +1660,7 @@
 			baseConfigurationReference = EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1694,6 +1696,7 @@
 			baseConfigurationReference = 1570BC8E8A77435BCCBB19CE /* Pods-Qichegou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
