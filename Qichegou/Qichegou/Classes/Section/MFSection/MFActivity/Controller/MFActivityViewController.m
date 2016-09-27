@@ -9,6 +9,7 @@
 #import "MFActivityViewController.h"
 #import "ActivityViewModel.h"
 #import "MFActivityDetailViewController.h"
+#import "AppDelegate.h"
 
 @interface MFActivityViewController ()<UIWebViewDelegate>
 
@@ -49,15 +50,15 @@
 
 - (void)setUpViewModel {
     
-//    NSString *tokenStr = [AppDelegate APP].user.token;
-//    
-//    if (tokenStr.length == 0) {
-//        tokenStr = TOKEN_PROMISE;
-//    }
+    NSString *tokenStr = [AppDelegate APP].user.token;
+    
+    if (tokenStr.length == 0) {
+        tokenStr = TOKEN_PROMISE;
+    }
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",
                             @"IOS",@"platform",
-                            @"nologin",@"token", nil];
+                            tokenStr,@"token", nil];
     RACSignal *webViewSignal = [self.viewModel.webViewCommand execute:params];
     [webViewSignal subscribeNext:^(id x) {
         [self.webView loadHTMLString:x baseURL:[NSURL URLWithString:URL_String]];

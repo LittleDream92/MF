@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,6 +18,10 @@
 @property (nonatomic, assign) double longitude;
 
 @property (nonatomic, copy) NSString *address;
+
+//
+@property (nonatomic, strong) UserModel *user;
++ (AppDelegate *)APP;
 
 @end
 

@@ -29,6 +29,13 @@
 		A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */; };
 		A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */; };
 		A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A91D9A426E00CDF409 /* UserModel.m */; };
+		A821E0B11D9A59C300CDF409 /* MFPayActivityOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0B01D9A59C300CDF409 /* MFPayActivityOrderViewController.m */; };
+		A821E0B51D9A5EB500CDF409 /* PayOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0B31D9A5EB500CDF409 /* PayOrderCell.m */; };
+		A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0B41D9A5EB500CDF409 /* PayOrderCell.xib */; };
+		A821E0B91D9A5FCE00CDF409 /* PromtView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0B81D9A5FCE00CDF409 /* PromtView.m */; };
+		A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0BB1D9A60A400CDF409 /* ActivityOrderHeaderView.m */; };
+		A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */; };
+		A821E0C11D9A61B700CDF409 /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0C01D9A61B700CDF409 /* DKMyActivityOrderVC.m */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -131,6 +138,18 @@
 		A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFThirdActivityViewController.m; sourceTree = "<group>"; };
 		A821E0A81D9A426E00CDF409 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		A821E0A91D9A426E00CDF409 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		A821E0AF1D9A59C300CDF409 /* MFPayActivityOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPayActivityOrderViewController.h; sourceTree = "<group>"; };
+		A821E0B01D9A59C300CDF409 /* MFPayActivityOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPayActivityOrderViewController.m; sourceTree = "<group>"; };
+		A821E0B21D9A5EB500CDF409 /* PayOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOrderCell.h; sourceTree = "<group>"; };
+		A821E0B31D9A5EB500CDF409 /* PayOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrderCell.m; sourceTree = "<group>"; };
+		A821E0B41D9A5EB500CDF409 /* PayOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayOrderCell.xib; sourceTree = "<group>"; };
+		A821E0B71D9A5FCE00CDF409 /* PromtView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromtView.h; sourceTree = "<group>"; };
+		A821E0B81D9A5FCE00CDF409 /* PromtView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromtView.m; sourceTree = "<group>"; };
+		A821E0BA1D9A60A400CDF409 /* ActivityOrderHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityOrderHeaderView.h; sourceTree = "<group>"; };
+		A821E0BB1D9A60A400CDF409 /* ActivityOrderHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityOrderHeaderView.m; sourceTree = "<group>"; };
+		A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityOrderHeaderView.xib; sourceTree = "<group>"; };
+		A821E0BF1D9A61B700CDF409 /* DKMyActivityOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyActivityOrderVC.h; sourceTree = "<group>"; };
+		A821E0C01D9A61B700CDF409 /* DKMyActivityOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyActivityOrderVC.m; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -388,6 +407,57 @@
 			name = OrderAndPayCar;
 			sourceTree = "<group>";
 		};
+		A821E0AB1D9A431200CDF409 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */,
+				A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */,
+				A84F5D391D94E402002DB7F4 /* MFRegistViewController.h */,
+				A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */,
+				A84F5D3C1D94E40D002DB7F4 /* MFFindPwdViewController.h */,
+				A84F5D3D1D94E40D002DB7F4 /* MFFindPwdViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		A821E0AC1D9A45BC00CDF409 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A84F5D3F1D94F9B0002DB7F4 /* LoginViewModel.h */,
+				A84F5D401D94F9B0002DB7F4 /* LoginViewModel.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		A821E0AD1D9A598900CDF409 /* PayOrder */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0AF1D9A59C300CDF409 /* MFPayActivityOrderViewController.h */,
+				A821E0B01D9A59C300CDF409 /* MFPayActivityOrderViewController.m */,
+			);
+			name = PayOrder;
+			sourceTree = "<group>";
+		};
+		A821E0AE1D9A59A000CDF409 /* Choose */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0A21D9A3ECF00CDF409 /* MFActivityDetailViewController.h */,
+				A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */,
+				A821E0A51D9A406700CDF409 /* MFThirdActivityViewController.h */,
+				A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */,
+			);
+			name = Choose;
+			sourceTree = "<group>";
+		};
+		A821E0C21D9A61BB00CDF409 /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				A821E0BF1D9A61B700CDF409 /* DKMyActivityOrderVC.h */,
+				A821E0C01D9A61B700CDF409 /* DKMyActivityOrderVC.m */,
+			);
+			name = OrderList;
+			sourceTree = "<group>";
+		};
 		A886FEE41D922A450028F102 = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +666,8 @@
 		A886FF181D922E4C0028F102 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				A821E0B71D9A5FCE00CDF409 /* PromtView.h */,
+				A821E0B81D9A5FCE00CDF409 /* PromtView.m */,
 				A886FFE91D9268420028F102 /* HomeButton.h */,
 				A886FFEA1D9268420028F102 /* HomeButton.m */,
 				A886FFE01D9261240028F102 /* HomeBtn.h */,
@@ -641,10 +713,9 @@
 			children = (
 				A886FF391D9230490028F102 /* MFActivityViewController.h */,
 				A886FF3A1D9230490028F102 /* MFActivityViewController.m */,
-				A821E0A21D9A3ECF00CDF409 /* MFActivityDetailViewController.h */,
-				A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */,
-				A821E0A51D9A406700CDF409 /* MFThirdActivityViewController.h */,
-				A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */,
+				A821E0AE1D9A59A000CDF409 /* Choose */,
+				A821E0AD1D9A598900CDF409 /* PayOrder */,
+				A821E0C21D9A61BB00CDF409 /* OrderList */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -659,6 +730,12 @@
 		A886FF271D922FFC0028F102 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A821E0BA1D9A60A400CDF409 /* ActivityOrderHeaderView.h */,
+				A821E0BB1D9A60A400CDF409 /* ActivityOrderHeaderView.m */,
+				A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */,
+				A821E0B21D9A5EB500CDF409 /* PayOrderCell.h */,
+				A821E0B31D9A5EB500CDF409 /* PayOrderCell.m */,
+				A821E0B41D9A5EB500CDF409 /* PayOrderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,12 +825,7 @@
 			children = (
 				A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */,
 				A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */,
-				A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */,
-				A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */,
-				A84F5D391D94E402002DB7F4 /* MFRegistViewController.h */,
-				A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */,
-				A84F5D3C1D94E40D002DB7F4 /* MFFindPwdViewController.h */,
-				A84F5D3D1D94E40D002DB7F4 /* MFFindPwdViewController.m */,
+				A821E0AB1D9A431200CDF409 /* Login */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -777,8 +849,7 @@
 			children = (
 				A88600041D926EA80028F102 /* PersonalViewModel.h */,
 				A88600051D926EA80028F102 /* PersonalViewModel.m */,
-				A84F5D3F1D94F9B0002DB7F4 /* LoginViewModel.h */,
-				A84F5D401D94F9B0002DB7F4 /* LoginViewModel.m */,
+				A821E0AC1D9A45BC00CDF409 /* Login */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1007,9 +1078,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
+				A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1143,7 @@
 			files = (
 				A886FFB01D9238300028F102 /* base64.m in Sources */,
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
+				A821E0B11D9A59C300CDF409 /* MFPayActivityOrderViewController.m in Sources */,
 				A821E06A1D9A03A100CDF409 /* SaleDetailCell.m in Sources */,
 				A821E0641D9A037E00CDF409 /* BrandCell.m in Sources */,
 				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
@@ -1080,6 +1154,7 @@
 				A886FFEB1D9268420028F102 /* HomeButton.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
+				A821E0B51D9A5EB500CDF409 /* PayOrderCell.m in Sources */,
 				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
 				A821E0661D9A037E00CDF409 /* HotCarCell.m in Sources */,
 				A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */,
@@ -1095,6 +1170,7 @@
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A821E05A1D9A034F00CDF409 /* SaleCarModel.m in Sources */,
 				A821E0591D9A034F00CDF409 /* CarModel.m in Sources */,
+				A821E0C11D9A61B700CDF409 /* DKMyActivityOrderVC.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
@@ -1113,6 +1189,7 @@
 				A84F5D3E1D94E40D002DB7F4 /* MFFindPwdViewController.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 				A821E0731D9A03FD00CDF409 /* SaleViewModel.m in Sources */,
+				A821E0B91D9A5FCE00CDF409 /* PromtView.m in Sources */,
 				A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
 				A821E0531D9A030000CDF409 /* MFBrandViewController.m in Sources */,
@@ -1122,6 +1199,7 @@
 				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
 				A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */,
 				A84F5D601D952595002DB7F4 /* BrandModel.m in Sources */,
+				A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */,
 				A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */,
 				A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */,
 				A886FFE21D9261240028F102 /* HomeBtn.m in Sources */,

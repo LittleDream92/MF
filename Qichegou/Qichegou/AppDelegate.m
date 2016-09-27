@@ -18,6 +18,10 @@
 
 @implementation AppDelegate
 
+//单例,存储用户信息
++ (AppDelegate *)APP {
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -29,6 +33,18 @@
     
     //定位
     [self location];
+    
+    
+    /*
+     * @”firstLaunch” 用来开发者在程序的其他部分判断
+     */
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+    }else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    }
+    
+    
     
     return YES;
 }

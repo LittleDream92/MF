@@ -16,6 +16,10 @@
 #define kScreenSize             [[UIScreen mainScreen] bounds].size
 #define kScreenWidth            [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight           [UIScreen mainScreen].bounds.size.height
+#define kWidthSale (kScreenWidth / 375.0)
+#define kHeightSale (kScreenHeight/667.0)
+
+#define PromptWord @"网络开小差了，稍后试试吧"
 
 // View 坐标(x,y)和宽高(width,height)
 #define X(v)                    (v).frame.origin.x
@@ -56,6 +60,8 @@
 #import "UIImageView+WebCache.h"
 #import "UIViewExt.h"
 #import "DataService.h"
+#import "BaseFunction.h"
+#import "PromtView.h"
 
 // App
 #define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
@@ -84,6 +90,7 @@
 #define TEXTCOLOR       RGB(51, 51, 51)         //#333333
 #define BGGRAYCOLOR     RGB(240, 240, 240)
 #define GRAYCOLOR       RGB(170, 170, 170)      //#aaaaaa
+#define kplayceGrayColor RGB(221, 221, 221)     //#dddddd
 
 //字体大小
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]

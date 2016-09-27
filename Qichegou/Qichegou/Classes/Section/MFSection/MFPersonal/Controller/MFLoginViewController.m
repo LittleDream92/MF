@@ -49,7 +49,6 @@
 
 #pragma mark - setUp
 - (void)setUpNav {
-    self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"登录";
     [self navBack:YES];
@@ -120,28 +119,125 @@
 }
 
 - (void)setUpAction {
+    
+    //登录按钮能否点击
+    RAC(self.viewModel, account) = self.accountTextFiled.rac_textSignal;
+    RAC(self.viewModel, pwd) = self.passwordTextFiled.rac_textSignal;
+//
+//    RAC(self.loginBtn, enabled) = self.viewModel.loginEnableSignal;
+    
+//    [[self.loginBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        NSLog(@"点击了登录按钮");
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            BOOL canLogin = [self loginIfCanLogin];
+//            if (canLogin) {
+//                NSLog(@"login");
+//                RACSignal *loginSignal = [self.viewModel.loginCommand execute:nil];
+//                [loginSignal subscribeNext:^(id x) {
+//                    NSString *token = x;
+//                    if (token.length > 0) {
+//                        NSLog(@"登录成功");
+//                        [self.navigationController popViewControllerAnimated:YES];
+//                    }else {
+//                        NSLog(@"登录失败");
+//                    }
+//                }];
+//            }
+//        });
+//    }];
+    
     //切换登录
     [[self.changeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"切换登录");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.passwordTextFiled.text = nil;
+            self.changeBtn.selected = !self.changeBtn.selected;
+            self.viewModel.isPwdLogin = !self.viewModel.isPwdLogin;
+            
+            NSLog(@"%d", self.changeBtn.selected);
+            if (self.changeBtn.selected) {
+                self.getCodeBtn.hidden = NO;
+                self.findPwdBtn.hidden = YES;
+                
+                self.passwordTextFiled.placeholder = @"请输入验证码";
+                self.passwordTextFiled.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"code"]];
+            }else {
+                self.getCodeBtn.hidden = YES;
+                self.findPwdBtn.hidden = NO;
+                self.passwordTextFiled.placeholder = @"请输入密码";
+                self.passwordTextFiled.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pwd"]];
+            }
+        });
     }];
     
     //获取验证码
     [[self.getCodeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"获取验证码");
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
     }];
     
     //忘记密码
     [[self.findPwdBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        MFFindPwdViewController *findPwdVC = [[MFFindPwdViewController alloc] init];
-        [self.navigationController pushViewController:findPwdVC animated:YES];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MFFindPwdViewController *findPwdVC = [[MFFindPwdViewController alloc] init];
+            [self.navigationController pushViewController:findPwdVC animated:YES];
+        });
     }];
     
     //注册
     [[self.registBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        MFRegistViewController *registVC = [[MFRegistViewController alloc] init];
-        [self.navigationController pushViewController:registVC animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MFRegistViewController *registVC = [[MFRegistViewController alloc] init];
+            [self.navigationController pushViewController:registVC animated:YES];
+        });
     }];
+}
+
+- (BOOL)loginIfCanLogin {
+    
+    if (self.accountTextFiled.text.length == 11) {
+//        NSString *tel = @"^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$";
+//         NSPredicate *telPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", tel];
+//        if (([telPredicate evaluateWithObject:self.accountTextFiled.text])) {
+            if(self.passwordTextFiled.text.length > 0) {
+                return YES;
+            }else {
+                NSLog(@"请输入密码");
+                return NO;
+            }
+//        }else {
+//            NSLog(@"请输入正确的手机号码");
+//            return NO;
+//        }
+    }else {
+        NSLog(@"请输入11位手机号码");
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)loginAction:(UIButton *)sender {
+    BOOL canLogin = [self loginIfCanLogin];
+    if (canLogin) {
+        NSLog(@"login");
+        NSArray *arr = @[self.accountTextFiled.text, self.passwordTextFiled.text];
+        
+        RACSignal *loginSignal = [self.viewModel.loginCommand execute:arr];
+        [loginSignal subscribeNext:^(id x) {
+            NSString *token = x;
+            if (token.length > 0) {
+                NSLog(@"登录成功");
+                [self.navigationController popViewControllerAnimated:YES];
+            }else {
+                NSLog(@"登录失败");
+            }
+        }];
+    }
+
 }
 
 #pragma mark - lazyloading
@@ -163,6 +259,7 @@
         _accountTextFiled.leftViewMode = UITextFieldViewModeAlways;
         _accountTextFiled.placeholder = @"请输入11位手机号";
 //        _accountTextFiled.keyboardType = UIKeyboardTypeNumberPad;
+        _accountTextFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _accountTextFiled;
 }
@@ -174,6 +271,7 @@
         _passwordTextFiled.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pwd"]];
         _passwordTextFiled.leftViewMode = UITextFieldViewModeAlways;
         _passwordTextFiled.placeholder = @"请输入密码";
+        _passwordTextFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _passwordTextFiled;
 }
@@ -195,6 +293,8 @@
         [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         _loginBtn.backgroundColor = [UIColor blueColor];
 //        _loginBtn.layer.cornerRadius = 5;
+//        _loginBtn.enabled = NO;
+        [_loginBtn addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginBtn;
 }
@@ -215,6 +315,7 @@
         _getCodeBtn.titleLabel.font = H15;
         [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         _getCodeBtn.backgroundColor = [UIColor grayColor];
+        _getCodeBtn.hidden = YES;
     }
     return _getCodeBtn;
 }

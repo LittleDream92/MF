@@ -12,6 +12,7 @@
 
 //接口
 
+
 //base url
 //#define URL_String @"http://test.tangxinzhuan.com"
 //#define URL_String @"http://test.qichegou.com"
@@ -22,5 +23,17 @@
 #define HOTCAR      @"/api/car/rexiaoche"        //热销车
 #define SALECAR     @"/api/car/tejiache"         //特价车
 #define ACTIVITYLIST @"/wap/activity/index"         //活动列表
+
+
+#define USERLOGIN @"/api/user/login"               //验证码／密码登录
+
+//我的活动列表
+#define ACTIVITY_ORDER @"/wap/activity/myactivity"
+//取消活动订单
+#define CANCEL_ACTIVITY_ORDER @"/api/activity/cancel"
+
+//**************************** 支付模块 *****************************
+//请求服务器数据
+#define GET_DATA @"/api/wxpayapp/getPrepayInfo"
 
 #endif /* Interface_h */

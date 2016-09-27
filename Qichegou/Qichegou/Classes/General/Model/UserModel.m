@@ -10,4 +10,14 @@
 
 @implementation UserModel
 
+-(id)initContentWithDic:(NSDictionary *)jsonDic {
+    self = [super initContentWithDic:jsonDic];
+    if (self) {
+        //处理特殊数据
+        
+    }
+    return self;
+}
+
+
 @end

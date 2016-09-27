@@ -9,6 +9,8 @@
 #import "MFThirdActivityViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "MFLoginViewController.h"
+#import "MFPayActivityOrderViewController.h"
+#import "DKMyActivityOrderVC.h"
 
 @interface MFThirdActivityViewController ()<UIWebViewDelegate>
 
@@ -77,8 +79,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //跳转我的活动列表页面
             NSLog(@"跳转我的活动列表页面");
-//            DKMyActivityOrderVC *activityOrderVC = [[DKMyActivityOrderVC alloc] init];
-//            [self.navigationController pushViewController:activityOrderVC animated:YES];
+            DKMyActivityOrderVC *activityOrderVC = [[DKMyActivityOrderVC alloc] init];
+            [self.navigationController pushViewController:activityOrderVC animated:YES];
         });
         
         NSLog(@"-------End toActivityOrderListByAPP-------");
@@ -101,9 +103,9 @@
              */
 //            //跳转到支付页面
             NSLog(@"跳转到支付页面");
-//            DKActivityPayMoneyVC *activityPayVC = [[DKActivityPayMoneyVC alloc] init];
-//            activityPayVC.array = self.activityArr;
-//            [self.navigationController pushViewController:activityPayVC animated:YES];
+            MFPayActivityOrderViewController *activityPayVC = [[MFPayActivityOrderViewController alloc] init];
+            activityPayVC.array = self.activityArr;
+            [self.navigationController pushViewController:activityPayVC animated:YES];
         });
         
         NSLog(@"-------End toPayByAPP-------");

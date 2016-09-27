@@ -10,6 +10,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "MFLoginViewController.h"
 #import "MFThirdActivityViewController.h"
+#import "AppDelegate.h"
 
 @interface MFActivityDetailViewController ()<UIWebViewDelegate>
 
@@ -140,21 +141,21 @@
 {
     [super viewWillAppear:animated];
     
-//    //拿到存储的token
-//    NSString *currentToken = [AppDelegate APP].user.token;
-//    NSString *tokenStr = [[self.detailURL componentsSeparatedByString:@"/"] lastObject];
-//    if (currentToken.length > 0 && ![tokenStr isEqualToString:currentToken]) {
-//        //不一样替换
-//        self.detailURL = [self.detailURL stringByReplacingOccurrencesOfString:tokenStr withString:currentToken];
-//        
-//        NSLog(@"-----%@", self.detailURL);
-//        NSURL *url = [NSURL URLWithString:self.detailURL];
-//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//        
-//        if (self.webView) {
-//            [self.webView loadRequest:request];
-//        }
-//    }
+    //拿到存储的token
+    NSString *currentToken = [AppDelegate APP].user.token;
+    NSString *tokenStr = [[self.detailURL componentsSeparatedByString:@"/"] lastObject];
+    if (currentToken.length > 0 && ![tokenStr isEqualToString:currentToken]) {
+        //不一样替换
+        self.detailURL = [self.detailURL stringByReplacingOccurrencesOfString:tokenStr withString:currentToken];
+        
+        NSLog(@"-----%@", self.detailURL);
+        NSURL *url = [NSURL URLWithString:self.detailURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        if (self.webView) {
+            [self.webView loadRequest:request];
+        }
+    }
 }
 
 @end
