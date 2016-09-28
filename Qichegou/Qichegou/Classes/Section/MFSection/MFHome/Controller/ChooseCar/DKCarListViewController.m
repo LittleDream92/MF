@@ -27,8 +27,7 @@ static NSString *const cellID = @"carListCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    [self setNav];
+    [self setUpNav];
     [self setUpViews];
     [self setRefresh];
 }
@@ -40,10 +39,11 @@ static NSString *const cellID = @"carListCellID";
 
 
 #pragma mark - setUpViews
-- (void)setNav {
+- (void)setUpNav {
     [self navBack:YES];
+    
+    self.title = @"选车型";
 }
-
 
 - (void)setUpViews {
     
@@ -68,8 +68,6 @@ static NSString *const cellID = @"carListCellID";
 #pragma mark - setting and getting
 -(UITableView *)tableview {
     if (!_tableview) {
-//        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
-        
         _tableview = [[UITableView alloc] init];
         _tableview.delegate = self;
         _tableview.dataSource = self;

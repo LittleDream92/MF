@@ -8,7 +8,7 @@
 
 #import "BrandCell.h"
 #import "UIImageView+WebCache.h"
-#import "SaleCarModel.h"
+#import "CarModel.h"
 
 @interface BrandCell ()
 
@@ -68,7 +68,7 @@
 
 
 #pragma mark - set
--(void)setBrandModel:(SaleCarModel *)brandModel {
+-(void)setBrandModel:(CarModel *)brandModel {
     if (_brandModel != brandModel) {
         _brandModel = brandModel;
         

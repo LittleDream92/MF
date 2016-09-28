@@ -9,14 +9,12 @@
 #import "BrandView.h"
 #import "BrandCell.h"
 #import "HotCarCell.h"
-#import "SaleCarModel.h"
-#import "MFProCarViewController.h"
+#import "CarModel.h"
+//#import "MFProCarViewController.h"
 
 static NSString *const cellID = @"brandTableViewCellID";
 static NSString *const hotCarCellID = @"hotCarCellID";
 @interface BrandView () <UITableViewDelegate, UITableViewDataSource>
-
-
 
 @end
 
@@ -144,12 +142,16 @@ static NSString *const hotCarCellID = @"hotCarCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section!=0) {
-        SaleCarModel *model = [self.sectionDic objectForKey:self.sectionArray[indexPath.section-1]][indexPath.row];
+        CarModel *model = [self.sectionDic objectForKey:self.sectionArray[indexPath.section-1]][indexPath.row];
         
-        MFProCarViewController *proCarVC = [[MFProCarViewController  alloc] init];
-        NSLog(@"model.brand_id:%@", model.brand_id);
-        proCarVC.bid = model.brand_id;
-        [self.viewController.navigationController pushViewController:proCarVC animated:YES];
+        if ([self.delegate respondsToSelector:@selector(clickBrandWithBrandID:)]) {
+            [self.delegate clickBrandWithBrandID:model.brand_id];
+        }
+        
+//        MFProCarViewController *proCarVC = [[MFProCarViewController  alloc] init];
+//        proCarVC.title = model.brand_name;
+//        proCarVC.proID = model.brand_id;
+//        [self.viewController.navigationController pushViewController:proCarVC animated:YES];
     }
 }
 

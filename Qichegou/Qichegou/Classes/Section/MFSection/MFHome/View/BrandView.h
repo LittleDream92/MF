@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BrandClickProtocol <NSObject>
+
+@required
+@optional
+- (void)clickBrandWithBrandID:(NSString *)brandID;
+
+@end
+
+
 @interface BrandView : UIView
+@property (nonatomic, strong) id<BrandClickProtocol> delegate;
 
 @property (nonatomic, strong) UITableView *tableView;
 

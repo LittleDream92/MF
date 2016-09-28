@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class SaleCarModel;
+@class CarModel;
 @interface BrandCell : UITableViewCell
 
-@property (nonatomic, strong) SaleCarModel *brandModel;
+@property (nonatomic, strong) CarModel *brandModel;
 
 @end

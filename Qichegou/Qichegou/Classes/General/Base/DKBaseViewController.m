@@ -47,10 +47,10 @@
 - (void)navBack:(BOOL)back {
     if (back) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backBtn];
-        
-        [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+//        
+//        [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }];
     }
 }
 
@@ -61,9 +61,10 @@
         [_backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
         [_backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateHighlighted];
         [_backBtn setTitle:@"返回" forState:UIControlStateNormal];
-        _backBtn.titleLabel.font = H15;
+        _backBtn.titleLabel.font = H16;
         _backBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
         _backBtn.frame = CGRectMake(0, 0, 50, 44);
+        [_backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backBtn;
 }
@@ -80,7 +81,10 @@
     [self presentViewController:alert animated:true completion:nil];
     
 }
-
+#pragma mark - action
+- (void)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 #pragma mark - HUD

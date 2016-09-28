@@ -8,8 +8,7 @@
 
 #import "HotCarCell.h"
 #import "HotCarCollectionCell.h"
-#import "MFProCarViewController.h"
-#import "SaleCarModel.h"
+#import "CarModel.h"
 
 static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 @interface HotCarCell ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -110,12 +109,9 @@ static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 #pragma mark - UICollectionViewDelegateFlowLayout
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    SaleCarModel *model = self.hotArr[indexPath.item];
-    NSLog(@"index:%ld", indexPath.item);
+//    CarModel *model = self.hotArr[indexPath.item];
+//    NSLog(@"index:%ld", indexPath.item);
     
-    MFProCarViewController *proCarVC = [[MFProCarViewController  alloc] init];
-    NSLog(@"%@", model.brand_id);
-    [self.viewController.navigationController pushViewController:proCarVC animated:YES];
 }
 
 @end

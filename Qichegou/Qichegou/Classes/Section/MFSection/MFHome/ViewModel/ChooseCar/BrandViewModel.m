@@ -7,7 +7,7 @@
 //
 
 #import "BrandViewModel.h"
-#import "SaleCarModel.h"
+#import "CarModel.h"
 
 @implementation BrandViewModel
 
@@ -22,7 +22,7 @@
 - (void)setUpCommand {
     [self hotCommandAction];
     [self brandCommandAction];
-    
+    [self carProCommandAction];
 }
 
 #pragma mark - request action
@@ -43,7 +43,7 @@
                         
                         for (NSDictionary *jsonDic in brands) {
                             
-                            SaleCarModel *model = [[SaleCarModel alloc] initContentWithDic:jsonDic];
+                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
                             
                             NSString *sectionTitle = model.first_letter;
                             
@@ -89,7 +89,7 @@
                         NSMutableArray *mArr = [NSMutableArray array];
                         for (NSDictionary *jsonDic in hotBrands) {
                             
-                            SaleCarModel *model = [[SaleCarModel alloc] initContentWithDic:jsonDic];
+                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
                             [mArr addObject:model];
                         }
                         [subscriber sendNext:mArr];
@@ -103,6 +103,63 @@
         }];
         
         return signal;
+    }];
+}
+
+- (void)carProCommandAction {
+    _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            
+            //网络请求
+            [DataService http_Post:CARPROS parameters:input success:^(id responseObject) {
+                //                NSLog(@"pro:%@", responseObject);
+                if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                    NSArray *jsonArr = [responseObject objectForKey:@"products"];
+                    if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+                        
+                        NSMutableArray *mArr = [NSMutableArray array];
+                        for (NSDictionary *jsonDic in jsonArr) {
+                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                            [mArr addObject:model];
+                        }
+                        [subscriber sendNext:mArr];
+                    }else {
+                        [subscriber sendNext:nil];
+                    }
+                }
+                
+            } failure:^(NSError *error) {
+                
+            }];
+            
+            return nil;
+        }];
+        return signal;
+    }];;
+}
+
+#pragma mark -
+- (void)requestCarProWithDictionary:(NSDictionary *)dic {
+    //网络请求
+    [DataService http_Post:CARPROS parameters:dic success:^(id responseObject) {
+        //                NSLog(@"pro:%@", responseObject);
+        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            NSArray *jsonArr = [responseObject objectForKey:@"products"];
+            if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+                
+                NSMutableArray *mArr = [NSMutableArray array];
+                for (NSDictionary *jsonDic in jsonArr) {
+                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                    [mArr addObject:model];
+                }
+                self.proArr = mArr;
+            }else {
+                
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        
     }];
 }
 

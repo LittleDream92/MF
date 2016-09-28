@@ -16,6 +16,9 @@
 
 - (void)navBack:(BOOL)back;
 
+//
+- (void)backAction:(UIButton *)sender;
+
 //弹出提示框
 - (void)presentAlertViewWithString:(NSString *)txtString;
 

@@ -7,6 +7,15 @@
 //
 
 #import "CarListTableViewCell.h"
+#import "CarModel.h"
+
+@interface CarListTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageview;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailTitleLabel;
+
+@end
 
 @implementation CarListTableViewCell
 

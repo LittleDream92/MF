@@ -7,14 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CarModel.h"
 
+@class CarModel;
 @interface CarListTableViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *imageview;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *detailTitleLabel;
-
 
 //数据源
 @property (nonatomic, strong) CarModel *myModel;

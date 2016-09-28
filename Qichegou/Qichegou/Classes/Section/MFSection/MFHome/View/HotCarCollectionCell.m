@@ -8,7 +8,7 @@
 
 #import "HotCarCollectionCell.h"
 #import "UIImageView+WebCache.h"
-#import "SaleCarModel.h"
+#import "CarModel.h"
 
 @interface HotCarCollectionCell ()
 
@@ -75,7 +75,7 @@
 }
 
 #pragma mark - set
--(void)setModel:(SaleCarModel *)model {
+-(void)setModel:(CarModel *)model {
     if (_model != model) {
         _model = model;
         

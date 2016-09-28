@@ -9,12 +9,12 @@
 #import "MFBrandViewController.h"
 #import "CustomButtonView.h"
 #import "BrandView.h"
-
+#import "CarProView.h"
+#import "CarModel.h"
 #import "BrandViewModel.h"
+#import "DKCarListViewController.h"
 
-
-
-@interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate>
+@interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate, BrandClickProtocol>
 {
     BOOL _index;
 }
@@ -22,7 +22,11 @@
 @property (nonatomic, strong) UIScrollView *scrollview;
 @property (nonatomic, strong) BrandView *brandView;
 
+@property (nonatomic, strong) CarProView *carProView;
+
 @property (nonatomic, strong) BrandViewModel *viewModel;
+
+@property (nonatomic, strong) NSArray *proArr;
 
 @end
 
@@ -34,6 +38,11 @@
     [self setUpNav];
     [self setUpViews];
     [self setUpViewModel];
+}
+
+-(void)backAction:(UIButton *)sender {
+    self.carProView.hidden = YES;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +71,13 @@
     UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-48)];
     view2.backgroundColor = [UIColor blackColor];
     [self.scrollview addSubview:view2];
+
+    [self.view addSubview:self.carProView];
+    [self.carProView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    self.carProView.hidden = YES;
+    
 }
 
 - (void)setUpViewModel {
@@ -82,6 +98,19 @@
         [self.brandView.tableView reloadData];
     }];
     
+    WEAKSELF
+    self.carProView.tapAction = ^ {
+        weakSelf.carProView.hidden = YES;
+    };
+    
+    self.carProView.clickItemAction = ^(NSString *proID) {
+        NSLog(@"pro_id:%@", proID);
+        weakSelf.carProView.hidden = YES;
+        
+        DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
+        carListVC.pid = proID;
+        [weakSelf.navigationController pushViewController:carListVC animated:YES];
+    };
 }
 
 #pragma mark - lazyloading
@@ -117,8 +146,16 @@
 -(BrandView *)brandView {
     if (!_brandView) {
         _brandView = [[BrandView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-48-64)];
+        _brandView.delegate = self;
     }
     return _brandView;
+}
+
+-(CarProView *)carProView {
+    if (!_carProView) {
+        _carProView = [[CarProView alloc] init];
+    }
+    return _carProView;
 }
 
 -(BrandViewModel *)viewModel {
@@ -145,6 +182,51 @@
     NSInteger index = scrollView.contentOffset.x / self.scrollview.frame.size.width;
     [self.titleView scrolledWithIndex:index];
     
+}
+
+//BrandClickProtocol
+-(void)clickBrandWithBrandID:(NSString *)brandID {
+//    NSLog(@"brandID:%@", brandID);
+    self.carProView.hidden = NO;
+    
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"bid"] = brandID;
+    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
+    
+
+//   /* 很郁闷为什么RAC网络请求只请求第一次，之后就不起作用了呢。。。 */
+//    RACSignal *signal = [self.viewModel.carProCommand execute:params];
+//    [signal subscribeNext:^(id x) {
+//    
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.carProView.dataArray = x;
+//            self.carProView.hidden = NO;
+//            [self.carProView.tableView reloadData];
+//        });
+//    }];
+    
+    [DataService http_Post:CARPROS
+                parameters:params
+                   success:^(id responseObject) {
+                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                           NSArray *jsonArr = [responseObject objectForKey:@"products"];
+                           NSMutableArray *mArr = [NSMutableArray array];
+                           for (NSDictionary *jsonDic in jsonArr) {
+                               CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                               [mArr addObject:model];
+                           }
+                           self.carProView.dataArray = mArr;
+                           [self.carProView.tableView reloadData];
+                       }else {
+                           [PromtView showMessage:responseObject[@"mag"] duration:1.5];
+                       }
+                       
+                   } failure:^(NSError *error) {
+//                       NSLog(@"pro list error:%@", error);
+                       [PromtView showMessage:PromptWord duration:1.5];
+                   }];
+
 }
 
 @end

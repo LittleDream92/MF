@@ -10,23 +10,10 @@
 
 @interface CarModel : BaseModel
 
-/*
- "brand_name" = "\U73b0\U4ee3";
- "buyers_count" = 26;
- "car_id" = 1426;
- "car_subject" = "2.0L \U81ea\U52a8 GLS \U667a\U80fd\U578b";
- "guide_price" = "17.48";
- "main_photo" = "/Uploads/2016-04/20160411093131-77828.jpg";
- "pro_id" = 365;
- "pro_subject" = "\U7d22\U7eb3\U5854\U4e5d";
- "promot_num" = 10;
- "promot_price" = "15.38";
- year = 2015;
- */
+
+@property (nonatomic, copy) NSString *first_letter;
 
 @property (nonatomic, copy) NSString *promot_num;
-
-
 
 /*
  brand_id:		品牌ID

@@ -51,6 +51,7 @@
                     <constraint firstItem="cFf-1t-6RJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="zxl-8c-itG"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="detailTitleLabel" destination="OJv-aQ-bVX" id="rtv-0W-51l"/>
                 <outlet property="imageview" destination="kgg-e0-Vcr" id="VYP-tr-ApV"/>
@@ -60,6 +61,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bg_default" width="1000" height="700"/>
+        <image name="bg_default" width="500" height="350"/>
     </resources>
 </document>
