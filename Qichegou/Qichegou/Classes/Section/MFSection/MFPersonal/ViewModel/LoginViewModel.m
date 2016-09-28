@@ -92,4 +92,55 @@
     }];
 }
 
+#pragma mark - loginAction
+- (void)loginActionWithAccount:(NSString *)account pwd:(NSString *)pwd result:(void(^)(BOOL result))block {
+    NSString *randomString = [BaseFunction ret32bitString];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
+    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
+    
+    NSDictionary *params = nil;
+    
+    if (self.isPwdLogin) {
+        //密码登录
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
+                  timeSp, @"time",
+                  md5String, @"sign",
+                  account,@"tel",
+                  pwd, @"pass",
+                  @"", @"code",nil];
+        
+    }else {
+        //验证码登录
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
+                  timeSp, @"time",
+                  md5String, @"sign",
+                  account,@"tel",
+                  pwd, @"pass",
+                  @"", @"pass", nil];
+    }
+    
+    NSLog(@"param:%@", params);
+    [DataService http_Post:USERLOGIN
+                parameters:params
+                   success:^(id responseObject) {
+                       NSLog(@"respon:%@", responseObject);
+                       if ([responseObject[@"status"] integerValue] == 1) {
+                           //保存token
+                           NSString *token = [responseObject objectForKey:@"token"];
+                           UserModel *userModel = [[UserModel alloc] initContentWithDic:responseObject];
+                           userModel.sjhm = self.account;
+                           userModel.token = token;
+                           [AppDelegate APP].user = userModel;
+                           block(YES);
+                       }else {
+                           [PromtView showAlert:responseObject[@"msg"] duration:1.5];
+                           block(NO);
+                       }
+                       
+                   } failure:^(NSError *error) {
+                       block(NO);
+                       [PromtView showAlert:PromptWord duration:1.5];
+                   }];
+}
+
 @end

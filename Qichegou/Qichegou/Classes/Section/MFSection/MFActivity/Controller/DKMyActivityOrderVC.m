@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     self.title = @"我的活动列表";
+    [self navBack:YES];
     
     [self createView];
     
@@ -41,9 +42,7 @@
         _myListWebView.scalesPageToFit = YES;
         //设置代理
         _myListWebView.delegate = self;
-        
-        _myListWebView.origin = CGPointMake(0, 0);
-        _myListWebView.size = CGSizeMake(self.view.width, self.view.height - 64);
+        _myListWebView.backgroundColor = [UIColor grayColor];
     }
     return _myListWebView;
 }
@@ -52,6 +51,9 @@
 - (void)createView {
 
     [self.view addSubview:self.myListWebView];
+    [self.myListWebView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     
     //js交互
     JSContext *context = [self.myListWebView  valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
@@ -130,15 +132,17 @@
         tokenStr = TOKEN_PROMISE;
     }
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",
+    NSLog(@"token action list:%@", tokenStr);
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[UserDefaults objectForKey:kLocationAction][@"cityid"],@"cityid",
                             @"IOS",@"platform",
                             tokenStr,@"token", nil];
     [DataService request_post_html:[NSString stringWithFormat:@"%@%@", URL_String, ACTIVITY_ORDER]
                             params:params completedBlock:^(id responseObject) {
                                 NSString *htmlStr = responseObject;
-                                if (self.myListWebView) {
+                                NSLog(@"%@", htmlStr);
+//                                if (self.myListWebView) {
                                     [self.myListWebView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:URL_String]];
-                                }
+//                                }
 
                             } failure:^(NSError *error) {
                                 [PromtView showAlert:PromptWord duration:1.5];

@@ -7,20 +7,9 @@
 //
 
 #import "DKBaseViewController.h"
-#import "PaymoneyTopView.h"
-#import "PayMoneyFooterView.h"
 
-#import "ChooseCarModel.h"
-
-@interface DKPayMoneyVC : DKBaseViewController<UITableViewDataSource, UITableViewDelegate>
-{
-    PaymoneyTopView *topView;
-    PayMoneyFooterView *footerView;
-
-}
-
-@property (nonatomic, strong) UITableView *payOrderTV;
-
+@class ChooseCarModel;
+@interface DKPayMoneyVC : DKBaseViewController
 
 //数据源
 @property (nonatomic, strong) ChooseCarModel *myModel;

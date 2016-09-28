@@ -58,6 +58,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_default" width="1000" height="700"/>
+        <image name="bg_default" width="500" height="350"/>
     </resources>
 </document>

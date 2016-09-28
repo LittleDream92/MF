@@ -17,7 +17,7 @@
 //热销车
 @property (nonatomic, strong, readonly) RACCommand *hotCommand;
 //车系
-@property (nonatomic, strong, readonly) RACCommand *carProCommand;
+//@property (nonatomic, strong, readonly) RACCommand *carProCommand;
 - (void)requestCarProWithDictionary:(NSDictionary *)dic;
 
 @end

@@ -206,6 +206,7 @@
                 return YES;
             }else {
                 NSLog(@"请输入密码");
+                [PromtView showAlert:@"请输入密码" duration:1.5];
                 return NO;
             }
 //        }else {
@@ -214,6 +215,7 @@
 //        }
     }else {
         NSLog(@"请输入11位手机号码");
+        [PromtView showAlert:@"请输入11位手机号码" duration:1.5];
         return NO;
     }
     
@@ -224,18 +226,28 @@
     BOOL canLogin = [self loginIfCanLogin];
     if (canLogin) {
         NSLog(@"login");
-        NSArray *arr = @[self.accountTextFiled.text, self.passwordTextFiled.text];
+       [self.viewModel loginActionWithAccount:self.accountTextFiled.text pwd:self.passwordTextFiled.text result:^(BOOL result) {
+           if (result) {
+               [self.navigationController popViewControllerAnimated:YES];
+           }else {
+               
+           }
+       }];
         
-        RACSignal *loginSignal = [self.viewModel.loginCommand execute:arr];
-        [loginSignal subscribeNext:^(id x) {
-            NSString *token = x;
-            if (token.length > 0) {
-                NSLog(@"登录成功");
-                [self.navigationController popViewControllerAnimated:YES];
-            }else {
-                NSLog(@"登录失败");
-            }
-        }];
+        
+//        //RAC总是执行一次，费解，以后研究
+//        NSArray *arr = @[self.accountTextFiled.text, self.passwordTextFiled.text];
+//        
+//        RACSignal *loginSignal = [self.viewModel.loginCommand execute:arr];
+//        [loginSignal subscribeNext:^(id x) {
+//            NSString *token = x;
+//            if (token.length > 0) {
+//                NSLog(@"登录成功");
+//                [self.navigationController popViewControllerAnimated:YES];
+//            }else {
+//                NSLog(@"登录失败");
+//            }
+//        }];
     }
 
 }
@@ -342,5 +354,6 @@
     }
     return _viewModel;
 }
+
 
 @end

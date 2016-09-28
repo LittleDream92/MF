@@ -141,7 +141,7 @@
                 <outlet property="telLabel" destination="p0Q-G2-BPy" id="Yld-Qk-PH0"/>
                 <outlet property="timeLabel" destination="o9M-Qw-RF0" id="fRM-Ly-c6b"/>
             </connections>
-            <point key="canvasLocation" x="331" y="349"/>
+            <point key="canvasLocation" x="364" y="355"/>
         </view>
     </objects>
 </document>

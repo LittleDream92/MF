@@ -8,8 +8,8 @@
 
 #import "DKCarListViewController.h"
 #import "CarListTableViewCell.h"
-#import "DKCarChooseTableViewController.h"
-#import "OtherModel.h"
+#import "MFCarDetailViewController.h"
+#import "CarModel.h"
 
 static NSString *const cellID = @"carListCellID";
 @interface DKCarListViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -74,6 +74,8 @@ static NSString *const cellID = @"carListCellID";
         
         _tableview.rowHeight = 80;
         _tableview.pagingEnabled = YES;
+        
+        _tableview.showsVerticalScrollIndicator = NO;
     }
     return _tableview;
 }
@@ -102,8 +104,9 @@ static NSString *const cellID = @"carListCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //push进入详细选车页面
-    DKCarChooseTableViewController *detailCarVC = [[UIStoryboard storyboardWithName:@"Cars" bundle:nil] instantiateViewControllerWithIdentifier:@"DKCarChooseTableViewController"];
-    OtherModel *model = self.dataArr[indexPath.row];
+    MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
+//    [[UIStoryboard storyboardWithName:@"Cars" bundle:nil] instantiateViewControllerWithIdentifier:@"DKCarChooseTableViewController"];
+    CarModel *model = self.dataArr[indexPath.row];
     detailCarVC.cid = model.car_id;
     [self.navigationController pushViewController:detailCarVC animated:YES];
 }
@@ -115,7 +118,7 @@ static NSString *const cellID = @"carListCellID";
     [self.dataArr removeAllObjects];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cityid"] = @"6";
+    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];;
     
     if (self.pid.length == 0) {
         params[@"min"] = self.minPrice;
@@ -134,7 +137,7 @@ static NSString *const cellID = @"carListCellID";
                            NSArray *jsonArr = [responseObject objectForKey:@"cars"];
                            NSMutableArray *mArr = [NSMutableArray array];
                            for (NSDictionary *jsonDic in jsonArr) {
-                               OtherModel *model = [[OtherModel alloc] initContentWithDic:jsonDic];
+                               CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
                                [mArr addObject:model];
                            }
                            if (mArr) {
@@ -154,7 +157,7 @@ static NSString *const cellID = @"carListCellID";
     self.page += 1;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cityid"] = @"6";
+    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
     params[@"page"] = [NSString stringWithFormat:@"%ld", (long)self.page];
     
     if (self.pid.length == 0) {
@@ -169,13 +172,13 @@ static NSString *const cellID = @"carListCellID";
     [DataService http_Post:CARLIST
                 parameters:params
                    success:^(id responseObject) {
-                       //                       NSLog(@"list : %@", responseObject);
+//                       NSLog(@"list : %@", responseObject);
                        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
                            NSArray *jsonArr = [responseObject objectForKey:@"cars"];
                            if (jsonArr.count > 0) {
                                NSMutableArray *mArr = [NSMutableArray array];
                                for (NSDictionary *jsonDic in jsonArr) {
-                                   OtherModel *model = [[OtherModel alloc] initContentWithDic:jsonDic];
+                                   CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
                                    [mArr addObject:model];
                                }
                                NSArray *moreArr = mArr;

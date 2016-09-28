@@ -8,6 +8,14 @@
 
 #import "CarHeaderView.h"
 
+@interface CarHeaderView ()
+
+@property (nonatomic, strong) UIImageView *carImgView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *guide_priceLabel;
+
+@end
+
 @implementation CarHeaderView
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -25,37 +33,67 @@
     [self createViews];
 }
 
+#pragma mark - lazyloading
+-(UIImageView *)carImgView {
+    if (!_carImgView) {
+        _carImgView = [[UIImageView alloc] init];
+    }
+    return _carImgView;
+}
+
+-(UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        [_titleLabel createLabelWithFontSize:14 color:TEXTCOLOR];
+    }
+    return _titleLabel;
+}
+
+-(UILabel *)guide_priceLabel {
+    if (!_guide_priceLabel) {
+        _guide_priceLabel = [[UILabel alloc] init];
+        [_guide_priceLabel createLabelWithFontSize:12 color:GRAYCOLOR];
+    }
+    return _guide_priceLabel;
+}
+
 - (void)createViews
 {
-    //
-    carImgView = [[UIImageView alloc] initWithFrame:CGRectMake(20*kHeightSale, 15, 80, 40)];
-    carImgView.image = [UIImage imageNamed:@"bg_default"];
-    [self addSubview:carImgView];
+    WEAKSELF
+    [self addSubview:self.carImgView];
+    [self.carImgView makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(CGSizeMake(80, 40));
+        make.left.equalTo(20*kHeightSale);
+        make.centerY.equalTo(weakSelf);
+    }];
     
-    //
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(carImgView.right + 15*kHeightSale, 15, 0, 0)];
-    [titleLabel createLabelWithFontSize:14*kHeightSale color:TEXTCOLOR];
-    [self addSubview:titleLabel];
+    [self addSubview:self.titleLabel];
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.carImgView.mas_right).offset(15);
+        make.right.equalTo(20);
+        make.top.equalTo(15);
+        make.height.equalTo(20);
+    }];
     
-    //
-    guide_priceLabel  = [[UILabel alloc] initWithFrame:CGRectZero];
-    [guide_priceLabel createLabelWithFontSize:12 color:GRAYCOLOR];
-    [self addSubview:guide_priceLabel];
+    [self addSubview:self.guide_priceLabel];
+    [self.guide_priceLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.titleLabel.mas_left);
+        make.right.equalTo(weakSelf.titleLabel.mas_right);
+        make.top.equalTo(weakSelf.titleLabel.mas_bottom).offset(10);
+        make.height.equalTo(21);
+    }];
 }
 
 - (void)createViewWithModel:(ChooseCarModel *)carModel
 {
     //赋值
     if (carModel.main_photo.length > 0) {
-        [carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]]];
+        [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
     }
 
-    titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", carModel.brand_name, carModel.pro_subject, carModel.car_subject];
-    [titleLabel sizeToFit];
-
-    guide_priceLabel.frame = CGRectMake(carImgView.right + 15, titleLabel.bottom + 10, 0, 0);
-    guide_priceLabel.text = [NSString stringWithFormat:@"厂家指导价：%@万", carModel.guide_price];
-    [guide_priceLabel sizeToFit];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", carModel.brand_name, carModel.pro_subject, carModel.car_subject];
+    [self.titleLabel sizeToFit];
+    self.guide_priceLabel.text = [NSString stringWithFormat:@"厂家指导价：%@万", carModel.guide_price];
 }
 
 

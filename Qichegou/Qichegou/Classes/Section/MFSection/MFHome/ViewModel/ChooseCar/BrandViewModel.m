@@ -22,7 +22,7 @@
 - (void)setUpCommand {
     [self hotCommandAction];
     [self brandCommandAction];
-    [self carProCommandAction];
+//    [self carProCommandAction];
 }
 
 #pragma mark - request action
@@ -106,37 +106,37 @@
     }];
 }
 
-- (void)carProCommandAction {
-    _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
-            //网络请求
-            [DataService http_Post:CARPROS parameters:input success:^(id responseObject) {
-                //                NSLog(@"pro:%@", responseObject);
-                if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                    NSArray *jsonArr = [responseObject objectForKey:@"products"];
-                    if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
-                        
-                        NSMutableArray *mArr = [NSMutableArray array];
-                        for (NSDictionary *jsonDic in jsonArr) {
-                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-                            [mArr addObject:model];
-                        }
-                        [subscriber sendNext:mArr];
-                    }else {
-                        [subscriber sendNext:nil];
-                    }
-                }
-                
-            } failure:^(NSError *error) {
-                
-            }];
-            
-            return nil;
-        }];
-        return signal;
-    }];;
-}
+//- (void)carProCommandAction {
+//    _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//            
+//            //网络请求
+//            [DataService http_Post:CARPROS parameters:input success:^(id responseObject) {
+//                //                NSLog(@"pro:%@", responseObject);
+//                if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+//                    NSArray *jsonArr = [responseObject objectForKey:@"products"];
+//                    if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+//                        
+//                        NSMutableArray *mArr = [NSMutableArray array];
+//                        for (NSDictionary *jsonDic in jsonArr) {
+//                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+//                            [mArr addObject:model];
+//                        }
+//                        [subscriber sendNext:mArr];
+//                    }else {
+//                        [subscriber sendNext:nil];
+//                    }
+//                }
+//                
+//            } failure:^(NSError *error) {
+//                
+//            }];
+//            
+//            return nil;
+//        }];
+//        return signal;
+//    }];;
+//}
 
 #pragma mark -
 - (void)requestCarProWithDictionary:(NSDictionary *)dic {

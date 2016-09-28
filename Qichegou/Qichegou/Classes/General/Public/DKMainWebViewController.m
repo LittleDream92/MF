@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self navBack:YES];
+    
     //初始化web View
     self.webView = [UIWebView new];
     self.webView.scalesPageToFit = YES;

@@ -12,7 +12,10 @@
 #import "CarHeaderView.h"
 #import "AppDelegate.h"
 
-@interface DKDetailOrderVC ()
+@interface DKDetailOrderVC ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UIButton *continueBtn;
+@property (nonatomic, strong) UITableView *detailOrderTV;
 
 @end
 
@@ -22,15 +25,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"订单详情";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self createViews];
+    [self setUpNav];
+    [self setUpViews];
     
 //    [self showHUD:@"正在加载"];
     
     [self dataRequest];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,33 +39,51 @@
 }
 
 #pragma mark - createViews
-- (void)createViews
-{
-    //初始化表视图
-    [self createTableView];
-    
-    //初始化继续完成按钮
-    continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    continueBtn.frame = CGRectMake(0, self.detailOrderTV.bottom, kScreenWidth, 50);
-    [continueBtn createButtonWithBGImgName:@"btn_big_continue"
-                        bghighlightImgName:@"btn_big_continue.2"
-                                  titleStr:@"继续完成订单"
-                                  fontSize:16];
-    [continueBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:continueBtn];
+- (void)setUpNav {
+    self.title = @"订单详情";
+    [self navBack:YES];
 }
 
-- (void)createTableView
-{
-    self.detailOrderTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 50) style:UITableViewStyleGrouped];
-    
-    self.detailOrderTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.detailOrderTV.dataSource = self;
-    self.detailOrderTV.delegate = self;
+- (void)setUpViews {
+    WEAKSELF
+    [self.view addSubview:self.continueBtn];
+    [self.continueBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(0);
+        make.height.equalTo(50);
+    }];
     
     [self.view addSubview:self.detailOrderTV];
+    [self.detailOrderTV makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(0);
+        make.bottom.equalTo(weakSelf.continueBtn.mas_top);
+    }];
+}
 
+#pragma mark - lazyloading
+-(UIButton *)continueBtn {
+    if (!_continueBtn) {
+        _continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_continueBtn createButtonWithBGImgName:@"btn_big_continue"
+                            bghighlightImgName:@"btn_big_continue.2"
+                                      titleStr:@"继续完成订单"
+                                      fontSize:16];
+        [_continueBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _continueBtn;
+}
+
+-(UITableView *)detailOrderTV {
+    if (!_detailOrderTV) {
+        _detailOrderTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        
+        _detailOrderTV.delegate = self;
+        _detailOrderTV.dataSource = self;
+        
+        _detailOrderTV.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _detailOrderTV.scrollEnabled = NO;
+    }
+    return _detailOrderTV;
 }
 
 #pragma mark - buttonAction
@@ -237,7 +255,7 @@
                                
                                NSInteger index = [self.myModel.zt integerValue];
                                if (index == 1 || index == 3 || index == 4) {
-                                   continueBtn.hidden = YES;
+                                   self.continueBtn.hidden = YES;
                                }
                                
                            }else {

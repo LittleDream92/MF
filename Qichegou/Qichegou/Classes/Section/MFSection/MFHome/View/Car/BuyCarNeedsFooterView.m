@@ -12,13 +12,6 @@
 
 @implementation BuyCarNeedsFooterView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 - (IBAction)buttonAction:(id)sender {
     
     DKMainWebViewController *serviceVC = [[DKMainWebViewController alloc] init];

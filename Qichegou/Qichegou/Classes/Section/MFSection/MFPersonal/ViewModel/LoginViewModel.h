@@ -24,4 +24,6 @@
 // 登录按钮的命令
 @property(nonatomic, strong, readonly) RACCommand *loginCommand;
 
+- (void)loginActionWithAccount:(NSString *)account pwd:(NSString *)pwd result:(void(^)(BOOL result))block;
+
 @end

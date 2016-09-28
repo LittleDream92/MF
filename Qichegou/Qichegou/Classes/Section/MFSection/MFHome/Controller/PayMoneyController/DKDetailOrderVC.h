@@ -10,12 +10,7 @@
 #import "DKBaseViewController.h"
 #import "ChooseCarModel.h"
 
-@interface DKDetailOrderVC : DKBaseViewController<UITableViewDataSource, UITableViewDelegate>
-{
-    UIButton *continueBtn;
-}
-
-@property (nonatomic, strong) UITableView *detailOrderTV;
+@interface DKDetailOrderVC : DKBaseViewController
 
 //参数
 @property (nonatomic, strong) NSString *orderIDString;

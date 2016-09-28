@@ -10,6 +10,10 @@
 #import "PersonalViewModel.h"
 #import "HomeButton.h"
 #import "MFLoginViewController.h"
+#import "DKMyOrderVC.h"
+#import "DKMyActivityOrderVC.h"
+#import "MFFindPwdViewController.h"
+#import "AppDelegate.h"
 
 static NSString *const commentCell = @"commentCellID";
 static NSString *const latestCell = @"latestCellID";
@@ -305,6 +309,38 @@ UITableViewDelegate>
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([AppDelegate APP].user) { //login
+        if (indexPath.section == 0) {   //我的订单
+            
+            DKMyOrderVC *myOrderVC = [[DKMyOrderVC alloc] init];
+            [self.navigationController pushViewController:myOrderVC animated:YES];
+            
+        } else if (indexPath.section == 1) {    //我的活动
+            
+            DKMyActivityOrderVC *myActivityOrderVC = [[DKMyActivityOrderVC alloc] init];
+            [self.navigationController pushViewController:myActivityOrderVC animated:YES];
+            
+        }else if (indexPath.section == 2) {     //修改密码
+            
+            MFFindPwdViewController *changePwdVC = [[MFFindPwdViewController alloc] init];
+            [self.navigationController pushViewController:changePwdVC animated:YES];
+            
+        }else if (indexPath.section == 3) {     //login out
+            [self loginOut];
+        }
+        
+    }else {     //unLogin
+        
+        if (indexPath.section == 3) {
+            //退出登录
+            [PromtView showAlert:@"你还没有登录" duration:1];
+        }else if (indexPath.section != 4) {
+            
+            MFLoginViewController *loginVC = [[MFLoginViewController alloc] init];
+            [self.navigationController pushViewController:loginVC animated:YES];
+        }
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -320,6 +356,32 @@ UITableViewDelegate>
         CGFloat width = kScreenWidth/headerH * (headerH - yOffset);
         imgView.frame = CGRectMake((kScreenWidth - width) / 2, yOffset, width, headerH - yOffset);
     }
+}
+
+#pragma mark - dataRequest
+- (void)loginOut {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出登录" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"取消");
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"确定退出");
+        NSLog(@"controller:%@", [AppDelegate APP].user.token);
+        NSLog(@"退出登录");
+//        [HttpTool requestLoginOutResult:^(BOOL result) {
+//            if (result) {
+//                [AppDelegate APP].user = nil;
+//                self.nameLabel.text = @"点击头像登录";
+//            }
+//        }];
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:otherAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - 

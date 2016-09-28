@@ -11,11 +11,6 @@
 #import "ChooseCarModel.h"
 
 @interface CarHeaderView : UIView
-{
-    UIImageView *carImgView;
-    UILabel *titleLabel;
-    UILabel *guide_priceLabel;
-}
 
 
 

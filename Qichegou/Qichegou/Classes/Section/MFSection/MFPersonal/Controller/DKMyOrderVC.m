@@ -8,7 +8,6 @@
 
 #import "DKMyOrderVC.h"
 #import "AppDelegate.h"
-
 #import "MyOrderCell.h"
 #import "ChooseCarModel.h"
 #import "DKPayMoneyVC.h"
@@ -37,6 +36,7 @@ static NSString *const cellID = @"myOrderCell";
 #pragma  mark - 初始化
 - (void)createViews {
     
+    [self navBack:YES];
     self.title = @"我的订单";
     [self.view addSubview:self.promtLabel];
     [self.promtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,6 +45,7 @@ static NSString *const cellID = @"myOrderCell";
         make.size.mas_equalTo(CGSizeMake(kScreenWidth, 21));
     }];
     
+    self.tableView.showsVerticalScrollIndicator = NO;
     //设置header和footer
     self.tableView.sectionFooterHeight = 0;
     self.tableView.sectionHeaderHeight = 12;
