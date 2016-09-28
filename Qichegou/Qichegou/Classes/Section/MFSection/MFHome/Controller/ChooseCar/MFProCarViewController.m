@@ -1,21 +1,28 @@
 //
-//  DKCarProViewController.m
+//  MFProCarViewController.m
 //  Qichegou
 //
-//  Created by Meng Fan on 16/4/15.
+//  Created by Meng Fan on 16/9/27.
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
-#import "DKCarProViewController.h"
+#import "MFProCarViewController.h"
+//#import "ProViewModel.h"
+//#import "CarProTableViewCell.h"
+
 #import "CarProTableViewCell.h"
 #import "DKCarListViewController.h"
 
-@interface DKCarProViewController ()
+static NSString *const cellID = @"carProCellID";
+@interface MFProCarViewController ()<UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UITableView *tableView;
+
+//@property (nonatomic, strong) ProViewModel *viewModel;
 
 @end
 
-@implementation DKCarProViewController
+@implementation MFProCarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +33,92 @@
     [self setupTableView];
     [self getNewData];
     
+    
+//    [self setUpNav];
+//    [self setUpViews];
+//    [self combineViewModel];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//#pragma mark - setUpViews
+//- (void)setUpNav {
+//    [self navBack:YES];
+//    
+//    self.title = @"品牌或者条件选车";
+//}
+//
+//- (void)setUpViews {
+//    [self.view addSubview:self.tableview];
+//    [self.tableview makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+//    }];
+//    
+//    self.tableview.tableFooterView = [[UIView alloc] init];
+//}
+//
+//- (void)combineViewModel {
+//    NSLog(@"pro iD:%@", self.proID);
+//    
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    params[@"pid"] = self.proID;
+//    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
+//    NSLog(@"params: %@", params);
+//    RACSignal *signal = [self.viewModel.carProCommand execute:params];
+//    [signal subscribeNext:^(id x) {
+//        NSLog(@"list action :%@", x);
+//    }];
+//}
+//
+//#pragma mark - lazyloading
+//-(ProViewModel *)viewModel {
+//    if (!_viewModel) {
+//        _viewModel = [[ProViewModel alloc] init];
+//    }
+//    return _viewModel;
+//}
+//
+//-(UITableView *)tableview {
+//    if (!_tableview) {
+//        _tableview = [[UITableView alloc] init];
+//        
+//        _tableview.delegate = self;
+//        _tableview.dataSource = self;
+//        
+//    }
+//    return _tableview;
+//}
+//
+//#pragma mark - action
+//
+//
+//
+//#pragma mark - UITableViewDataSource
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return 5;
+//}
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+//    }
+//    
+//    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//    
+//    return cell;
+//}
+//
+//
+//#pragma mark - UITableViewDelegate
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//}
 
 - (void)setupTableView {
     [self.view addSubview:self.tableView];
@@ -63,7 +155,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
     CarModel *model = self.dataArr[indexPath.row];
     carListVC.pid = model.pro_id;
@@ -73,12 +165,12 @@
 
 #pragma mark - data
 - (void)getNewData {
-//    [HttpTool requestPidCarWithbid:self.bid block:^(id json) {
-//        if (json != nil) {
-//            self.dataArr = json;
-//            [self.tableView reloadData];
-//        }
-//    }];
+    //    [HttpTool requestPidCarWithbid:self.bid block:^(id json) {
+    //        if (json != nil) {
+    //            self.dataArr = json;
+    //            [self.tableView reloadData];
+    //        }
+    //    }];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",
                             self.bid ,@"bid", nil];
@@ -104,13 +196,7 @@
                        NSLog(@"pro list error:%@", error);
                        [PromtView showAlert:PromptWord duration:1.5];
                    }];
-
+    
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

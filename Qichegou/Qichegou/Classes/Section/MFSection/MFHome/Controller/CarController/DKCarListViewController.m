@@ -26,9 +26,10 @@ static NSString *const cellID = @"carListCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self navBack:YES];
     
-    [self setupTableview];
+    
+    [self setNav];
+    [self setUpViews];
     [self setRefresh];
 }
 
@@ -37,10 +38,19 @@ static NSString *const cellID = @"carListCellID";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - set up
-- (void)setupTableview {
-    [self.view addSubview:self.tableview];
+
+#pragma mark - setUpViews
+- (void)setNav {
+    [self navBack:YES];
+}
+
+
+- (void)setUpViews {
     
+    [self.view addSubview:self.tableview];
+    [self.tableview makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     self.tableview.tableFooterView = [UIView new];
     
     //注册单元格
@@ -56,10 +66,11 @@ static NSString *const cellID = @"carListCellID";
 }
 
 #pragma mark - setting and getting
-
 -(UITableView *)tableview {
-    if (_tableview == nil) {
-        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    if (!_tableview) {
+//        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+        
+        _tableview = [[UITableView alloc] init];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         
@@ -86,7 +97,6 @@ static NSString *const cellID = @"carListCellID";
     
     CarListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     cell.myModel = self.dataArr[indexPath.row];
-    
     return cell;
 }
 #pragma mark - UITableViewDelegate

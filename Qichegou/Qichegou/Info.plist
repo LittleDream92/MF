@@ -69,6 +69,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>始终允许</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>需要使用您的定位功能</string>
 	<key>UILaunchStoryboardName</key>

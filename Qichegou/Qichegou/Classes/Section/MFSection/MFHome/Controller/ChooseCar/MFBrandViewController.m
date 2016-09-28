@@ -12,6 +12,8 @@
 
 #import "BrandViewModel.h"
 
+
+
 @interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate>
 {
     BOOL _index;
@@ -72,11 +74,7 @@
         self.brandView.sectionDic = x[1];
         [self.brandView.tableView reloadData];
     }];
-    
-    self.brandView.clickRowAction = ^(NSString *brand_id) {
-        NSLog(@"click id: %@", brand_id);
-    };
-    
+
     RACSignal *hotSignal = [self.viewModel.hotCommand execute:brandParams];
     [hotSignal subscribeNext:^(id x) {
 //        NSLog(@"hot x:%@", x);

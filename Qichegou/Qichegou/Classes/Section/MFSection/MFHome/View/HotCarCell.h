@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) NSArray *hotArr;
 
-@property (nonatomic, copy) void(^clickItem)(NSString *brandID);
-
 @end

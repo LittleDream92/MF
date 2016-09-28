@@ -9,6 +9,8 @@
 #import "BrandView.h"
 #import "BrandCell.h"
 #import "HotCarCell.h"
+#import "SaleCarModel.h"
+#import "MFProCarViewController.h"
 
 static NSString *const cellID = @"brandTableViewCellID";
 static NSString *const hotCarCellID = @"hotCarCellID";
@@ -88,14 +90,6 @@ static NSString *const hotCarCellID = @"hotCarCellID";
             [cell.collectionView reloadData];
         }
         
-        cell.clickItem = ^(NSString *idStr) {
-            NSLog(@"item:%@", idStr);
-            if (self.clickRowAction) {
-                self.clickRowAction(idStr);
-            }
-        };
-        
-        
         return cell;
     }else {
         
@@ -150,11 +144,12 @@ static NSString *const hotCarCellID = @"hotCarCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section!=0) {
-//        SaleCarModel *model = [self.sectionDic objectForKey:self.sectionArray[indexPath.section-1]][indexPath.row];
+        SaleCarModel *model = [self.sectionDic objectForKey:self.sectionArray[indexPath.section-1]][indexPath.row];
         
-//        if (self.clickRowAction) {
-//            self.clickRowAction(model.brand_id);
-//        }
+        MFProCarViewController *proCarVC = [[MFProCarViewController  alloc] init];
+        NSLog(@"model.brand_id:%@", model.brand_id);
+        proCarVC.bid = model.brand_id;
+        [self.viewController.navigationController pushViewController:proCarVC animated:YES];
     }
 }
 

@@ -175,6 +175,8 @@
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"定位失败");
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+    [UserDefaults setObject:dic forKey:kLocationAction];
 }
 
 
