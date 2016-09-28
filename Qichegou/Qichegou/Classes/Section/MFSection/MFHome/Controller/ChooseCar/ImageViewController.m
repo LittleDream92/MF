@@ -198,12 +198,12 @@ static NSString *const cellID = @"imagesCollectionViewCell";
                                //关闭刷新控件
                                [self.imagesCollection.mj_header endRefreshing];
                            }else {
-                               [PromtView showAlert:@"暂无图片" duration:1.5];
+                               [PromtView showMessage:@"暂无图片" duration:1.5];
                                //关闭刷新控件
                                [self.imagesCollection.mj_header endRefreshing];
                            }
                        }else {
-                           [PromtView showAlert:@"加载图片失败" duration:1.5];
+                           [PromtView showMessage:@"加载图片失败" duration:1.5];
                            //关闭刷新控件
                            [self.imagesCollection.mj_header endRefreshing];
                        }
@@ -212,7 +212,7 @@ static NSString *const cellID = @"imagesCollectionViewCell";
                        NSLog(@"car images error:%@", error);
                        //关闭刷新控件
                        [self.imagesCollection.mj_header endRefreshing];
-                       [PromtView showAlert:PromptWord duration:1.5];
+                       [PromtView showMessage:PromptWord duration:1.5];
                    }];
 
 }

@@ -9,7 +9,7 @@
 #import "MFThirdActivityViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "MFLoginViewController.h"
-#import "MFPayActivityOrderViewController.h"
+#import "DKActivityPayMoneyVC.h"
 #import "DKMyActivityOrderVC.h"
 
 @interface MFThirdActivityViewController ()<UIWebViewDelegate>
@@ -103,7 +103,7 @@
              */
 //            //跳转到支付页面
             NSLog(@"跳转到支付页面");
-            MFPayActivityOrderViewController *activityPayVC = [[MFPayActivityOrderViewController alloc] init];
+            DKActivityPayMoneyVC *activityPayVC = [[DKActivityPayMoneyVC alloc] init];
             activityPayVC.array = self.activityArr;
             [self.navigationController pushViewController:activityPayVC animated:YES];
         });

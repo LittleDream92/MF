@@ -70,7 +70,7 @@
         self.orderStatusLabel.textColor = ITEMCOLOR;
         self.orderStatusLabel.text = [NSString stringWithFormat:@"－待付款"];
         
-        self.operationBtn.frame = CGRectMake(self.carTitleLabel.left, self.offLineLabel.bottom + 5, 90, 30);
+        self.operationBtn.frame = CGRectMake(115, 90 + 5, 90, 30);
         [self.operationBtn createButtonWithBGImgName:@"btn_continue"
                                   bghighlightImgName:@"btn_continue.2"
                                             titleStr:@"完成订单"

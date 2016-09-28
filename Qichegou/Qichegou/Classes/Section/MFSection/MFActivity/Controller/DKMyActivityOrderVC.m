@@ -8,7 +8,7 @@
 
 #import "DKMyActivityOrderVC.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "MFPayActivityOrderViewController.h"
+#import "DKActivityPayMoneyVC.h"
 #import "MFActivityDetailViewController.h"
 #import "UIView+Extension.h"
 #import "AppDelegate.h"
@@ -68,7 +68,7 @@
          This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.*/
         dispatch_async(dispatch_get_main_queue(), ^{
             //跳转到支付页面
-            MFPayActivityOrderViewController *activityPayVC = [[MFPayActivityOrderViewController alloc] init];
+            DKActivityPayMoneyVC *activityPayVC = [[DKActivityPayMoneyVC alloc] init];
             activityPayVC.array = self.arr;
             [self.navigationController pushViewController:activityPayVC animated:YES];
         });

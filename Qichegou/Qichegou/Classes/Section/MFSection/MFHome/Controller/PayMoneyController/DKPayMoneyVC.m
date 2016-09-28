@@ -85,7 +85,6 @@
     //初始化头视图
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"PaymoneyTopView" owner:self options:nil] lastObject];
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, 302*kHeightSale);
-//    topView.backgroundColor = [UIColor whiteColor];
     self.payOrderTV.tableHeaderView = self.headerView;
     
     //初始化尾视图
@@ -94,9 +93,6 @@
     self.footerView = [[[NSBundle mainBundle] loadNibNamed:@"PayMoneyFooterView" owner:self options:nil] lastObject];
     self.footerView.frame = CGRectMake(0, 0, kScreenWidth, footerViewH);
     self.payOrderTV.tableFooterView = self.footerView;
-    
-//    submitBtn = [footerView viewWithTag:111];
-//    [submitBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
