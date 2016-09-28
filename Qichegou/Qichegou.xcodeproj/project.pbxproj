@@ -101,6 +101,18 @@
 		A84CF6621D9BBDA800D096BF /* PaymoneyTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6611D9BBDA800D096BF /* PaymoneyTopView.xib */; };
 		A84CF6641D9BC45700D096BF /* PayMoneyFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6631D9BC45700D096BF /* PayMoneyFooterView.xib */; };
 		A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */; };
+		A84CF6711D9BD4B700D096BF /* DKBaoDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF66A1D9BD4B700D096BF /* DKBaoDanViewController.m */; };
+		A84CF6721D9BD4B700D096BF /* DKBaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF66C1D9BD4B700D096BF /* DKBaoDetailViewController.m */; };
+		A84CF6731D9BD4B700D096BF /* DKBaoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF66D1D9BD4B700D096BF /* DKBaoDetailViewController.xib */; };
+		A84CF6741D9BD4B700D096BF /* DKBaoOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF66F1D9BD4B700D096BF /* DKBaoOrderTableViewController.m */; };
+		A84CF6751D9BD4B700D096BF /* DKBaoOrderTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6701D9BD4B700D096BF /* DKBaoOrderTableViewController.xib */; };
+		A84CF67A1D9BD5C100D096BF /* BaoDanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6781D9BD5C100D096BF /* BaoDanTableViewCell.m */; };
+		A84CF67B1D9BD5C100D096BF /* BaoDanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6791D9BD5C100D096BF /* BaoDanTableViewCell.xib */; };
+		A84CF67E1D9BD5EB00D096BF /* InsuranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF67D1D9BD5EB00D096BF /* InsuranceModel.m */; };
+		A84CF6821D9BD61400D096BF /* BaoDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6801D9BD61400D096BF /* BaoDetailTableViewCell.m */; };
+		A84CF6831D9BD61400D096BF /* BaoDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6811D9BD61400D096BF /* BaoDetailTableViewCell.xib */; };
+		A84CF6871D9BD63A00D096BF /* BaoDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6851D9BD63A00D096BF /* BaoDetailCell.m */; };
+		A84CF6881D9BD63A00D096BF /* BaoDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A84CF6861D9BD63A00D096BF /* BaoDetailCell.xib */; };
 		A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */; };
 		A84F5D381D94D150002DB7F4 /* MFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D371D94D150002DB7F4 /* MFLoginViewController.m */; };
 		A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D3A1D94E402002DB7F4 /* MFRegistViewController.m */; };
@@ -108,7 +120,6 @@
 		A84F5D411D94F9B0002DB7F4 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D401D94F9B0002DB7F4 /* LoginViewModel.m */; };
 		A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D591D952268002DB7F4 /* DataService.m */; };
 		A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D5C1D952583002DB7F4 /* BaseModel.m */; };
-		A84F5D601D952595002DB7F4 /* BrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D5F1D952595002DB7F4 /* BrandModel.m */; };
 		A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88600051D926EA80028F102 /* PersonalViewModel.m */; };
@@ -311,6 +322,25 @@
 		A84CF6631D9BC45700D096BF /* PayMoneyFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayMoneyFooterView.xib; sourceTree = "<group>"; };
 		A84CF6651D9BCC9B00D096BF /* DKActivityPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKActivityPayMoneyVC.h; sourceTree = "<group>"; };
 		A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKActivityPayMoneyVC.m; sourceTree = "<group>"; };
+		A84CF6691D9BD4B700D096BF /* DKBaoDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaoDanViewController.h; sourceTree = "<group>"; };
+		A84CF66A1D9BD4B700D096BF /* DKBaoDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaoDanViewController.m; sourceTree = "<group>"; };
+		A84CF66B1D9BD4B700D096BF /* DKBaoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaoDetailViewController.h; sourceTree = "<group>"; };
+		A84CF66C1D9BD4B700D096BF /* DKBaoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaoDetailViewController.m; sourceTree = "<group>"; };
+		A84CF66D1D9BD4B700D096BF /* DKBaoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKBaoDetailViewController.xib; sourceTree = "<group>"; };
+		A84CF66E1D9BD4B700D096BF /* DKBaoOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaoOrderTableViewController.h; sourceTree = "<group>"; };
+		A84CF66F1D9BD4B700D096BF /* DKBaoOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaoOrderTableViewController.m; sourceTree = "<group>"; };
+		A84CF6701D9BD4B700D096BF /* DKBaoOrderTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKBaoOrderTableViewController.xib; sourceTree = "<group>"; };
+		A84CF6771D9BD5C100D096BF /* BaoDanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoDanTableViewCell.h; sourceTree = "<group>"; };
+		A84CF6781D9BD5C100D096BF /* BaoDanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoDanTableViewCell.m; sourceTree = "<group>"; };
+		A84CF6791D9BD5C100D096BF /* BaoDanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoDanTableViewCell.xib; sourceTree = "<group>"; };
+		A84CF67C1D9BD5EB00D096BF /* InsuranceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceModel.h; sourceTree = "<group>"; };
+		A84CF67D1D9BD5EB00D096BF /* InsuranceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceModel.m; sourceTree = "<group>"; };
+		A84CF67F1D9BD61400D096BF /* BaoDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoDetailTableViewCell.h; sourceTree = "<group>"; };
+		A84CF6801D9BD61400D096BF /* BaoDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoDetailTableViewCell.m; sourceTree = "<group>"; };
+		A84CF6811D9BD61400D096BF /* BaoDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoDetailTableViewCell.xib; sourceTree = "<group>"; };
+		A84CF6841D9BD63A00D096BF /* BaoDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoDetailCell.h; sourceTree = "<group>"; };
+		A84CF6851D9BD63A00D096BF /* BaoDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoDetailCell.m; sourceTree = "<group>"; };
+		A84CF6861D9BD63A00D096BF /* BaoDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoDetailCell.xib; sourceTree = "<group>"; };
 		A84F5D331D94CA04002DB7F4 /* ActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewModel.h; sourceTree = "<group>"; };
 		A84F5D341D94CA04002DB7F4 /* ActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewModel.m; sourceTree = "<group>"; };
 		A84F5D361D94D150002DB7F4 /* MFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLoginViewController.h; sourceTree = "<group>"; };
@@ -325,8 +355,6 @@
 		A84F5D591D952268002DB7F4 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
 		A84F5D5B1D952583002DB7F4 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		A84F5D5C1D952583002DB7F4 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
-		A84F5D5E1D952595002DB7F4 /* BrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandModel.h; sourceTree = "<group>"; };
-		A84F5D5F1D952595002DB7F4 /* BrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandModel.m; sourceTree = "<group>"; };
 		A84F5D611D952BE3002DB7F4 /* CustomButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButtonView.h; sourceTree = "<group>"; };
 		A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButtonView.m; sourceTree = "<group>"; };
 		A88600041D926EA80028F102 /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
@@ -715,6 +743,37 @@
 			name = ParamsAndImages;
 			sourceTree = "<group>";
 		};
+		A84CF6681D9BD4B700D096BF /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A84CF6691D9BD4B700D096BF /* DKBaoDanViewController.h */,
+				A84CF66A1D9BD4B700D096BF /* DKBaoDanViewController.m */,
+				A84CF66B1D9BD4B700D096BF /* DKBaoDetailViewController.h */,
+				A84CF66C1D9BD4B700D096BF /* DKBaoDetailViewController.m */,
+				A84CF66D1D9BD4B700D096BF /* DKBaoDetailViewController.xib */,
+				A84CF66E1D9BD4B700D096BF /* DKBaoOrderTableViewController.h */,
+				A84CF66F1D9BD4B700D096BF /* DKBaoOrderTableViewController.m */,
+				A84CF6701D9BD4B700D096BF /* DKBaoOrderTableViewController.xib */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A84CF6761D9BD5C100D096BF /* Xian */ = {
+			isa = PBXGroup;
+			children = (
+				A84CF6771D9BD5C100D096BF /* BaoDanTableViewCell.h */,
+				A84CF6781D9BD5C100D096BF /* BaoDanTableViewCell.m */,
+				A84CF6791D9BD5C100D096BF /* BaoDanTableViewCell.xib */,
+				A84CF67F1D9BD61400D096BF /* BaoDetailTableViewCell.h */,
+				A84CF6801D9BD61400D096BF /* BaoDetailTableViewCell.m */,
+				A84CF6811D9BD61400D096BF /* BaoDetailTableViewCell.xib */,
+				A84CF6841D9BD63A00D096BF /* BaoDetailCell.h */,
+				A84CF6851D9BD63A00D096BF /* BaoDetailCell.m */,
+				A84CF6861D9BD63A00D096BF /* BaoDetailCell.xib */,
+			);
+			path = Xian;
+			sourceTree = "<group>";
+		};
 		A886FEE41D922A450028F102 = {
 			isa = PBXGroup;
 			children = (
@@ -1052,6 +1111,7 @@
 				A821E0861D9A18FF00CDF409 /* SaleCar */,
 				A821E1691D9A837400CDF409 /* ChooseCar */,
 				A821E1001D9A696F00CDF409 /* PayMoneyController */,
+				A84CF6681D9BD4B700D096BF /* Order */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1059,8 +1119,8 @@
 		A886FF2B1D922FFC0028F102 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A84F5D5E1D952595002DB7F4 /* BrandModel.h */,
-				A84F5D5F1D952595002DB7F4 /* BrandModel.m */,
+				A84CF67C1D9BD5EB00D096BF /* InsuranceModel.h */,
+				A84CF67D1D9BD5EB00D096BF /* InsuranceModel.m */,
 				A821E0551D9A034F00CDF409 /* CarModel.h */,
 				A821E0561D9A034F00CDF409 /* CarModel.m */,
 				A821E10B1D9A6A3F00CDF409 /* ChooseCarModel.h */,
@@ -1084,6 +1144,7 @@
 				A821E05B1D9A036E00CDF409 /* BrandCell */,
 				A821E0CC1D9A64F700CDF409 /* Car */,
 				A821E1011D9A698E00CDF409 /* PayMoney */,
+				A84CF6761D9BD5C100D096BF /* Xian */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1378,6 +1439,7 @@
 			files = (
 				A821E0D11D9A64F700CDF409 /* CarProTableViewCell.xib in Resources */,
 				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
+				A84CF6751D9BD4B700D096BF /* DKBaoOrderTableViewController.xib in Resources */,
 				A821E1521D9A778B00CDF409 /* 2015按钮-点击状态@2x.png in Resources */,
 				A821E1611D9A778B00CDF409 /* 外观按钮-点击状态@3x.png in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
@@ -1385,10 +1447,12 @@
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
 				A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */,
 				A821E1121D9A6A7100CDF409 /* DKMyOrderVC.xib in Resources */,
+				A84CF6731D9BD4B700D096BF /* DKBaoDetailViewController.xib in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
 				A821E1591D9A778B00CDF409 /* 空间按钮-点击状态@3x.png in Resources */,
 				A821E1511D9A778B00CDF409 /* 2014按钮-拷贝@3x.png in Resources */,
 				A84CF6641D9BC45700D096BF /* PayMoneyFooterView.xib in Resources */,
+				A84CF6881D9BD63A00D096BF /* BaoDetailCell.xib in Resources */,
 				A821E1601D9A778B00CDF409 /* 外观按钮-点击状态@2x.png in Resources */,
 				A821E0F31D9A676A00CDF409 /* BuyCarNeedsFooterView.xib in Resources */,
 				A821E1541D9A778B00CDF409 /* 官方图按钮-点击状态@2x.png in Resources */,
@@ -1399,11 +1463,13 @@
 				A821E0D61D9A65BC00CDF409 /* CarListTableViewCell.xib in Resources */,
 				A821E0FF1D9A694600CDF409 /* BuyCarNeedsTVC.xib in Resources */,
 				A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */,
+				A84CF6831D9BD61400D096BF /* BaoDetailTableViewCell.xib in Resources */,
 				A821E15E1D9A778B00CDF409 /* 内饰按钮@2x.png in Resources */,
 				A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */,
 				A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */,
 				A821E1651D9A77FC00CDF409 /* location.plist in Resources */,
 				A821E1531D9A778B00CDF409 /* 2015按钮-点击状态@3x.png in Resources */,
+				A84CF67B1D9BD5C100D096BF /* BaoDanTableViewCell.xib in Resources */,
 				A821E13B1D9A765100CDF409 /* 37x-Checkmark@2x.png in Resources */,
 				A821E13A1D9A765100CDF409 /* 37x-Checkmark.png in Resources */,
 				A821E1501D9A778B00CDF409 /* 2014按钮-拷贝@2x.png in Resources */,
@@ -1497,6 +1563,7 @@
 				A821E0FE1D9A694600CDF409 /* BuyCarNeedsTVC.m in Sources */,
 				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
 				A821E0661D9A037E00CDF409 /* HotCarCell.m in Sources */,
+				A84CF67A1D9BD5C100D096BF /* BaoDanTableViewCell.m in Sources */,
 				A821E0821D9A053700CDF409 /* MFHomeViewController.m in Sources */,
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */,
@@ -1519,15 +1586,18 @@
 				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A821E10D1D9A6A3F00CDF409 /* ChooseCarModel.m in Sources */,
+				A84CF67E1D9BD5EB00D096BF /* InsuranceModel.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A821E16E1D9A837400CDF409 /* MFBrandViewController.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
 				A821E0D01D9A64F700CDF409 /* CarProTableViewCell.m in Sources */,
 				A84F5D351D94CA04002DB7F4 /* ActivityViewModel.m in Sources */,
+				A84CF6741D9BD4B700D096BF /* DKBaoOrderTableViewController.m in Sources */,
 				A821E12E1D9A721D00CDF409 /* PhotoCollectionView.m in Sources */,
 				A821E0F61D9A676A00CDF409 /* DetailChooseCarHeader.m in Sources */,
 				A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */,
 				A84CF6571D9B9AD900D096BF /* ImageViewController.m in Sources */,
+				A84CF6721D9BD4B700D096BF /* DKBaoDetailViewController.m in Sources */,
 				A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */,
 				A821E0721D9A03FD00CDF409 /* HomePageViewModel.m in Sources */,
 				A821E1271D9A702E00CDF409 /* AiCheModel.m in Sources */,
@@ -1541,6 +1611,7 @@
 				A84CF65B1D9BA0EE00D096BF /* DKCarNeedsVC.m in Sources */,
 				A84CF6161D9B62EA00D096BF /* CarProView.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
+				A84CF6871D9BD63A00D096BF /* BaoDetailCell.m in Sources */,
 				A84CF6511D9B993F00D096BF /* ParamsViewController.m in Sources */,
 				A821E0731D9A03FD00CDF409 /* SaleViewModel.m in Sources */,
 				A821E0B91D9A5FCE00CDF409 /* PromtView.m in Sources */,
@@ -1548,6 +1619,7 @@
 				A84CF6561D9B9AD900D096BF /* BigCarImgVC.m in Sources */,
 				A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
+				A84CF6711D9BD4B700D096BF /* DKBaoDanViewController.m in Sources */,
 				A84CF65E1D9BA10500D096BF /* DKNeedsTableViewController.m in Sources */,
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A821E0651D9A037E00CDF409 /* BrandView.m in Sources */,
@@ -1555,10 +1627,10 @@
 				A821E1341D9A726C00CDF409 /* PhotoScrollView.m in Sources */,
 				A821E1041D9A69D600CDF409 /* DKPayMoneyVC.m in Sources */,
 				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
+				A84CF6821D9BD61400D096BF /* BaoDetailTableViewCell.m in Sources */,
 				A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */,
 				A821E1731D9A83AA00CDF409 /* BrandViewModel.m in Sources */,
 				A821E0851D9A183E00CDF409 /* MFSaleDetailViewController.m in Sources */,
-				A84F5D601D952595002DB7F4 /* BrandModel.m in Sources */,
 				A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */,
 				A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */,
 				A84F5D3B1D94E402002DB7F4 /* MFRegistViewController.m in Sources */,

@@ -20,18 +20,6 @@
 @property (nonatomic, copy) NSString *city_name;
 @property (nonatomic, copy) NSString *zt;
 
-
-/*
- brand_id:	品牌ID
- brand_name:	品牌名称
- first_letter:	品牌大写首字母
- thumb:		品牌LOGO图片
- */
-@property (nonatomic, copy) NSString *brand_id;
-@property (nonatomic, copy) NSString *brand_name;
-@property (nonatomic, copy) NSString *first_letter;
-@property (nonatomic, copy) NSString *thumb;
-
 /*
  model_id:	类型ID
  model_name:	类型名称，例如SUV
@@ -46,19 +34,6 @@
 @property (nonatomic, copy) NSString *color;
 @property (nonatomic, copy) NSString *thumb_lg;
 @property (nonatomic, copy) NSString *thumb_sm;
-
-
-/*
- car_id:		车型ID
- pro_subject：	车系名称
- year:			车型年份
- car_subject：	车型名称
- main_photo：	车型图片*/
-@property (nonatomic, copy) NSString *car_id;
-@property (nonatomic, copy) NSString *pro_subject;
-@property (nonatomic, copy) NSString *year;
-@property (nonatomic, copy) NSString *car_subject;
-@property (nonatomic, copy) NSString *main_photo;
 
 /* 违章行为 */
 @property (nonatomic, copy) NSString *act;

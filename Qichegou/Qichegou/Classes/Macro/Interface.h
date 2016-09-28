@@ -49,6 +49,8 @@
 #define ACTIVITY_ORDER  @"/wap/activity/myactivity"     //我的活动列表
 #define CANCEL_ACTIVITY_ORDER @"/api/activity/cancel"   //取消活动订单
 
+#define kBaoXian        @"/api/insure/coms"             //车险
+
 //**************************** 订单 *****************************
 #define ADD_ORDER       @"/api/order/add"       //提交订单
 #define ORDER_DETAIL    @"/api/order/detail"    //订单详情

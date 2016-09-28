@@ -14,6 +14,7 @@
 #import "HomeCarCell.h"
 #import "HomeOperationCell.h"
 
+#import "DKBaoDanViewController.h"
 #import "MFBrandViewController.h"
 #import "MFSaleViewController.h"
 #import "MFSaleDetailViewController.h"
@@ -158,6 +159,8 @@ UITableViewDataSource
     
     cell.clickDaiBtn = ^ {
         NSLog(@"daiBtn");
+        DKBaoDanViewController *xianVC = [[DKBaoDanViewController alloc] init];
+        [self.navigationController pushViewController:xianVC animated:YES];
     };
     
     cell.clickXianBtn = ^ {

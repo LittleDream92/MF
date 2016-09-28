@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BaoDanCell" id="KGk-i7-Jjw" customClass="BaoDanTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-Hd-QQC">
+                        <rect key="frame" x="5" y="0.0" width="310" height="74"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bao_row" translatesAutoresizingMaskIntoConstraints="NO" id="Skl-D2-ZBA">
+                                <rect key="frame" x="295" y="29" width="10" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="h4x-6N-ZfH"/>
+                                    <constraint firstAttribute="height" constant="17" id="hfT-5d-q6k"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国平安保险" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX4-eV-8pl">
+                                <rect key="frame" x="75" y="26" width="108" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.45098039215686275" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTL-qX-2RK">
+                                <rect key="frame" x="10" y="12" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FoB-Y5-rcm"/>
+                                    <constraint firstAttribute="width" constant="50" id="J59-La-BaU"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nX4-eV-8pl" firstAttribute="centerY" secondItem="7J4-Hd-QQC" secondAttribute="centerY" id="aPG-hb-zcl"/>
+                            <constraint firstItem="cTL-qX-2RK" firstAttribute="centerY" secondItem="7J4-Hd-QQC" secondAttribute="centerY" id="bm9-En-K2y"/>
+                            <constraint firstAttribute="trailing" secondItem="Skl-D2-ZBA" secondAttribute="trailing" constant="5" id="c7a-VU-xTd"/>
+                            <constraint firstItem="nX4-eV-8pl" firstAttribute="leading" secondItem="cTL-qX-2RK" secondAttribute="trailing" constant="15" id="dzG-lB-ewa"/>
+                            <constraint firstItem="Skl-D2-ZBA" firstAttribute="centerY" secondItem="7J4-Hd-QQC" secondAttribute="centerY" id="eM7-XH-kDl"/>
+                            <constraint firstItem="cTL-qX-2RK" firstAttribute="leading" secondItem="7J4-Hd-QQC" secondAttribute="leading" constant="10" id="veq-Oh-7fj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7J4-Hd-QQC" secondAttribute="trailing" constant="5" id="YYw-IA-wKc"/>
+                    <constraint firstItem="7J4-Hd-QQC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="kzh-Nc-v4f"/>
+                    <constraint firstItem="7J4-Hd-QQC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="meN-GO-V3f"/>
+                    <constraint firstAttribute="bottom" secondItem="7J4-Hd-QQC" secondAttribute="bottom" id="rjm-gR-rKL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="iconImageView" destination="cTL-qX-2RK" id="fEo-WE-9Q5"/>
+                <outlet property="label" destination="nX4-eV-8pl" id="I0E-aQ-uWh"/>
+            </connections>
+            <point key="canvasLocation" x="374" y="454.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Bao_row" width="10" height="17"/>
+    </resources>
+</document>
