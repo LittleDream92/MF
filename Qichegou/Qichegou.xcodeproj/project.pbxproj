@@ -131,6 +131,7 @@
 		A857EDD71D9D02BB0003C0FF /* DetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857EDCF1D9D02BB0003C0FF /* DetailFooterView.xib */; };
 		A857EDDA1D9D02F40003C0FF /* PurchesProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDD91D9D02F40003C0FF /* PurchesProcessView.m */; };
 		A857EDDC1D9D03180003C0FF /* PurchesProcessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857EDDB1D9D03180003C0FF /* PurchesProcessView.xib */; };
+		A857EDE01D9D1BED0003C0FF /* CondationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDDF1D9D1BED0003C0FF /* CondationView.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88600051D926EA80028F102 /* PersonalViewModel.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
@@ -382,6 +383,8 @@
 		A857EDD81D9D02F40003C0FF /* PurchesProcessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchesProcessView.h; sourceTree = "<group>"; };
 		A857EDD91D9D02F40003C0FF /* PurchesProcessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchesProcessView.m; sourceTree = "<group>"; };
 		A857EDDB1D9D03180003C0FF /* PurchesProcessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchesProcessView.xib; sourceTree = "<group>"; };
+		A857EDDE1D9D1BED0003C0FF /* CondationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondationView.h; sourceTree = "<group>"; };
+		A857EDDF1D9D1BED0003C0FF /* CondationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondationView.m; sourceTree = "<group>"; };
 		A88600041D926EA80028F102 /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
 		A88600051D926EA80028F102 /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -578,10 +581,10 @@
 		A821E05B1D9A036E00CDF409 /* BrandCell */ = {
 			isa = PBXGroup;
 			children = (
-				A821E05C1D9A037E00CDF409 /* BrandCell.h */,
-				A821E05D1D9A037E00CDF409 /* BrandCell.m */,
 				A821E05E1D9A037E00CDF409 /* BrandView.h */,
 				A821E05F1D9A037E00CDF409 /* BrandView.m */,
+				A821E05C1D9A037E00CDF409 /* BrandCell.h */,
+				A821E05D1D9A037E00CDF409 /* BrandCell.m */,
 				A821E0601D9A037E00CDF409 /* HotCarCell.h */,
 				A821E0611D9A037E00CDF409 /* HotCarCell.m */,
 				A821E0621D9A037E00CDF409 /* HotCarCollectionCell.h */,
@@ -793,8 +796,16 @@
 				A857EDD91D9D02F40003C0FF /* PurchesProcessView.m */,
 				A857EDDB1D9D03180003C0FF /* PurchesProcessView.xib */,
 			);
-			name = BaoDanChaXun;
-			path = View/BaoDanChaXun;
+			path = BaoDanChaXun;
+			sourceTree = "<group>";
+		};
+		A857EDDD1D9D1A210003C0FF /* CondationCell */ = {
+			isa = PBXGroup;
+			children = (
+				A857EDDE1D9D1BED0003C0FF /* CondationView.h */,
+				A857EDDF1D9D1BED0003C0FF /* CondationView.m */,
+			);
+			name = CondationCell;
 			sourceTree = "<group>";
 		};
 		A886FEE41D922A450028F102 = {
@@ -1127,7 +1138,6 @@
 				A886FF2B1D922FFC0028F102 /* Model */,
 				A886FF2C1D922FFC0028F102 /* View */,
 				A886FF2D1D922FFC0028F102 /* ViewModel */,
-				A857EDC31D9D02BB0003C0FF /* BaoDanChaXun */,
 			);
 			path = MFHome;
 			sourceTree = "<group>";
@@ -1171,8 +1181,10 @@
 				A821E0691D9A03A100CDF409 /* SaleDetailCell.m */,
 				A886FFD31D92605E0028F102 /* HomeCell */,
 				A821E05B1D9A036E00CDF409 /* BrandCell */,
+				A857EDDD1D9D1A210003C0FF /* CondationCell */,
 				A821E0CC1D9A64F700CDF409 /* Car */,
 				A821E1011D9A698E00CDF409 /* PayMoney */,
+				A857EDC31D9D02BB0003C0FF /* BaoDanChaXun */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1575,6 +1587,7 @@
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A821E06A1D9A03A100CDF409 /* SaleDetailCell.m in Sources */,
 				A821E0641D9A037E00CDF409 /* BrandCell.m in Sources */,
+				A857EDE01D9D1BED0003C0FF /* CondationView.m in Sources */,
 				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
 				A821E1311D9A724500CDF409 /* PhotoCell.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,

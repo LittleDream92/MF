@@ -15,8 +15,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-///* 数据源 */
-//@property (nonatomic, strong) InsuranceModel *model;
-
 
 @end

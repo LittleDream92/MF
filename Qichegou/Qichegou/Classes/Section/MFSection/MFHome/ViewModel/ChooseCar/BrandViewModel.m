@@ -82,8 +82,8 @@
             
             [DataService http_Post:HOTCAR parameters:input success:^(id responseObject) {
                 if ([responseObject[@"status"] integerValue] == 1) {
-//                    NSLog(@"hot:%@", responseObject);
-                    NSArray *hotBrands = responseObject[@"brands"];
+                    NSLog(@"hot:%@", responseObject);
+                    NSArray *hotBrands = responseObject[@"rexiaoche"];
                     if ([hotBrands isKindOfClass:[NSArray class]] && hotBrands.count>0) {
                         
                         NSMutableArray *mArr = [NSMutableArray array];

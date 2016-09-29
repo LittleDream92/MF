@@ -47,10 +47,9 @@
     
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.carView.mas_bottom).offset(5);
+        make.top.equalTo(weakSelf.carView.mas_bottom);
         make.left.equalTo(0);
         make.right.equalTo(0);
-        make.height.equalTo(20);
     }];
 }
 
@@ -69,7 +68,8 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = TEXTCOLOR;
-        _titleLabel.font = H16;
+        _titleLabel.font = H12;
+        _titleLabel.numberOfLines = 2;
     }
     return _titleLabel;
 }
@@ -81,8 +81,8 @@
         
         NSLog(@"co cell:%@", model);
         
-        [self.carView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_String, model.thumb]] placeholderImage:[UIImage imageNamed:@"brand_bg"]];
-        self.titleLabel.text = model.brand_name;
+        [self.carView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_String, model.main_photo]] placeholderImage:[UIImage imageNamed:@"brand_bg"]];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@%@\n%@", model.brand_name, model.pro_subject, model.car_subject];
     }
 }
 

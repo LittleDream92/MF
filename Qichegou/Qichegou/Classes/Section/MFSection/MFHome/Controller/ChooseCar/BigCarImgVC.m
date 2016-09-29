@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self navBack:YES];
     
     //设置导航栏的透明度
     self.navigationController.navigationBar.translucent = NO;

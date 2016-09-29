@@ -21,8 +21,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *footerView;
 
-/* 网络请求数据源 */
-@property (nonatomic, strong) NSArray *dataArray;
+///* 网络请求数据源 */
+//@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -38,7 +38,7 @@
     imgArr = @[@"baodan_P", @"baodan_R", @"baodan_Z"];
     
     [self setupView];
-    [self requestData];
+//    [self requestData];
 }
 
 
@@ -58,9 +58,7 @@
         _tableView.scrollEnabled = NO;
         
         _tableView.rowHeight = 75;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.sectionHeaderHeight = 5;
-        _tableView.sectionFooterHeight = 5;
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
 }
@@ -110,7 +108,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BaoDanTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"BaoDanTableViewCell" owner:self options:nil] lastObject];
     
-    cell.model = self.dataArray[indexPath.section];
+//    cell.model = self.dataArray[indexPath.section];
+    cell.imageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
+    cell.label.text = titleArr[indexPath.row];
     
     return cell;
     
@@ -122,8 +122,8 @@
     
     //把保险种类push传递到下一页
     DKBaoDetailViewController *detailVC = [[DKBaoDetailViewController alloc] init];
-    InsuranceModel *model = self.dataArray[indexPath.section];
-    detailVC.titleStr = model.name;
+//    InsuranceModel *model = self.dataArray[indexPath.section];
+//    detailVC.titleStr = model.name;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

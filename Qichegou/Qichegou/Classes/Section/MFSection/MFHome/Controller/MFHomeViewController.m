@@ -98,7 +98,7 @@ UITableViewDataSource
         make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
-    NSArray *images = @[@"home_header", @"home_header", @"home_header", @"home_header", @"home_header"];
+    NSArray *images = @[@"home_header1", @"home_header2", @"home_header3", @"home_header4"];
     
     self.headerView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 155)];
     [self.headerView createHeaderViewWithImages:images];
@@ -171,6 +171,7 @@ UITableViewDataSource
     cell.clickBrandBtn = ^{
         NSLog(@"brandBtn");
         MFBrandViewController *brandVC = [[MFBrandViewController alloc] init];
+        brandVC.cityDic = self.cityDic;
         [self.navigationController pushViewController:brandVC animated:YES];
     };
     

@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = BGGRAYCOLOR;
     self.title = self.titleStr;
     [self navBack:YES];
 }

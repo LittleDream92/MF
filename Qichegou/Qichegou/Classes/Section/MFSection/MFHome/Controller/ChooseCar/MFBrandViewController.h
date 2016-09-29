@@ -10,4 +10,6 @@
 
 @interface MFBrandViewController : DKBaseViewController
 
+@property (nonatomic, strong) NSDictionary *cityDic;
+
 @end

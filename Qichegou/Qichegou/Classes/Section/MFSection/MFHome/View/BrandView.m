@@ -111,7 +111,7 @@ static NSString *const hotCarCellID = @"hotCarCellID";
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 80;
+        return 80 + 10;
     }
     return 44;
 }
@@ -127,7 +127,7 @@ static NSString *const hotCarCellID = @"hotCarCellID";
     
     if (section == 0) {
         sectionView.backgroundColor = [UIColor whiteColor];
-        textLabel.text = @"热销品牌";
+        textLabel.text = @"热销车";
     }else {
         sectionView.backgroundColor = BGGRAYCOLOR;
         textLabel.text = self.sectionArray[section-1];

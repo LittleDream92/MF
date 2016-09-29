@@ -9,6 +9,7 @@
 #import "HotCarCell.h"
 #import "HotCarCollectionCell.h"
 #import "CarModel.h"
+#import "MFCarDetailViewController.h"
 
 static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 @interface HotCarCell ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -92,7 +93,7 @@ static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CGFloat width = kScreenWidth/4;
     CGFloat height = self.frame.size.height-1;
-    return CGSizeMake(width, height);
+    return CGSizeMake(width, height + 10);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,9 +110,12 @@ static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 #pragma mark - UICollectionViewDelegateFlowLayout
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    CarModel *model = self.hotArr[indexPath.item];
+    CarModel *model = self.hotArr[indexPath.item];
 //    NSLog(@"index:%ld", indexPath.item);
     
+    MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
+    detailCarVC.cid = model.car_id;
+    [self.viewController.navigationController pushViewController:detailCarVC animated:YES];
 }
 
 @end

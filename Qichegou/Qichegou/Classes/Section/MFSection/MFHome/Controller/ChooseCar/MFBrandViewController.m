@@ -9,24 +9,32 @@
 #import "MFBrandViewController.h"
 #import "CustomButtonView.h"
 #import "BrandView.h"
+#import "CondationView.h"
+
 #import "CarProView.h"
 #import "CarModel.h"
 #import "BrandViewModel.h"
 #import "DKCarListViewController.h"
+//#import "CityControl.h"
+//#import "DKCityTableViewController.h"
+//#import "DKBaseNaviController.h"
 
 @interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate, BrandClickProtocol>
 {
     BOOL _index;
 }
+//@property (nonatomic, strong) CityControl *cityCtrl;
 @property (nonatomic, strong) CustomButtonView *titleView;
 @property (nonatomic, strong) UIScrollView *scrollview;
 @property (nonatomic, strong) BrandView *brandView;
+@property (nonatomic, strong) CondationView *condationView;
 
 @property (nonatomic, strong) CarProView *carProView;
 
 @property (nonatomic, strong) BrandViewModel *viewModel;
 
 @property (nonatomic, strong) NSArray *proArr;
+
 
 @end
 
@@ -39,6 +47,22 @@
     [self setUpViews];
     [self setUpViewModel];
 }
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    
+//    NSDictionary *newDic = [UserDefaults objectForKey:kLocationAction];
+//    if (![newDic isEqual:self.cityDic]) {
+//        self.cityDic = newDic;
+//        //重新网络请求
+//        [self brandRequest];
+//        
+//        if (self.navigationItem.rightBarButtonItem.customView) {
+//            //取到城市label，重新赋值
+//            CityControl *cityCtrl = (CityControl *)self.navigationItem.leftBarButtonItem.customView;
+//            cityCtrl.cityLabel.text = [newDic objectForKey:@"cityname"];
+//        }
+//    }
+//}
 
 -(void)backAction:(UIButton *)sender {
     self.carProView.hidden = YES;
@@ -55,6 +79,7 @@
     self.title = @"选车";
     
     [self navBack:YES];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.cityCtrl];
 }
 
 - (void)setUpViews {
@@ -67,10 +92,7 @@
     
 
     [self.scrollview addSubview:self.brandView];
-    
-    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-48)];
-    view2.backgroundColor = [UIColor blackColor];
-    [self.scrollview addSubview:view2];
+    [self.scrollview addSubview:self.condationView];
 
     [self.view addSubview:self.carProView];
     [self.carProView makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +104,7 @@
 
 - (void)setUpViewModel {
     
-    NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:@"6", @"cityid", nil];
+    NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:[UserDefaults objectForKey:kLocationAction][@"cityid"], @"cityid", nil];
     RACSignal *brandSignal = [self.viewModel.brandCommand execute:brandParams];
     [brandSignal subscribeNext:^(id x) {
 //        NSLog(@"brand : %@", x);
@@ -114,6 +136,19 @@
 }
 
 #pragma mark - lazyloading
+//-(CityControl *)cityCtrl {
+//    if (!_cityCtrl) {
+//        NSString *cityStr = [UserDefaults objectForKey:kLocationAction][@"cityname"];
+//        if (!cityStr) {
+//            cityStr = @"长沙";
+//        }
+//        
+//        _cityCtrl = [[CityControl alloc] initWithFrame:CGRectMake(0, 0, 60, 30) cityString:cityStr];
+//        [_cityCtrl addTarget:self action:@selector(contrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _cityCtrl;
+//}
+
 -(CustomButtonView *)titleView {
     if (!_titleView) {
         _titleView = [[CustomButtonView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 48)];
@@ -151,6 +186,13 @@
     return _brandView;
 }
 
+- (CondationView *)condationView {
+    if (!_condationView) {
+        _condationView = [[CondationView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-48-64)];
+    }
+    return _condationView;
+}
+
 -(CarProView *)carProView {
     if (!_carProView) {
         _carProView = [[CarProView alloc] init];
@@ -183,6 +225,12 @@
     [self.titleView scrolledWithIndex:index];
     
 }
+
+//- (void)contrlClickAction:(CityControl *)cityCtrl {
+//    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
+//    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
 
 //BrandClickProtocol
 -(void)clickBrandWithBrandID:(NSString *)brandID {
@@ -219,7 +267,7 @@
                            self.carProView.dataArray = mArr;
                            [self.carProView.tableView reloadData];
                        }else {
-                           [PromtView showMessage:responseObject[@"mag"] duration:1.5];
+                           [PromtView showMessage:responseObject[@"msg"] duration:1.5];
                        }
                        
                    } failure:^(NSError *error) {
@@ -228,5 +276,78 @@
                    }];
 
 }
+
+#pragma mark - brandRequest
+//- (void)brandRequest {
+//    NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:self.cityDic[@"cityid"], @"cityid", nil];
+//    NSLog(@"brandParams:%@", brandParams);
+//    //网络请求
+//    [DataService http_Post:BRABD_LIST parameters:brandParams success:^(id responseObject) {
+////                NSLog(@"respon:%@", responseObject);
+//        if ([responseObject[@"status"] integerValue] == 1) {
+//            NSArray *brands = responseObject[@"brands"];
+//            if ([brands isKindOfClass:[NSArray class]] && brands.count > 0) {
+//                
+//                NSMutableDictionary *sectionDic = [NSMutableDictionary dictionary];
+//                NSMutableArray *mArr = [NSMutableArray array];
+//                
+//                for (NSDictionary *jsonDic in brands) {
+//                    
+//                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+//                    
+//                    NSString *sectionTitle = model.first_letter;
+//                    
+//                    NSMutableArray *rowArray =[sectionDic objectForKey:sectionTitle];
+//                    
+//                    if (rowArray == nil) {
+//                        [mArr addObject:sectionTitle];
+//                        rowArray = [NSMutableArray array];
+//                        [sectionDic setObject:rowArray forKey:model.first_letter];
+//                    }
+//                    
+//                    [rowArray addObject:model];
+//                }
+//                
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    self.brandView.sectionArray = [mArr copy];
+//                    self.brandView.sectionDic = sectionDic;
+//                    [self.brandView.tableView reloadData];
+//                });
+//            }
+//        }else {
+//            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+//        }
+//    } failure:^(NSError *error) {
+//        [PromtView showMessage:PromptWord duration:1.5];
+//    }];
+//
+//    //热销车
+//    [DataService http_Post:HOTCAR parameters:brandParams success:^(id responseObject) {
+//        if ([responseObject[@"status"] integerValue] == 1) {
+//            //                    NSLog(@"hot:%@", responseObject);
+//            NSArray *hotBrands = responseObject[@"brands"];
+//            if ([hotBrands isKindOfClass:[NSArray class]] && hotBrands.count>0) {
+//                
+//                NSMutableArray *mArr = [NSMutableArray array];
+//                for (NSDictionary *jsonDic in hotBrands) {
+//                    
+//                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+//                    [mArr addObject:model];
+//                }
+//                
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    self.brandView.hotArray = mArr;
+//                    [self.brandView.tableView reloadData];
+//                });
+//                
+//            }
+//        }else {
+//            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+//        }
+//    } failure:^(NSError *error) {
+//        [PromtView showMessage:PromptWord duration:1.5];
+//    }];
+//
+//}
 
 @end
