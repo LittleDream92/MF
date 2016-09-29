@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "InsuranceModel.h"
+//#import "InsuranceModel.h"
 
 @interface BaoDanTableViewCell : UITableViewCell
 
@@ -15,8 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-/* 数据源 */
-@property (nonatomic, strong) InsuranceModel *model;
+///* 数据源 */
+//@property (nonatomic, strong) InsuranceModel *model;
 
 
 @end

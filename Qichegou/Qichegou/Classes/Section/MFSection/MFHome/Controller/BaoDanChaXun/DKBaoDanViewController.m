@@ -14,7 +14,10 @@
 #import "PurchesProcessView.h"
 
 @interface DKBaoDanViewController ()<UITableViewDelegate, UITableViewDataSource>
-
+{
+    NSArray *titleArr;
+    NSArray *imgArr;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *footerView;
 
@@ -31,6 +34,9 @@
     self.title = @"保单查询";
     [self navBack:YES];
     
+    titleArr = @[@"24小时服务热线95511", @"24小时服务热线95519", @"24小时服务热线95518"];
+    imgArr = @[@"baodan_P", @"baodan_R", @"baodan_Z"];
+    
     [self setupView];
     [self requestData];
 }
@@ -45,7 +51,7 @@
 #pragma mark - lazyloading
 -(UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
@@ -65,6 +71,13 @@
         _footerView = [[UIView alloc] init];
         
         _footerView.backgroundColor = white_color;
+        
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 6, 0, 0)];
+        textLabel.font = [UIFont boldSystemFontOfSize:15];
+        textLabel.textColor = TEXTCOLOR;
+        textLabel.text = @"购买流程";
+        [textLabel sizeToFit];
+        [_footerView addSubview:textLabel];
         
         PurchesProcessView *prossView = [[[NSBundle mainBundle] loadNibNamed:@"PurchesProcessView" owner:self options:nil] lastObject];
         prossView.frame = CGRectMake(0, 30, kScreenWidth, 100);
@@ -90,12 +103,8 @@
 }
 
 #pragma mark - UITableViewDataSource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataArray.count;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,7 +127,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-
+/*
 #pragma mark - requestData
 - (void)requestData {
     
@@ -148,6 +157,6 @@
         NSLog(@"保险公司error:%@", error);
         [PromtView showAlert:PromptWord duration:1.5];
     }];
-}
+}*/
 
 @end

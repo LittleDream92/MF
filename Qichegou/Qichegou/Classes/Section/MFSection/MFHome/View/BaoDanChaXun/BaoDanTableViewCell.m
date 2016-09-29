@@ -20,21 +20,21 @@
 
     // Configure the view for the selected state
 }
-
--(void)setModel:(InsuranceModel *)model {
-    if (_model != model) {
-     
-        _model = model;
-        
-        [self setNeedsLayout];
-    }
-}
-
--(void)layoutSubviews {
-    [super layoutSubviews];
-    
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, self.model.logo]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
-    self.label.text = self.model.name;
-}
+//
+//-(void)setModel:(InsuranceModel *)model {
+//    if (_model != model) {
+//     
+//        _model = model;
+//        
+//        [self setNeedsLayout];
+//    }
+//}
+//
+//-(void)layoutSubviews {
+//    [super layoutSubviews];
+//    
+//    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, self.model.logo]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
+//    self.label.text = self.model.name;
+//}
 
 @end
