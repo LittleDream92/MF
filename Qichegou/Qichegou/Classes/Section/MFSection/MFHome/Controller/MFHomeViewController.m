@@ -216,7 +216,11 @@ UITableViewDataSource
                 cell = [[HomeOperationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"moreCellID"];
             }
             
-            [cell.moreBtn addTarget:self action:@selector(pushToSaleController) forControlEvents:UIControlEventTouchUpInside];
+            cell.clickMoreSaleBtn = ^ {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self pushToSaleController];
+                });
+            };
             
             return cell;
 

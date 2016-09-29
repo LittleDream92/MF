@@ -340,7 +340,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_icon_1" width="104" height="43"/>
+        <image name="bg_icon_1" width="121" height="50"/>
         <image name="bg_login_1" width="320" height="200"/>
         <image name="border_login" width="282" height="34"/>
         <image name="btn_code_1" width="101" height="34"/>

@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, strong) UIButton *moreBtn;
 
 @end
 
@@ -38,13 +39,13 @@
         
         [self.contentView addSubview:self.titleLabel];
         [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(15);
+            make.left.equalTo(20);
             make.centerY.equalTo(weakSelf);
         }];
         
         [self.contentView addSubview:self.moreBtn];
         [self.moreBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo(CGSizeMake(50, 35));
+            make.size.equalTo(CGSizeMake(60, 35));
             make.centerY.equalTo(weakSelf);
             make.right.equalTo(-5);
         }];
@@ -62,9 +63,13 @@
 -(UIButton *)moreBtn {
     if (!_moreBtn) {
         _moreBtn = [[UIButton alloc] init];
-        _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _moreBtn.titleLabel.font = H14;
+        [_moreBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
         [_moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+        [_moreBtn setImage:[UIImage imageNamed:@"more_right"] forState:UIControlStateNormal];
+        _moreBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+        _moreBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 40, 0, 0);
+        [_moreBtn addTarget:self action:@selector(moreBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _moreBtn;
 }
@@ -72,7 +77,7 @@
 -(UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] init];
-        _lineView.backgroundColor = TEXTCOLOR;
+        _lineView.backgroundColor = RGB(224, 224, 244);
     }
     return _lineView;
 }
@@ -81,8 +86,8 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.text = @"特价车型";
-        _titleLabel.font = [UIFont systemFontOfSize:16];
-        _titleLabel.textColor = [UIColor darkGrayColor];
+        _titleLabel.font = H14;
+        _titleLabel.textColor = TEXTCOLOR;
 
     }
     return _titleLabel;
@@ -90,7 +95,11 @@
 
 
 #pragma mark - action
-
+- (void)moreBtnAction:(UIButton *)sender {
+    if (self.clickMoreSaleBtn) {
+        self.clickMoreSaleBtn();
+    }
+}
 
 
 @end

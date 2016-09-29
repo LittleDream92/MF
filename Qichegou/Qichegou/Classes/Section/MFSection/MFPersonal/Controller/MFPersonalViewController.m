@@ -177,7 +177,8 @@ UITableViewDelegate>
         _naviRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateHighlighted];
-        _naviRightBtn.size = _naviRightBtn.currentBackgroundImage.size;
+//        _naviRightBtn.size = _naviRightBtn.currentBackgroundImage.size;
+        _naviRightBtn.size = CGSizeMake(20, 20);
 //        [_naviRightBtn addTarget:self action:@selector(ClickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _naviRightBtn;

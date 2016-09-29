@@ -10,6 +10,6 @@
 
 @interface HomeOperationCell : UITableViewCell
 
-@property (nonatomic, strong) UIButton *moreBtn;
+@property (nonatomic, copy) void(^clickMoreSaleBtn)();
 
 @end
