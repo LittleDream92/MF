@@ -37,7 +37,7 @@ static NSString *const carProCellID = @"carProCellID";
         make.width.equalTo(100);
     }];
     
-    WEAKSELF
+//    WEAKSELF
     [self addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(100);

@@ -9,11 +9,14 @@
 #import "MFPersonalViewController.h"
 #import "PersonalViewModel.h"
 #import "HomeButton.h"
-#import "MFLoginViewController.h"
+#import "DKLoginViewController.h"
 #import "DKMyOrderVC.h"
 #import "DKMyActivityOrderVC.h"
-#import "MFFindPwdViewController.h"
+#import "DKChangePWDViewController.h"
 #import "AppDelegate.h"
+#import "DKBaseNaviController.h"
+#import "MFCarDetailViewController.h"
+#import "MFSettingViewController.h"
 
 static NSString *const commentCell = @"commentCellID";
 static NSString *const latestCell = @"latestCellID";
@@ -44,16 +47,47 @@ UITableViewDelegate>
 
 @implementation MFPersonalViewController
 
+-(void)dealloc {
+    [NotificationCenters removeObserver:self];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.contrlArr = [NSMutableArray array];
+    //通知
+    [NotificationCenters addObserver:self selector:@selector(loginSuccess:) name:LOGIN_SUCCESS object:nil];
     
     [self setUpnav];
     [self setUpViews];
     [self combineViewModel];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (![AppDelegate APP].user) {
+        self.nameLabel.text = @"点击头像登录";
+    }else {
+        self.nameLabel.text = [AppDelegate APP].user.zsxm;
+    }
+    
+    //判断有没有最近浏览数据
+    //取出数组
+    NSMutableArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:MYLOOKCAR];
+    
+    if (array) {
+        NSLog(@"not nil");
+        
+        NSMutableArray *mArr = [[NSMutableArray alloc] initWithArray:array];
+        self.carIDArr = mArr;
+    }
+    
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
 
 #pragma mark - setUp
 - (void)setUpnav {
@@ -113,12 +147,20 @@ UITableViewDelegate>
 
 - (void)combineViewModel {
     [[self.naviRightBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.settingCommand execute:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MFSettingViewController *settingVC = [[MFSettingViewController alloc] init];
+            [self.navigationController pushViewController:settingVC animated:YES];
+        });
     }];
     
     [[self.iconBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        MFLoginViewController *loginVC = [[MFLoginViewController alloc] init];
-        [self.navigationController pushViewController:loginVC animated:YES];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
+            [self presentViewController:loginVC animated:YES completion:nil];
+        });
+        
     }];
 }
 
@@ -276,7 +318,7 @@ UITableViewDelegate>
                     
                     carCtrl.tag = [[myDic objectForKey:@"cid"] integerValue] + 2016;
                     [carCtrl setUpButtonWithImageName:myDic[@"imgName"] title:myDic[@"title"]];
-//                    [carCtrl addTarget:self action:@selector(ctrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                    [carCtrl addTarget:self action:@selector(ctrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.contentView addSubview:carCtrl];
                     
                 }
@@ -323,8 +365,9 @@ UITableViewDelegate>
             
         }else if (indexPath.section == 2) {     //修改密码
             
-            MFFindPwdViewController *changePwdVC = [[MFFindPwdViewController alloc] init];
-            [self.navigationController pushViewController:changePwdVC animated:YES];
+            DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
+            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
+            [self presentViewController:navCtrller animated:YES completion:nil];
             
         }else if (indexPath.section == 3) {     //login out
             [self loginOut];
@@ -337,8 +380,8 @@ UITableViewDelegate>
             [PromtView showAlert:@"你还没有登录" duration:1];
         }else if (indexPath.section != 4) {
             
-            MFLoginViewController *loginVC = [[MFLoginViewController alloc] init];
-            [self.navigationController pushViewController:loginVC animated:YES];
+            DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
+            [self presentViewController:loginVC animated:YES completion:nil];
         }
     }
 }
@@ -356,6 +399,24 @@ UITableViewDelegate>
         CGFloat width = kScreenWidth/headerH * (headerH - yOffset);
         imgView.frame = CGRectMake((kScreenWidth - width) / 2, yOffset, width, headerH - yOffset);
     }
+}
+
+#pragma mark - action
+- (void)loginSuccess:(NSNotification *)notification {
+    //由于每次view will appear的时候都会判断，因此这里可不做赋值
+}
+
+//点击最近浏览控件触发的
+- (void)ctrlClickAction:(HomeButton *)ctrl
+{
+    NSLog(@"浏览click");
+    NSString *carID = [NSString stringWithFormat:@"%ld",(ctrl.tag - 2016)];
+    NSLog(@"push cid:%@", carID);
+    
+    //push进入详细选车页面
+    MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
+    detailCarVC.cid = carID;
+    [self.navigationController pushViewController:detailCarVC animated:YES];
 }
 
 #pragma mark - dataRequest

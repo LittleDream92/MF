@@ -27,26 +27,6 @@
 
 - (void)setUpCommand {
     
-    _settingCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        NSLog(@"setting事件");
-        
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            [subscriber sendCompleted];
-            return nil;
-        }];
-    }];
-    
-    
-    _myOrderCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        NSLog(@"myOrder事件");
-        
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            [subscriber sendCompleted];
-            return nil;
-        }];
-    }];
-    
-    
 }
 
 

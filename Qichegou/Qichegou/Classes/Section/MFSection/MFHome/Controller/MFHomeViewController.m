@@ -14,6 +14,7 @@
 #import "HomeCarCell.h"
 #import "HomeOperationCell.h"
 
+#import "DKMainWebViewController.h"
 #import "DKBaoDanViewController.h"
 #import "MFBrandViewController.h"
 #import "MFSaleViewController.h"
@@ -165,6 +166,13 @@ UITableViewDataSource
     
     cell.clickXianBtn = ^ {
         NSLog(@"xianBtn");
+        DKMainWebViewController *webViewController = [[DKMainWebViewController alloc] init];
+        webViewController.title = @"洗车";
+//            webViewController.webString = @"http://test.tangxinzhuan.com/api/XiChe";
+//            webViewController.isRequest = YES;
+        webViewController.webString = @"http://open.chediandian.com/xc/index?ApiKey=25fea4fca5d54a91ad935814980dd787&ApiST=1467609844&ApiSign=962ad4b142ae429ac5bdb051b958e0e8";
+        webViewController.isRequest = NO;
+        [self.navigationController pushViewController:webViewController animated:YES];
     };
 }
 

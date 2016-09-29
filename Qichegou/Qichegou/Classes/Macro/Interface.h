@@ -35,6 +35,7 @@
 
 
 #define USERLOGIN       @"/api/user/login"               //验证码／密码登录
+#define REGIST          @"/api/user/register"            //注册
 #define ORDER_REGIST    @"/api/user/loginOrRegister"     //提交订单页面的注册
 #define CANCEL_LOGIN    @"/api/user/logout"              //退出登录
 #define RESET_PWD       @"/api/user/findpass"            //重置密码
