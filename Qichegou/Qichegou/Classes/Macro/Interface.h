@@ -22,6 +22,8 @@
 #define PROTOCOL_QICHEGOU @"http://www.qichegou.com/Wap/help/detail/catid/87"
 
 
+#define CITY_LIST       @"/api/sys/citys"               //城市列表
+
 #define BRABD_LIST      @"/api/car/brands"              //品牌
 #define HOTCAR          @"/api/car/rexiaoche"           //热销车
 #define SALECAR         @"/api/car/tejiache"            //特价车

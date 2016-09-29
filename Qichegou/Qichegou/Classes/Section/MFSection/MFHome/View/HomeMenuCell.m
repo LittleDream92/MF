@@ -102,7 +102,7 @@
     if (!_daiBtn) {
         _daiBtn = [HomeBtn buttonWithType:UIButtonTypeCustom];
         [_daiBtn setImage:[UIImage imageNamed:@"home_xianBtn"] forState:UIControlStateNormal];
-        [_daiBtn setTitle:@"我要车险" forState:UIControlStateNormal];
+        [_daiBtn setTitle:@"保单查询" forState:UIControlStateNormal];
         [_daiBtn addTarget:self action:@selector(daiAction:) forControlEvents:UIControlEventTouchUpInside];
         [_daiBtn setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
     }

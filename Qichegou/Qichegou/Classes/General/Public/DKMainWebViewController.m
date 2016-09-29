@@ -44,7 +44,7 @@
 }
 
 #pragma mark - 重写返回触发事件
-- (void)BackCtrlAction:(UIButton *)backCtrl {
+- (void)backAction:(UIButton *)backCtrl {
     if (self.webView.canGoBack) {
         [self.webView goBack];
     }else {

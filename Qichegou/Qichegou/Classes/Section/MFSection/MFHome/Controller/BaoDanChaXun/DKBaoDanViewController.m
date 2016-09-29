@@ -11,9 +11,12 @@
 #import "DKBaoDetailViewController.h"
 #import "InsuranceModel.h"
 
+#import "PurchesProcessView.h"
+
 @interface DKBaoDanViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *footerView;
 
 /* 网络请求数据源 */
 @property (nonatomic, strong) NSArray *dataArray;
@@ -39,6 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - lazyloading
 -(UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -56,12 +60,32 @@
 }
 
 
+-(UIView *)footerView {
+    if (!_footerView) {
+        _footerView = [[UIView alloc] init];
+        
+        _footerView.backgroundColor = white_color;
+        
+        PurchesProcessView *prossView = [[[NSBundle mainBundle] loadNibNamed:@"PurchesProcessView" owner:self options:nil] lastObject];
+        prossView.frame = CGRectMake(0, 30, kScreenWidth, 100);
+        [_footerView addSubview:prossView];
+    }
+    return _footerView;
+}
+
 #pragma mark - setupView
 - (void)setupView {
+    WEAKSELF
+    [self.view addSubview:self.footerView];
+    [self.footerView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(0);
+        make.height.equalTo(130);
+    }];
     
     [self.view addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.left.right.top.equalTo(0);
+        make.bottom.equalTo(weakSelf.footerView.mas_top);
     }];
 }
 

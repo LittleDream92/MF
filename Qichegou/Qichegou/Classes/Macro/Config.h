@@ -93,6 +93,7 @@
 #define GRAYCOLOR       RGB(170, 170, 170)      //#aaaaaa
 #define kplayceGrayColor RGB(221, 221, 221)     //#dddddd
 #define kskyBlueColor   RGB(27, 140, 227)       //#1b8ce3
+#define kBtnColor       RGB(255, 255, 255)      //#ffffff
 
 //字体大小
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]

@@ -10,11 +10,17 @@
 #import "ActivityViewModel.h"
 #import "MFActivityDetailViewController.h"
 #import "AppDelegate.h"
+#import "CityControl.h"
+#import "DKBaseNaviController.h"
+#import "DKCityTableViewController.h"
 
 @interface MFActivityViewController ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) CityControl *cityCtrl;
 @property (nonatomic, strong) ActivityViewModel *viewModel;
+
+@property (nonatomic, strong) NSDictionary *cityDic;
 
 @end
 
@@ -25,8 +31,25 @@
     
     [self setNav];
     [self setUpViews];
-    [self setUpViewModel];
 }
+
+#pragma mark - System View Methods
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSDictionary *newDic = [UserDefaults objectForKey:kLocationAction];
+    if (![newDic isEqual:self.cityDic]) {
+        self.cityDic = newDic;
+        if (self.navigationItem.leftBarButtonItem.customView) {
+            //取到城市label，重新赋值
+            CityControl *cityCtrl = (CityControl *)self.navigationItem.leftBarButtonItem.customView;
+            cityCtrl.cityLabel.text = [self.cityDic objectForKey:@"cityname"];
+        }
+        
+        [self requestDataWithDic:self.cityDic];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -39,29 +62,14 @@
     
     //设置标题和背景
     self.navigationItem.title = @"团购";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.cityCtrl];
 }
 
 - (void)setUpViews {
     [self.view addSubview:self.webView];
     [self.webView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-}
-
-- (void)setUpViewModel {
-    
-    NSString *tokenStr = [AppDelegate APP].user.token;
-    
-    if (tokenStr.length == 0) {
-        tokenStr = TOKEN_PROMISE;
-    }
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",
-                            @"IOS",@"platform",
-                            tokenStr,@"token", nil];
-    RACSignal *webViewSignal = [self.viewModel.webViewCommand execute:params];
-    [webViewSignal subscribeNext:^(id x) {
-        [self.webView loadHTMLString:x baseURL:[NSURL URLWithString:URL_String]];
     }];
 }
 
@@ -75,6 +83,14 @@
         _webView.delegate = self;
     }
     return _webView;
+}
+
+-(CityControl *)cityCtrl {
+    if (!_cityCtrl) {
+        _cityCtrl = [[CityControl alloc] initWithFrame:CGRectMake(0, 0, 90, 30) cityString:@"长沙"];
+        [_cityCtrl addTarget:self action:@selector(contrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cityCtrl;
 }
 
 -(ActivityViewModel *)viewModel {
@@ -119,5 +135,36 @@
     
     return YES;
 }
+
+#pragma mark - action
+- (void)contrlClickAction:(CityControl *)cityCtrl {
+    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
+    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+//网络请求
+- (void)requestDataWithDic:(NSDictionary *)dic {
+    NSString *tokenStr = [AppDelegate APP].user.token;
+    
+    if (tokenStr.length == 0) {
+        tokenStr = TOKEN_PROMISE;
+    }
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:dic[@"cityid"],@"cityid",
+                            @"IOS",@"platform",
+                            tokenStr,@"token", nil];
+    
+    [DataService request_post_html:[NSString stringWithFormat:@"%@%@", URL_String, ACTIVITYLIST]
+                            params:params
+                    completedBlock:^(id responseObject) {
+                        NSString *htmlStr = responseObject;
+                        [self.webView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:URL_String]];
+                    } failure:^(NSError *error) {
+                        [PromtView showMessage:PromptWord duration:1.5f];
+                    }];
+
+}
+
 
 @end

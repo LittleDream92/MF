@@ -20,8 +20,10 @@
 #import "MFSaleViewController.h"
 #import "MFSaleDetailViewController.h"
 
-#import "HomePageViewModel.h"
+#import "DKBaseNaviController.h"
+#import "DKCityTableViewController.h"
 
+#import "CityControl.h"
 #import "CarModel.h"
 
 static NSString *const homeMenuCellID = @"homeMenuCellID";
@@ -36,8 +38,10 @@ UITableViewDataSource
 @property (nonatomic, strong) HomeHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) HomePageViewModel *viewModel;
+@property (nonatomic, strong) CityControl *cityCtrl;
 @property (nonatomic, strong) NSArray *saleArr;
+
+@property (nonatomic, strong) NSDictionary *cityDic;
 
 @end
 
@@ -59,15 +63,32 @@ UITableViewDataSource
     //接收通知
     [NotificationCenters addObserver:self selector:@selector(locationSuccess:) name:kLocationSuccess object:nil];
     
-    [self setUpViewModel];
     [self setUpNav];
     [self setUpViews];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSDictionary *newDic = [UserDefaults objectForKey:kLocationAction];
+    if (![newDic isEqual:self.cityDic]) {
+        self.cityDic = newDic;
+        //网络请求新城市的特价车
+        [self saleRequest];
+        
+        if (self.navigationItem.leftBarButtonItem.customView) {
+            //取到城市label，重新赋值
+            CityControl *cityCtrl = (CityControl *)self.navigationItem.leftBarButtonItem.customView;
+            cityCtrl.cityLabel.text = [newDic objectForKey:@"cityname"];
+        }
+    }
+}
 
 #pragma mark - setUpViews
 - (void)setUpNav {
     self.title = @"首页";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.cityCtrl];
 }
 
 - (void)setUpViews {
@@ -84,16 +105,6 @@ UITableViewDataSource
     self.tableView.tableHeaderView = self.headerView;
 }
 
-- (void)setUpViewModel {
-    NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:@"6", @"cityid", nil];
-    RACSignal *saleSignal = [self.viewModel.saleCommand execute:brandParams];
-    [saleSignal subscribeNext:^(id x) {
-//        NSLog(@"sale : %@", x);
-        self.saleArr = x;
-        [self.tableView reloadData];
-    }];
-}
-
 #pragma mark - lazyloading
 -(UITableView *)tableView {
     if (!_tableView) {
@@ -103,15 +114,10 @@ UITableViewDataSource
         _tableView.dataSource = self;
         
         _tableView.showsVerticalScrollIndicator = NO;
+        
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
-}
-
--(HomePageViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[HomePageViewModel alloc] init];
-    }
-    return _viewModel;
 }
 
 -(HomeHeaderView *)headerView {
@@ -119,6 +125,19 @@ UITableViewDataSource
         _headerView = [[HomeHeaderView alloc] init];
     }
     return _headerView;
+}
+
+-(CityControl *)cityCtrl {
+    if (!_cityCtrl) {
+        NSString *cityStr = [UserDefaults objectForKey:kLocationAction][@"cityname"];
+        if (!cityStr) {
+            cityStr = @"长沙";
+        }
+        
+        _cityCtrl = [[CityControl alloc] initWithFrame:CGRectMake(0, 0, 90, 30) cityString:cityStr];
+        [_cityCtrl addTarget:self action:@selector(contrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cityCtrl;
 }
 
 #pragma mark - action
@@ -141,6 +160,8 @@ UITableViewDataSource
         //提示所在城市没有业务，默认长沙
         [self presentAlertViewWithString:@"你所在的城市暂未开通，使用默认城市长沙市"];
     }
+    
+    self.cityDic = [UserDefaults objectForKey:kLocationAction];
 
 }
 
@@ -181,6 +202,12 @@ UITableViewDataSource
     MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
     saleVC.saleArray = self.saleArr;
     [self.navigationController pushViewController:saleVC animated:YES];
+}
+
+- (void)contrlClickAction:(CityControl *)cityCtrl {
+    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
+    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -236,9 +263,7 @@ UITableViewDataSource
             [[cell.buyBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
                 NSLog(@"buyCar");
             }];
-            
             return cell;
-
         }
    }
 }
@@ -251,7 +276,6 @@ UITableViewDataSource
         return indexPath.row == 0 ? 40 : 115;
     }
 }
-
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return section == 0 ? CGFLOAT_MIN : 10;
@@ -267,6 +291,35 @@ UITableViewDataSource
         saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
         [self.navigationController pushViewController:saleDetailVC animated:YES];
     }
+}
+
+#pragma mark - saleRequest
+- (void)saleRequest {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cityDic[@"cityid"],@"cityid", nil];
+    [DataService http_Post:SALECAR parameters:params success:^(id responseObject) {
+        if ([responseObject[@"status"] integerValue] == 1) {
+//                    NSLog(@"sale:%@", responseObject);
+            NSArray *saleCars = responseObject[@"tejiache"];
+            if ([saleCars isKindOfClass:[NSArray class]] && saleCars.count>0) {
+                //
+                NSMutableArray *mArr = [NSMutableArray array];
+                for (NSDictionary *jsonDic in saleCars) {
+                    
+                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                    [mArr addObject:model];
+                }
+                self.saleArr = mArr;
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+            }else {
+                [PromtView showMessage:@"当前城市暂无特价车" duration:1.5];
+            }
+        }else {
+            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+        }
+    } failure:^(NSError *error) {
+        [PromtView showMessage:PromptWord duration:1.5];
+    }];
 }
 
 @end
