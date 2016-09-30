@@ -133,6 +133,14 @@
         carListVC.pid = proID;
         [weakSelf.navigationController pushViewController:carListVC animated:YES];
     };
+    
+    self.condationView.clickNextBtn = ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
+            carListVC.pid = @"398";
+            [weakSelf.navigationController pushViewController:carListVC animated:YES];
+        });
+    };
 }
 
 #pragma mark - lazyloading

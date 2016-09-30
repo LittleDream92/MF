@@ -176,6 +176,8 @@
 		A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF31D926A220028F102 /* UILabel+Extension.m */; };
 		A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF51D926A220028F102 /* UIView+ViewController.m */; };
 		A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */; };
+		A8D8C7C01D9E063A00E70A16 /* CondationCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8C7BF1D9E063A00E70A16 /* CondationCollectionCell.m */; };
+		A8D8C7C61D9E17CE00E70A16 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8C7C51D9E17CE00E70A16 /* PriceCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -538,6 +540,10 @@
 		A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WeChatAndAliPayMethod.m"; sourceTree = "<group>"; };
 		A886FFFE1D926B850028F102 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A886FFFF1D926B850028F102 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A8D8C7BE1D9E063A00E70A16 /* CondationCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondationCollectionCell.h; sourceTree = "<group>"; };
+		A8D8C7BF1D9E063A00E70A16 /* CondationCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondationCollectionCell.m; sourceTree = "<group>"; };
+		A8D8C7C41D9E17CE00E70A16 /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCell.h; sourceTree = "<group>"; };
+		A8D8C7C51D9E17CE00E70A16 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -804,6 +810,10 @@
 			children = (
 				A857EDDE1D9D1BED0003C0FF /* CondationView.h */,
 				A857EDDF1D9D1BED0003C0FF /* CondationView.m */,
+				A8D8C7BE1D9E063A00E70A16 /* CondationCollectionCell.h */,
+				A8D8C7BF1D9E063A00E70A16 /* CondationCollectionCell.m */,
+				A8D8C7C41D9E17CE00E70A16 /* PriceCell.h */,
+				A8D8C7C51D9E17CE00E70A16 /* PriceCell.m */,
 			);
 			name = CondationCell;
 			sourceTree = "<group>";
@@ -1600,6 +1610,7 @@
 				A84CF64E1D9B968600D096BF /* CarDetailViewModel.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A857EDD41D9D02BB0003C0FF /* BaoDetailTableViewCell.m in Sources */,
+				A8D8C7C61D9E17CE00E70A16 /* PriceCell.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
 				A857EDDA1D9D02F40003C0FF /* PurchesProcessView.m in Sources */,
 				A821E0B51D9A5EB500CDF409 /* PayOrderCell.m in Sources */,
@@ -1618,6 +1629,7 @@
 				A821E08B1D9A1EE900CDF409 /* HomeHeaderView.m in Sources */,
 				A857EDD21D9D02BB0003C0FF /* BaoDetailCell.m in Sources */,
 				A821E0671D9A037E00CDF409 /* HotCarCollectionCell.m in Sources */,
+				A8D8C7C01D9E063A00E70A16 /* CondationCollectionCell.m in Sources */,
 				A821E11E1D9A6AE400CDF409 /* CarInformationView.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */,

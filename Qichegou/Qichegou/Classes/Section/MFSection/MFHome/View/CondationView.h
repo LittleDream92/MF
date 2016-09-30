@@ -10,4 +10,6 @@
 
 @interface CondationView : UIView
 
+@property (nonatomic, copy) void(^clickNextBtn)();
+
 @end

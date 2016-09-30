@@ -68,7 +68,7 @@
     
     NSMutableDictionary *selectedAtts = [NSMutableDictionary dictionary];
     selectedAtts[NSFontAttributeName] = SYSTEMFONT(10);
-    selectedAtts[NSForegroundColorAttributeName] = ITEMCOLOR;
+    selectedAtts[NSForegroundColorAttributeName] = kskyBlueColor;
     
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
