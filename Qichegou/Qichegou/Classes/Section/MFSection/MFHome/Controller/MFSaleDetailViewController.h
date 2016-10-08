@@ -10,6 +10,6 @@
 
 @interface MFSaleDetailViewController : DKBaseViewController
 
-
+@property (nonatomic, copy) NSString *carID;
 
 @end

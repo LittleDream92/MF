@@ -198,10 +198,18 @@ UITableViewDataSource
     };
 }
 
+- (void)saleCarDetailAction:(UIButton *)sender {
+    CarModel *model = self.saleArr[sender.tag];
+    
+    MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
+    saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+    saleDetailVC.carID = model.car_id;
+    [self.navigationController pushViewController:saleDetailVC animated:YES];
+}
 
 - (void)pushToSaleController {
     MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
-    saleVC.saleArray = self.saleArr;
+//    saleVC.saleArray = self.saleArr;
     [self.navigationController pushViewController:saleVC animated:YES];
 }
 
@@ -261,9 +269,9 @@ UITableViewDataSource
             
             cell.model = self.saleArr[indexPath.row];
             
-            [[cell.buyBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-                NSLog(@"buyCar");
-            }];
+            cell.buyBtn.tag = indexPath.row;
+            [cell.buyBtn addTarget:self action:@selector(saleCarDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+        
             return cell;
         }
    }
@@ -282,17 +290,18 @@ UITableViewDataSource
     return section == 0 ? CGFLOAT_MIN : 10;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.row != 0) {
-        NSLog(@"selected salecar");
-        
-        CarModel *model = self.saleArr[indexPath.row];
-        
-        MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
-        saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
-        [self.navigationController pushViewController:saleDetailVC animated:YES];
-    }
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == 1 && indexPath.row != 0) {
+//        NSLog(@"selected salecar");
+//        
+//        CarModel *model = self.saleArr[indexPath.row];
+//        
+//        MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
+//        saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+//        saleDetailVC.carID = model.car_id;
+//        [self.navigationController pushViewController:saleDetailVC animated:YES];
+//    }
+//}
 
 #pragma mark - saleRequest
 - (void)saleRequest {
@@ -311,7 +320,7 @@ UITableViewDataSource
                     [mArr addObject:model];
                 }
                 self.saleArr = mArr;
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
             }else {
                 [PromtView showMessage:@"当前城市暂无特价车" duration:1.5];
             }

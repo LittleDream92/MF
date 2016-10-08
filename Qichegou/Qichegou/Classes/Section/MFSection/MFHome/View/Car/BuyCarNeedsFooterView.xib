@@ -22,7 +22,6 @@
                     </state>
                     <state key="highlighted" title="提交订单">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <string key="backgroundImage">btn_pay.2btn_pay.2</string>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单即表示您已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1c-5E-14u">
@@ -61,8 +60,5 @@
     </objects>
     <resources>
         <image name="btn_pay" width="320" height="42"/>
-        <image width="320" height="42">
-            <string key="name">btn_pay.2btn_pay.2</string>
-        </image>
     </resources>
 </document>

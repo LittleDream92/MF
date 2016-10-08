@@ -10,6 +10,4 @@
 
 @interface MFSaleViewController : DKBaseViewController
 
-@property (nonatomic, strong) NSArray *saleArray;
-
 @end

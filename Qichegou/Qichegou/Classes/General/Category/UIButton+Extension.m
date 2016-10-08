@@ -68,6 +68,8 @@
                             md5String, @"sign",
                             telString, @"tel", nil];
     
+    NSLog(@"params:%@", params);
+    
     [DataService http_Post:GETCODE
      
                 parameters:params

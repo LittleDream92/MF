@@ -36,8 +36,18 @@
                                
                                if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
                                    NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
-                                   
                                    CarModel *detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
+                                   
+                                   NSMutableArray *mArr = [NSMutableArray array];
+                                   NSArray *carImgs = [jsonDic objectForKey:@"car_imgs"];
+                                   if ([carImgs isKindOfClass:[NSArray class]] && carImgs.count > 0) {
+                                       
+                                       for (NSDictionary *jsonDic in carImgs) {
+                                           NSString *imgURL = jsonDic[@"img"];
+                                           [mArr addObject:imgURL];
+                                       }
+                                   }
+                                   detailModel.color_imgs = (NSArray *)mArr;
                                    
                                    [subscriber sendNext:detailModel];
                                    
