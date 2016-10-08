@@ -43,6 +43,8 @@
     CGFloat btnH;
 }
 
+@property (nonatomic, assign) BOOL isCondationChooseCar;
+
 //delegate
 @property (nonatomic, strong)id <CustomButtonProtocol> myDelegate;
 

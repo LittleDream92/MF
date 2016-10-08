@@ -72,7 +72,8 @@ static NSString *const saleCellID = @"saleCellID";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        _tableView.rowHeight = 160;
+        _tableView.rowHeight = 145;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
     }
     return _tableView;
@@ -101,7 +102,7 @@ static NSString *const saleCellID = @"saleCellID";
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     cell.carModel = self.saleArray[indexPath.row];
     
     return cell;

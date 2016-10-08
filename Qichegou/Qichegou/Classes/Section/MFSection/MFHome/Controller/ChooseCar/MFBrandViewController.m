@@ -15,15 +15,11 @@
 #import "CarModel.h"
 #import "BrandViewModel.h"
 #import "DKCarListViewController.h"
-//#import "CityControl.h"
-//#import "DKCityTableViewController.h"
-//#import "DKBaseNaviController.h"
 
 @interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate, BrandClickProtocol>
 {
     BOOL _index;
 }
-//@property (nonatomic, strong) CityControl *cityCtrl;
 @property (nonatomic, strong) CustomButtonView *titleView;
 @property (nonatomic, strong) UIScrollView *scrollview;
 @property (nonatomic, strong) BrandView *brandView;
@@ -48,22 +44,6 @@
     [self setUpViewModel];
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    
-//    NSDictionary *newDic = [UserDefaults objectForKey:kLocationAction];
-//    if (![newDic isEqual:self.cityDic]) {
-//        self.cityDic = newDic;
-//        //重新网络请求
-//        [self brandRequest];
-//        
-//        if (self.navigationItem.rightBarButtonItem.customView) {
-//            //取到城市label，重新赋值
-//            CityControl *cityCtrl = (CityControl *)self.navigationItem.leftBarButtonItem.customView;
-//            cityCtrl.cityLabel.text = [newDic objectForKey:@"cityname"];
-//        }
-//    }
-//}
-
 -(void)backAction:(UIButton *)sender {
     self.carProView.hidden = YES;
     [self.navigationController popViewControllerAnimated:YES];
@@ -79,7 +59,6 @@
     self.title = @"选车";
     
     [self navBack:YES];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.cityCtrl];
 }
 
 - (void)setUpViews {
@@ -134,38 +113,29 @@
         [weakSelf.navigationController pushViewController:carListVC animated:YES];
     };
     
-    self.condationView.clickNextBtn = ^ {
+    self.condationView.clickNextBtn = ^ (NSDictionary *params){
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", params);
             DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
-            carListVC.pid = @"398";
+            carListVC.maxPrice = params[@"max"];
+            carListVC.minPrice = params[@"min"];
+            carListVC.modelID = params[@"mid"];
             [weakSelf.navigationController pushViewController:carListVC animated:YES];
         });
     };
 }
 
 #pragma mark - lazyloading
-//-(CityControl *)cityCtrl {
-//    if (!_cityCtrl) {
-//        NSString *cityStr = [UserDefaults objectForKey:kLocationAction][@"cityname"];
-//        if (!cityStr) {
-//            cityStr = @"长沙";
-//        }
-//        
-//        _cityCtrl = [[CityControl alloc] initWithFrame:CGRectMake(0, 0, 60, 30) cityString:cityStr];
-//        [_cityCtrl addTarget:self action:@selector(contrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _cityCtrl;
-//}
-
 -(CustomButtonView *)titleView {
     if (!_titleView) {
         _titleView = [[CustomButtonView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 48)];
         _titleView.myDelegate = self;
         [_titleView createWithImgNameArr:nil selectImgNameArr:nil buttonW:kScreenWidth/2];
         NSArray *titles = @[@"品牌选车", @"条件选车"];
+        _titleView.isCondationChooseCar = YES;
         [_titleView _initButtonViewWithMenuArr:titles
                                      textColor:TEXTCOLOR
-                               selectTextColor:ITEMCOLOR
+                               selectTextColor:kskyBlueColor
                                 fontSizeNumber:16
                                       needLine:YES];
     }
@@ -182,6 +152,8 @@
         _scrollview.delegate = self;
         _scrollview.pagingEnabled = YES;//分页
         _scrollview.contentSize = CGSizeMake(kScreenWidth*2, 0);
+        
+        _scrollview.scrollEnabled = NO;
     }
     return _scrollview;
 }

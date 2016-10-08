@@ -107,7 +107,11 @@
         
         markLine.tag = 999;
         
-        markLine.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"line_btn"]];
+        if (self.isCondationChooseCar) {
+            markLine.backgroundColor = kskyBlueColor;
+        }else {
+            markLine.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"line_btn"]];
+        }
         
         [self addSubview:markLine];
         

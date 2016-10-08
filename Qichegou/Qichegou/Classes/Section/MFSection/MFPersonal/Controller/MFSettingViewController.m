@@ -8,6 +8,7 @@
 
 #import "MFSettingViewController.h"
 #import "MFFeedBackViewController.h"
+#import "AppDelegate.h"
 
 static NSString *const cellID = @"settingCellID";
 @interface MFSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -64,7 +65,12 @@ static NSString *const cellID = @"settingCellID";
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+//    NSLog(@"token%@" , [AppDelegate APP].user.token);
+//    if ([[AppDelegate APP].user.token isKindOfClass:[NSNull class]]) {
+        return 2;
+//    }else {
+//      return 1;
+//    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

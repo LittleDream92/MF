@@ -8,16 +8,22 @@
 
 #import "PriceCell.h"
 
-#define kThumbW 20
+#define LEFT_Padding 50
+#define kThumbW 15
 
 @interface PriceCell ()
+{
+    CGFloat leftX;
+    CGFloat rightX;
+}
 
-@property (nonatomic, strong) UIView *sliderView;
-@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIImageView *bgView;
 @property (nonatomic, strong) UIView *blueView;
 
 @property (nonatomic, strong) UIImageView *thumb1;
 @property (nonatomic, strong) UIImageView *thumb2;
+
+@property (nonatomic, assign) CGFloat gestureH;
 
 @end
 
@@ -41,39 +47,38 @@
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        CGFloat height = 30;
-        CGFloat padding = 10;
-        
         WEAKSELF
-        
-        [self.contentView addSubview:self.sliderView];
-        [self.sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kScreenWidth, 80));
-            make.top.equalTo(10);
-            make.left.equalTo(weakSelf.contentView);
-        }];
-        
-        [self.sliderView addSubview:self.bgView];
+        [self.contentView addSubview:self.bgView];
         [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(height, padding, 40, padding));
+            make.centerX.equalTo(weakSelf);
+            make.top.equalTo(15);
+            make.size.equalTo(CGSizeMake(292, 28));
         }];
         
-        [self.sliderView addSubview:self.blueView];
+        leftX = kScreenWidth/2 - (292/2) + 3;
+        rightX = kScreenWidth/2 + (292/2) - 9;
+        
+        self.gestureH = self.bgView.frame.origin.y;
+        
+        [self.contentView addSubview:self.blueView];
         [self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(height, padding, 40, padding));
+            make.left.equalTo(weakSelf.bgView).offset(3);
+            make.right.equalTo(weakSelf.bgView).offset(-9);
+            make.bottom.equalTo(weakSelf.bgView);
+            make.height.equalTo(9);
         }];
         
-        [self.sliderView addSubview:self.thumb1];
+        [self.contentView addSubview:self.thumb1];
         [self.thumb1 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW+10));
-            make.centerX.equalTo(weakSelf.sliderView.mas_left).offset(padding);
+            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
+            make.centerX.equalTo(weakSelf.bgView.mas_left).offset(3);
             make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
         }];
-        
-        [self.sliderView addSubview:self.thumb2];
+
+        [self.contentView addSubview:self.thumb2];
         [self.thumb2 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW+10));
-            make.centerX.equalTo(weakSelf.sliderView.mas_right).offset(-padding);
+            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
+            make.centerX.equalTo(weakSelf.bgView.mas_right).offset(-9);
             make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
         }];
         
@@ -82,18 +87,10 @@
 }
 
 #pragma mark - lazyloading
--(UIView *)sliderView {
-    if (!_sliderView) {
-        _sliderView = [[UIView alloc] init];
-//        _sliderView.backgroundColor = [UIColor yellowColor];
-    }
-    return _sliderView;
-}
-
--(UIView *)bgView {
+-(UIImageView *)bgView {
     if (!_bgView) {
-        _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor brownColor];
+        _bgView = [[UIImageView alloc] init];
+        _bgView.image = [UIImage imageNamed:@"Condation_bg"];
     }
     return _bgView;
 }
@@ -101,7 +98,7 @@
 -(UIView *)blueView {
     if (!_blueView) {
         _blueView = [[UIView alloc] init];
-        _blueView.backgroundColor = ITEMCOLOR;
+        _blueView.backgroundColor = kskyBlueColor;
     }
     return _blueView;
 }
@@ -111,7 +108,6 @@
         _thumb1 = [[UIImageView alloc] init];
         _thumb1.userInteractionEnabled = YES;
         _thumb1.image = [UIImage imageNamed:@"upArow"];
-//        _thumb1.backgroundColor = [UIColor redColor];
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(thumbAction1:)];
         [_thumb1 addGestureRecognizer:pan];
@@ -125,7 +121,6 @@
         _thumb2 = [[UIImageView alloc] init];
         _thumb2.userInteractionEnabled = YES;
         _thumb2.image = [UIImage imageNamed:@"upArow"];
-//        _thumb2.backgroundColor = [UIColor cyanColor];
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(thumbAction2:)];
         [_thumb2 addGestureRecognizer:pan];
@@ -138,27 +133,29 @@
 - (void)thumbAction1:(UIPanGestureRecognizer *)panGesture {
 //    NSLog(@"thumb1");
     
-    CGPoint point = [panGesture translationInView:self.sliderView];
-    static CGPoint center;
-    CGFloat thub2X = CGRectGetMinX(self.thumb2.frame);
-    CGFloat blueViewX = CGRectGetMaxX(self.blueView.frame);
-    
     //初始位置
+    static CGPoint center;
     if (panGesture.state ==UIGestureRecognizerStateBegan) {
         center = panGesture.view.center;
     }
     
+    //手势滑动
+    CGPoint point = [panGesture translationInView:self.contentView];
+    
+    CGFloat thub2X = CGRectGetMinX(self.thumb2.frame);
+
     CGFloat x = point.x+center.x;
     self.blueView.left = self.thumb1.center.x;
-    self.blueView.width = blueViewX - self.thumb1.center.x;
-    panGesture.view.center = CGPointMake(x, 45);
+    self.blueView.width = self.thumb2.center.x - self.thumb1.center.x;
     
-    if (panGesture.view.center.x < 10) {
-        panGesture.view.center = CGPointMake(10,45);
-    }else if (panGesture.view.center.x > thub2X ) {
-        panGesture.view.center = CGPointMake(thub2X-15,45);
+    panGesture.view.center = CGPointMake(x, center.y);
+
+    if (panGesture.view.center.x < (self.bgView.origin.x+3)) {
+        panGesture.view.center = CGPointMake(self.bgView.origin.x+3,center.y);
+    }else if (panGesture.view.center.x > (thub2X-kThumbW/2) ) {
+        panGesture.view.center = CGPointMake((thub2X-kThumbW/2), center.y);
     }
-    
+
     
     if (panGesture.state == UIGestureRecognizerStateEnded) {
         if (self.thumbMoveAction) {
@@ -169,39 +166,36 @@
 }
 
 - (void)thumbAction2:(UIPanGestureRecognizer *)panGesture {
-//    NSLog(@"thumb2");
-    
-    CGFloat thub1X = CGRectGetMaxX(self.thumb1.frame);
-    
-    CGPoint point = [panGesture translationInView:self.sliderView];
+
     static CGPoint center;
-    
     //初始位置
     if (panGesture.state ==UIGestureRecognizerStateBegan) {
         center = panGesture.view.center;
     }
     
+    //滑动位置
+    CGPoint point = [panGesture translationInView:self.contentView];
     CGFloat x = center.x+point.x;
     self.blueView.width = x - self.thumb1.center.x;
     self.blueView.right = x;
     
-    panGesture.view.center = CGPointMake(x, 45);
+    panGesture.view.center = CGPointMake(x, center.y);
     
-    if (panGesture.view.center.x < thub1X) {
+    CGFloat thub1X = CGRectGetMaxX(self.thumb1.frame);
+    if (panGesture.view.center.x < (thub1X+kThumbW/2)) {
+        self.blueView.left = self.thumb1.center.x;
+        self.blueView.width = (thub1X+kThumbW/2) - self.thumb1.center.x;
         
-        self.blueView.width = self.thumb2.center.x - self.thumb1.center.x;
-        self.blueView.right = self.thumb2.center.x;
         
-        panGesture.view.center = CGPointMake(thub1X+15,45);
+        panGesture.view.center = CGPointMake((thub1X+kThumbW/2), center.y);
+    }else if (panGesture.view.center.x > rightX) {
+
+        self.blueView.width = rightX - self.thumb1.center.x;
+        self.blueView.right = rightX;
+        
+        panGesture.view.center = CGPointMake(rightX, center.y);
     }
-    if (panGesture.view.center.x > (kScreenWidth-10) ) {
-        
-        self.blueView.width = kScreenWidth-20;
-        self.blueView.right = kScreenWidth-10;
-        
-        panGesture.view.center = CGPointMake(kScreenWidth-10,45);
-    }
-    
+
     if (panGesture.state == UIGestureRecognizerStateEnded) {
         if (self.thumbMoveAction) {
             self.thumbMoveAction(self.thumb1.center.x, self.thumb2.center.x);

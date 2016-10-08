@@ -10,6 +10,6 @@
 
 @interface CondationView : UIView
 
-@property (nonatomic, copy) void(^clickNextBtn)();
+@property (nonatomic, copy) void(^clickNextBtn)(NSDictionary *params);
 
 @end

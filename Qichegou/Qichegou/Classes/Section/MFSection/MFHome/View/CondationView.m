@@ -19,13 +19,16 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 }
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIView *buttonView;
 @property (nonatomic, strong) UIButton *nextBtn;
-@property (nonatomic, strong) UIButton *clearBtn;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSIndexPath *lastIndexPath;
+
+//params
+@property (nonatomic, assign) CGFloat min;
+@property (nonatomic, assign) CGFloat max;
+@property (nonatomic, assign) NSString *mid;
 
 @end
 
@@ -38,8 +41,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
         [self setUpData];
         
         WEAKSELF
-        [self addSubview:self.buttonView];
-        [self.buttonView makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.nextBtn];
+        [self.nextBtn makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(0);
             make.height.equalTo(50);
         }];
@@ -47,19 +50,7 @@ static NSString *const identifier = @"CondationtvCollectionCell";
         [self addSubview:self.tableView];
         [self.tableView makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(0);
-            make.bottom.equalTo(weakSelf.buttonView.mas_top);
-        }];
-        
-        [self.buttonView addSubview:self.clearBtn];
-        [self.clearBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.bottom.equalTo(0);
-            make.width.equalTo(100);
-        }];
-        
-        [self.buttonView addSubview:self.nextBtn];
-        [self.nextBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakSelf.clearBtn.mas_right);
-            make.right.top.bottom.equalTo(0);
+            make.bottom.equalTo(weakSelf.nextBtn.mas_top);
         }];
     }
     return self;
@@ -69,6 +60,11 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 - (void)setUpData {
     imgNameArr = @[@"car_1",@"car_2",@"car_3",@"car_4",@"car_5",@"car_6",@"car_7",@"car_8",@"car_9",@""];
     titleArr = @[@"微型", @"小型", @"紧凑型", @"中型", @"中大型", @"豪华型", @"MPV", @"SUV", @"跑车"];
+    
+    self.min = 0;
+    self.max = 70;
+    
+    self.mid = @"";
 }
 
 
@@ -110,6 +106,12 @@ static NSString *const identifier = @"CondationtvCollectionCell";
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+            cell.thumbMoveAction = ^ (CGFloat min, CGFloat max) {
+                NSLog(@"min:%f, max:%f", min, max);
+                self.min = min;
+                self.max = max;
+            };
+            
             return cell;
         }else {
             UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"levelCellID"];
@@ -124,7 +126,6 @@ static NSString *const identifier = @"CondationtvCollectionCell";
             return cell;
         }
     }
-   
 }
 
 
@@ -136,7 +137,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
         if (indexPath.section == 0) {
             return 80;
         }else {
-            return 370;
+            CGFloat height = (kScreenHeight - 10*2 - 30*2 - 80-50 - 64 - 48);
+            return height;
         }
     }
 }
@@ -158,8 +160,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
 
     CGFloat width = kScreenWidth/3;
-    CGFloat height = 110;
-    return CGSizeMake(width, height);
+    CGFloat height = (kScreenHeight - 10*2 - 30*2 - 80-50 - 64 - 48);
+    return CGSizeMake(width, height/3);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -180,21 +182,21 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     CondationCollectionCell *lastCell = (CondationCollectionCell *)[collectionView cellForItemAtIndexPath:self.lastIndexPath];
     lastCell.carLabel.textColor = TEXTCOLOR;
     CondationCollectionCell *newCell = (CondationCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    newCell.carLabel.textColor = ITEMCOLOR;
+    newCell.carLabel.textColor = kskyBlueColor;
     
     self.lastIndexPath = indexPath;
 }
 
 #pragma mark - action
-- (void)clearAction:(UIButton *)sender {
-    NSLog(@"clear");
-}
-
 - (void)pushNextAction:(UIButton *)sender {
     NSLog(@"push next");
     
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", self.min], @"min",
+                            [NSString stringWithFormat:@"%f", self.max], @"max",
+                            self.mid, @"mid",nil];
+    
     if (self.clickNextBtn) {
-        self.clickNextBtn();
+        self.clickNextBtn(params);
     }
 }
 
@@ -216,34 +218,13 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     return _tableView;
 }
 
--(UIView *)buttonView {
-    if (!_buttonView) {
-        _buttonView = [[UIView alloc] init];
-    }
-    return _buttonView;
-}
-
--(UIButton *)clearBtn {
-    if (!_clearBtn) {
-        _clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_clearBtn createButtonWithBGImgName:@"btn_clear"
-                          bghighlightImgName:@"btn_clear_2"
-                                    titleStr:@"清空"
-                                    fontSize:15];
-        [_clearBtn setTitleColor:GRAYCOLOR forState:UIControlStateNormal];
-        [_clearBtn addTarget:self action:@selector(clearAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _clearBtn;
-}
-
 -(UIButton *)nextBtn {
     if (!_nextBtn) {
         _nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_nextBtn setTitleColor:kBtnColor forState:UIControlStateNormal];
-        [_nextBtn createButtonWithBGImgName:@"btn_find"
-                         bghighlightImgName:@"btn_find_2"
-                                   titleStr:@"找到0款车型"
-                                   fontSize:15];
+        _nextBtn.backgroundColor = kskyBlueColor;
+        _nextBtn.titleLabel.font = H15;
+        [_nextBtn setTitle:@"找到0款车型" forState:UIControlStateNormal];
         [_nextBtn addTarget:self action:@selector(pushNextAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _nextBtn;

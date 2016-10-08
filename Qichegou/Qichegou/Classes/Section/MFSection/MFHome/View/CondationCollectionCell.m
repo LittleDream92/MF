@@ -25,19 +25,22 @@
 }
 
 - (void)createViews {
+    
+    CGFloat height = self.frame.size.height*2/3;
 
+    WEAKSELF
     [self.contentView addSubview:self.carImgView];
     [self.carImgView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(10);
         make.right.equalTo(-10);
         make.top.equalTo(0);
-        make.height.equalTo(80);
+        make.height.equalTo(height);
     }];
     
     [self.contentView addSubview:self.carLabel];
     [self.carLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(0);
-        make.top.equalTo(75);
+        make.top.equalTo(weakSelf.carImgView.mas_bottom).offset(5);
     }];
 }
 

@@ -124,6 +124,7 @@
     DKBaoDetailViewController *detailVC = [[DKBaoDetailViewController alloc] init];
 //    InsuranceModel *model = self.dataArray[indexPath.section];
 //    detailVC.titleStr = model.name;
+    detailVC.title = @"保单查询";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
