@@ -8,7 +8,12 @@
 
 #import "MFFeedBackViewController.h"
 
-@interface MFFeedBackViewController ()
+
+@interface MFFeedBackViewController ()<UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *placeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *submmitBtn;
 
 @end
 
@@ -29,11 +34,40 @@
 #pragma mark - setUpViews
 - (void)setUpNav {
     [self navBack:YES];
-    self.title = @"反馈";
+    self.title = @"意见反馈";
+    self.view.backgroundColor = BGGRAYCOLOR;
 }
 
 - (void)setUpViews {
-
+    self.submmitBtn.layer.cornerRadius = 5;
+    [self.submmitBtn setBackgroundColor:kskyBlueColor];
+    [self.submmitBtn setTitle:@"提交" forState:UIControlStateNormal];
 }
+
+#pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView {
+    NSLog(@"%ld", textView.text.length);
+    if (textView.text.length > 0) {
+        self.placeLabel.hidden = YES;
+    }else {
+        self.placeLabel.hidden = NO;
+    }
+}
+
+#pragma mark - action
+- (IBAction)submmitAction:(id)sender {
+    NSLog(@"提交");
+    
+    if (self.textView.text.length > 0) {
+        [self.view endEditing:YES];
+        self.textView.text = nil;
+        self.placeLabel.hidden = NO;
+        
+        [PromtView showAlert:@"您的意见我们已经收到！" duration:1.5];
+    }else {
+        [PromtView showAlert:@"请输入意见或者建议" duration:1.5];
+    }
+}
+
 
 @end

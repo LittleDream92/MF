@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MFAboutViewController">
+            <connections>
+                <outlet property="versionLabel" destination="LDv-8e-bNn" id="Ma0-7A-PaP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_icon_1" translatesAutoresizingMaskIntoConstraints="NO" id="CGi-iI-KLs">
+                    <rect key="frame" x="100" y="18" width="121" height="50"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="汽车狗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEb-3s-tpX">
+                    <rect key="frame" x="138" y="78" width="45" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDv-8e-bNn">
+                    <rect key="frame" x="145" y="96" width="30" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7U-ID-Tgg">
+                    <rect key="frame" x="127" y="454" width="66" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <state key="normal" title="《服务协议》"/>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="serviceAction:" destination="-1" eventType="touchUpInside" id="ouS-l9-Ic8"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CopyRight © 汽车购. All Rights Reserved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5c-nd-GWZ">
+                    <rect key="frame" x="54" y="480" width="212" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpD-kR-AD8">
+                    <rect key="frame" x="30" y="127" width="260" height="316"/>
+                    <mutableString key="text">      汽车购是北京点酷时代网络科技有限公司旗下品牌， 是一家连接购车用户与汽车经销商的互联网交易平台， 拥有包括PC端、移动app、微信、微博等多媒体全渠道的运营推广平台， 稳定的商品车辆供应渠道，独立的销售展厅和专业的销售团队， 为大众提供了一个便捷了解汽车底价的渠道， 并将汽车经销商原本无法量化的市场营销直接转化到销售环节， 实现了用户与商家之间的双赢。 平台上线首月，就以实际销售流水突破3000万，成交超过200台的惊艳表现， 引起了行业内外的广泛关注。随着长沙试点的顺利开展， 目前汽车购已积极投入到下一阶段落地点的开拓工作当中， 平台的增长趋势明显，并成为国内目前唯一一家不通过补贴获取用户， 并实现销售盈利的汽车电商平台。
+
+  未来，随着汽车购平台的推进，我们将在这种完善、低价的购车体系之外，加快线上资讯交流与线下销售服务领域的结合，着力形成以汽车为核心的社交生活平台，最终打造出一个完整的汽车服务生态系统，开辟出一条符合互联网时代发展规律和消费者需求的汽车电商之路。</mutableString>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="k5c-nd-GWZ" secondAttribute="bottom" constant="10" id="2EB-Mn-NzP"/>
+                <constraint firstItem="k5c-nd-GWZ" firstAttribute="top" secondItem="w7U-ID-Tgg" secondAttribute="bottom" id="3jg-q0-w6K"/>
+                <constraint firstAttribute="trailing" secondItem="fpD-kR-AD8" secondAttribute="trailing" constant="30" id="JMQ-XB-ECX"/>
+                <constraint firstItem="k5c-nd-GWZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Odt-lR-uDU"/>
+                <constraint firstItem="LDv-8e-bNn" firstAttribute="top" secondItem="aEb-3s-tpX" secondAttribute="bottom" id="SKR-ZO-oxn"/>
+                <constraint firstItem="aEb-3s-tpX" firstAttribute="top" secondItem="CGi-iI-KLs" secondAttribute="bottom" constant="10" id="SUB-lH-zFf"/>
+                <constraint firstItem="LDv-8e-bNn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Srw-VW-507"/>
+                <constraint firstItem="CGi-iI-KLs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cd7-wN-eEv"/>
+                <constraint firstItem="CGi-iI-KLs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="10" id="dUy-UQ-g6L"/>
+                <constraint firstItem="aEb-3s-tpX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gEQ-Xh-2fw"/>
+                <constraint firstItem="fpD-kR-AD8" firstAttribute="top" secondItem="LDv-8e-bNn" secondAttribute="bottom" constant="15" id="hiN-sW-URU"/>
+                <constraint firstItem="w7U-ID-Tgg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tkE-YB-V2u"/>
+                <constraint firstItem="fpD-kR-AD8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="yVl-xj-Qd6"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="328" y="358"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_icon_1" width="121" height="50"/>
+    </resources>
+</document>

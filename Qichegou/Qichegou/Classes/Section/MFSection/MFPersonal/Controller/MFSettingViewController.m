@@ -93,6 +93,7 @@ static NSString *const cellID = @"settingCellID";
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"clearCahceCell"];
             }
             
+            cell.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.imageView.image = [UIImage imageNamed:self.viewModel.imgArr[indexPath.row]];
             cell.textLabel.text = self.viewModel.titleArr[indexPath.row];
@@ -142,23 +143,13 @@ static NSString *const cellID = @"settingCellID";
         if ([cacheCell.detailTextLabel.text isEqualToString:@"0.0M"]) {
             [PromtView showAlert:@"暂无缓存" duration:1.5];
         }else {
-            //弹出清除确认框
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定清除缓存" preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancelAction];
+            //确定清除缓存
+            [self.viewModel clearCacheAction];
+            NSLog(@"%.1f _countcache", self.viewModel.cacheSize);
             
-            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                //确定清除缓存
-                [self.viewModel clearCacheAction];
-                NSLog(@"%.1f _countcache", self.viewModel.cacheSize);
-                
-                //刷新tableView
-                //            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-                [self.tableView reloadData];
-            }];
-            [alert addAction:sureAction];
-            [self presentViewController:alert animated:YES completion:nil];
+            //刷新tableView
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }
     }else if (indexPath.row == 1) {
         //反馈
