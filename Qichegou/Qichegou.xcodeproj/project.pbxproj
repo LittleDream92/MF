@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F62E1CFBC5964947920D585 /* libPods-Qichegou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */; };
+		A81B00011DA9F5CD004FC976 /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81B00001DA9F5CD004FC976 /* MFAboutViewController.m */; };
+		A81BFFFE1DA9EB3A004FC976 /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A81BFFFD1DA9EB3A004FC976 /* SettingViewModel.m */; };
 		A821E0541D9A030000CDF409 /* MFSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0521D9A030000CDF409 /* MFSaleViewController.m */; };
 		A821E0591D9A034F00CDF409 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0561D9A034F00CDF409 /* CarModel.m */; };
 		A821E0641D9A037E00CDF409 /* BrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E05D1D9A037E00CDF409 /* BrandCell.m */; };
@@ -119,7 +121,6 @@
 		A857EDA51D9CAE850003C0FF /* MFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDA41D9CAE850003C0FF /* MFSettingViewController.m */; };
 		A857EDA81D9CBC760003C0FF /* MFFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDA71D9CBC760003C0FF /* MFFeedBackViewController.m */; };
 		A857EDAD1D9CC8E10003C0FF /* HomeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */; };
-		A857EDAE1D9CC8E10003C0FF /* HomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDAC1D9CC8E10003C0FF /* HomeButton.m */; };
 		A857EDB11D9CE9640003C0FF /* CityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB01D9CE9640003C0FF /* CityControl.m */; };
 		A857EDB41D9CEA8E0003C0FF /* DKCityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB31D9CEA8E0003C0FF /* DKCityTableViewController.m */; };
 		A857EDBE1D9D026F0003C0FF /* DKBaoDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB71D9D026F0003C0FF /* DKBaoDanViewController.m */; };
@@ -189,6 +190,10 @@
 /* Begin PBXFileReference section */
 		1570BC8E8A77435BCCBB19CE /* Pods-Qichegou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.release.xcconfig"; sourceTree = "<group>"; };
 		23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Qichegou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A81B00001DA9F5CD004FC976 /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAboutViewController.m; sourceTree = "<group>"; };
+		A81BFFFC1DA9EB3A004FC976 /* SettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewModel.h; sourceTree = "<group>"; };
+		A81BFFFD1DA9EB3A004FC976 /* SettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
+		A81BFFFF1DA9F5CD004FC976 /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAboutViewController.h; sourceTree = "<group>"; };
 		A821E0511D9A030000CDF409 /* MFSaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSaleViewController.h; sourceTree = "<group>"; };
 		A821E0521D9A030000CDF409 /* MFSaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSaleViewController.m; sourceTree = "<group>"; };
 		A821E0551D9A034F00CDF409 /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
@@ -372,8 +377,6 @@
 		A857EDA71D9CBC760003C0FF /* MFFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFeedBackViewController.m; sourceTree = "<group>"; };
 		A857EDA91D9CC8E10003C0FF /* HomeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBtn.h; sourceTree = "<group>"; };
 		A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBtn.m; sourceTree = "<group>"; };
-		A857EDAB1D9CC8E10003C0FF /* HomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeButton.h; sourceTree = "<group>"; };
-		A857EDAC1D9CC8E10003C0FF /* HomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeButton.m; sourceTree = "<group>"; };
 		A857EDAF1D9CE9640003C0FF /* CityControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityControl.h; sourceTree = "<group>"; };
 		A857EDB01D9CE9640003C0FF /* CityControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityControl.m; sourceTree = "<group>"; };
 		A857EDB21D9CEA8E0003C0FF /* DKCityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCityTableViewController.h; sourceTree = "<group>"; };
@@ -1105,8 +1108,6 @@
 				A857ED981D9CA7170003C0FF /* DKTextField.m */,
 				A857EDA91D9CC8E10003C0FF /* HomeBtn.h */,
 				A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */,
-				A857EDAB1D9CC8E10003C0FF /* HomeButton.h */,
-				A857EDAC1D9CC8E10003C0FF /* HomeButton.m */,
 				A857EDAF1D9CE9640003C0FF /* CityControl.h */,
 				A857EDB01D9CE9640003C0FF /* CityControl.m */,
 			);
@@ -1263,6 +1264,8 @@
 				A857EDA41D9CAE850003C0FF /* MFSettingViewController.m */,
 				A857EDA61D9CBC760003C0FF /* MFFeedBackViewController.h */,
 				A857EDA71D9CBC760003C0FF /* MFFeedBackViewController.m */,
+				A81BFFFF1DA9F5CD004FC976 /* MFAboutViewController.h */,
+				A81B00001DA9F5CD004FC976 /* MFAboutViewController.m */,
 				A857ED9A1D9CADBD0003C0FF /* Order */,
 				A857ED8B1D9CA5010003C0FF /* Login */,
 			);
@@ -1291,6 +1294,8 @@
 			children = (
 				A88600041D926EA80028F102 /* PersonalViewModel.h */,
 				A88600051D926EA80028F102 /* PersonalViewModel.m */,
+				A81BFFFC1DA9EB3A004FC976 /* SettingViewModel.h */,
+				A81BFFFD1DA9EB3A004FC976 /* SettingViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1678,7 +1683,6 @@
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A821E10D1D9A6A3F00CDF409 /* ChooseCarModel.m in Sources */,
 				A857EDA21D9CAE1E0003C0FF /* DKMyActivityOrderVC.m in Sources */,
-				A857EDAE1D9CC8E10003C0FF /* HomeButton.m in Sources */,
 				A84CF67E1D9BD5EB00D096BF /* InsuranceModel.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A821E16E1D9A837400CDF409 /* MFBrandViewController.m in Sources */,
@@ -1698,6 +1702,7 @@
 				A821E1271D9A702E00CDF409 /* AiCheModel.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
+				A81BFFFE1DA9EB3A004FC976 /* SettingViewModel.m in Sources */,
 				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,
 				A857EDD01D9D02BB0003C0FF /* BaoDanTableViewCell.m in Sources */,
 				A857EDA51D9CAE850003C0FF /* MFSettingViewController.m in Sources */,
@@ -1706,6 +1711,7 @@
 				A8297F8E1DA8CDB3008FE204 /* CarDetailThirdCell.m in Sources */,
 				A821E07F1D9A043600CDF409 /* HomeOperationCell.m in Sources */,
 				A84CF65B1D9BA0EE00D096BF /* DKCarNeedsVC.m in Sources */,
+				A81B00011DA9F5CD004FC976 /* MFAboutViewController.m in Sources */,
 				A857EDAD1D9CC8E10003C0FF /* HomeBtn.m in Sources */,
 				A8297F821DA8A247008FE204 /* SaleDetalHeaderTableViewCell.m in Sources */,
 				A84CF6161D9B62EA00D096BF /* CarProView.m in Sources */,

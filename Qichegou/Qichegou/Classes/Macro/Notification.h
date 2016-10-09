@@ -12,14 +12,14 @@
 //keyName
 #define kCITYNAME @"cityName"
 #define TOKEN_PROMISE @"meiyoudenglutoken"
-//签名密钥
-#define APPSIGN @"BFB4A88E2341FB39F1C7B794341A86D4"
 //最近浏览
 #define MYLOOKCAR @"nearlyLookCar"
-
 #define LOGIN_SUCCESS @"loginSuccess_result"
-
 #define kLocationAction @"locationCitynameAndID"
+
+//签名密钥
+#define APPSIGN @"BFB4A88E2341FB39F1C7B794341A86D4"
+
 
 
 //notificationName

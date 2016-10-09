@@ -8,7 +8,7 @@
 
 #import "MFPersonalViewController.h"
 #import "PersonalViewModel.h"
-#import "HomeButton.h"
+#import "HomeBtn.h"
 #import "DKLoginViewController.h"
 #import "DKMyOrderVC.h"
 #import "DKMyActivityOrderVC.h"
@@ -157,8 +157,10 @@ UITableViewDelegate>
     [[self.iconBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
-            [self presentViewController:loginVC animated:YES completion:nil];
+            if (![AppDelegate APP].user) {
+                DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
+                [self presentViewController:loginVC animated:YES completion:nil];
+            }
         });
         
     }];
@@ -228,6 +230,7 @@ UITableViewDelegate>
         _iconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
         [_iconBtn setBackgroundImage:[UIImage imageNamed:@"per_icon"] forState:UIControlStateNormal];
+        [_iconBtn setBackgroundImage:[UIImage imageNamed:@"per_icon"] forState:UIControlStateHighlighted];
         
         _iconBtn.layer.masksToBounds = YES;
         _iconBtn.layer.cornerRadius = 96/2;
@@ -275,15 +278,15 @@ UITableViewDelegate>
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 4 ? 2 : 1);
+    return (section == 3 ? 2 : 1);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *cellID = indexPath.row == 0 ? commentCell : latestCell;
+    NSString *cellID = (indexPath.row == 0) ? commentCell : latestCell;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
-    if (indexPath.section == 4) {
+    if (indexPath.section == 3) {
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row == 0) {
@@ -294,7 +297,7 @@ UITableViewDelegate>
                 for (int i = 0; i < self.contrlArr.count; i++) {
                     
                     NSInteger tag = [self.contrlArr[i] integerValue];
-                    HomeButton *control = (HomeButton *)[cell viewWithTag:tag];
+                    HomeBtn *control = (HomeBtn *)[cell viewWithTag:tag];
                     [control removeFromSuperview];
                 }
             }
@@ -310,17 +313,21 @@ UITableViewDelegate>
                 
                 for (int i = 0; i < [self.carIDArr count]; i++) {
                     //初始化自定义Control
-                    CGFloat ctrlY = 0;
                     CGFloat ctrlWidth = (kScreenWidth - 30)/3;
-                    CGFloat ctrlHeight = 100;
                     
-                    HomeButton *carCtrl = [[HomeButton alloc] initWithFrame:CGRectMake(15 + i*ctrlWidth, ctrlY, ctrlWidth, ctrlHeight)];
+                    HomeBtn *carCtrl = [HomeBtn buttonWithType:UIButtonTypeCustom];
                     NSDictionary *myDic = self.carIDArr[i];
                     
                     carCtrl.tag = [[myDic objectForKey:@"cid"] integerValue] + 2016;
                     [carCtrl setUpButtonWithImageName:myDic[@"imgName"] title:myDic[@"title"]];
                     [carCtrl addTarget:self action:@selector(ctrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.contentView addSubview:carCtrl];
+                    
+                    [carCtrl makeConstraints:^(MASConstraintMaker *make) {
+                        make.size.equalTo(CGSizeMake(ctrlWidth, 100));
+                        make.top.equalTo(0);
+                        make.left.equalTo(i*ctrlWidth+15);
+                    }];
                     
                 }
             }
@@ -370,16 +377,16 @@ UITableViewDelegate>
             DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
             [self presentViewController:navCtrller animated:YES completion:nil];
             
-        }else if (indexPath.section == 3) {     //login out
-            [self loginOut];
         }
         
     }else {     //unLogin
-        
-        if (indexPath.section == 3) {
-            //退出登录
-            [PromtView showAlert:@"你还没有登录" duration:1];
-        }else if (indexPath.section != 4) {
+        if (indexPath.section == 2) {     //修改密码
+            
+            DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
+            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
+            [self presentViewController:navCtrller animated:YES completion:nil];
+            
+        }else if (indexPath.section != 3) {
             
             DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
             [self presentViewController:loginVC animated:YES completion:nil];
@@ -408,7 +415,7 @@ UITableViewDelegate>
 }
 
 //点击最近浏览控件触发的
-- (void)ctrlClickAction:(HomeButton *)ctrl
+- (void)ctrlClickAction:(HomeBtn *)ctrl
 {
     NSLog(@"浏览click");
     NSString *carID = [NSString stringWithFormat:@"%ld",(ctrl.tag - 2016)];
@@ -420,31 +427,6 @@ UITableViewDelegate>
     [self.navigationController pushViewController:detailCarVC animated:YES];
 }
 
-#pragma mark - dataRequest
-- (void)loginOut {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出登录" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        NSLog(@"取消");
-    }];
-    
-    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSLog(@"确定退出");
-        NSLog(@"controller:%@", [AppDelegate APP].user.token);
-        NSLog(@"退出登录");
-//        [HttpTool requestLoginOutResult:^(BOOL result) {
-//            if (result) {
-//                [AppDelegate APP].user = nil;
-//                self.nameLabel.text = @"点击头像登录";
-//            }
-//        }];
-    }];
-    
-    [alertController addAction:cancelAction];
-    [alertController addAction:otherAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
 
 #pragma mark - 
 - (void)didReceiveMemoryWarning {

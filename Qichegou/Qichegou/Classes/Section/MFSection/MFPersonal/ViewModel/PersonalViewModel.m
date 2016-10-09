@@ -20,8 +20,8 @@
 }
 
 - (void)setData {
-    self.imgNamesArr = @[@"icon_myOrder",@"icon_activity",@"icon_changePwd",@"icon_off",@"icon_time"];
-    self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"退出登录",@"最近浏览"];
+    self.imgNamesArr = @[@"icon_myOrder",@"icon_activity",@"icon_changePwd",@"icon_time"];
+    self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"最近浏览"];
 }
 
 

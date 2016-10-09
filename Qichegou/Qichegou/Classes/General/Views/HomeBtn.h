@@ -10,4 +10,6 @@
 
 @interface HomeBtn : UIButton
 
+- (void)setUpButtonWithImageName:(NSString *)imgName title:(NSString *)title;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "HomeBtn.h"
+#import "UIButton+WebCache.h"
 
 @implementation HomeBtn
 
@@ -32,5 +33,14 @@
     
 }
 
+
+- (void)setUpButtonWithImageName:(NSString *)imgName title:(NSString *)title {
+        NSLog(@"%@, %@", imgName, title);
+    [self setTitleColor:TEXTCOLOR forState:UIControlStateNormal];
+    self.titleLabel.font = H13;
+    [self setTitle:title forState:UIControlStateNormal];
+    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, imgName]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"bg_default"]];
+    
+}
 
 @end

@@ -15,11 +15,13 @@
 
 //base url
 //#define URL_String @"http://test.tangxinzhuan.com"
-#define URL_String @"http://test.qichegou.com"
-//#define URL_String @"http://www.qichegou.com"
+//#define URL_String @"http://test.qichegou.com"
+#define URL_String @"http://www.qichegou.com"
 
 //服务协议
-#define PROTOCOL_QICHEGOU @"http://www.qichegou.com/Wap/help/detail/catid/87"
+#define PROTOCOL_QICHEGOU   @"http://www.qichegou.com/Wap/help/detail/catid/87"
+//iTunes
+#define QCGURL              @"https://itunes.apple.com/cn/app/qi-che-gou/id1080573042?mt=8"
 
 
 #define CITY_LIST       @"/api/sys/citys"               //城市列表
