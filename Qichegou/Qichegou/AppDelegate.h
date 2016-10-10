@@ -16,8 +16,8 @@
 //
 @property (nonatomic, assign) double latitude;
 @property (nonatomic, assign) double longitude;
-
-@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *cityName;
+//@property (nonatomic, copy) NSString *address;
 
 //
 @property (nonatomic, strong) UserModel *user;

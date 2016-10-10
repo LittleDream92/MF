@@ -15,21 +15,23 @@
 #import "UserModel.h"
 #import "AppDelegate.h"
 
+#import "LoginViewModel.h"
+
 @interface DKLoginViewController ()<CustomButtonProtocol>
 {
     NSArray *titleArr;
     CGFloat buttonW;
-    BOOL _index;
-    
-    NSString *_token;
 }
 
 
 @property (weak, nonatomic) IBOutlet CustomButtonView *controlView;
 @property (weak, nonatomic) IBOutlet UITextField *telTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextFiled;
-
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
+
+//ViewModel
+@property (nonatomic, strong) LoginViewModel *viewModel;
 
 
 @end
@@ -39,8 +41,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //通知
+    [NotificationCenters addObserver:self selector:@selector(loginSuccess:) name:LOGIN_SUCCESS object:nil];
+    
     [self setUpData];
     [self setUpViews];
+    [self combineViewModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,16 +78,34 @@
     self.passwordTextFiled.leftViewMode = UITextFieldViewModeAlways;
 }
 
+#pragma mark - viewModel
+- (void)combineViewModel {
+    self.viewModel.isPwdLogin = YES;
+    RAC(self.viewModel, account) = self.telTextField.rac_textSignal;
+    RAC(self.viewModel, pwd) = self.passwordTextFiled.rac_textSignal;
+    self.loginBtn.rac_command = self.viewModel.loginCommand;
+}
+
+#pragma mark - lazyloading
+-(LoginViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[LoginViewModel alloc] init];
+    }
+    return _viewModel;
+}
+
+
 #pragma mark - delegate
 //代理协议
 -(void)getTag:(NSInteger)tag {
-    _index = tag - 1501;
+    NSInteger index = tag - 1501;
     
-    if (_index) {
-        [self codeLogin];
-        
-    }else {
+    if (index == 0) {
+        self.viewModel.isPwdLogin = YES;
         [self pwdLogin];
+    }else {
+        self.viewModel.isPwdLogin = NO;
+        [self codeLogin];
     }
 }
 
@@ -92,6 +116,8 @@
     
     UIImageView *iconImgView = (UIImageView *)self.passwordTextFiled.leftView;
     iconImgView.image = [UIImage imageNamed:@"icon_code"];
+    
+    self.viewModel.pwd = @"";
     self.passwordTextFiled.text = nil;
     self.passwordTextFiled.secureTextEntry = NO;
     self.passwordTextFiled.keyboardType = UIKeyboardTypeNumberPad;
@@ -104,21 +130,21 @@
     
     UIImageView *iconImgView = (UIImageView *)self.passwordTextFiled.leftView;
     iconImgView.image = [UIImage imageNamed:@"icon_pwd"];
+    self.viewModel.pwd = @"";
     self.passwordTextFiled.text = nil;
     self.passwordTextFiled.secureTextEntry = YES;
     self.passwordTextFiled.keyboardType = UIKeyboardTypeDefault;
     self.passwordTextFiled.placeholder = @"请输入密码";
 }
 
-#pragma mark - button Action
+#pragma mark - action
+//notification
+- (void)loginSuccess:(NSNotification *)notification {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)buttonAction:(UIButton *)sender {
     switch (sender.tag) {
-        case 10:
-        {
-            NSLog(@"登录");
-            [self LoginJudge];
-            break;
-        }
         case 11:
         {
             NSLog(@"注册");
@@ -155,29 +181,6 @@
 }
 
 #pragma mark - judge if it‘s null
-- (void)LoginJudge {
-    if (self.telTextField.text.length != 11) {
-        NSLog(@"手机号不正确！");
-        [PromtView showAlert:@"手机号不正确！" duration:1.5];
-    }else if (self.passwordTextFiled.text.length == 0) {
-        NSLog(@"验证码／密码不能为空！");
-        [PromtView showAlert:@"验证码／密码不能为空！" duration:1.5];
-    }else {
-        
-        if (_index) {
-            //code login
-            NSDictionary *params = [self setUpTheParamsWithType:0 token:nil];
-            [self loginWithParams:params];
-            
-        }else {
-        
-            NSDictionary *params = [self setUpTheParamsWithType:1 token:nil];
-            [self loginWithParams:params];
-        }
-    }
-}
-
-
 - (void)codeJudgeBtn:(UIButton *)button {
     if (self.telTextField.text.length == 11) {
         
@@ -191,110 +194,6 @@
         NSLog(@"手机号格式错误！");
         [PromtView showAlert:@"手机号格式错误！" duration:1.5];
     }
-}
-
-#pragma mark - login
-- (void)loginWithParams:(NSDictionary *)params {
-    NSLog(@"login params:%@", params);
-    
-    [DataService http_Post:USERLOGIN
-                parameters:params
-                   success:^(id responseObject) {
-                       NSLog(@"login result:%@", responseObject);
-                       
-                       if ([responseObject[@"status"] integerValue] == 1) {
-                           
-                           _token = [responseObject objectForKey:@"token"];
-
-                           //存储
-                           UserModel *userModel = [[UserModel alloc] initContentWithDic:responseObject];
-                           userModel.sjhm = self.telTextField.text;
-                           userModel.token = _token;
-                           [AppDelegate APP].user = userModel;
-                           
-                           //发送登录成功通知
-                           [NotificationCenters postNotificationName:LOGIN_SUCCESS object:nil userInfo:nil];
-
-                           NSDictionary *params = [self setUpTheParamsWithType:2 token:responseObject[@"token"]];
-                           [self requestUserInformationWithParams:params];
-                       }else {
-                           [PromtView showAlert:responseObject[@"msg"] duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-
-}
-
-//get user information
-- (void)requestUserInformationWithParams:(NSDictionary *)params {
-    
-    [DataService http_Post:USER_INFORMATION
-     
-                parameters:params
-     
-                   success:^(id responseObject) {
-
-                       NSLog(@"userInformation success:%@", responseObject);
-                       UserModel *userModel = [[UserModel alloc] initContentWithDic:responseObject];
-                       userModel.token = _token;
-                       [AppDelegate APP].user = userModel;
-                       
-                       //返回
-                       [self dismissViewControllerAnimated:YES completion:nil];
-                       
-                   } failure:^( NSError *error) {
-                       
-                       NSLog(@"error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-}
-
-
-#pragma mark - params
-- (NSDictionary *)setUpTheParamsWithType:(NSInteger)type token:(NSString *)token {
-    
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    
-    NSDictionary *params = nil;
-    
-    switch (type) {
-        case 0: //code login params
-        {
-            params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                      timeSp, @"time",
-                      md5String, @"sign",
-                      self.telTextField.text,@"tel",
-                      self.passwordTextFiled.text, @"code",
-                      @"", @"pass", nil];
-            break;
-        }
-        case 1:
-        {
-            params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                      timeSp, @"time",
-                      md5String, @"sign",
-                      self.telTextField.text,@"tel",
-                      self.passwordTextFiled.text, @"pass",
-                      @"", @"code",nil];
-            break;
-        }
-        case 2: // token
-        {
-            params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                      timeSp, @"time",
-                      md5String, @"sign",
-                      token,@"token",nil];
-            break;
-        }
-        default:
-            break;
-    }
-    
-    return params;
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "SettingViewModel.h"
-//#import "UIView+ViewController.h"
 #import "AppDelegate.h"
 
 @implementation SettingViewModel

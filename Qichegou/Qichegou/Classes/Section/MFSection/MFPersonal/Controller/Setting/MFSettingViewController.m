@@ -57,7 +57,7 @@ static NSString *const cellID = @"settingCellID";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        
+        _tableView.scrollEnabled = NO;
     }
     return _tableView;
 }
@@ -150,6 +150,7 @@ static NSString *const cellID = @"settingCellID";
             
             //刷新tableView
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            [PromtView showMessage:@"已清除缓存" duration:1.5];
         }
     }else if (indexPath.row == 1) {
         //反馈

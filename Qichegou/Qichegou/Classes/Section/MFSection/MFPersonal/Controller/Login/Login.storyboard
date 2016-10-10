@@ -25,9 +25,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" title="登录" backgroundImage="btn_login_1.2"/>
-                                <connections>
-                                    <action selector="buttonAction:" destination="M8w-xb-mY4" eventType="touchUpInside" id="cj2-aL-245"/>
-                                </connections>
                             </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_icon_1" id="arK-S7-fOj">
                                 <rect key="frame" x="102" y="50" width="104" height="43"/>
@@ -102,6 +99,7 @@
                     <connections>
                         <outlet property="controlView" destination="bD4-2D-1KH" id="8hX-Uf-BD0"/>
                         <outlet property="getCodeBtn" destination="vHr-YE-cBz" id="xQ3-Ya-8Hj"/>
+                        <outlet property="loginBtn" destination="b0z-dq-n4v" id="tdn-o8-liS"/>
                         <outlet property="passwordTextFiled" destination="lLV-0V-rPf" id="07B-PQ-h6o"/>
                         <outlet property="telTextField" destination="CmG-14-JJB" id="ddA-jT-NRc"/>
                     </connections>

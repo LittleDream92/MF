@@ -143,23 +143,23 @@ UITableViewDataSource
 #pragma mark - action
 //location Action
 - (void)locationSuccess:(NSNotification *)not {
-    NSLog(@"title:%@", [UserDefaults objectForKey:kCITYNAME]);
-    NSLog(@"lat:%f\n---lon:%f\n, address:%@", MyApp.latitude, MyApp.longitude, MyApp.address);
-    
-    NSString *city = [UserDefaults objectForKey:kCITYNAME];
-    if ([city containsString:@"长沙"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
-        [UserDefaults setObject:dic forKey:kLocationAction];
-    }else if ([city containsString:@"南昌"]) {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"12",@"cityid",@"南昌",@"cityname", nil];
-        [UserDefaults setObject:dic forKey:kLocationAction];
-    }else {
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
-        [UserDefaults setObject:dic forKey:kLocationAction];
-        
-        //提示所在城市没有业务，默认长沙
-        [self presentAlertViewWithString:@"你所在的城市暂未开通，使用默认城市长沙市"];
-    }
+//    NSLog(@"title:%@", [UserDefaults objectForKey:kCITYNAME]);
+//    NSLog(@"lat:%f\n---lon:%f\n, address:%@", MyApp.latitude, MyApp.longitude, MyApp.address);
+//    
+//    NSString *city = [UserDefaults objectForKey:kCITYNAME];
+//    if ([city containsString:@"长沙"]) {
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+//        [UserDefaults setObject:dic forKey:kLocationAction];
+//    }else if ([city containsString:@"南昌"]) {
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"12",@"cityid",@"南昌",@"cityname", nil];
+//        [UserDefaults setObject:dic forKey:kLocationAction];
+//    }else {
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+//        [UserDefaults setObject:dic forKey:kLocationAction];
+//        
+//        //提示所在城市没有业务，默认长沙
+//        [self presentAlertViewWithString:@"你所在的城市暂未开通，使用默认城市长沙市"];
+//    }
     
     self.cityDic = [UserDefaults objectForKey:kLocationAction];
 

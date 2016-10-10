@@ -10,7 +10,7 @@
 #import "DKBaseTabbarController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;   //定位
 
@@ -96,7 +96,6 @@
         UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //跳转设置开启定位页面
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-            //            [self location];
         }];
         
         [alert addAction:cancel];
@@ -148,7 +147,6 @@
     self.longitude = [lon doubleValue];
     
     NSLog(@"lon:%f, lat:%f", self.longitude, self.latitude);
-    [NotificationCenters postNotificationName:kLocationSuccess object:nil];
     
     //反编码
     [self reverseGeocoder:currentLocation];
@@ -163,18 +161,44 @@
             NSLog(@"error == %@", error);
         }else {
             CLPlacemark *placemark = placemarks.firstObject;
-            NSLog(@"placemarks:%@ %@", [[placemark addressDictionary] objectForKey:@"City"], [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]);
+//            NSLog(@"placemarks:%@ %@", [[placemark addressDictionary] objectForKey:@"City"], [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]);
             
-            [UserDefaults setObject:[[placemark addressDictionary] objectForKey:@"City"] forKey:kCITYNAME];
-            self.address = [NSString stringWithFormat:@"%@", [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]];
+            NSString *locationCity = [[placemark addressDictionary] objectForKey:@"City"];
+            if (![locationCity isEqualToString:self.cityName]) {
+                self.cityName = locationCity;
+                
+                if ([locationCity containsString:@"长沙"]) {
+                    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+                    [UserDefaults setObject:dic forKey:kLocationAction];
+                }else if ([locationCity containsString:@"南昌"]) {
+                    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"12",@"cityid",@"南昌",@"cityname", nil];
+                    [UserDefaults setObject:dic forKey:kLocationAction];
+                }else {
+                    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+                    [UserDefaults setObject:dic forKey:kLocationAction];
+                    
+                    [PromtView showAlert:@"你所在的城市暂未开通，使用默认城市长沙市" duration:1.5];
+                }
+            }
+            
+            //定位成功，发送通知
+            [NotificationCenters postNotificationName:kLocationSuccess object:nil];
+            
+//            [UserDefaults setObject:[[placemark addressDictionary] objectForKey:@"City"] forKey:kCITYNAME];
+//            self.address = [NSString stringWithFormat:@"%@", [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]];
 //            [NotificationCenters postNotificationName:kLocationSuccess object:nil];
+            
+//            NSString *city = [UserDefaults objectForKey:kCITYNAME];
+            
+//            self.cityDic = [UserDefaults objectForKey:kLocationAction];
+
         }
-        
     }];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"定位失败");
+    [PromtView showAlert:@"定位失败，使用默认城市长沙市" duration:1.5];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
     [UserDefaults setObject:dic forKey:kLocationAction];
 }
