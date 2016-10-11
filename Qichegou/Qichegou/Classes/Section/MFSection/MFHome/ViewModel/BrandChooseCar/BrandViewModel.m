@@ -61,10 +61,11 @@
                         NSArray *array = @[mArr, sectionDic];
                         
                         [subscriber sendNext:array];
+                        [subscriber sendCompleted];
                     }
                 }
             } failure:^(NSError *error) {
-                
+                [subscriber sendCompleted];
             }];
             
             return nil;
@@ -74,6 +75,8 @@
         
     }];
 }
+
+
 
 - (void)hotCommandAction {
     _hotCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -93,10 +96,11 @@
                             [mArr addObject:model];
                         }
                         [subscriber sendNext:mArr];
+                        [subscriber sendCompleted];
                     }
                 }
             } failure:^(NSError *error) {
-                
+                [subscriber sendCompleted];
             }];
             
             return nil;
@@ -104,6 +108,45 @@
         
         return signal;
     }];
+}
+
+-(RACCommand *)carProCommand {
+    if (!_carProCommand) {
+        _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                
+                NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                params[@"bid"] = self.brandID;
+                params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
+                
+                //网络请求
+                [DataService http_Post:CARPROS parameters:params success:^(id responseObject) {
+                    NSLog(@"pro:%@", responseObject);
+                    if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                        NSArray *jsonArr = [responseObject objectForKey:@"products"];
+                        if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+                            
+                            NSMutableArray *mArr = [NSMutableArray array];
+                            for (NSDictionary *jsonDic in jsonArr) {
+                                CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                                [mArr addObject:model];
+                            }
+                            [subscriber sendNext:mArr];
+                            [subscriber sendCompleted];
+                        }else {
+                            [subscriber sendCompleted];
+                        }
+                    }
+                    
+                } failure:^(NSError *error) {
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            }];
+        }];
+    }
+    return _carProCommand;
 }
 
 //- (void)carProCommandAction {

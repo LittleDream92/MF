@@ -10,11 +10,12 @@
 #import "CustomButtonView.h"
 #import "BrandView.h"
 #import "CondationView.h"
-
 #import "CarProView.h"
+
+#import "DKCarListViewController.h"
+
 #import "CarModel.h"
 #import "BrandViewModel.h"
-#import "DKCarListViewController.h"
 
 @interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate, BrandClickProtocol>
 {
@@ -24,7 +25,6 @@
 @property (nonatomic, strong) UIScrollView *scrollview;
 @property (nonatomic, strong) BrandView *brandView;
 @property (nonatomic, strong) CondationView *condationView;
-
 @property (nonatomic, strong) CarProView *carProView;
 
 @property (nonatomic, strong) BrandViewModel *viewModel;
@@ -44,6 +44,7 @@
     [self setUpViewModel];
 }
 
+/** 重写返回方法 */
 -(void)backAction:(UIButton *)sender {
     self.carProView.hidden = YES;
     [self.navigationController popViewControllerAnimated:YES];
@@ -57,7 +58,6 @@
 #pragma mark - setUpViews
 - (void)setUpNav {
     self.title = @"选车";
-    
     [self navBack:YES];
 }
 
@@ -68,7 +68,6 @@
     [self.scrollview makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(48, 0, 0, 0));
     }];
-    
 
     [self.scrollview addSubview:self.brandView];
     [self.scrollview addSubview:self.condationView];
@@ -78,15 +77,14 @@
         make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     self.carProView.hidden = YES;
-    
 }
+
 
 - (void)setUpViewModel {
     
     NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:[UserDefaults objectForKey:kLocationAction][@"cityid"], @"cityid", nil];
     RACSignal *brandSignal = [self.viewModel.brandCommand execute:brandParams];
     [brandSignal subscribeNext:^(id x) {
-//        NSLog(@"brand : %@", x);
         self.brandView.sectionArray = x[0];
         self.brandView.sectionDic = x[1];
         [self.brandView.tableView reloadData];
@@ -94,7 +92,6 @@
 
     RACSignal *hotSignal = [self.viewModel.hotCommand execute:brandParams];
     [hotSignal subscribeNext:^(id x) {
-//        NSLog(@"hot x:%@", x);
         self.brandView.hotArray = x;
         [self.brandView.tableView reloadData];
     }];
@@ -191,7 +188,6 @@
 //代理协议
 -(void)getTag:(NSInteger)tag {
     _index = tag - 1501;
-    NSLog(@"%d", _index);
     CGPoint offset = self.scrollview.contentOffset;
     offset.x = _index * kScreenWidth;
     [self.scrollview setContentOffset:offset animated:YES];
@@ -206,128 +202,19 @@
     
 }
 
-//- (void)contrlClickAction:(CityControl *)cityCtrl {
-//    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
-//    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
-//    [self presentViewController:nav animated:YES completion:nil];
-//}
-
 //BrandClickProtocol
 -(void)clickBrandWithBrandID:(NSString *)brandID {
-//    NSLog(@"brandID:%@", brandID);
-    self.carProView.hidden = NO;
     
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"bid"] = brandID;
-    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
-    
+    self.viewModel.brandID = brandID;
 
-//   /* 很郁闷为什么RAC网络请求只请求第一次，之后就不起作用了呢。。。 */
-//    RACSignal *signal = [self.viewModel.carProCommand execute:params];
-//    [signal subscribeNext:^(id x) {
-//    
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.carProView.dataArray = x;
-//            self.carProView.hidden = NO;
-//            [self.carProView.tableView reloadData];
-//        });
-//    }];
-    
-    [DataService http_Post:CARPROS
-                parameters:params
-                   success:^(id responseObject) {
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           NSArray *jsonArr = [responseObject objectForKey:@"products"];
-                           NSMutableArray *mArr = [NSMutableArray array];
-                           for (NSDictionary *jsonDic in jsonArr) {
-                               CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-                               [mArr addObject:model];
-                           }
-                           self.carProView.dataArray = mArr;
-                           [self.carProView.tableView reloadData];
-                       }else {
-                           [PromtView showMessage:responseObject[@"msg"] duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-//                       NSLog(@"pro list error:%@", error);
-                       [PromtView showMessage:PromptWord duration:1.5];
-                   }];
-
+    RACSignal *signal = [self.viewModel.carProCommand execute:nil];
+    [signal subscribeNext:^(id x) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.carProView.dataArray = x;
+            self.carProView.hidden = NO;
+            [self.carProView.tableView reloadData];
+        });
+    }];
 }
-
-#pragma mark - brandRequest
-//- (void)brandRequest {
-//    NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:self.cityDic[@"cityid"], @"cityid", nil];
-//    NSLog(@"brandParams:%@", brandParams);
-//    //网络请求
-//    [DataService http_Post:BRABD_LIST parameters:brandParams success:^(id responseObject) {
-////                NSLog(@"respon:%@", responseObject);
-//        if ([responseObject[@"status"] integerValue] == 1) {
-//            NSArray *brands = responseObject[@"brands"];
-//            if ([brands isKindOfClass:[NSArray class]] && brands.count > 0) {
-//                
-//                NSMutableDictionary *sectionDic = [NSMutableDictionary dictionary];
-//                NSMutableArray *mArr = [NSMutableArray array];
-//                
-//                for (NSDictionary *jsonDic in brands) {
-//                    
-//                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-//                    
-//                    NSString *sectionTitle = model.first_letter;
-//                    
-//                    NSMutableArray *rowArray =[sectionDic objectForKey:sectionTitle];
-//                    
-//                    if (rowArray == nil) {
-//                        [mArr addObject:sectionTitle];
-//                        rowArray = [NSMutableArray array];
-//                        [sectionDic setObject:rowArray forKey:model.first_letter];
-//                    }
-//                    
-//                    [rowArray addObject:model];
-//                }
-//                
-//                dispatch_sync(dispatch_get_main_queue(), ^{
-//                    self.brandView.sectionArray = [mArr copy];
-//                    self.brandView.sectionDic = sectionDic;
-//                    [self.brandView.tableView reloadData];
-//                });
-//            }
-//        }else {
-//            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
-//        }
-//    } failure:^(NSError *error) {
-//        [PromtView showMessage:PromptWord duration:1.5];
-//    }];
-//
-//    //热销车
-//    [DataService http_Post:HOTCAR parameters:brandParams success:^(id responseObject) {
-//        if ([responseObject[@"status"] integerValue] == 1) {
-//            //                    NSLog(@"hot:%@", responseObject);
-//            NSArray *hotBrands = responseObject[@"brands"];
-//            if ([hotBrands isKindOfClass:[NSArray class]] && hotBrands.count>0) {
-//                
-//                NSMutableArray *mArr = [NSMutableArray array];
-//                for (NSDictionary *jsonDic in hotBrands) {
-//                    
-//                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-//                    [mArr addObject:model];
-//                }
-//                
-//                dispatch_sync(dispatch_get_main_queue(), ^{
-//                    self.brandView.hotArray = mArr;
-//                    [self.brandView.tableView reloadData];
-//                });
-//                
-//            }
-//        }else {
-//            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
-//        }
-//    } failure:^(NSError *error) {
-//        [PromtView showMessage:PromptWord duration:1.5];
-//    }];
-//
-//}
 
 @end

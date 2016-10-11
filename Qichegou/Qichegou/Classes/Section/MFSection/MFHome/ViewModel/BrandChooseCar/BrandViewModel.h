@@ -16,8 +16,10 @@
 @property (nonatomic, strong, readonly) RACCommand *brandCommand;
 //热销车
 @property (nonatomic, strong, readonly) RACCommand *hotCommand;
+
+@property (nonatomic, copy) NSString *brandID;
 //车系
-//@property (nonatomic, strong, readonly) RACCommand *carProCommand;
+@property (nonatomic, strong) RACCommand *carProCommand;
 - (void)requestCarProWithDictionary:(NSDictionary *)dic;
 
 @end

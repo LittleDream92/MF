@@ -146,6 +146,7 @@
 		A87124621DAC96910040344A /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A871244B1DAC96910040344A /* LoginViewModel.m */; };
 		A87124631DAC96910040344A /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A871244F1DAC96910040344A /* PersonalViewModel.m */; };
 		A87124641DAC96910040344A /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124521DAC96910040344A /* SettingViewModel.m */; };
+		A87124671DAC989B0040344A /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124661DAC989B0040344A /* HomeViewModel.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
@@ -421,6 +422,8 @@
 		A871244F1DAC96910040344A /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		A87124511DAC96910040344A /* SettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewModel.h; sourceTree = "<group>"; };
 		A87124521DAC96910040344A /* SettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
+		A87124651DAC989B0040344A /* HomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
+		A87124661DAC989B0040344A /* HomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FEF11D922A450028F102 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A886FEF31D922A450028F102 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -874,6 +877,8 @@
 		A87123DD1DAC92770040344A /* BrandChooseCar */ = {
 			isa = PBXGroup;
 			children = (
+				A87123E81DAC92770040344A /* MFBrandViewController.h */,
+				A87123E91DAC92770040344A /* MFBrandViewController.m */,
 				A87123DE1DAC92770040344A /* BigCarImgVC.h */,
 				A87123DF1DAC92770040344A /* BigCarImgVC.m */,
 				A87123E01DAC92770040344A /* DKCarListViewController.h */,
@@ -884,8 +889,6 @@
 				A87123E51DAC92770040344A /* DKNeedsTableViewController.m */,
 				A87123E61DAC92770040344A /* ImageViewController.h */,
 				A87123E71DAC92770040344A /* ImageViewController.m */,
-				A87123E81DAC92770040344A /* MFBrandViewController.h */,
-				A87123E91DAC92770040344A /* MFBrandViewController.m */,
 				A87123EA1DAC92770040344A /* MFCarDetailViewController.h */,
 				A87123EB1DAC92770040344A /* MFCarDetailViewController.m */,
 				A87123EC1DAC92770040344A /* ParamsViewController.h */,
@@ -943,10 +946,10 @@
 		A87124121DAC93180040344A /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				A87124131DAC93180040344A /* HomeCarCell.h */,
-				A87124141DAC93180040344A /* HomeCarCell.m */,
 				A87124151DAC93180040344A /* HomeHeaderView.h */,
 				A87124161DAC93180040344A /* HomeHeaderView.m */,
+				A87124131DAC93180040344A /* HomeCarCell.h */,
+				A87124141DAC93180040344A /* HomeCarCell.m */,
 				A87124171DAC93180040344A /* HomeMenuCell.h */,
 				A87124181DAC93180040344A /* HomeMenuCell.m */,
 				A87124191DAC93180040344A /* HomeOperationCell.h */,
@@ -958,6 +961,8 @@
 		A871241F1DAC93210040344A /* HomeViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A87124651DAC989B0040344A /* HomeViewModel.h */,
+				A87124661DAC989B0040344A /* HomeViewModel.m */,
 			);
 			path = HomeViewModel;
 			sourceTree = "<group>";
@@ -1918,6 +1923,7 @@
 				A857ED991D9CA7170003C0FF /* DKTextField.m in Sources */,
 				A87124091DAC92770040344A /* DKPayMoneyVC.m in Sources */,
 				A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */,
+				A87124671DAC989B0040344A /* HomeViewModel.m in Sources */,
 				A871238A1DAC915B0040344A /* CarProTableViewCell.m in Sources */,
 				A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */,
 				A87123991DAC915B0040344A /* PayMoneyFooterView.m in Sources */,

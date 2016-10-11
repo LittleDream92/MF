@@ -35,19 +35,27 @@
         
         isNext = YES;
         
-        [self addSubview:self.bannerView];
-        [self.bannerView makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
-        }];
-        
-        [self addSubview:self.pageContrl];
-        [self.pageContrl makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(0);
-            make.height.equalTo(30);
-        }];
+        [self setUpView];
+        [self AutoLayout];
     }
     return self;
 }
+
+- (void)setUpView {
+    [self addSubview:self.bannerView];
+    [self addSubview:self.pageContrl];
+}
+
+- (void)AutoLayout {
+    [self.bannerView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    [self.pageContrl makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(0);
+        make.height.equalTo(30);
+    }];
+}
+
 
 #pragma mark - lazyloading
 -(UIScrollView *)bannerView {

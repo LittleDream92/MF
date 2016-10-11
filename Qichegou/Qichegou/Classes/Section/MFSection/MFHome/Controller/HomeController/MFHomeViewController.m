@@ -26,6 +26,8 @@
 #import "CityControl.h"
 #import "CarModel.h"
 
+#import "HomeViewModel.h"
+
 static NSString *const homeMenuCellID = @"homeMenuCellID";
 static NSString *const homeCarCellID = @"homeCarCellID";
 
@@ -37,11 +39,12 @@ UITableViewDataSource
 
 @property (nonatomic, strong) HomeHeaderView *headerView;
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) CityControl *cityCtrl;
-@property (nonatomic, strong) NSArray *saleArr;
 
+@property (nonatomic, strong) NSArray *saleArr;
 @property (nonatomic, strong) NSDictionary *cityDic;
+
+@property (nonatomic, strong) HomeViewModel *viewModel;
 
 @end
 
@@ -74,7 +77,15 @@ UITableViewDataSource
     if (![newDic isEqual:self.cityDic]) {
         self.cityDic = newDic;
         //网络请求新城市的特价车
-        [self saleRequest];
+         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cityDic[@"cityid"],@"cityid", nil];
+         RACSignal *signal = [self.viewModel.saleCatListCommand execute:params];
+        [signal subscribeNext:^(NSArray *x) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.saleArr = x;
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+            });
+        }];
         
         if (self.navigationItem.leftBarButtonItem.customView) {
             //取到城市label，重新赋值
@@ -114,7 +125,6 @@ UITableViewDataSource
         _tableView.dataSource = self;
         
         _tableView.showsVerticalScrollIndicator = NO;
-        
         _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
@@ -140,64 +150,11 @@ UITableViewDataSource
     return _cityCtrl;
 }
 
-#pragma mark - action
-//location Action
-- (void)locationSuccess:(NSNotification *)not {
-    self.cityDic = [UserDefaults objectForKey:kLocationAction];
-}
-
-//menu Action
-- (void)menuActionWithCell:(HomeMenuCell *)cell {
-    
-    cell.clickBrandBtn = ^{
-        NSLog(@"brandBtn");
-        MFBrandViewController *brandVC = [[MFBrandViewController alloc] init];
-        brandVC.cityDic = self.cityDic;
-        [self.navigationController pushViewController:brandVC animated:YES];
-    };
-    
-    cell.clickSaleBtn = ^ {
-        NSLog(@"saleBtn");
-        [self pushToSaleController];
-    };
-    
-    cell.clickDaiBtn = ^ {
-        NSLog(@"daiBtn");
-        DKBaoDanViewController *xianVC = [[DKBaoDanViewController alloc] init];
-        [self.navigationController pushViewController:xianVC animated:YES];
-    };
-    
-    cell.clickXianBtn = ^ {
-        NSLog(@"xianBtn");
-        DKMainWebViewController *webViewController = [[DKMainWebViewController alloc] init];
-        webViewController.title = @"洗车";
-//            webViewController.webString = @"http://test.tangxinzhuan.com/api/XiChe";
-//            webViewController.isRequest = YES;
-        webViewController.webString = @"http://open.chediandian.com/xc/index?ApiKey=25fea4fca5d54a91ad935814980dd787&ApiST=1467609844&ApiSign=962ad4b142ae429ac5bdb051b958e0e8";
-        webViewController.isRequest = NO;
-        [self.navigationController pushViewController:webViewController animated:YES];
-    };
-}
-
-- (void)saleCarDetailAction:(UIButton *)sender {
-    CarModel *model = self.saleArr[sender.tag];
-    
-    MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
-    saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
-    saleDetailVC.carID = model.car_id;
-    [self.navigationController pushViewController:saleDetailVC animated:YES];
-}
-
-- (void)pushToSaleController {
-    MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
-//    saleVC.saleArray = self.saleArr;
-    [self.navigationController pushViewController:saleVC animated:YES];
-}
-
-- (void)contrlClickAction:(CityControl *)cityCtrl {
-    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
-    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
-    [self presentViewController:nav animated:YES completion:nil];
+-(HomeViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [HomeViewModel new];
+    }
+    return _viewModel;
 }
 
 #pragma mark - UITableViewDataSource
@@ -271,33 +228,61 @@ UITableViewDataSource
     return section == 0 ? CGFLOAT_MIN : 10;
 }
 
-#pragma mark - saleRequest
-- (void)saleRequest {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cityDic[@"cityid"],@"cityid", nil];
-    [DataService http_Post:SALECAR parameters:params success:^(id responseObject) {
-        if ([responseObject[@"status"] integerValue] == 1) {
-//                    NSLog(@"sale:%@", responseObject);
-            NSArray *saleCars = responseObject[@"tejiache"];
-            if ([saleCars isKindOfClass:[NSArray class]] && saleCars.count>0) {
-                //
-                NSMutableArray *mArr = [NSMutableArray array];
-                for (NSDictionary *jsonDic in saleCars) {
-                    
-                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-                    [mArr addObject:model];
-                }
-                self.saleArr = mArr;
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-            }else {
-                [PromtView showMessage:@"当前城市暂无特价车" duration:1.5];
-            }
-        }else {
-            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
-        }
-    } failure:^(NSError *error) {
-        [PromtView showMessage:PromptWord duration:1.5];
-    }];
+
+#pragma mark - action
+//location Action
+- (void)locationSuccess:(NSNotification *)not {
+    self.cityDic = [UserDefaults objectForKey:kLocationAction];
 }
+
+//menu Action
+- (void)menuActionWithCell:(HomeMenuCell *)cell {
+    
+    cell.clickBrandBtn = ^{
+        MFBrandViewController *brandVC = [[MFBrandViewController alloc] init];
+        brandVC.cityDic = self.cityDic;
+        [self.navigationController pushViewController:brandVC animated:YES];
+    };
+    
+    cell.clickSaleBtn = ^ {
+        [self pushToSaleController];
+    };
+    
+    cell.clickDaiBtn = ^ {
+        DKBaoDanViewController *xianVC = [[DKBaoDanViewController alloc] init];
+        [self.navigationController pushViewController:xianVC animated:YES];
+    };
+    
+    cell.clickXianBtn = ^ {
+        DKMainWebViewController *webViewController = [[DKMainWebViewController alloc] init];
+        webViewController.title = @"洗车";
+        //            webViewController.webString = [NSString stringWithFormat:@"%@/api/XiChe", URL_String];
+        //            webViewController.isRequest = YES;
+        webViewController.webString = @"http://open.chediandian.com/xc/index?ApiKey=25fea4fca5d54a91ad935814980dd787&ApiST=1467609844&ApiSign=962ad4b142ae429ac5bdb051b958e0e8";
+        webViewController.isRequest = NO;
+        [self.navigationController pushViewController:webViewController animated:YES];
+    };
+}
+
+- (void)saleCarDetailAction:(UIButton *)sender {
+    CarModel *model = self.saleArr[sender.tag];
+    
+    MFSaleDetailViewController *saleDetailVC = [[MFSaleDetailViewController alloc] init];
+    saleDetailVC.title = [NSString stringWithFormat:@"%@%@", model.brand_name, model.pro_subject];
+    saleDetailVC.carID = model.car_id;
+    [self.navigationController pushViewController:saleDetailVC animated:YES];
+}
+
+- (void)pushToSaleController {
+    MFSaleViewController *saleVC = [[MFSaleViewController alloc] init];
+    [self.navigationController pushViewController:saleVC animated:YES];
+}
+
+- (void)contrlClickAction:(CityControl *)cityCtrl {
+    DKCityTableViewController *cityVC = [[DKCityTableViewController alloc] init];
+    DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:cityVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 
 @end
