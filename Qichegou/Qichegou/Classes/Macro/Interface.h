@@ -27,6 +27,7 @@
 #define CITY_LIST       @"/api/sys/citys"               //城市列表
 
 #define BRABD_LIST      @"/api/car/brands"              //品牌
+#define CAR_TYPE        @"/api/car/models"              //车辆类型（SUV ， ID）
 #define HOTCAR          @"/api/car/rexiaoche"           //热销车
 #define SALECAR         @"/api/car/tejiache"            //特价车
 #define ACTIVITYLIST    @"/wap/activity/index"          //活动列表

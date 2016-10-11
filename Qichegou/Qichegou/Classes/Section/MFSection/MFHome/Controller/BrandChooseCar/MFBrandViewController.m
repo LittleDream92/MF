@@ -42,6 +42,7 @@
     [self setUpNav];
     [self setUpViews];
     [self setUpViewModel];
+    [self blockAction];
 }
 
 /** 重写返回方法 */
@@ -76,12 +77,12 @@
     [self.carProView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
-    self.carProView.hidden = YES;
 }
 
 
 - (void)setUpViewModel {
     
+    //品牌
     NSDictionary *brandParams = [NSDictionary dictionaryWithObjectsAndKeys:[UserDefaults objectForKey:kLocationAction][@"cityid"], @"cityid", nil];
     RACSignal *brandSignal = [self.viewModel.brandCommand execute:brandParams];
     [brandSignal subscribeNext:^(id x) {
@@ -89,37 +90,28 @@
         self.brandView.sectionDic = x[1];
         [self.brandView.tableView reloadData];
     }];
-
+    
+    //热销车
     RACSignal *hotSignal = [self.viewModel.hotCommand execute:brandParams];
     [hotSignal subscribeNext:^(id x) {
         self.brandView.hotArray = x;
         [self.brandView.tableView reloadData];
     }];
     
-    WEAKSELF
-    self.carProView.tapAction = ^ {
-        weakSelf.carProView.hidden = YES;
-    };
+//    //车辆类型
+//    RACSignal *carTypeSignal = [self.viewModel.carTypeCommand execute:nil];
+//    [carTypeSignal subscribeNext:^(NSDictionary *x) {
+//        NSLog(@"这是车辆类型: %@", x);
+//        self.condationView.carTypeDic = x;
+//        [self.condationView.collectionView reloadData];
+//    }];
     
-    self.carProView.clickItemAction = ^(NSString *proID) {
-        NSLog(@"pro_id:%@", proID);
-        weakSelf.carProView.hidden = YES;
-        
-        DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
-        carListVC.pid = proID;
-        [weakSelf.navigationController pushViewController:carListVC animated:YES];
-    };
-    
-    self.condationView.clickNextBtn = ^ (NSDictionary *params){
+    RACSignal *signal = [self.viewModel.numCarsCommand execute:nil];
+    [signal subscribeNext:^(NSString *x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"%@", params);
-            DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
-            carListVC.maxPrice = params[@"max"];
-            carListVC.minPrice = params[@"min"];
-            carListVC.modelID = params[@"mid"];
-            [weakSelf.navigationController pushViewController:carListVC animated:YES];
+            [self.condationView.nextBtn setTitle:[NSString stringWithFormat:@"找到%@款车型", x] forState:UIControlStateNormal];
         });
-    };
+    }];
 }
 
 #pragma mark - lazyloading
@@ -173,6 +165,7 @@
 -(CarProView *)carProView {
     if (!_carProView) {
         _carProView = [[CarProView alloc] init];
+        _carProView.hidden = YES;
     }
     return _carProView;
 }
@@ -216,5 +209,51 @@
         });
     }];
 }
+
+
+//block
+- (void)blockAction {
+    WEAKSELF
+    self.carProView.tapAction = ^ {
+        weakSelf.carProView.hidden = YES;
+    };
+    
+    self.carProView.clickItemAction = ^(NSString *proID) {
+        NSLog(@"pro_id:%@", proID);
+        weakSelf.carProView.hidden = YES;
+        
+        DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
+        carListVC.pid = proID;
+        [weakSelf.navigationController pushViewController:carListVC animated:YES];
+    };
+    
+    self.condationView.clickNextBtn = ^ (NSDictionary *params){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", params);
+            DKCarListViewController *carListVC = [[DKCarListViewController alloc] init];
+            carListVC.maxPrice = params[@"max"];
+            carListVC.minPrice = params[@"min"];
+            carListVC.modelID = params[@"mid"];
+            [weakSelf.navigationController pushViewController:carListVC animated:YES];
+        });
+    };
+    
+    self.condationView.clickCarTypeItem = ^(NSString *mid) {
+//        NSLog(@"我点击了%@类型的车", mid);
+        weakSelf.viewModel.midID = mid;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            RACSignal *signal = [weakSelf.viewModel.numCarsCommand execute:nil];
+            [signal subscribeNext:^(NSString *x) {
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.condationView.nextBtn setTitle:[NSString stringWithFormat:@"找到%@款车型", x] forState:UIControlStateNormal];
+                });
+            }];
+        });
+
+    };
+}
+
 
 @end

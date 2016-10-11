@@ -99,10 +99,7 @@ static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HotCarCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hotCarCellID forIndexPath:indexPath];
     
-    NSLog(@"hotArr:%@", self.hotArr);
     cell.model = self.hotArr[indexPath.item];
-    
-//    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     
     return cell;
 }

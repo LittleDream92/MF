@@ -19,9 +19,6 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 }
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIButton *nextBtn;
-
-@property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSIndexPath *lastIndexPath;
 
@@ -168,8 +165,6 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     //第一组
     CondationCollectionCell *collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-//    collectionCell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-    
     collectionCell.carImgView.image = [UIImage imageNamed:imgNameArr[indexPath.item]];
     collectionCell.carLabel.text = titleArr[indexPath.item];
     
@@ -178,18 +173,24 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 
 #pragma mark - UICollection delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld", indexPath.item);
+//    NSLog(@"%ld", indexPath.item);
     CondationCollectionCell *lastCell = (CondationCollectionCell *)[collectionView cellForItemAtIndexPath:self.lastIndexPath];
     lastCell.carLabel.textColor = TEXTCOLOR;
     CondationCollectionCell *newCell = (CondationCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
     newCell.carLabel.textColor = kskyBlueColor;
+    
+    self.mid = [NSString stringWithFormat:@"%ld", indexPath.item+1];
+    
+    if (self.clickCarTypeItem) {
+        self.clickCarTypeItem(self.mid);
+    }
     
     self.lastIndexPath = indexPath;
 }
 
 #pragma mark - action
 - (void)pushNextAction:(UIButton *)sender {
-    NSLog(@"push next");
+    NSLog(@"push next, mid:%@", self.mid);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", self.min], @"min",
                             [NSString stringWithFormat:@"%f", self.max], @"max",
@@ -199,9 +200,6 @@ static NSString *const identifier = @"CondationtvCollectionCell";
         self.clickNextBtn(params);
     }
 }
-
-
-
 
 
 #pragma mark - lazyloading

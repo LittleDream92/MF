@@ -80,7 +80,6 @@ static NSString *const hotCarCellID = @"hotCarCellID";
             cell = [[HotCarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hotCarCellID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        NSLog(@"hot hot : %@", self.hotArray);
         cell.hotArr = self.hotArray;
         
         if (self.hotArray != nil) {

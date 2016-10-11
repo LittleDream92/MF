@@ -22,7 +22,6 @@
 - (void)setUpCommand {
     [self hotCommandAction];
     [self brandCommandAction];
-//    [self carProCommandAction];
 }
 
 #pragma mark - request action
@@ -80,12 +79,11 @@
 
 - (void)hotCommandAction {
     _hotCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        
+
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
             [DataService http_Post:HOTCAR parameters:input success:^(id responseObject) {
                 if ([responseObject[@"status"] integerValue] == 1) {
-                    NSLog(@"hot:%@", responseObject);
+//                    NSLog(@"hot:%@", responseObject);
                     NSArray *hotBrands = responseObject[@"rexiaoche"];
                     if ([hotBrands isKindOfClass:[NSArray class]] && hotBrands.count>0) {
                         
@@ -110,18 +108,22 @@
     }];
 }
 
+#pragma mark - lazyloading
 -(RACCommand *)carProCommand {
     if (!_carProCommand) {
+        
+        @weakify(self);
         _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            @strongify(self);
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                
+                @strongify(self);
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
                 params[@"bid"] = self.brandID;
                 params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
                 
                 //网络请求
                 [DataService http_Post:CARPROS parameters:params success:^(id responseObject) {
-                    NSLog(@"pro:%@", responseObject);
+//                    NSLog(@"pro:%@", responseObject);
                     if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
                         NSArray *jsonArr = [responseObject objectForKey:@"products"];
                         if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
@@ -149,61 +151,79 @@
     return _carProCommand;
 }
 
-//- (void)carProCommandAction {
-//    _carProCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//            
-//            //网络请求
-//            [DataService http_Post:CARPROS parameters:input success:^(id responseObject) {
-//                //                NSLog(@"pro:%@", responseObject);
-//                if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//                    NSArray *jsonArr = [responseObject objectForKey:@"products"];
-//                    if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
-//                        
-//                        NSMutableArray *mArr = [NSMutableArray array];
-//                        for (NSDictionary *jsonDic in jsonArr) {
-//                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-//                            [mArr addObject:model];
-//                        }
-//                        [subscriber sendNext:mArr];
-//                    }else {
-//                        [subscriber sendNext:nil];
-//                    }
-//                }
-//                
-//            } failure:^(NSError *error) {
-//                
-//            }];
-//            
-//            return nil;
-//        }];
-//        return signal;
-//    }];;
-//}
+/*
+-(RACCommand *)carTypeCommand {
+    if (!_carTypeCommand) {
+        _carTypeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                [DataService http_Post:CAR_TYPE parameters:nil success:^(id responseObject) {
+                    
+                    if ([responseObject[@"status"] integerValue] == 1) {
+                        NSArray *arr = responseObject[@"models"];
+                        if ([arr isKindOfClass:[NSArray class]] && arr.count > 0) {
+                            
+                            NSMutableDictionary *mDic = [NSMutableDictionary dictionary];
+                            for (NSDictionary *jsonDic in arr) {
+//                                NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:jsonDic[@"model_id"], jsonDic[@"model_name"], nil];
+//                                [mArr addObject:dic];
+                                [mDic setObject:jsonDic[@"model_id"] forKey:jsonDic[@"model_name"]];
+                            }
+                            
+                            [subscriber sendNext:mDic];
+                        }
+                    }
+                    
+                    [subscriber sendCompleted];
+                } failure:^(NSError *error) {
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            }];
+        }];
+    }
+    return _carTypeCommand;
+}
+*/
 
-#pragma mark -
-- (void)requestCarProWithDictionary:(NSDictionary *)dic {
-    //网络请求
-    [DataService http_Post:CARPROS parameters:dic success:^(id responseObject) {
-        //                NSLog(@"pro:%@", responseObject);
-        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            NSArray *jsonArr = [responseObject objectForKey:@"products"];
-            if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+
+-(RACCommand *)numCarsCommand {
+    if (!_numCarsCommand) {
+        @weakify(self);
+        _numCarsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            @strongify(self);
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self);
                 
-                NSMutableArray *mArr = [NSMutableArray array];
-                for (NSDictionary *jsonDic in jsonArr) {
-                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-                    [mArr addObject:model];
-                }
-                self.proArr = mArr;
-            }else {
+                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"iscount",
+                                        [UserDefaults objectForKey:kLocationAction][@"cityid"],@"cityid",
+                                        self.midID, @"mid",
+                                        self.min, @"min",
+                                        self.max, @"max",nil];
                 
-            }
-        }
-        
-    } failure:^(NSError *error) {
-        
-    }];
+                NSLog(@"number params : %@", params);
+                
+                [DataService http_Post:CARLIST parameters:params success:^(id responseObject) {
+                    NSLog(@"number is  : %@", responseObject);
+                    if ([responseObject[@"status"] integerValue] == 1) {
+                        NSString *totalNumber = responseObject[@"total"];
+                        [subscriber sendNext:totalNumber];
+                        [subscriber sendCompleted];
+                    }else {
+                        [subscriber sendCompleted];
+                        [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+                    }
+                    
+                } failure:^(NSError *error) {
+                    [subscriber sendCompleted];
+                    [PromtView showMessage:PromptWord duration:1.5];
+                }];
+                
+                return nil;
+            }];
+        }];
+    }
+    return _numCarsCommand;
 }
 
 @end
