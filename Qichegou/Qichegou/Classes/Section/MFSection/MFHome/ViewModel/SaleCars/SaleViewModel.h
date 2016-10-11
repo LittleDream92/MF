@@ -10,7 +10,9 @@
 
 @interface SaleViewModel : NSObject
 
-//品牌
+//
 @property (nonatomic, strong, readonly) RACCommand *saleCommand;
+
+
 
 @end

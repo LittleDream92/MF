@@ -18,12 +18,14 @@
 #import "UserModel.h"
 #import "AppDelegate.h"
 
+
+#import "SaleCarSubmmitViewModel.h"
+
 static NSString *const headerCell = @"HeaderCellID";
 @interface MFSaleDetailViewController ()<UITextFieldDelegate , UITableViewDelegate, UITableViewDataSource>
 {
     NSArray *_celltitleArray;
     BOOL isShow;
-    int height;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *buyBtn;
@@ -31,6 +33,9 @@ static NSString *const headerCell = @"HeaderCellID";
 @property (nonatomic, strong) CarModel *detailModel;
 
 @property (nonatomic, strong) NSArray *imgNameArray;
+
+
+@property (nonatomic, strong) SaleCarSubmmitViewModel *viewModel;
 
 @end
 
@@ -43,12 +48,10 @@ static NSString *const headerCell = @"HeaderCellID";
     
     [self setUpNav];
     [self setUpViews];
-    [self requestData];
+    [self autoLayout];
+    [self combineViewModel];
     
-    //监听键盘，键盘出现
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                                   selector:@selector(keyboardwill:)
-                                                       name:UIKeyboardWillShowNotification object:nil];
+//    [self requestData];
 
     //监听键盘隐藏
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -78,8 +81,14 @@ static NSString *const headerCell = @"HeaderCellID";
 }
 
 - (void)setUpViews {
-    WEAKSELF
+    
     [self.view addSubview:self.buyBtn];
+    [self.view addSubview:self.tableView];
+}
+
+- (void)autoLayout {
+    WEAKSELF
+    
     [self.buyBtn makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(15);
         make.right.equalTo(-15);
@@ -87,14 +96,22 @@ static NSString *const headerCell = @"HeaderCellID";
         make.height.equalTo(40);
     }];
     
-    [self.view addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(0);
         make.bottom.equalTo(weakSelf.buyBtn.mas_top).offset(-20);
     }];
-    
 }
 
+- (void)combineViewModel {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID, @"cid", nil];
+    RACSignal *signal = [self.viewModel.saleCarDetailCommand execute:params];
+    [signal subscribeNext:^(CarModel *carModel) {
+        self.detailModel = carModel;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    
+    self.buyBtn.rac_command = self.viewModel.saleCarSubmmitOrderCommand;
+}
 
 #pragma mark - lazyloading
 -(UITableView *)tableView {
@@ -125,29 +142,18 @@ static NSString *const headerCell = @"HeaderCellID";
     return _buyBtn;
 }
 
+-(SaleCarSubmmitViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[SaleCarSubmmitViewModel alloc] init];
+    }
+    return _viewModel;
+}
+
 #pragma mark - action
 //点击手势方法
 -(void)tapAction:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
-
- //当键盘出现时，调用此方法
--(void)keyboardwill:(NSNotification *)sender {
-    //获取键盘高度
-    NSDictionary *dict=[sender userInfo];
-    NSValue *value=[dict objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardrect = [value CGRectValue];
-    int keyboardH = keyboardrect.origin.y;
-    NSLog(@"%d", keyboardH);
-    height = keyboardH;
-//
-//     //如果输入框的高度低于键盘出现后的高度，视图就上升；
-//    if ((_textlab.frame.size.height + _textlab.frame.origin.y)>(self.view.frame.size.height - height)) {
-//        [self.tableView updateConstraints:^(MASConstraintMaker *make) {
-//            
-//        }];
-//    }
- }
 
 //当键盘隐藏时候，视图回到原定
 -(void)keybaordhide:(NSNotification *)sender {
@@ -296,50 +302,37 @@ static NSString *const headerCell = @"HeaderCellID";
 
 #pragma mark - UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
-    //拿到textfield对应View上面的纵坐标
-    CGRect rect = [textField convertRect:textField.frame toView:self.view];
-    NSLog(@"y:%f", rect.origin.y);
     
-    if (height < (rect.origin.y)) {
-        //需要移动
-        NSLog(@"需要移动");
-    }
-    
-//    if (rect.origin.y > (kScreenHeight-height)) {
-//        NSLog(@"move");
-        [self.tableView updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(+height - rect.origin.y);
-        }];
-//    }else {
-//        NSLog(@"don't move");
-//    }
+    [self.tableView updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(-35*3);
+    }];
 }
 
 
 #pragma mark - requestData
-- (void)requestData {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID, @"cid", nil];
-    
-    [DataService http_Post:DETAIL_CAR parameters:params success:^(id responseObject) {
-        NSLog(@"sale detail car:%@", responseObject);
-        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
-            
-            self.detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-            
-        }else {
-            
-            NSLog(@"%@", [responseObject objectForKey:@"msg"]);
-            [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
-        }
-        
-    } failure:^(NSError *error) {
-        [PromtView showAlert:PromptWord duration:1.5];
-    }];
-    
-}
+//- (void)requestData {
+//    
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID, @"cid", nil];
+//    
+//    [DataService http_Post:DETAIL_CAR parameters:params success:^(id responseObject) {
+//        NSLog(@"sale detail car:%@", responseObject);
+//        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+//            NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
+//            
+//            self.detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//            
+//        }else {
+//            
+//            NSLog(@"%@", [responseObject objectForKey:@"msg"]);
+//            [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
+//        }
+//        
+//    } failure:^(NSError *error) {
+//        [PromtView showAlert:PromptWord duration:1.5];
+//    }];
+//    
+//}
 
 //判断要注册的信息是否为空
 - (void)textFieldStringIsNull {
@@ -426,44 +419,6 @@ static NSString *const headerCell = @"HeaderCellID";
                    }];
     
 }
-
-
-
-//- (void)regist_requestWithName:(NSString *)name tel:(NSString *)tel code:(NSString *)code { //注册
-//    
-//    NSString *randomString = [BaseFunction ret32bitString];
-//    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-//    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-//    
-//    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-//                            timeSp, @"time",
-//                            md5String, @"sign",
-//                            tel,@"tel",
-//                            code, @"code",
-//                            name, @"name", nil];
-//    
-//    [DataService http_Post:ORDER_REGIST
-//                parameters:params
-//                   success:^(id responseObject) {
-//                       NSLog(@"order login:%@", responseObject);
-//                       if ([responseObject[@"status"] integerValue] == 1) {
-//                           
-//                           //存储
-//                           UserModel *userModel = [[UserModel alloc] initContentWithDic:responseObject];
-//                           userModel.sjhm = tel;
-//                           userModel.zsxm = name;
-//                           userModel.token = responseObject[@"token"];
-//                           [AppDelegate APP].user = userModel;
-//                           //发送登录成功通知
-//                           [NotificationCenters postNotificationName:LOGIN_SUCCESS object:nil userInfo:nil];
-//                       }else {
-//                           [PromtView showAlert:PromptWord duration:1.5];
-//                       }
-//                   } failure:^(NSError *error) {
-//                       NSLog(@"order login error:%@", error);
-//                       [PromtView showAlert:PromptWord duration:1.5];
-//                   }];
-//}
 
 #pragma mark -提交订单成功
 - (void)submitOrderSuccessWithOrderID:(NSString *)orderID {
