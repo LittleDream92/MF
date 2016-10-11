@@ -28,11 +28,14 @@ static NSString *const headerCell = @"HeaderCellID";
     BOOL isShow;
 }
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UITextField *accountTextField;
+@property (nonatomic, strong) UITextField *codeTextField;
 @property (nonatomic, strong) UIButton *buyBtn;
 
-@property (nonatomic, strong) CarModel *detailModel;
 
 @property (nonatomic, strong) NSArray *imgNameArray;
+@property (nonatomic, strong) CarModel *detailModel;
 
 
 @property (nonatomic, strong) SaleCarSubmmitViewModel *viewModel;
@@ -103,14 +106,13 @@ static NSString *const headerCell = @"HeaderCellID";
 }
 
 - (void)combineViewModel {
+    //请求特价车型数据
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID, @"cid", nil];
     RACSignal *signal = [self.viewModel.saleCarDetailCommand execute:params];
     [signal subscribeNext:^(CarModel *carModel) {
         self.detailModel = carModel;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }];
-    
-    self.buyBtn.rac_command = self.viewModel.saleCarSubmmitOrderCommand;
 }
 
 #pragma mark - lazyloading
@@ -166,6 +168,8 @@ static NSString *const headerCell = @"HeaderCellID";
 
 - (void)buttonAction:(UIButton *)sender {
     NSLog(@"获取验证码");
+    [self.view endEditing:YES];
+    
     //拿到手机号的txtField
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:2 inSection:1]];
     UITextField *telTxtField = [cell viewWithTag:7000];
@@ -192,7 +196,6 @@ static NSString *const headerCell = @"HeaderCellID";
     NSLog(@"下单");
     
     [self textFieldStringIsNull];
-    
 }
 
 
@@ -240,6 +243,7 @@ static NSString *const headerCell = @"HeaderCellID";
                 cell.lineView.hidden = YES;
                 cell.getCodeBtn.hidden = YES;
             }
+            
             [cell.getCodeBtn setTitleColor:kskyBlueColor forState:UIControlStateNormal];
             [cell.getCodeBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -310,30 +314,6 @@ static NSString *const headerCell = @"HeaderCellID";
 
 
 #pragma mark - requestData
-//- (void)requestData {
-//    
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID, @"cid", nil];
-//    
-//    [DataService http_Post:DETAIL_CAR parameters:params success:^(id responseObject) {
-//        NSLog(@"sale detail car:%@", responseObject);
-//        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
-//            
-//            self.detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-//            
-//        }else {
-//            
-//            NSLog(@"%@", [responseObject objectForKey:@"msg"]);
-//            [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
-//        }
-//        
-//    } failure:^(NSError *error) {
-//        [PromtView showAlert:PromptWord duration:1.5];
-//    }];
-//    
-//}
-
 //判断要注册的信息是否为空
 - (void)textFieldStringIsNull {
     NSMutableArray *mArray = [NSMutableArray array];
@@ -365,7 +345,6 @@ static NSString *const headerCell = @"HeaderCellID";
             }
         }];
     }];
-//    [self regist_requestWithName:mArray[0] tel:mArray[1] code:mArray[2]];
 }
 
 
