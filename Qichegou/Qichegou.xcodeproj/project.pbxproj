@@ -17,8 +17,6 @@
 		A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0BB1D9A60A400CDF409 /* ActivityOrderHeaderView.m */; };
 		A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */; };
 		A821E0FA1D9A68B400CDF409 /* DKBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */; };
-		A821E1161D9A6A9900CDF409 /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1141D9A6A9900CDF409 /* MyOrderCell.m */; };
-		A821E1171D9A6A9900CDF409 /* MyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */; };
 		A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E1361D9A759600CDF409 /* DKMainWebViewController.m */; };
 		A821E13A1D9A765100CDF409 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1381D9A765100CDF409 /* 37x-Checkmark.png */; };
 		A821E13B1D9A765100CDF409 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E1391D9A765100CDF409 /* 37x-Checkmark@2x.png */; };
@@ -47,24 +45,10 @@
 		A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D591D952268002DB7F4 /* DataService.m */; };
 		A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D5C1D952583002DB7F4 /* BaseModel.m */; };
 		A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */; };
-		A857ED931D9CA5010003C0FF /* DKChangePWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED8D1D9CA5010003C0FF /* DKChangePWDViewController.m */; };
-		A857ED941D9CA5010003C0FF /* DKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED8F1D9CA5010003C0FF /* DKLoginViewController.m */; };
-		A857ED951D9CA5010003C0FF /* DKRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED911D9CA5010003C0FF /* DKRegistViewController.m */; };
-		A857ED961D9CA5010003C0FF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A857ED921D9CA5010003C0FF /* Login.storyboard */; };
 		A857ED991D9CA7170003C0FF /* DKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED981D9CA7170003C0FF /* DKTextField.m */; };
-		A857ED9E1D9CADBD0003C0FF /* DKMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED9C1D9CADBD0003C0FF /* DKMyOrderVC.m */; };
-		A857ED9F1D9CADBD0003C0FF /* DKMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857ED9D1D9CADBD0003C0FF /* DKMyOrderVC.xib */; };
-		A857EDA21D9CAE1E0003C0FF /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDA11D9CAE1E0003C0FF /* DKMyActivityOrderVC.m */; };
 		A857EDAD1D9CC8E10003C0FF /* HomeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */; };
 		A857EDB11D9CE9640003C0FF /* CityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB01D9CE9640003C0FF /* CityControl.m */; };
 		A857EDB41D9CEA8E0003C0FF /* DKCityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB31D9CEA8E0003C0FF /* DKCityTableViewController.m */; };
-		A86CD0F61DAB90AF00EC7D89 /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CD0EF1DAB90AF00EC7D89 /* MFAboutViewController.m */; };
-		A86CD0F71DAB90AF00EC7D89 /* MFAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86CD0F01DAB90AF00EC7D89 /* MFAboutViewController.xib */; };
-		A86CD0F81DAB90AF00EC7D89 /* MFFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CD0F21DAB90AF00EC7D89 /* MFFeedBackViewController.m */; };
-		A86CD0F91DAB90AF00EC7D89 /* MFFeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86CD0F31DAB90AF00EC7D89 /* MFFeedBackViewController.xib */; };
-		A86CD0FA1DAB90AF00EC7D89 /* MFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CD0F51DAB90AF00EC7D89 /* MFSettingViewController.m */; };
-		A86CD1011DAB915B00EC7D89 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CD0FD1DAB915B00EC7D89 /* LoginViewModel.m */; };
-		A86CD1021DAB915B00EC7D89 /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CD1001DAB915B00EC7D89 /* SettingViewModel.m */; };
 		A87123761DAC915B0040344A /* BaoDanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A871231E1DAC915B0040344A /* BaoDanTableViewCell.m */; };
 		A87123771DAC915B0040344A /* BaoDanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A871231F1DAC915B0040344A /* BaoDanTableViewCell.xib */; };
 		A87123781DAC915B0040344A /* BaoDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123211DAC915B0040344A /* BaoDetailCell.m */; };
@@ -144,8 +128,25 @@
 		A871241C1DAC93180040344A /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124161DAC93180040344A /* HomeHeaderView.m */; };
 		A871241D1DAC93180040344A /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124181DAC93180040344A /* HomeMenuCell.m */; };
 		A871241E1DAC93180040344A /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A871241A1DAC93180040344A /* HomeOperationCell.m */; };
+		A87124531DAC96910040344A /* DKChangePWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124231DAC96910040344A /* DKChangePWDViewController.m */; };
+		A87124541DAC96910040344A /* DKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124251DAC96910040344A /* DKLoginViewController.m */; };
+		A87124551DAC96910040344A /* DKRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124271DAC96910040344A /* DKRegistViewController.m */; };
+		A87124561DAC96910040344A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87124281DAC96910040344A /* Login.storyboard */; };
+		A87124571DAC96910040344A /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */; };
+		A87124581DAC96910040344A /* DKMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A871242D1DAC96910040344A /* DKMyOrderVC.m */; };
+		A87124591DAC96910040344A /* DKMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A871242E1DAC96910040344A /* DKMyOrderVC.xib */; };
+		A871245A1DAC96910040344A /* MFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124311DAC96910040344A /* MFPersonalViewController.m */; };
+		A871245B1DAC96910040344A /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124341DAC96910040344A /* MFAboutViewController.m */; };
+		A871245C1DAC96910040344A /* MFAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87124351DAC96910040344A /* MFAboutViewController.xib */; };
+		A871245D1DAC96910040344A /* MFFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124371DAC96910040344A /* MFFeedBackViewController.m */; };
+		A871245E1DAC96910040344A /* MFFeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87124381DAC96910040344A /* MFFeedBackViewController.xib */; };
+		A871245F1DAC96910040344A /* MFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A871243A1DAC96910040344A /* MFSettingViewController.m */; };
+		A87124601DAC96910040344A /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124441DAC96910040344A /* MyOrderCell.m */; };
+		A87124611DAC96910040344A /* MyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87124451DAC96910040344A /* MyOrderCell.xib */; };
+		A87124621DAC96910040344A /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A871244B1DAC96910040344A /* LoginViewModel.m */; };
+		A87124631DAC96910040344A /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A871244F1DAC96910040344A /* PersonalViewModel.m */; };
+		A87124641DAC96910040344A /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124521DAC96910040344A /* SettingViewModel.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
-		A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88600051D926EA80028F102 /* PersonalViewModel.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
 		A886FEFD1D922A450028F102 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A886FEFC1D922A450028F102 /* Images.xcassets */; };
@@ -154,7 +155,6 @@
 		A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF1E1D922EC60028F102 /* DKBaseNaviController.m */; };
 		A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF211D922ED80028F102 /* DKBaseTabbarController.m */; };
 		A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF3A1D9230490028F102 /* MFActivityViewController.m */; };
-		A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */; };
 		A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A886FF441D92382F0028F102 /* AlipaySDK.bundle */; };
 		A886FFAD1D9238300028F102 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A886FF451D92382F0028F102 /* AlipaySDK.framework */; };
 		A886FFAE1D9238300028F102 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A886FF461D92382F0028F102 /* libcrypto.a */; };
@@ -209,9 +209,6 @@
 		A821E0BC1D9A60A400CDF409 /* ActivityOrderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityOrderHeaderView.xib; sourceTree = "<group>"; };
 		A821E0F81D9A68B400CDF409 /* DKBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKBaseTableViewController.h; sourceTree = "<group>"; };
 		A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseTableViewController.m; sourceTree = "<group>"; };
-		A821E1131D9A6A9900CDF409 /* MyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
-		A821E1141D9A6A9900CDF409 /* MyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
-		A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderCell.xib; sourceTree = "<group>"; };
 		A821E1351D9A759600CDF409 /* DKMainWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainWebViewController.h; sourceTree = "<group>"; };
 		A821E1361D9A759600CDF409 /* DKMainWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainWebViewController.m; sourceTree = "<group>"; };
 		A821E1381D9A765100CDF409 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
@@ -245,38 +242,14 @@
 		A84F5D5C1D952583002DB7F4 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A84F5D611D952BE3002DB7F4 /* CustomButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButtonView.h; sourceTree = "<group>"; };
 		A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButtonView.m; sourceTree = "<group>"; };
-		A857ED8C1D9CA5010003C0FF /* DKChangePWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKChangePWDViewController.h; sourceTree = "<group>"; };
-		A857ED8D1D9CA5010003C0FF /* DKChangePWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKChangePWDViewController.m; sourceTree = "<group>"; };
-		A857ED8E1D9CA5010003C0FF /* DKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLoginViewController.h; sourceTree = "<group>"; };
-		A857ED8F1D9CA5010003C0FF /* DKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLoginViewController.m; sourceTree = "<group>"; };
-		A857ED901D9CA5010003C0FF /* DKRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRegistViewController.h; sourceTree = "<group>"; };
-		A857ED911D9CA5010003C0FF /* DKRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRegistViewController.m; sourceTree = "<group>"; };
-		A857ED921D9CA5010003C0FF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A857ED971D9CA7170003C0FF /* DKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKTextField.h; sourceTree = "<group>"; };
 		A857ED981D9CA7170003C0FF /* DKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKTextField.m; sourceTree = "<group>"; };
-		A857ED9B1D9CADBD0003C0FF /* DKMyOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyOrderVC.h; sourceTree = "<group>"; };
-		A857ED9C1D9CADBD0003C0FF /* DKMyOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyOrderVC.m; sourceTree = "<group>"; };
-		A857ED9D1D9CADBD0003C0FF /* DKMyOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMyOrderVC.xib; sourceTree = "<group>"; };
-		A857EDA01D9CAE1E0003C0FF /* DKMyActivityOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyActivityOrderVC.h; sourceTree = "<group>"; };
-		A857EDA11D9CAE1E0003C0FF /* DKMyActivityOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyActivityOrderVC.m; sourceTree = "<group>"; };
 		A857EDA91D9CC8E10003C0FF /* HomeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBtn.h; sourceTree = "<group>"; };
 		A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBtn.m; sourceTree = "<group>"; };
 		A857EDAF1D9CE9640003C0FF /* CityControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityControl.h; sourceTree = "<group>"; };
 		A857EDB01D9CE9640003C0FF /* CityControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityControl.m; sourceTree = "<group>"; };
 		A857EDB21D9CEA8E0003C0FF /* DKCityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCityTableViewController.h; sourceTree = "<group>"; };
 		A857EDB31D9CEA8E0003C0FF /* DKCityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCityTableViewController.m; sourceTree = "<group>"; };
-		A86CD0EE1DAB90AF00EC7D89 /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAboutViewController.h; sourceTree = "<group>"; };
-		A86CD0EF1DAB90AF00EC7D89 /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAboutViewController.m; sourceTree = "<group>"; };
-		A86CD0F01DAB90AF00EC7D89 /* MFAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFAboutViewController.xib; sourceTree = "<group>"; };
-		A86CD0F11DAB90AF00EC7D89 /* MFFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFeedBackViewController.h; sourceTree = "<group>"; };
-		A86CD0F21DAB90AF00EC7D89 /* MFFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFeedBackViewController.m; sourceTree = "<group>"; };
-		A86CD0F31DAB90AF00EC7D89 /* MFFeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFFeedBackViewController.xib; sourceTree = "<group>"; };
-		A86CD0F41DAB90AF00EC7D89 /* MFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSettingViewController.h; sourceTree = "<group>"; };
-		A86CD0F51DAB90AF00EC7D89 /* MFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSettingViewController.m; sourceTree = "<group>"; };
-		A86CD0FC1DAB915B00EC7D89 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
-		A86CD0FD1DAB915B00EC7D89 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
-		A86CD0FF1DAB915B00EC7D89 /* SettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewModel.h; sourceTree = "<group>"; };
-		A86CD1001DAB915B00EC7D89 /* SettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
 		A871231D1DAC915B0040344A /* BaoDanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoDanTableViewCell.h; sourceTree = "<group>"; };
 		A871231E1DAC915B0040344A /* BaoDanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoDanTableViewCell.m; sourceTree = "<group>"; };
 		A871231F1DAC915B0040344A /* BaoDanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoDanTableViewCell.xib; sourceTree = "<group>"; };
@@ -417,8 +390,37 @@
 		A87124181DAC93180040344A /* HomeMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMenuCell.m; sourceTree = "<group>"; };
 		A87124191DAC93180040344A /* HomeOperationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeOperationCell.h; sourceTree = "<group>"; };
 		A871241A1DAC93180040344A /* HomeOperationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeOperationCell.m; sourceTree = "<group>"; };
-		A88600041D926EA80028F102 /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
-		A88600051D926EA80028F102 /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
+		A87124221DAC96910040344A /* DKChangePWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKChangePWDViewController.h; sourceTree = "<group>"; };
+		A87124231DAC96910040344A /* DKChangePWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKChangePWDViewController.m; sourceTree = "<group>"; };
+		A87124241DAC96910040344A /* DKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLoginViewController.h; sourceTree = "<group>"; };
+		A87124251DAC96910040344A /* DKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLoginViewController.m; sourceTree = "<group>"; };
+		A87124261DAC96910040344A /* DKRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRegistViewController.h; sourceTree = "<group>"; };
+		A87124271DAC96910040344A /* DKRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRegistViewController.m; sourceTree = "<group>"; };
+		A87124281DAC96910040344A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A871242A1DAC96910040344A /* DKMyActivityOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyActivityOrderVC.h; sourceTree = "<group>"; };
+		A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyActivityOrderVC.m; sourceTree = "<group>"; };
+		A871242C1DAC96910040344A /* DKMyOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyOrderVC.h; sourceTree = "<group>"; };
+		A871242D1DAC96910040344A /* DKMyOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyOrderVC.m; sourceTree = "<group>"; };
+		A871242E1DAC96910040344A /* DKMyOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMyOrderVC.xib; sourceTree = "<group>"; };
+		A87124301DAC96910040344A /* MFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPersonalViewController.h; sourceTree = "<group>"; };
+		A87124311DAC96910040344A /* MFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPersonalViewController.m; sourceTree = "<group>"; };
+		A87124331DAC96910040344A /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAboutViewController.h; sourceTree = "<group>"; };
+		A87124341DAC96910040344A /* MFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAboutViewController.m; sourceTree = "<group>"; };
+		A87124351DAC96910040344A /* MFAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFAboutViewController.xib; sourceTree = "<group>"; };
+		A87124361DAC96910040344A /* MFFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFeedBackViewController.h; sourceTree = "<group>"; };
+		A87124371DAC96910040344A /* MFFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFeedBackViewController.m; sourceTree = "<group>"; };
+		A87124381DAC96910040344A /* MFFeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFFeedBackViewController.xib; sourceTree = "<group>"; };
+		A87124391DAC96910040344A /* MFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSettingViewController.h; sourceTree = "<group>"; };
+		A871243A1DAC96910040344A /* MFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSettingViewController.m; sourceTree = "<group>"; };
+		A87124431DAC96910040344A /* MyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
+		A87124441DAC96910040344A /* MyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
+		A87124451DAC96910040344A /* MyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderCell.xib; sourceTree = "<group>"; };
+		A871244A1DAC96910040344A /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		A871244B1DAC96910040344A /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		A871244E1DAC96910040344A /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
+		A871244F1DAC96910040344A /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
+		A87124511DAC96910040344A /* SettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewModel.h; sourceTree = "<group>"; };
+		A87124521DAC96910040344A /* SettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FEF11D922A450028F102 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A886FEF31D922A450028F102 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -434,8 +436,6 @@
 		A886FF211D922ED80028F102 /* DKBaseTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKBaseTabbarController.m; sourceTree = "<group>"; };
 		A886FF391D9230490028F102 /* MFActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActivityViewController.h; sourceTree = "<group>"; };
 		A886FF3A1D9230490028F102 /* MFActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityViewController.m; sourceTree = "<group>"; };
-		A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPersonalViewController.h; sourceTree = "<group>"; };
-		A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPersonalViewController.m; sourceTree = "<group>"; };
 		A886FF3F1D9230980028F102 /* Qichegou.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Qichegou.pch; sourceTree = "<group>"; };
 		A886FF401D9230F80028F102 /* Interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interface.h; sourceTree = "<group>"; };
 		A886FF411D9231030028F102 /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
@@ -608,65 +608,6 @@
 				1570BC8E8A77435BCCBB19CE /* Pods-Qichegou.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		A857ED8B1D9CA5010003C0FF /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				A857ED921D9CA5010003C0FF /* Login.storyboard */,
-				A857ED8E1D9CA5010003C0FF /* DKLoginViewController.h */,
-				A857ED8F1D9CA5010003C0FF /* DKLoginViewController.m */,
-				A857ED8C1D9CA5010003C0FF /* DKChangePWDViewController.h */,
-				A857ED8D1D9CA5010003C0FF /* DKChangePWDViewController.m */,
-				A857ED901D9CA5010003C0FF /* DKRegistViewController.h */,
-				A857ED911D9CA5010003C0FF /* DKRegistViewController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		A857ED9A1D9CADBD0003C0FF /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				A857EDA01D9CAE1E0003C0FF /* DKMyActivityOrderVC.h */,
-				A857EDA11D9CAE1E0003C0FF /* DKMyActivityOrderVC.m */,
-				A857ED9B1D9CADBD0003C0FF /* DKMyOrderVC.h */,
-				A857ED9C1D9CADBD0003C0FF /* DKMyOrderVC.m */,
-				A857ED9D1D9CADBD0003C0FF /* DKMyOrderVC.xib */,
-			);
-			path = Order;
-			sourceTree = "<group>";
-		};
-		A86CD0ED1DAB90AF00EC7D89 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				A86CD0F41DAB90AF00EC7D89 /* MFSettingViewController.h */,
-				A86CD0F51DAB90AF00EC7D89 /* MFSettingViewController.m */,
-				A86CD0EE1DAB90AF00EC7D89 /* MFAboutViewController.h */,
-				A86CD0EF1DAB90AF00EC7D89 /* MFAboutViewController.m */,
-				A86CD0F01DAB90AF00EC7D89 /* MFAboutViewController.xib */,
-				A86CD0F11DAB90AF00EC7D89 /* MFFeedBackViewController.h */,
-				A86CD0F21DAB90AF00EC7D89 /* MFFeedBackViewController.m */,
-				A86CD0F31DAB90AF00EC7D89 /* MFFeedBackViewController.xib */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		A86CD0FB1DAB915B00EC7D89 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				A86CD0FC1DAB915B00EC7D89 /* LoginViewModel.h */,
-				A86CD0FD1DAB915B00EC7D89 /* LoginViewModel.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		A86CD0FE1DAB915B00EC7D89 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				A86CD0FF1DAB915B00EC7D89 /* SettingViewModel.h */,
-				A86CD1001DAB915B00EC7D89 /* SettingViewModel.m */,
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		A871231B1DAC915B0040344A /* View */ = {
@@ -1021,6 +962,193 @@
 			path = HomeViewModel;
 			sourceTree = "<group>";
 		};
+		A87124201DAC96910040344A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A871242F1DAC96910040344A /* PersonalController */,
+				A87124211DAC96910040344A /* Login */,
+				A87124291DAC96910040344A /* Order */,
+				A87124321DAC96910040344A /* Setting */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A87124211DAC96910040344A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A87124221DAC96910040344A /* DKChangePWDViewController.h */,
+				A87124231DAC96910040344A /* DKChangePWDViewController.m */,
+				A87124241DAC96910040344A /* DKLoginViewController.h */,
+				A87124251DAC96910040344A /* DKLoginViewController.m */,
+				A87124261DAC96910040344A /* DKRegistViewController.h */,
+				A87124271DAC96910040344A /* DKRegistViewController.m */,
+				A87124281DAC96910040344A /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A87124291DAC96910040344A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A871242A1DAC96910040344A /* DKMyActivityOrderVC.h */,
+				A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */,
+				A871242C1DAC96910040344A /* DKMyOrderVC.h */,
+				A871242D1DAC96910040344A /* DKMyOrderVC.m */,
+				A871242E1DAC96910040344A /* DKMyOrderVC.xib */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A871242F1DAC96910040344A /* PersonalController */ = {
+			isa = PBXGroup;
+			children = (
+				A87124301DAC96910040344A /* MFPersonalViewController.h */,
+				A87124311DAC96910040344A /* MFPersonalViewController.m */,
+			);
+			path = PersonalController;
+			sourceTree = "<group>";
+		};
+		A87124321DAC96910040344A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A87124331DAC96910040344A /* MFAboutViewController.h */,
+				A87124341DAC96910040344A /* MFAboutViewController.m */,
+				A87124351DAC96910040344A /* MFAboutViewController.xib */,
+				A87124361DAC96910040344A /* MFFeedBackViewController.h */,
+				A87124371DAC96910040344A /* MFFeedBackViewController.m */,
+				A87124381DAC96910040344A /* MFFeedBackViewController.xib */,
+				A87124391DAC96910040344A /* MFSettingViewController.h */,
+				A871243A1DAC96910040344A /* MFSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A871243B1DAC96910040344A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A871243E1DAC96910040344A /* PersonalModel */,
+				A871243C1DAC96910040344A /* Login */,
+				A871243D1DAC96910040344A /* Order */,
+				A871243F1DAC96910040344A /* Setting */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A871243C1DAC96910040344A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A871243D1DAC96910040344A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A871243E1DAC96910040344A /* PersonalModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersonalModel;
+			sourceTree = "<group>";
+		};
+		A871243F1DAC96910040344A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A87124401DAC96910040344A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A87124461DAC96910040344A /* PersonalView */,
+				A87124411DAC96910040344A /* Login */,
+				A87124421DAC96910040344A /* Order */,
+				A87124471DAC96910040344A /* Setting */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A87124411DAC96910040344A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A87124421DAC96910040344A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A87124431DAC96910040344A /* MyOrderCell.h */,
+				A87124441DAC96910040344A /* MyOrderCell.m */,
+				A87124451DAC96910040344A /* MyOrderCell.xib */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A87124461DAC96910040344A /* PersonalView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersonalView;
+			sourceTree = "<group>";
+		};
+		A87124471DAC96910040344A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A87124481DAC96910040344A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A871244D1DAC96910040344A /* PersonalViewModel */,
+				A87124491DAC96910040344A /* Login */,
+				A871244C1DAC96910040344A /* Order */,
+				A87124501DAC96910040344A /* Setting */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A87124491DAC96910040344A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A871244A1DAC96910040344A /* LoginViewModel.h */,
+				A871244B1DAC96910040344A /* LoginViewModel.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A871244C1DAC96910040344A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A871244D1DAC96910040344A /* PersonalViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A871244E1DAC96910040344A /* PersonalViewModel.h */,
+				A871244F1DAC96910040344A /* PersonalViewModel.m */,
+			);
+			path = PersonalViewModel;
+			sourceTree = "<group>";
+		};
+		A87124501DAC96910040344A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A87124511DAC96910040344A /* SettingViewModel.h */,
+				A87124521DAC96910040344A /* SettingViewModel.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		A886FEE41D922A450028F102 = {
 			isa = PBXGroup;
 			children = (
@@ -1358,52 +1486,12 @@
 		A886FF2E1D922FFC0028F102 /* MFPersonal */ = {
 			isa = PBXGroup;
 			children = (
-				A886FF2F1D922FFC0028F102 /* Controller */,
-				A886FF311D922FFC0028F102 /* View */,
-				A886FF301D922FFC0028F102 /* Model */,
-				A886FF321D922FFC0028F102 /* ViewModel */,
+				A87124201DAC96910040344A /* Controller */,
+				A87124401DAC96910040344A /* View */,
+				A871243B1DAC96910040344A /* Model */,
+				A87124481DAC96910040344A /* ViewModel */,
 			);
 			path = MFPersonal;
-			sourceTree = "<group>";
-		};
-		A886FF2F1D922FFC0028F102 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A886FF3C1D92305C0028F102 /* MFPersonalViewController.h */,
-				A886FF3D1D92305C0028F102 /* MFPersonalViewController.m */,
-				A857ED9A1D9CADBD0003C0FF /* Order */,
-				A857ED8B1D9CA5010003C0FF /* Login */,
-				A86CD0ED1DAB90AF00EC7D89 /* Setting */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A886FF301D922FFC0028F102 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A886FF311D922FFC0028F102 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A821E1131D9A6A9900CDF409 /* MyOrderCell.h */,
-				A821E1141D9A6A9900CDF409 /* MyOrderCell.m */,
-				A821E1151D9A6A9900CDF409 /* MyOrderCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A886FF321D922FFC0028F102 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A88600041D926EA80028F102 /* PersonalViewModel.h */,
-				A88600051D926EA80028F102 /* PersonalViewModel.m */,
-				A86CD0FB1DAB915B00EC7D89 /* Login */,
-				A86CD0FE1DAB915B00EC7D89 /* Setting */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A886FF431D92382F0028F102 /* AlipaySDK */ = {
@@ -1616,20 +1704,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A86CD0F91DAB90AF00EC7D89 /* MFFeedBackViewController.xib in Resources */,
+				A87124611DAC96910040344A /* MyOrderCell.xib in Resources */,
 				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
 				A821E1521D9A778B00CDF409 /* 2015按钮-点击状态@2x.png in Resources */,
 				A871239A1DAC915B0040344A /* PayMoneyFooterView.xib in Resources */,
 				A871237F1DAC915B0040344A /* PurchesProcessView.xib in Resources */,
-				A857ED9F1D9CADBD0003C0FF /* DKMyOrderVC.xib in Resources */,
 				A87123A51DAC915B0040344A /* CarDetailThirdCell.xib in Resources */,
 				A871238B1DAC915B0040344A /* CarProTableViewCell.xib in Resources */,
 				A821E1611D9A778B00CDF409 /* 外观按钮-点击状态@3x.png in Resources */,
+				A87124561DAC96910040344A /* Login.storyboard in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
 				A821E15A1D9A778B00CDF409 /* 空间按钮@2x.png in Resources */,
+				A87124591DAC96910040344A /* DKMyOrderVC.xib in Resources */,
 				A871239C1DAC915B0040344A /* PaymoneyTopView.xib in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
-				A857ED961D9CA5010003C0FF /* Login.storyboard in Resources */,
 				A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
 				A821E1591D9A778B00CDF409 /* 空间按钮-点击状态@3x.png in Resources */,
@@ -1647,8 +1735,10 @@
 				A87123791DAC915B0040344A /* BaoDetailCell.xib in Resources */,
 				A87123851DAC915B0040344A /* BuyCarNeedsHeaderview.xib in Resources */,
 				A821E15E1D9A778B00CDF409 /* 内饰按钮@2x.png in Resources */,
+				A871245E1DAC96910040344A /* MFFeedBackViewController.xib in Resources */,
 				A87123891DAC915B0040344A /* CarListTableViewCell.xib in Resources */,
 				A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */,
+				A871245C1DAC96910040344A /* MFAboutViewController.xib in Resources */,
 				A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */,
 				A87123871DAC915B0040344A /* BuyCarNeedsTVC.xib in Resources */,
 				A821E1651D9A77FC00CDF409 /* location.plist in Resources */,
@@ -1660,10 +1750,8 @@
 				A821E1501D9A778B00CDF409 /* 2014按钮-拷贝@2x.png in Resources */,
 				A87123981DAC915B0040344A /* CarInformationView.xib in Resources */,
 				A821E1571D9A778B00CDF409 /* 官方图按钮@3x.png in Resources */,
-				A821E1171D9A6A9900CDF409 /* MyOrderCell.xib in Resources */,
 				A821E1631D9A778B00CDF409 /* 外观按钮@3x.png in Resources */,
 				A821E15F1D9A778B00CDF409 /* 内饰按钮@3x.png in Resources */,
-				A86CD0F71DAB90AF00EC7D89 /* MFAboutViewController.xib in Resources */,
 				A87123A31DAC915B0040344A /* CarDetailFourCell.xib in Resources */,
 				A821E1551D9A778B00CDF409 /* 官方图按钮-点击状态@3x.png in Resources */,
 				A821E15C1D9A778B00CDF409 /* 内饰按钮-点击状态@2x.png in Resources */,
@@ -1725,15 +1813,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A871245B1DAC96910040344A /* MFAboutViewController.m in Sources */,
 				A87123CE1DAC91D90040344A /* BrandViewModel.m in Sources */,
 				A87123911DAC915B0040344A /* PhotoScrollView.m in Sources */,
 				A886FFB01D9238300028F102 /* base64.m in Sources */,
+				A87124581DAC96910040344A /* DKMyOrderVC.m in Sources */,
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
 				A886FF1F1D922EC60028F102 /* DKBaseNaviController.m in Sources */,
 				A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */,
 				A871237C1DAC915B0040344A /* DetailFooterView.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
+				A87124621DAC96910040344A /* LoginViewModel.m in Sources */,
 				A87123BB1DAC91A60040344A /* CityDetailModel.m in Sources */,
 				A871239B1DAC915B0040344A /* PaymoneyTopView.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
@@ -1748,40 +1839,36 @@
 				A87124041DAC92770040344A /* ImageViewController.m in Sources */,
 				A871238C1DAC915B0040344A /* CarProView.m in Sources */,
 				A871241E1DAC93180040344A /* HomeOperationCell.m in Sources */,
+				A87124571DAC96910040344A /* DKMyActivityOrderVC.m in Sources */,
 				A87123881DAC915B0040344A /* CarListTableViewCell.m in Sources */,
-				A886FF3E1D92305C0028F102 /* MFPersonalViewController.m in Sources */,
 				A871241C1DAC93180040344A /* HomeHeaderView.m in Sources */,
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */,
-				A86CD1011DAB915B00EC7D89 /* LoginViewModel.m in Sources */,
-				A821E1161D9A6A9900CDF409 /* MyOrderCell.m in Sources */,
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
-				A86CD0F81DAB90AF00EC7D89 /* MFFeedBackViewController.m in Sources */,
-				A86CD1021DAB915B00EC7D89 /* SettingViewModel.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A87123781DAC915B0040344A /* BaoDetailCell.m in Sources */,
 				A87123FB1DAC92770040344A /* DKBaoDanViewController.m in Sources */,
 				A821E1371D9A759600CDF409 /* DKMainWebViewController.m in Sources */,
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
+				A87124641DAC96910040344A /* SettingViewModel.m in Sources */,
 				A871238D1DAC915B0040344A /* DetailChooseCarHeader.m in Sources */,
 				A87124011DAC92770040344A /* DKCarListViewController.m in Sources */,
+				A87124541DAC96910040344A /* DKLoginViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A87123D01DAC91D90040344A /* SubmmitViewModel.m in Sources */,
 				A871238F1DAC915B0040344A /* PhotoCell.m in Sources */,
 				A871237A1DAC915B0040344A /* BaoDetailTableViewCell.m in Sources */,
-				A857EDA21D9CAE1E0003C0FF /* DKMyActivityOrderVC.m in Sources */,
 				A87123761DAC915B0040344A /* BaoDanTableViewCell.m in Sources */,
 				A886FFF91D926A220028F102 /* NSMutableDictionary+Extention.m in Sources */,
 				A87123BC1DAC91A60040344A /* InsuranceModel.m in Sources */,
-				A857ED941D9CA5010003C0FF /* DKLoginViewController.m in Sources */,
 				A87123A41DAC915B0040344A /* CarDetailThirdCell.m in Sources */,
 				A871237E1DAC915B0040344A /* PurchesProcessView.m in Sources */,
 				A871240C1DAC92770040344A /* MFSaleViewController.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
 				A87123A71DAC915B0040344A /* SaleDetalHeaderTableViewCell.m in Sources */,
-				A857ED931D9CA5010003C0FF /* DKChangePWDViewController.m in Sources */,
+				A87124531DAC96910040344A /* DKChangePWDViewController.m in Sources */,
 				A87124021DAC92770040344A /* DKCarNeedsVC.m in Sources */,
 				A857EDB11D9CE9640003C0FF /* CityControl.m in Sources */,
 				A87123B91DAC91A60040344A /* CarModel.m in Sources */,
@@ -1792,8 +1879,11 @@
 				A87123961DAC915B0040344A /* CarHeaderView.m in Sources */,
 				A87123951DAC915B0040344A /* HotCarCollectionCell.m in Sources */,
 				A87123901DAC915B0040344A /* PhotoCollectionView.m in Sources */,
+				A871245D1DAC96910040344A /* MFFeedBackViewController.m in Sources */,
 				A87124031DAC92770040344A /* DKNeedsTableViewController.m in Sources */,
 				A871239D1DAC915B0040344A /* PriceCell.m in Sources */,
+				A871245F1DAC96910040344A /* MFSettingViewController.m in Sources */,
+				A87124601DAC96910040344A /* MyOrderCell.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A87123BD1DAC91A60040344A /* OtherModel.m in Sources */,
 				A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */,
@@ -1805,29 +1895,27 @@
 				A87123A21DAC915B0040344A /* CarDetailFourCell.m in Sources */,
 				A87123D11DAC91D90040344A /* SaleCarSubmmitViewModel.m in Sources */,
 				A857EDAD1D9CC8E10003C0FF /* HomeBtn.m in Sources */,
+				A87124551DAC96910040344A /* DKRegistViewController.m in Sources */,
 				A87123801DAC915B0040344A /* BrandCell.m in Sources */,
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
-				A86CD0F61DAB90AF00EC7D89 /* MFAboutViewController.m in Sources */,
 				A821E0B91D9A5FCE00CDF409 /* PromtView.m in Sources */,
 				A87123841DAC915B0040344A /* BuyCarNeedsHeaderview.m in Sources */,
 				A87123BE1DAC91A60040344A /* AiCheModel.m in Sources */,
 				A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,
 				A871240B1DAC92770040344A /* MFSaleDetailViewController.m in Sources */,
-				A857ED951D9CA5010003C0FF /* DKRegistViewController.m in Sources */,
 				A87124061DAC92770040344A /* MFCarDetailViewController.m in Sources */,
 				A87124051DAC92770040344A /* MFBrandViewController.m in Sources */,
 				A886FFE51D9261410028F102 /* BaseFunction.m in Sources */,
 				A87123861DAC915B0040344A /* BuyCarNeedsTVC.m in Sources */,
+				A87124631DAC96910040344A /* PersonalViewModel.m in Sources */,
 				A87123CF1DAC91D90040344A /* CarDetailViewModel.m in Sources */,
 				A87123971DAC915B0040344A /* CarInformationView.m in Sources */,
 				A886FFF81D926A220028F102 /* NSMutableArray+Extention.m in Sources */,
 				A87123FC1DAC92770040344A /* DKBaoDetailViewController.m in Sources */,
+				A871245A1DAC96910040344A /* MFPersonalViewController.m in Sources */,
 				A87123941DAC915B0040344A /* HotCarCell.m in Sources */,
-				A857ED9E1D9CADBD0003C0FF /* DKMyOrderVC.m in Sources */,
 				A857ED991D9CA7170003C0FF /* DKTextField.m in Sources */,
-				A88600061D926EA80028F102 /* PersonalViewModel.m in Sources */,
-				A86CD0FA1DAB90AF00EC7D89 /* MFSettingViewController.m in Sources */,
 				A87124091DAC92770040344A /* DKPayMoneyVC.m in Sources */,
 				A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */,
 				A871238A1DAC915B0040344A /* CarProTableViewCell.m in Sources */,
