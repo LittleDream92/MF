@@ -31,7 +31,6 @@ static NSString *const saleCellID = @"saleCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self setUpViewModel];
     [self setUpNav];
     [self setUpViews];
     [self setRefresh];
@@ -43,21 +42,6 @@ static NSString *const saleCellID = @"saleCellID";
 }
 
 #pragma mark - setUpViews
-//- (void)setUpViewModel {
-//    NSLog(@"%@", self.dataArr);
-//    if (![self.saleArray isKindOfClass:[NSArray class]]) {
-//        NSLog(@"null");
-//        
-//        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid", nil];
-//        RACSignal *saleSignal = [self.viewModel.saleCommand execute:params];
-//        [saleSignal subscribeNext:^(id x) {
-//            NSLog(@"x: %@", x);
-//            self.saleArray = x;
-//            [self.tableView reloadData];
-//        }];
-//    }
-//}
-
 - (void)setUpNav {
     self.title = @"特价购车";
     [self navBack:YES];

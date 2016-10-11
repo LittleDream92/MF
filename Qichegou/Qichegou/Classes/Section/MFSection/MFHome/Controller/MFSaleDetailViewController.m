@@ -137,7 +137,7 @@ static NSString *const headerCell = @"HeaderCellID";
     NSDictionary *dict=[sender userInfo];
     NSValue *value=[dict objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardrect = [value CGRectValue];
-    int keyboardH = keyboardrect.size.height;
+    int keyboardH = keyboardrect.origin.y;
     NSLog(@"%d", keyboardH);
     height = keyboardH;
 //
@@ -297,7 +297,14 @@ static NSString *const headerCell = @"HeaderCellID";
 #pragma mark - UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     //拿到textfield对应View上面的纵坐标
-    CGRect rect = [textField.superview convertRect:textField.frame toView:self.view];
+    CGRect rect = [textField convertRect:textField.frame toView:self.view];
+    NSLog(@"y:%f", rect.origin.y);
+    
+    if (height < (rect.origin.y)) {
+        //需要移动
+        NSLog(@"需要移动");
+    }
+    
 //    if (rect.origin.y > (kScreenHeight-height)) {
 //        NSLog(@"move");
         [self.tableView updateConstraints:^(MASConstraintMaker *make) {
@@ -307,6 +314,7 @@ static NSString *const headerCell = @"HeaderCellID";
 //        NSLog(@"don't move");
 //    }
 }
+
 
 #pragma mark - requestData
 - (void)requestData {
