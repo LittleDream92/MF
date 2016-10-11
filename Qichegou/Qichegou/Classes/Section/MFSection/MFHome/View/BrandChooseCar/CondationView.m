@@ -10,6 +10,8 @@
 #import "CondationCollectionCell.h"
 #import "PriceCell.h"
 
+#import "CondationViewModel.h"
+
 static NSString *const identifier = @"CondationtvCollectionCell";
 @interface CondationView ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 {
@@ -19,13 +21,16 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 }
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *nextBtn;
 
 @property (nonatomic, strong) NSIndexPath *lastIndexPath;
 
 //params
-@property (nonatomic, assign) CGFloat min;
-@property (nonatomic, assign) CGFloat max;
-@property (nonatomic, assign) NSString *mid;
+@property (nonatomic, copy) NSString *min;
+@property (nonatomic, copy) NSString *max;
+@property (nonatomic, copy) NSString *mid;
+
+@property (nonatomic, strong) CondationViewModel *viewModel;
 
 @end
 
@@ -36,19 +41,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     if (self) {
         
         [self setUpData];
-        
-        WEAKSELF
-        [self addSubview:self.nextBtn];
-        [self.nextBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(0);
-            make.height.equalTo(50);
-        }];
-        
-        [self addSubview:self.tableView];
-        [self.tableView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.equalTo(0);
-            make.bottom.equalTo(weakSelf.nextBtn.mas_top);
-        }];
+        [self setUpViews];
+        [self combineViewModel];
     }
     return self;
 }
@@ -58,10 +52,25 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     imgNameArr = @[@"car_1",@"car_2",@"car_3",@"car_4",@"car_5",@"car_6",@"car_7",@"car_8",@"car_9",@""];
     titleArr = @[@"微型", @"小型", @"紧凑型", @"中型", @"中大型", @"豪华型", @"MPV", @"SUV", @"跑车"];
     
-    self.min = 0;
-    self.max = 70;
+    self.min = @"0";
+    self.max = @"60";
     
     self.mid = @"";
+}
+
+- (void)setUpViews {
+    WEAKSELF
+    [self addSubview:self.nextBtn];
+    [self.nextBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(0);
+        make.height.equalTo(50);
+    }];
+    
+    [self addSubview:self.tableView];
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(0);
+        make.bottom.equalTo(weakSelf.nextBtn.mas_top);
+    }];
 }
 
 
@@ -103,11 +112,7 @@ static NSString *const identifier = @"CondationtvCollectionCell";
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            cell.thumbMoveAction = ^ (CGFloat min, CGFloat max) {
-                NSLog(@"min:%f, max:%f", min, max);
-                self.min = min;
-                self.max = max;
-            };
+            [self actionWithCell:cell];
             
             return cell;
         }else {
@@ -180,10 +185,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     newCell.carLabel.textColor = kskyBlueColor;
     
     self.mid = [NSString stringWithFormat:@"%ld", indexPath.item+1];
-    
-    if (self.clickCarTypeItem) {
-        self.clickCarTypeItem(self.mid);
-    }
+    self.viewModel.midID = self.mid;
+    [self combineViewModel];
     
     self.lastIndexPath = indexPath;
 }
@@ -192,8 +195,8 @@ static NSString *const identifier = @"CondationtvCollectionCell";
 - (void)pushNextAction:(UIButton *)sender {
     NSLog(@"push next, mid:%@", self.mid);
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", self.min], @"min",
-                            [NSString stringWithFormat:@"%f", self.max], @"max",
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.min, @"min",
+                            self.max, @"max",
                             self.mid, @"mid",nil];
     
     if (self.clickNextBtn) {
@@ -201,6 +204,34 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     }
 }
 
+- (void)actionWithCell:(PriceCell *)cell {
+    
+//    cell.thumbMoveAction = ^ (CGFloat min, CGFloat max) {
+    cell.thumbMoveAction = ^ (NSString *min, NSString *max) {
+//        NSLog(@"min:%f, max:%f", min, max);
+//        NSLog(@"min:%@, max:%@", min, max);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.min = min;
+            self.max = max;
+            self.viewModel.min = min;
+            self.viewModel.max = max;
+            [self combineViewModel];
+        });
+    };
+}
+
+
+- (void)combineViewModel {
+    
+    RACSignal *signal = [self.viewModel.numCarsCommand execute:nil];
+    [signal subscribeNext:^(NSString *x) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.nextBtn setTitle:[NSString stringWithFormat:@"找到%@款车型", x] forState:UIControlStateNormal];
+        });
+    }];
+}
 
 #pragma mark - lazyloading
 -(UITableView *)tableView {
@@ -246,6 +277,13 @@ static NSString *const identifier = @"CondationtvCollectionCell";
         [self.collectionView registerClass:[CondationCollectionCell class] forCellWithReuseIdentifier:identifier];
     }
     return _collectionView;
+}
+
+-(CondationViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[CondationViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 @end

@@ -97,21 +97,7 @@
         self.brandView.hotArray = x;
         [self.brandView.tableView reloadData];
     }];
-    
-//    //车辆类型
-//    RACSignal *carTypeSignal = [self.viewModel.carTypeCommand execute:nil];
-//    [carTypeSignal subscribeNext:^(NSDictionary *x) {
-//        NSLog(@"这是车辆类型: %@", x);
-//        self.condationView.carTypeDic = x;
-//        [self.condationView.collectionView reloadData];
-//    }];
-    
-    RACSignal *signal = [self.viewModel.numCarsCommand execute:nil];
-    [signal subscribeNext:^(NSString *x) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.condationView.nextBtn setTitle:[NSString stringWithFormat:@"找到%@款车型", x] forState:UIControlStateNormal];
-        });
-    }];
+
 }
 
 #pragma mark - lazyloading
@@ -236,22 +222,6 @@
             carListVC.modelID = params[@"mid"];
             [weakSelf.navigationController pushViewController:carListVC animated:YES];
         });
-    };
-    
-    self.condationView.clickCarTypeItem = ^(NSString *mid) {
-//        NSLog(@"我点击了%@类型的车", mid);
-        weakSelf.viewModel.midID = mid;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            RACSignal *signal = [weakSelf.viewModel.numCarsCommand execute:nil];
-            [signal subscribeNext:^(NSString *x) {
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.condationView.nextBtn setTitle:[NSString stringWithFormat:@"找到%@款车型", x] forState:UIControlStateNormal];
-                });
-            }];
-        });
-
     };
 }
 

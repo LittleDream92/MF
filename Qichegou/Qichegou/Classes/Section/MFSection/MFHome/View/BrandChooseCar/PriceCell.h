@@ -10,6 +10,7 @@
 
 @interface PriceCell : UITableViewCell
 
-@property (nonatomic, copy) void(^thumbMoveAction)(CGFloat thumbX1, CGFloat thumbX2);
+//@property (nonatomic, copy) void(^thumbMoveAction)(CGFloat thumbX1, CGFloat thumbX2);
+@property (nonatomic, copy) void(^thumbMoveAction)(NSString *thumbX1, NSString *thumbX2);
 
 @end

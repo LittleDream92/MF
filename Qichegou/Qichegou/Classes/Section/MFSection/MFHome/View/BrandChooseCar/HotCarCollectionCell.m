@@ -79,7 +79,7 @@
     if (_model != model) {
         _model = model;
         
-        NSLog(@"co cell:%@", model);
+//        NSLog(@"co cell:%@", model);
         
         [self.carView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_String, model.main_photo]] placeholderImage:[UIImage imageNamed:@"brand_bg"]];
         self.titleLabel.text = [NSString stringWithFormat:@"%@%@\n%@", model.brand_name, model.pro_subject, model.car_subject];

@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
+/** 280 : 8 段*/
 #import "PriceCell.h"
 
 #define LEFT_Padding 50
@@ -15,6 +16,8 @@
 {
     CGFloat leftX;
     CGFloat rightX;
+    
+    CGFloat perWidth;
 }
 
 @property (nonatomic, strong) UIImageView *bgView;
@@ -24,6 +27,9 @@
 @property (nonatomic, strong) UIImageView *thumb2;
 
 @property (nonatomic, assign) CGFloat gestureH;
+
+@property (nonatomic, copy) NSString *minPrice;
+@property (nonatomic, copy) NSString *maxPrice;
 
 @end
 
@@ -46,44 +52,62 @@
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        WEAKSELF
-        [self.contentView addSubview:self.bgView];
-        [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(weakSelf);
-            make.top.equalTo(15);
-            make.size.equalTo(CGSizeMake(292, 28));
-        }];
-        
-        leftX = kScreenWidth/2 - (292/2) + 3;
-        rightX = kScreenWidth/2 + (292/2) - 9;
-        
-        self.gestureH = self.bgView.frame.origin.y;
-        
-        [self.contentView addSubview:self.blueView];
-        [self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakSelf.bgView).offset(3);
-            make.right.equalTo(weakSelf.bgView).offset(-9);
-            make.bottom.equalTo(weakSelf.bgView);
-            make.height.equalTo(9);
-        }];
-        
-        [self.contentView addSubview:self.thumb1];
-        [self.thumb1 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
-            make.centerX.equalTo(weakSelf.bgView.mas_left).offset(3);
-            make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
-        }];
-
-        [self.contentView addSubview:self.thumb2];
-        [self.thumb2 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
-            make.centerX.equalTo(weakSelf.bgView.mas_right).offset(-9);
-            make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
-        }];
-        
+        [self setUpData];
+        [self setUpViews];
+        [self autoLayout];
     }
     return self;
+}
+
+- (void)setUpData {
+    self.minPrice = @"0";
+    self.maxPrice = @"60";
+    
+    self.gestureH = self.bgView.frame.origin.y;
+    
+    leftX = kScreenWidth/2 - (292/2) + 3;
+    NSLog(@"leftX : %f", leftX);
+    rightX = kScreenWidth/2 + (292/2) - 9;
+    
+    perWidth = (292-3-9) / 8;
+    NSLog(@"perWidth : %f", perWidth);
+}
+
+- (void)setUpViews {
+    [self.contentView addSubview:self.bgView];
+    [self.contentView addSubview:self.blueView];
+    [self.contentView addSubview:self.thumb1];
+    [self.contentView addSubview:self.thumb2];
+}
+
+- (void)autoLayout {
+    WEAKSELF
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf);
+        make.top.equalTo(15);
+        make.size.equalTo(CGSizeMake(292, 28));
+    }];
+    
+    [self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.bgView).offset(3);
+        make.right.equalTo(weakSelf.bgView).offset(-9);
+        make.bottom.equalTo(weakSelf.bgView);
+        make.height.equalTo(9);
+    }];
+    
+    
+    [self.thumb1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
+        make.centerX.equalTo(weakSelf.bgView.mas_left).offset(3);
+        make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
+    }];
+    
+    
+    [self.thumb2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(kThumbW, kThumbW-2));
+        make.centerX.equalTo(weakSelf.bgView.mas_right).offset(-9);
+        make.centerY.equalTo(weakSelf.bgView.mas_bottom).offset(5);
+    }];
 }
 
 #pragma mark - lazyloading
@@ -155,11 +179,19 @@
     }else if (panGesture.view.center.x > (thub2X-kThumbW/2) ) {
         panGesture.view.center = CGPointMake((thub2X-kThumbW/2), center.y);
     }
-
+    
     
     if (panGesture.state == UIGestureRecognizerStateEnded) {
+        //-------------  我是华丽的分割线  ----------------
+        CGFloat nowLeftW = self.thumb1.center.x - leftX;
+        NSLog(@"nowLeftW : %f", nowLeftW);
+        
+        NSInteger number = nowLeftW / perWidth;
+        NSLog(@"shang : %ld, yushu : ", number);
+        self.minPrice = [NSString stringWithFormat:@"%ld", number * 10];
+        
         if (self.thumbMoveAction) {
-            self.thumbMoveAction(self.thumb1.center.x, self.thumb2.center.x);
+            self.thumbMoveAction(self.minPrice, self.maxPrice);
         }
     }
     
@@ -197,8 +229,16 @@
     }
 
     if (panGesture.state == UIGestureRecognizerStateEnded) {
+        //-------------  我是华丽的分割线  ----------------
+        CGFloat nowRightW = self.thumb2.center.x - leftX;
+        NSLog(@"nowRightW : %f", nowRightW);
+        
+        NSInteger number = nowRightW / perWidth;
+        NSLog(@"sh: %ld, yushu : ", number);
+        self.maxPrice = [NSString stringWithFormat:@"%ld", number * 10];
+        
         if (self.thumbMoveAction) {
-            self.thumbMoveAction(self.thumb1.center.x, self.thumb2.center.x);
+            self.thumbMoveAction(self.minPrice, self.maxPrice);
         }
     }
 }

@@ -32,7 +32,7 @@
             
             //网络请求
             [DataService http_Post:BRABD_LIST parameters:input success:^(id responseObject) {
-                //                NSLog(@"respon:%@", responseObject);
+//                NSLog(@"respon:%@", responseObject);
                 if ([responseObject[@"status"] integerValue] == 1) {
                     NSArray *brands = responseObject[@"brands"];
                     if ([brands isKindOfClass:[NSArray class]] && brands.count > 0) {
@@ -187,43 +187,5 @@
 */
 
 
--(RACCommand *)numCarsCommand {
-    if (!_numCarsCommand) {
-        @weakify(self);
-        _numCarsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            @strongify(self);
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                
-                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"iscount",
-                                        [UserDefaults objectForKey:kLocationAction][@"cityid"],@"cityid",
-                                        self.midID, @"mid",
-                                        self.min, @"min",
-                                        self.max, @"max",nil];
-                
-                NSLog(@"number params : %@", params);
-                
-                [DataService http_Post:CARLIST parameters:params success:^(id responseObject) {
-                    NSLog(@"number is  : %@", responseObject);
-                    if ([responseObject[@"status"] integerValue] == 1) {
-                        NSString *totalNumber = responseObject[@"total"];
-                        [subscriber sendNext:totalNumber];
-                        [subscriber sendCompleted];
-                    }else {
-                        [subscriber sendCompleted];
-                        [PromtView showMessage:responseObject[@"msg"] duration:1.5];
-                    }
-                    
-                } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
-                    [PromtView showMessage:PromptWord duration:1.5];
-                }];
-                
-                return nil;
-            }];
-        }];
-    }
-    return _numCarsCommand;
-}
 
 @end

@@ -10,7 +10,6 @@
 #import "BrandCell.h"
 #import "HotCarCell.h"
 #import "CarModel.h"
-//#import "MFProCarViewController.h"
 
 static NSString *const cellID = @"brandTableViewCellID";
 static NSString *const hotCarCellID = @"hotCarCellID";

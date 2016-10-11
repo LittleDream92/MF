@@ -147,6 +147,7 @@
 		A87124631DAC96910040344A /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A871244F1DAC96910040344A /* PersonalViewModel.m */; };
 		A87124641DAC96910040344A /* SettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124521DAC96910040344A /* SettingViewModel.m */; };
 		A87124671DAC989B0040344A /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124661DAC989B0040344A /* HomeViewModel.m */; };
+		A871246A1DACD5A20040344A /* CondationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124691DACD5A20040344A /* CondationViewModel.m */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
@@ -424,6 +425,8 @@
 		A87124521DAC96910040344A /* SettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewModel.m; sourceTree = "<group>"; };
 		A87124651DAC989B0040344A /* HomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
 		A87124661DAC989B0040344A /* HomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
+		A87124681DACD5A20040344A /* CondationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondationViewModel.h; sourceTree = "<group>"; };
+		A87124691DACD5A20040344A /* CondationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondationViewModel.m; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FEF11D922A450028F102 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A886FEF31D922A450028F102 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 			children = (
 				A87123C21DAC91D90040344A /* BrandViewModel.h */,
 				A87123C31DAC91D90040344A /* BrandViewModel.m */,
+				A87124681DACD5A20040344A /* CondationViewModel.h */,
+				A87124691DACD5A20040344A /* CondationViewModel.m */,
 				A87123C41DAC91D90040344A /* CarDetailViewModel.h */,
 				A87123C51DAC91D90040344A /* CarDetailViewModel.m */,
 				A87123C61DAC91D90040344A /* SubmmitViewModel.h */,
@@ -879,10 +884,10 @@
 			children = (
 				A87123E81DAC92770040344A /* MFBrandViewController.h */,
 				A87123E91DAC92770040344A /* MFBrandViewController.m */,
-				A87123DE1DAC92770040344A /* BigCarImgVC.h */,
-				A87123DF1DAC92770040344A /* BigCarImgVC.m */,
 				A87123E01DAC92770040344A /* DKCarListViewController.h */,
 				A87123E11DAC92770040344A /* DKCarListViewController.m */,
+				A87123DE1DAC92770040344A /* BigCarImgVC.h */,
+				A87123DF1DAC92770040344A /* BigCarImgVC.m */,
 				A87123E21DAC92770040344A /* DKCarNeedsVC.h */,
 				A87123E31DAC92770040344A /* DKCarNeedsVC.m */,
 				A87123E41DAC92770040344A /* DKNeedsTableViewController.h */,
@@ -1932,6 +1937,7 @@
 				A857EDB41D9CEA8E0003C0FF /* DKCityTableViewController.m in Sources */,
 				A87124101DAC93020040344A /* MFHomeViewController.m in Sources */,
 				A821E0FA1D9A68B400CDF409 /* DKBaseTableViewController.m in Sources */,
+				A871246A1DACD5A20040344A /* CondationViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

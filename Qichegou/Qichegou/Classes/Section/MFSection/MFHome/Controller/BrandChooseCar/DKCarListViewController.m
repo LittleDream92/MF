@@ -41,7 +41,6 @@ static NSString *const cellID = @"carListCellID";
 #pragma mark - setUpViews
 - (void)setUpNav {
     [self navBack:YES];
-    
     self.title = @"选车型";
 }
 
@@ -105,7 +104,6 @@ static NSString *const cellID = @"carListCellID";
     
     //push进入详细选车页面
     MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
-//    [[UIStoryboard storyboardWithName:@"Cars" bundle:nil] instantiateViewControllerWithIdentifier:@"DKCarChooseTableViewController"];
     CarModel *model = self.dataArr[indexPath.row];
     detailCarVC.cid = model.car_id;
     [self.navigationController pushViewController:detailCarVC animated:YES];
@@ -128,7 +126,7 @@ static NSString *const cellID = @"carListCellID";
         params[@"pid"] = self.pid;
     }
     
-    NSLog(@"params:%@", params);
+//    NSLog(@"params:%@", params);
     [DataService http_Post:CARLIST
                 parameters:params
                    success:^(id responseObject) {
@@ -146,9 +144,11 @@ static NSString *const cellID = @"carListCellID";
                                [self.tableview.mj_header endRefreshing];
                            }
                        }else {
+                           [self.tableview.mj_header endRefreshing];
                            [PromtView showAlert:responseObject[@"msg"] duration:1.5];
                        }
                    } failure:^(NSError *error) {
+                       [self.tableview.mj_header endRefreshing];
                        [PromtView showAlert:PromptWord duration:1.5];
                    }];
 }
@@ -175,7 +175,7 @@ static NSString *const cellID = @"carListCellID";
 //                       NSLog(@"list : %@", responseObject);
                        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
                            NSArray *jsonArr = [responseObject objectForKey:@"cars"];
-                           if (jsonArr.count > 0) {
+                           if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
                                NSMutableArray *mArr = [NSMutableArray array];
                                for (NSDictionary *jsonDic in jsonArr) {
                                    CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
@@ -190,12 +190,14 @@ static NSString *const cellID = @"carListCellID";
                                }
                                [self.tableview.mj_footer endRefreshing];
                            }else {
-                               
+                               [self.tableview.mj_header endRefreshing];
                            }
                        }else {
-                        
+                            [self.tableview.mj_header endRefreshing];
+                           [PromtView showMessage:responseObject[@"msg"] duration:1.5];
                        }
                    } failure:^( NSError *error) {
+                       [self.tableview.mj_header endRefreshing];
                        [PromtView showAlert:PromptWord duration:1.5];
                    }];
 

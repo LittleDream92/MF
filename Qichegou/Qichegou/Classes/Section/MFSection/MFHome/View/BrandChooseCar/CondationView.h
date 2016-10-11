@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) UIButton *nextBtn;
-
 //@property (nonatomic, strong) NSDictionary *carTypeDic;
 
 @property (nonatomic, copy) void(^clickCarTypeItem)(NSString *mindID);
