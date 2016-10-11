@@ -7,7 +7,6 @@
 //
 
 #import "MFActivityViewController.h"
-#import "ActivityViewModel.h"
 #import "MFActivityDetailViewController.h"
 #import "AppDelegate.h"
 #import "CityControl.h"
@@ -18,7 +17,6 @@
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) CityControl *cityCtrl;
-@property (nonatomic, strong) ActivityViewModel *viewModel;
 
 @property (nonatomic, strong) NSDictionary *cityDic;
 
@@ -91,13 +89,6 @@
         [_cityCtrl addTarget:self action:@selector(contrlClickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cityCtrl;
-}
-
--(ActivityViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[ActivityViewModel alloc] init];
-    }
-    return _viewModel;
 }
 
 #pragma mark - webView delegate
