@@ -8,7 +8,7 @@
 
 #import "DKBaseTableViewController.h"
 
-@interface DKBaseTableViewController ()
+@interface DKBaseTableViewController ()<UIGestureRecognizerDelegate>
 
 @end
 

@@ -35,8 +35,10 @@
 #define ALIPAY_FAILED       @"Ali_pay_isFailed"
 
 
-
 //************************ 微信 ************************
+//微信AppID
+#define WECHAT_ID @""
+
 //微信支付：通知的名字及参数
 #define WX_PAY_RESULT   @"weixin_pay_result_isSuccessed"
 #define IS_SUCCESSED    @"wechat_pay_isSuccessed"

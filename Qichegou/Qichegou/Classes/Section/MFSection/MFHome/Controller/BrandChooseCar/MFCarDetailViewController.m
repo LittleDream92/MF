@@ -119,8 +119,9 @@ static NSString *const cellID = @"commonCellID";
         
         [_nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
         _nextBtn.titleLabel.font = H16;
-        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next"] forState:UIControlStateNormal];
-        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next_H"] forState:UIControlStateHighlighted];
+        _nextBtn.backgroundColor = kskyBlueColor;
+//        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next"] forState:UIControlStateNormal];
+//        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next_H"] forState:UIControlStateHighlighted];
     }
     return _nextBtn;
 }

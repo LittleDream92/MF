@@ -27,8 +27,9 @@
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
 
-    self.pageContrl.backgroundColor = [UIColor grayColor];
-    self.pageContrl.currentPageIndicatorTintColor = ITEMCOLOR;
+//    self.pageContrl.backgroundColor = [UIColor grayColor];
+    self.pageContrl.pageIndicatorTintColor = gray_color;
+    self.pageContrl.currentPageIndicatorTintColor = kskyBlueColor;
 }
 
 - (IBAction)pageContrlAction:(UIPageControl *)sender {
