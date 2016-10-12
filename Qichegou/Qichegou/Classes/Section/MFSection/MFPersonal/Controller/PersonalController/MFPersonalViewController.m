@@ -179,9 +179,7 @@ UITableViewDelegate>
         _naviRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateHighlighted];
-//        _naviRightBtn.size = _naviRightBtn.currentBackgroundImage.size;
         _naviRightBtn.size = CGSizeMake(20, 20);
-//        [_naviRightBtn addTarget:self action:@selector(ClickAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _naviRightBtn;
 }
@@ -335,7 +333,8 @@ UITableViewDelegate>
         
     }else {
         [self setCellWithCell:cell indexPath:indexPath];
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right"]];
+//        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right"]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
     return cell;

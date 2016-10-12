@@ -27,7 +27,7 @@
                             <constraint firstAttribute="width" constant="160" id="QZ2-sl-RrL"/>
                         </constraints>
                         <state key="normal" title="获取验证码">
-                            <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" tag="7000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kzo-oQ-7vf">

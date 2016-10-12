@@ -12,12 +12,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" tag="121" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJ5-xO-5gv">
-                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
+                    <rect key="frame" x="40" y="250" width="240" height="40"/>
+                    <color key="backgroundColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Hn1-4c-6ch"/>
+                        <constraint firstAttribute="height" constant="40" id="Hn1-4c-6ch"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="提交订单" backgroundImage="btn_pay">
+                    <state key="normal" title="提交订单">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <state key="highlighted" title="提交订单">
@@ -48,17 +49,17 @@
                 <constraint firstItem="nbU-9e-rqF" firstAttribute="height" secondItem="g1c-5E-14u" secondAttribute="height" id="4mh-I7-weZ"/>
                 <constraint firstItem="g1c-5E-14u" firstAttribute="leading" secondItem="xDd-SZ-3hU" secondAttribute="leading" constant="15" id="525-3B-WbP"/>
                 <constraint firstItem="nbU-9e-rqF" firstAttribute="leading" secondItem="g1c-5E-14u" secondAttribute="trailing" id="DSr-Sf-xlo"/>
-                <constraint firstItem="uJ5-xO-5gv" firstAttribute="leading" secondItem="xDd-SZ-3hU" secondAttribute="leading" id="TlL-8E-6eU"/>
-                <constraint firstAttribute="trailing" secondItem="uJ5-xO-5gv" secondAttribute="trailing" id="hqi-4d-vd8"/>
-                <constraint firstAttribute="bottom" secondItem="uJ5-xO-5gv" secondAttribute="bottom" id="iRM-oP-e3j"/>
+                <constraint firstItem="uJ5-xO-5gv" firstAttribute="leading" secondItem="xDd-SZ-3hU" secondAttribute="leading" constant="40" id="TlL-8E-6eU"/>
+                <constraint firstAttribute="trailing" secondItem="uJ5-xO-5gv" secondAttribute="trailing" constant="40" id="hqi-4d-vd8"/>
+                <constraint firstAttribute="bottom" secondItem="uJ5-xO-5gv" secondAttribute="bottom" constant="10" id="iRM-oP-e3j"/>
                 <constraint firstItem="uJ5-xO-5gv" firstAttribute="top" secondItem="g1c-5E-14u" secondAttribute="bottom" constant="10" id="vl4-xU-dAN"/>
                 <constraint firstItem="nbU-9e-rqF" firstAttribute="baseline" secondItem="g1c-5E-14u" secondAttribute="baseline" id="wcw-Mi-Tha"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="submmitBtn" destination="uJ5-xO-5gv" id="CdR-BY-Cy8"/>
+            </connections>
             <point key="canvasLocation" x="353" y="357"/>
         </view>
     </objects>
-    <resources>
-        <image name="btn_pay" width="320" height="42"/>
-    </resources>
 </document>

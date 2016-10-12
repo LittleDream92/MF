@@ -10,4 +10,6 @@
 
 @interface BuyCarNeedsFooterView : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *submmitBtn;
+
 @end

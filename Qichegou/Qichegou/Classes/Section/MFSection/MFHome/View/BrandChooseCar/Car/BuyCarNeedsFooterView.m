@@ -12,6 +12,10 @@
 
 @implementation BuyCarNeedsFooterView
 
+-(void)awakeFromNib {
+    self.submmitBtn.layer.cornerRadius = 20;
+}
+
 - (IBAction)buttonAction:(id)sender {
     
     DKMainWebViewController *serviceVC = [[DKMainWebViewController alloc] init];

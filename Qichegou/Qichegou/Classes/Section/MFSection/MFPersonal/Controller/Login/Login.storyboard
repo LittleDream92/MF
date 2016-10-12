@@ -13,18 +13,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login_1" id="gtz-xC-gh8">
-                                <rect key="frame" x="0.0" y="320" width="320" height="210"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b0z-dq-n4v">
                                 <rect key="frame" x="45" y="255" width="230" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="登录" backgroundImage="btn_login_1">
+                                <state key="normal" title="登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" title="登录" backgroundImage="btn_login_1.2"/>
+                                <state key="highlighted" title="登录"/>
                             </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_icon_1" id="arK-S7-fOj">
                                 <rect key="frame" x="102" y="50" width="104" height="43"/>
@@ -51,7 +48,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="忘记密码?">
-                                    <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonAction:" destination="M8w-xb-mY4" eventType="touchUpInside" id="Xlk-X5-jBA"/>
@@ -87,14 +84,14 @@
                                 <rect key="frame" x="195" y="189" width="100" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="获取动态密码" backgroundImage="btn_code_1">
-                                    <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonAction:" destination="M8w-xb-mY4" eventType="touchUpInside" id="Nx8-kx-WUi"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="controlView" destination="bD4-2D-1KH" id="8hX-Uf-BD0"/>
@@ -164,10 +161,11 @@
                             <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iNN-l0-c2V">
                                 <rect key="frame" x="15" y="269" width="285" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="完成注册" backgroundImage="btn_hav_reg_1">
+                                <color key="backgroundColor" red="0.10588235294117647" green="0.5490196078431373" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="完成注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" title="完成注册" backgroundImage="btn_hav_reg_1.2"/>
+                                <state key="highlighted" title="完成注册"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="hfB-sj-HOX"/>
                                 </connections>
@@ -188,7 +186,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="直接登录">
-                                            <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="2Kd-mX-LMp"/>
@@ -201,7 +199,7 @@
                                 <rect key="frame" x="207" y="193" width="98" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="获取验证码" backgroundImage="btn_code_1">
-                                    <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="tpu-EW-GsO"/>
@@ -274,10 +272,11 @@
                             <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Cj-zQ-dS6">
                                 <rect key="frame" x="15" y="269" width="285" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="确认修改" backgroundImage="btn_hav_reg_1">
+                                <color key="backgroundColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="确认修改">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" title="确认修改" backgroundImage="btn_hav_reg_1.2"/>
+                                <state key="highlighted" title="确认修改"/>
                                 <connections>
                                     <action selector="buttonAction:" destination="hcf-Dx-Dl0" eventType="touchUpInside" id="MA3-5T-80V"/>
                                 </connections>
@@ -298,7 +297,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="直接登录">
-                                            <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="hcf-Dx-Dl0" eventType="touchUpInside" id="vjt-P2-jpN"/>
@@ -311,7 +310,7 @@
                                 <rect key="frame" x="207" y="47" width="98" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="获取验证码" backgroundImage="btn_code_1">
-                                    <color key="titleColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonAction:" destination="hcf-Dx-Dl0" eventType="touchUpInside" id="udG-c4-lv0"/>
@@ -339,13 +338,8 @@
     </scenes>
     <resources>
         <image name="bg_icon_1" width="121" height="50"/>
-        <image name="bg_login_1" width="320" height="200"/>
         <image name="border_login" width="282" height="34"/>
         <image name="btn_code_1" width="101" height="34"/>
-        <image name="btn_hav_reg_1" width="294" height="34"/>
-        <image name="btn_hav_reg_1.2" width="294" height="34"/>
-        <image name="btn_login_1" width="239" height="35"/>
-        <image name="btn_login_1.2" width="239" height="35"/>
         <image name="btn_reg_1" width="239" height="35"/>
         <image name="btn_regi_1.2" width="239" height="35"/>
     </resources>

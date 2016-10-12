@@ -91,10 +91,14 @@ static NSString *const headerCell = @"HeaderCellID";
     WEAKSELF
     
     [self.buyBtn makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(15);
-        make.right.equalTo(-15);
+        make.left.equalTo(40);
+        make.right.equalTo(-40);
         make.bottom.equalTo(-15);
         make.height.equalTo(40);
+//        make.left.equalTo(15);
+//        make.right.equalTo(-15);
+//        make.bottom.equalTo(-15);
+//        make.height.equalTo(40);
     }];
     
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
@@ -136,6 +140,8 @@ static NSString *const headerCell = @"HeaderCellID";
         [_buyBtn setTitle:@"立即下单" forState:UIControlStateNormal];
         _buyBtn.backgroundColor = kskyBlueColor;
         _buyBtn.titleLabel.font = H15;
+        
+        _buyBtn.layer.cornerRadius = 20;
         
         [_buyBtn addTarget:self action:@selector(buyCarAction:) forControlEvents:UIControlEventTouchUpInside];
     }

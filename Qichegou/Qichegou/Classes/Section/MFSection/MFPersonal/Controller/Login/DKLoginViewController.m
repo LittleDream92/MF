@@ -65,10 +65,10 @@
     //控件视图
     self.controlView.myDelegate = self;
     [self.controlView createWithImgNameArr:nil selectImgNameArr:nil buttonW:buttonW];
-    
+    self.controlView.isCondationChooseCar = YES;
     [self.controlView _initButtonViewWithMenuArr:titleArr
                                   textColor:GRAYCOLOR
-                            selectTextColor:ITEMCOLOR
+                            selectTextColor:kskyBlueColor
                              fontSizeNumber:16
                                    needLine:YES];
     
