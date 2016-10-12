@@ -185,12 +185,12 @@
 -(void)clickBrandWithBrandID:(NSString *)brandID {
     
     self.viewModel.brandID = brandID;
-
+    self.carProView.hidden = NO;
+    
     RACSignal *signal = [self.viewModel.carProCommand execute:nil];
     [signal subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.carProView.dataArray = x;
-            self.carProView.hidden = NO;
             [self.carProView.tableView reloadData];
         });
     }];

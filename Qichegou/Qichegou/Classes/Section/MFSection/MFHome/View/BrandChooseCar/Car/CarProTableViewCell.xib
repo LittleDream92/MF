@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="指导价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-3C-QFu">
-                        <rect key="frame" x="266" y="30" width="39" height="16"/>
+                        <rect key="frame" x="266" y="47" width="39" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -47,11 +47,11 @@
                     <constraint firstItem="s58-uD-UHm" firstAttribute="leading" secondItem="0EL-ge-0VR" secondAttribute="trailing" constant="10" id="0kb-6r-xUl"/>
                     <constraint firstItem="0EL-ge-0VR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="F15-Pz-qME"/>
                     <constraint firstItem="s58-uD-UHm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ILj-2G-ZUN"/>
+                    <constraint firstItem="MwN-9O-qYT" firstAttribute="top" secondItem="BUN-3C-QFu" secondAttribute="bottom" constant="8" id="JVS-Wq-6kc"/>
                     <constraint firstItem="MwN-9O-qYT" firstAttribute="top" secondItem="s58-uD-UHm" secondAttribute="bottom" constant="30" id="Kx6-Yz-6Ra"/>
                     <constraint firstAttribute="trailing" secondItem="s58-uD-UHm" secondAttribute="trailing" constant="15" id="M8V-Pf-Is4"/>
                     <constraint firstItem="0EL-ge-0VR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ZOp-Or-6rp"/>
                     <constraint firstAttribute="trailing" secondItem="BUN-3C-QFu" secondAttribute="trailing" constant="10" id="dQ1-GB-w6j"/>
-                    <constraint firstItem="BUN-3C-QFu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="q9o-Fo-t7a"/>
                     <constraint firstAttribute="trailing" secondItem="MwN-9O-qYT" secondAttribute="trailing" constant="10" id="wCu-u7-EO4"/>
                 </constraints>
             </tableViewCellContentView>

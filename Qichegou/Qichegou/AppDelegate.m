@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "DKBaseTabbarController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "WXApi.h"
 
-@interface AppDelegate ()<CLLocationManagerDelegate>
+@interface AppDelegate ()<CLLocationManagerDelegate, WXApiDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;   //定位
 
@@ -26,25 +27,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //定位
+    [self location];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [DKBaseTabbarController new];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    //定位
-    [self location];
-    
-    
+
     /*
      * @”firstLaunch” 用来开发者在程序的其他部分判断
      */
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
+        [UserDefaults setObject:dic forKey:kLocationAction];
+        
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
     }else{
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
     }
     
-    
+    // 注册微信
+    [WXApi registerApp:WECHAT_ID withDescription:@"demo 2.0"];
+
     
     return YES;
 }
@@ -81,6 +86,63 @@
     
     //终止:当用户按下按钮，或者关机，程序都会被终止。当一个程序将要正常终止时会调用 applicationWillTerminate 方法。但是如果长主按钮强制退出，则不会调用该方法。这个方法该执行剩下的清理工作，比如所有的连接都能正常关闭，并在程序退出前执行任何其他的必要的工作：
 }
+
+/**
+ *  wechatPay
+ */
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    //这里判断是否发起的请求为微信支付，如果是的话，用WXApi的方法调起微信客户端的支付页面（://pay 之前的那串字符串就是你的APPID，）
+    if ([[NSString stringWithFormat:@"%@",url] rangeOfString:[NSString stringWithFormat:@"%@://pay",WECHAT_ID]].location != NSNotFound) {   //是
+        return  [WXApi handleOpenURL:url delegate:self];
+    }else{
+        return YES;
+    }
+}
+
+#pragma mark - IOS9.0以后废弃了这两个方法的调用  改用上边这个方法了，请注意、
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    //这里判断是否发起的请求为微信支付，如果是的话，用WXApi的方法调起微信客户端的支付页面（://pay 之前的那串字符串就是你的APPID，）
+    if ([[NSString stringWithFormat:@"%@",url] rangeOfString:[NSString stringWithFormat:@"%@://pay",WECHAT_ID]].location != NSNotFound) {
+        return  [WXApi handleOpenURL:url delegate:self];
+    }else{
+        return YES;
+    }
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    
+    //这里判断是否发起的请求为微信支付，如果是的话，用WXApi的方法调起微信客户端的支付页面（://pay 之前的那串字符串就是你的APPID，）
+    if ([[NSString stringWithFormat:@"%@",url] rangeOfString:[NSString stringWithFormat:@"%@://pay",WECHAT_ID]].location != NSNotFound) {
+        return  [WXApi handleOpenURL:url delegate:self];
+    }else {
+        return YES;
+    }
+}
+
+//微信SDK自带的方法，处理从微信客户端完成操作后返回程序之后的回调方法
+-(void) onResp:(BaseResp*)resp {
+    //这里判断回调信息是否为 支付
+    if([resp isKindOfClass:[PayResp class]]){
+        switch (resp.errCode) {
+            case WXSuccess:
+                //如果支付成功的话，全局发送一个通知，支付成功
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"weixin_pay_result" object:@"成功"];
+                break;
+                
+            default:
+                //如果支付失败的话，全局发送一个通知，支付失败
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"weixin_pay_result" object:@"失败"];
+                break;
+        }
+    }
+}
+
 
 #pragma mark - location
 - (void)location {
@@ -161,7 +223,6 @@
             NSLog(@"error == %@", error);
         }else {
             CLPlacemark *placemark = placemarks.firstObject;
-//            NSLog(@"placemarks:%@ %@", [[placemark addressDictionary] objectForKey:@"City"], [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]);
             
             NSString *locationCity = [[placemark addressDictionary] objectForKey:@"City"];
             if (![locationCity isEqualToString:self.cityName]) {
@@ -183,15 +244,6 @@
             
             //定位成功，发送通知
             [NotificationCenters postNotificationName:kLocationSuccess object:nil];
-            
-//            [UserDefaults setObject:[[placemark addressDictionary] objectForKey:@"City"] forKey:kCITYNAME];
-//            self.address = [NSString stringWithFormat:@"%@", [[[placemark addressDictionary] objectForKey:@"FormattedAddressLines"] objectAtIndex:0]];
-//            [NotificationCenters postNotificationName:kLocationSuccess object:nil];
-            
-//            NSString *city = [UserDefaults objectForKey:kCITYNAME];
-            
-//            self.cityDic = [UserDefaults objectForKey:kLocationAction];
-
         }
     }];
 }
@@ -199,8 +251,6 @@
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"定位失败");
     [PromtView showAlert:@"定位失败，使用默认城市长沙市" duration:1.5];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",@"长沙",@"cityname", nil];
-    [UserDefaults setObject:dic forKey:kLocationAction];
 }
 
 

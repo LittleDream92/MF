@@ -19,6 +19,7 @@
  */
 + (NSString *)md5Digest:(NSString *) str;
 
+
 /*
  *  随机产生32位字符串， 修改代码红色数字可以改变 随机产生的位数。
  */
@@ -30,15 +31,19 @@
  */
 +(long)getTimeSp;
 
-//获取字符串的宽度
+/*
+ *  获取字符串的宽度
+ */
 + (float) widthForString:(NSString *)value fontSize:(float)fontSize andHeight:(float)height;
 
-//获得字符串的高度
+/*
+ *  获得字符串的高度
+ */
 + (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width;
 
 
 /*
- *  返回中划线的
+ *  返回中划线
  *  lineString  :   需要显示中划线的字符串
  */
 + (NSMutableAttributedString *)lineWithString:(NSString *)lineString;

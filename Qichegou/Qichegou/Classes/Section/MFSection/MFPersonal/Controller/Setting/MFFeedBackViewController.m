@@ -46,7 +46,7 @@
 
 #pragma mark - UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
-    NSLog(@"%ld", textView.text.length);
+//    NSLog(@"%ld", textView.text.length);
     if (textView.text.length > 0) {
         self.placeLabel.hidden = YES;
     }else {
@@ -56,7 +56,7 @@
 
 #pragma mark - action
 - (IBAction)submmitAction:(id)sender {
-    NSLog(@"提交");
+//    NSLog(@"提交");
     
     if (self.textView.text.length > 0) {
         [self.view endEditing:YES];
@@ -69,5 +69,9 @@
     }
 }
 
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 @end

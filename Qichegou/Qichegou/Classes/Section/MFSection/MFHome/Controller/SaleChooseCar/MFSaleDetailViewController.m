@@ -53,8 +53,6 @@ static NSString *const headerCell = @"HeaderCellID";
     [self setUpViews];
     [self autoLayout];
     [self combineViewModel];
-    
-//    [self requestData];
 
     //监听键盘隐藏
     [[NSNotificationCenter defaultCenter]addObserver:self

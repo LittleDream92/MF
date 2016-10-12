@@ -41,6 +41,7 @@
 		A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14E1D9A778B00CDF409 /* 外观按钮@2x.png */; };
 		A821E1631D9A778B00CDF409 /* 外观按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */; };
 		A821E1651D9A77FC00CDF409 /* location.plist in Resources */ = {isa = PBXBuildFile; fileRef = A821E1641D9A77FC00CDF409 /* location.plist */; };
+		A82239751DAE1EEF00A87692 /* SubmmitOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A82239741DAE1EEF00A87692 /* SubmmitOrderViewModel.m */; };
 		A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */; };
 		A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D591D952268002DB7F4 /* DataService.m */; };
 		A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D5C1D952583002DB7F4 /* BaseModel.m */; };
@@ -236,6 +237,8 @@
 		A821E14E1D9A778B00CDF409 /* 外观按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮@2x.png"; sourceTree = "<group>"; };
 		A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "外观按钮@3x.png"; sourceTree = "<group>"; };
 		A821E1641D9A77FC00CDF409 /* location.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = location.plist; sourceTree = "<group>"; };
+		A82239731DAE1EEF00A87692 /* SubmmitOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmmitOrderViewModel.h; sourceTree = "<group>"; };
+		A82239741DAE1EEF00A87692 /* SubmmitOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmmitOrderViewModel.m; sourceTree = "<group>"; };
 		A84CF6651D9BCC9B00D096BF /* DKActivityPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKActivityPayMoneyVC.h; sourceTree = "<group>"; };
 		A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKActivityPayMoneyVC.m; sourceTree = "<group>"; };
 		A84F5D581D952268002DB7F4 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
@@ -830,6 +833,8 @@
 				A87123C51DAC91D90040344A /* CarDetailViewModel.m */,
 				A87123C61DAC91D90040344A /* SubmmitViewModel.h */,
 				A87123C71DAC91D90040344A /* SubmmitViewModel.m */,
+				A82239731DAE1EEF00A87692 /* SubmmitOrderViewModel.h */,
+				A82239741DAE1EEF00A87692 /* SubmmitOrderViewModel.m */,
 			);
 			path = BrandChooseCar;
 			sourceTree = "<group>";
@@ -917,10 +922,10 @@
 		A87123F51DAC92770040344A /* SaleChooseCar */ = {
 			isa = PBXGroup;
 			children = (
-				A87123F61DAC92770040344A /* MFSaleDetailViewController.h */,
-				A87123F71DAC92770040344A /* MFSaleDetailViewController.m */,
 				A87123F81DAC92770040344A /* MFSaleViewController.h */,
 				A87123F91DAC92770040344A /* MFSaleViewController.m */,
+				A87123F61DAC92770040344A /* MFSaleDetailViewController.h */,
+				A87123F71DAC92770040344A /* MFSaleDetailViewController.m */,
 			);
 			path = SaleChooseCar;
 			sourceTree = "<group>";
@@ -986,13 +991,13 @@
 		A87124211DAC96910040344A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A87124281DAC96910040344A /* Login.storyboard */,
 				A87124221DAC96910040344A /* DKChangePWDViewController.h */,
 				A87124231DAC96910040344A /* DKChangePWDViewController.m */,
 				A87124241DAC96910040344A /* DKLoginViewController.h */,
 				A87124251DAC96910040344A /* DKLoginViewController.m */,
 				A87124261DAC96910040344A /* DKRegistViewController.h */,
 				A87124271DAC96910040344A /* DKRegistViewController.m */,
-				A87124281DAC96910040344A /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1218,7 +1223,6 @@
 			children = (
 				A886FF141D922E4C0028F102 /* Base */,
 				A886FF151D922E4C0028F102 /* Category */,
-				A886FF161D922E4C0028F102 /* Core */,
 				A886FF171D922E4C0028F102 /* Model */,
 				A886FF181D922E4C0028F102 /* Public */,
 				A886FF191D922E4C0028F102 /* Views */,
@@ -1371,13 +1375,6 @@
 				A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		A886FF161D922E4C0028F102 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		A886FF171D922E4C0028F102 /* Model */ = {
@@ -1834,6 +1831,7 @@
 				A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */,
 				A871237C1DAC915B0040344A /* DetailFooterView.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
+				A82239751DAE1EEF00A87692 /* SubmmitOrderViewModel.m in Sources */,
 				A87124621DAC96910040344A /* LoginViewModel.m in Sources */,
 				A87123BB1DAC91A60040344A /* CityDetailModel.m in Sources */,
 				A871239B1DAC915B0040344A /* PaymoneyTopView.m in Sources */,

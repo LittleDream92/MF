@@ -183,14 +183,19 @@ static NSString *const cellID = @"carListCellID";
                                }
                                NSArray *moreArr = mArr;
                                if (moreArr) {
+                                   
                                    [self.dataArr addObjectsFromArray:moreArr];
                                    [self.tableview reloadData];
+                                   [self.tableview.mj_footer endRefreshing];
                                }else {
-                                   [PromtView showAlert:@"加载完毕" duration:1.5];
+                                   [self.tableview.mj_footer endRefreshing];
+                                   [PromtView showMessage:@"加载完毕" duration:1.5];
                                }
-                               [self.tableview.mj_footer endRefreshing];
+                               
                            }else {
-                               [self.tableview.mj_header endRefreshing];
+                               
+                               [PromtView showMessage:@"没有更多数据" duration:1.5];
+                               [self.tableview.mj_footer endRefreshing];
                            }
                        }else {
                             [self.tableview.mj_header endRefreshing];

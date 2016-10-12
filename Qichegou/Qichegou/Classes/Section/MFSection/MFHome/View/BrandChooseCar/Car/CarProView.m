@@ -29,7 +29,6 @@ static NSString *const carProCellID = @"carProCellID";
 }
 
 - (void)setUpViews {
-//    self.backgroundColor = [UIColor cle];
     
     [self addSubview:self.containView];
     [self.containView makeConstraints:^(MASConstraintMaker *make) {
@@ -37,7 +36,6 @@ static NSString *const carProCellID = @"carProCellID";
         make.width.equalTo(100);
     }];
     
-//    WEAKSELF
     [self addSubview:self.tableView];
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(100);
@@ -72,7 +70,7 @@ static NSString *const carProCellID = @"carProCellID";
 #pragma mark - action
 
 - (void)hiddenContainView {
-    NSLog(@"hidden ya!");
+
     if (self.tapAction) {
         self.tapAction();
     }

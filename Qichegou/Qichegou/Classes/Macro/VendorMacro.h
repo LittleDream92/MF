@@ -10,6 +10,7 @@
 #define VendorMacro_h
 
 
+
 //第三方相关常量，如，友盟等
 
 //************************ 支付宝 ************************
@@ -40,7 +41,6 @@
 #define WX_PAY_RESULT   @"weixin_pay_result_isSuccessed"
 #define IS_SUCCESSED    @"wechat_pay_isSuccessed"
 #define IS_FAILED       @"wechat_pay_isFailed"
-
 
 
 #endif /* VendorMacro_h */

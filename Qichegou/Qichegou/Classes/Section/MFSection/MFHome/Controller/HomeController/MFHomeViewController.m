@@ -233,6 +233,15 @@ UITableViewDataSource
 //location Action
 - (void)locationSuccess:(NSNotification *)not {
     self.cityDic = [UserDefaults objectForKey:kLocationAction];
+    
+    if (![[self.cityDic objectForKey:@"cityname"] isEqualToString:@"长沙"]) {
+        //拿到cityCtrl，如果不一样，重新赋值
+        if (self.navigationItem.leftBarButtonItem.customView) {
+            //取到城市label，重新赋值
+            CityControl *cityCtrl = (CityControl *)self.navigationItem.leftBarButtonItem.customView;
+            cityCtrl.cityLabel.text = [self.cityDic objectForKey:@"cityname"];
+        }
+    }
 }
 
 //menu Action

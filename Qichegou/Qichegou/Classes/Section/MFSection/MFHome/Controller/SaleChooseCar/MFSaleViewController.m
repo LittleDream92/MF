@@ -180,15 +180,20 @@ static NSString *const saleCellID = @"saleCellID";
                                if (moreArr) {
                                    [self.dataArr addObjectsFromArray:moreArr];
                                    [self.tableView reloadData];
+                                   [self.tableView.mj_footer endRefreshing];
                                }else {
+                                   [self.tableView.mj_footer endRefreshing];
                                    [PromtView showAlert:@"加载完毕" duration:1.5];
                                }
+                           }else {
                                [self.tableView.mj_footer endRefreshing];
                            }
                        }else {
+                           [self.tableView.mj_footer endRefreshing];
                            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
                        }
                    } failure:^( NSError *error) {
+                       [self.tableView.mj_footer endRefreshing];
                        [PromtView showAlert:PromptWord duration:1.5];
                    }];
     

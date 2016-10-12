@@ -93,7 +93,8 @@ static NSString *const hotCarCellID = @"hotCarCollectionCellID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CGFloat width = kScreenWidth/4;
     CGFloat height = self.frame.size.height-1;
-    return CGSizeMake(width, height + 10);
+    
+    return CGSizeMake(width, height);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

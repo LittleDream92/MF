@@ -75,6 +75,7 @@
     if (!_pageContrl) {
         _pageContrl = [[UIPageControl alloc] init];
         
+        _pageContrl.tintColor = kskyBlueColor;
         [_pageContrl addTarget:self action:@selector(pageControlAction:) forControlEvents:UIControlEventValueChanged];
     }
     return _pageContrl;

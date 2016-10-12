@@ -72,6 +72,7 @@
 
         for (int i = 0; i<count; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*kScreenWidth + imgX, 0, kScreenWidth - 2*imgX, self.scrollView.frame.size.height)];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
             [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_String , model.color_imgs[i]]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
             [self.scrollView addSubview:imageView];
         }
@@ -87,6 +88,7 @@
     }else {
         
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.scrollView.frame.size.height)];
+        img.contentMode = UIViewContentModeScaleAspectFit;
         [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String , model.main_photo]] placeholderImage:[UIImage imageNamed:(@"bg_default")]];
         [self.scrollView addSubview:img];
         
