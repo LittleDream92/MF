@@ -35,7 +35,7 @@
     //初始化取消订单按钮
     cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelBtn.frame = CGRectMake(kScreenWidth - 15 - 62, 190, 62, 20);
-    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    cancelBtn.titleLabel.font = H12;
     [cancelBtn setTitleColor:ITEMCOLOR forState:UIControlStateNormal];
     cancelBtn.tag = 2323;
     [cancelBtn createButtonWithBGImgName:@"btn_cancel"

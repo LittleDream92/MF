@@ -1,12 +1,12 @@
 //
-//  DKLoginViewController.m
-//  QiChegou
+//  LoginViewController.m
+//  Qichegou
 //
-//  Created by Meng Fan on 16/7/7.
+//  Created by Meng Fan on 16/10/13.
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
-#import "DKLoginViewController.h"
+#import "LoginViewController.h"
 #import "CustomButtonView.h"
 #import "DKRegistViewController.h"
 #import "DKChangePWDViewController.h"
@@ -17,7 +17,8 @@
 
 #import "LoginViewModel.h"
 
-@interface DKLoginViewController ()<CustomButtonProtocol>
+@interface LoginViewController ()<CustomButtonProtocol>
+
 {
     NSArray *titleArr;
     CGFloat buttonW;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextFiled;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *findPwdBtn;
 
 //ViewModel
 @property (nonatomic, strong) LoginViewModel *viewModel;
@@ -36,7 +38,7 @@
 
 @end
 
-@implementation DKLoginViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,16 +52,14 @@
     [self setUpData];
     [self setUpViews];
     [self combineViewModel];
+    
 }
-
-//-(UIStatusBarStyle)preferredStatusBarStyle {
-//    return UIStatusBarStyleDefault;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - setUp views
 - (void)setUpData {
@@ -74,10 +74,10 @@
     [self.controlView createWithImgNameArr:nil selectImgNameArr:nil buttonW:buttonW];
     self.controlView.isCondationChooseCar = YES;
     [self.controlView _initButtonViewWithMenuArr:titleArr
-                                  textColor:GRAYCOLOR
-                            selectTextColor:kskyBlueColor
-                             fontSizeNumber:16
-                                   needLine:YES];
+                                       textColor:GRAYCOLOR
+                                 selectTextColor:kskyBlueColor
+                                  fontSizeNumber:16
+                                        needLine:YES];
     
     self.telTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tel"]];
     self.telTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -125,16 +125,18 @@
     self.passwordTextFiled.secureTextEntry = NO;
     self.passwordTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     self.passwordTextFiled.placeholder = @"请输入验证码";
+    self.findPwdBtn.hidden = YES;
 }
 
 - (void)pwdLogin {
     self.getCodeBtn.hidden = YES;
-
+    
     self.viewModel.pwd = @"";
     self.passwordTextFiled.text = nil;
     self.passwordTextFiled.secureTextEntry = YES;
     self.passwordTextFiled.keyboardType = UIKeyboardTypeDefault;
     self.passwordTextFiled.placeholder = @"请输入密码";
+    self.findPwdBtn.hidden = NO;
 }
 
 #pragma mark - action
@@ -151,7 +153,7 @@
             DKRegistViewController *registVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKRegistViewController"];
             DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:registVC];
             [self presentViewController:navCtrller animated:YES completion:nil];
-
+            
             break;
         }
         case 12:
@@ -166,7 +168,7 @@
             DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
             DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
             [self presentViewController:navCtrller animated:YES completion:nil];
-
+            
             break;
         }
         case 14:
@@ -177,7 +179,7 @@
         default:
             break;
     }
-
+    
 }
 
 #pragma mark - judge if it‘s null

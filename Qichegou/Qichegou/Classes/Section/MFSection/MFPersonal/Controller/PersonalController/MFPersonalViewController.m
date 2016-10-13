@@ -10,6 +10,9 @@
 #import "PersonalViewModel.h"
 #import "HomeBtn.h"
 #import "DKLoginViewController.h"
+
+#import "LoginViewController.h"
+
 #import "DKMyOrderVC.h"
 #import "DKMyActivityOrderVC.h"
 #import "DKChangePWDViewController.h"
@@ -158,8 +161,11 @@ UITableViewDelegate>
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (![AppDelegate APP].user) {
-                DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
-                [self presentViewController:loginVC animated:YES completion:nil];
+                LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//                DKBaseNaviController *nav = [[DKBaseNaviController alloc] initWithRootViewController:loginVC];
+//                [self presentViewController:nav animated:YES completion:nil];
+//                [self presentViewController:loginVC animated:YES completion:nil];
+                [self.navigationController pushViewController:loginVC animated:YES];
             }
         });
         

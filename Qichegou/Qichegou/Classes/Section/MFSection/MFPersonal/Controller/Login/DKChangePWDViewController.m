@@ -45,7 +45,7 @@
     self.setPWD.leftViewMode = UITextFieldViewModeAlways;
     self.reNewPwdTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.reNewPwdTF.leftViewMode = UITextFieldViewModeAlways;
-    self.codeTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_code"]];
+    self.codeTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.codeTF.leftViewMode = UITextFieldViewModeAlways;
 }
 

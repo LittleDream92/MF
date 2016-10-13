@@ -25,35 +25,49 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单即表示您已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1c-5E-14u">
-                    <rect key="frame" x="15" y="228" width="120" height="12"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-Og-Y4s">
+                    <rect key="frame" x="70" y="225" width="180" height="15"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单即表示您已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1c-5E-14u">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="Fb5-ER-lVo"/>
+                                <constraint firstAttribute="height" constant="12" id="IyW-uK-M93"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbU-9e-rqF">
+                            <rect key="frame" x="120" y="0.0" width="60" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="ddf-3e-BIa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <state key="normal" title="《服务协议》"/>
+                            <connections>
+                                <action selector="buttonAction:" destination="xDd-SZ-3hU" eventType="touchUpInside" id="3GF-IF-H6Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="Fb5-ER-lVo"/>
-                        <constraint firstAttribute="height" constant="12" id="IyW-uK-M93"/>
+                        <constraint firstItem="g1c-5E-14u" firstAttribute="leading" secondItem="dwp-Og-Y4s" secondAttribute="leading" id="CTy-3S-Nf3"/>
+                        <constraint firstAttribute="width" constant="180" id="E18-dn-L3Y"/>
+                        <constraint firstAttribute="height" constant="15" id="bFS-DM-7P2"/>
+                        <constraint firstItem="nbU-9e-rqF" firstAttribute="leading" secondItem="g1c-5E-14u" secondAttribute="trailing" id="huU-Ff-m5K"/>
+                        <constraint firstItem="g1c-5E-14u" firstAttribute="top" secondItem="dwp-Og-Y4s" secondAttribute="top" id="tLa-js-nc4"/>
+                        <constraint firstItem="nbU-9e-rqF" firstAttribute="top" secondItem="dwp-Og-Y4s" secondAttribute="top" id="yy8-11-5L8"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbU-9e-rqF">
-                    <rect key="frame" x="135" y="228" width="60" height="12"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <state key="normal" title="《服务协议》"/>
-                    <connections>
-                        <action selector="buttonAction:" destination="xDd-SZ-3hU" eventType="touchUpInside" id="3GF-IF-H6Z"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="nbU-9e-rqF" firstAttribute="height" secondItem="g1c-5E-14u" secondAttribute="height" id="4mh-I7-weZ"/>
-                <constraint firstItem="g1c-5E-14u" firstAttribute="leading" secondItem="xDd-SZ-3hU" secondAttribute="leading" constant="15" id="525-3B-WbP"/>
-                <constraint firstItem="nbU-9e-rqF" firstAttribute="leading" secondItem="g1c-5E-14u" secondAttribute="trailing" id="DSr-Sf-xlo"/>
+                <constraint firstItem="uJ5-xO-5gv" firstAttribute="top" secondItem="dwp-Og-Y4s" secondAttribute="bottom" constant="10" id="58B-f3-wvx"/>
                 <constraint firstItem="uJ5-xO-5gv" firstAttribute="leading" secondItem="xDd-SZ-3hU" secondAttribute="leading" constant="40" id="TlL-8E-6eU"/>
+                <constraint firstItem="dwp-Og-Y4s" firstAttribute="centerX" secondItem="xDd-SZ-3hU" secondAttribute="centerX" id="YkL-oo-5KY"/>
                 <constraint firstAttribute="trailing" secondItem="uJ5-xO-5gv" secondAttribute="trailing" constant="40" id="hqi-4d-vd8"/>
                 <constraint firstAttribute="bottom" secondItem="uJ5-xO-5gv" secondAttribute="bottom" constant="10" id="iRM-oP-e3j"/>
-                <constraint firstItem="uJ5-xO-5gv" firstAttribute="top" secondItem="g1c-5E-14u" secondAttribute="bottom" constant="10" id="vl4-xU-dAN"/>
-                <constraint firstItem="nbU-9e-rqF" firstAttribute="baseline" secondItem="g1c-5E-14u" secondAttribute="baseline" id="wcw-Mi-Tha"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

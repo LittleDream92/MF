@@ -191,6 +191,7 @@
 		A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF31D926A220028F102 /* UILabel+Extension.m */; };
 		A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF51D926A220028F102 /* UIView+ViewController.m */; };
 		A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */; };
+		A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D226E91DAF3D610067AC12 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -579,6 +580,8 @@
 		A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WeChatAndAliPayMethod.m"; sourceTree = "<group>"; };
 		A886FFFE1D926B850028F102 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A886FFFF1D926B850028F102 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A8D226E81DAF3D610067AC12 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		A8D226E91DAF3D610067AC12 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -994,6 +997,8 @@
 				A87124281DAC96910040344A /* Login.storyboard */,
 				A87124221DAC96910040344A /* DKChangePWDViewController.h */,
 				A87124231DAC96910040344A /* DKChangePWDViewController.m */,
+				A8D226E81DAF3D610067AC12 /* LoginViewController.h */,
+				A8D226E91DAF3D610067AC12 /* LoginViewController.m */,
 				A87124241DAC96910040344A /* DKLoginViewController.h */,
 				A87124251DAC96910040344A /* DKLoginViewController.m */,
 				A87124261DAC96910040344A /* DKRegistViewController.h */,
@@ -1861,6 +1866,7 @@
 				A886FEF21D922A450028F102 /* main.m in Sources */,
 				A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */,
 				A87124641DAC96910040344A /* SettingViewModel.m in Sources */,
+				A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */,
 				A871238D1DAC915B0040344A /* DetailChooseCarHeader.m in Sources */,
 				A87124011DAC92770040344A /* DKCarListViewController.m in Sources */,
 				A87124541DAC96910040344A /* DKLoginViewController.m in Sources */,

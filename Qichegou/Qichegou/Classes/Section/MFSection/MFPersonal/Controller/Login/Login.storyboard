@@ -16,9 +16,8 @@
                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b0z-dq-n4v">
                                 <rect key="frame" x="45" y="255" width="230" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="登录">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="登录" backgroundImage="change">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" title="登录"/>
@@ -93,6 +92,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="83q-uw-CWf"/>
                     <connections>
                         <outlet property="controlView" destination="bD4-2D-1KH" id="8hX-Uf-BD0"/>
                         <outlet property="getCodeBtn" destination="vHr-YE-cBz" id="xQ3-Ya-8Hj"/>
@@ -113,7 +113,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的电话号码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="2zZ-Nw-XPx" customClass="DKTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="2zZ-Nw-XPx" customClass="DKTextField">
                                 <rect key="frame" x="15" y="7" width="290" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -131,7 +131,7 @@
                                     <action selector="pwdTextField_DidEndOnExit:" destination="RNF-bp-tCV" eventType="editingDidEndOnExit" id="JV7-Qw-xdI"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认密码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="BI3-Kq-7NZ" customClass="DKTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入密码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="BI3-Kq-7NZ" customClass="DKTextField">
                                 <rect key="frame" x="15" y="87" width="290" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -159,10 +159,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iNN-l0-c2V">
-                                <rect key="frame" x="15" y="269" width="285" height="32"/>
+                                <rect key="frame" x="50" y="269" width="215" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.10588235294117647" green="0.5490196078431373" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="完成注册">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="完成注册" backgroundImage="change">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" title="完成注册"/>
@@ -233,7 +233,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的电话号码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="tuu-sY-ldd" customClass="DKTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="tuu-sY-ldd" customClass="DKTextField">
                                 <rect key="frame" x="15" y="7" width="290" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -251,7 +251,7 @@
                                     <action selector="newPwd_DidEndOnExit:" destination="hcf-Dx-Dl0" eventType="editingDidEndOnExit" id="NoE-Ch-Ltc"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入确认新密码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="UpS-eE-zkN" customClass="DKTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入新密码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="UpS-eE-zkN" customClass="DKTextField">
                                 <rect key="frame" x="15" y="127" width="290" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -270,10 +270,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Cj-zQ-dS6">
-                                <rect key="frame" x="15" y="269" width="285" height="32"/>
+                                <rect key="frame" x="50" y="210" width="215" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="确认修改">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="确认修改" backgroundImage="change">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" title="确认修改"/>
@@ -282,7 +282,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="mFk-MJ-2z1">
-                                <rect key="frame" x="90" y="306" width="140" height="20"/>
+                                <rect key="frame" x="90" y="250" width="140" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果已有汽车购账号请" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aBP-4Q-jpc">
@@ -317,7 +317,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="view_touchDown:" destination="hcf-Dx-Dl0" eventType="touchDown" id="Yha-JK-jXr"/>
                         </connections>
@@ -335,6 +335,91 @@
             </objects>
             <point key="canvasLocation" x="914" y="-377"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="qOa-c8-EC9">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="3Mi-rg-qyw" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ihQ-8A-XUX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VpD-9U-Vxk">
+                                <rect key="frame" x="45" y="225" width="230" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="登录" backgroundImage="change">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" title="登录"/>
+                            </button>
+                            <view contentMode="scaleToFill" id="6Fo-ly-a1Y" customClass="CustomButtonView">
+                                <rect key="frame" x="25" y="50" width="270" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码作为登陆账号" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="cx0-IC-zjZ" customClass="DKTextField">
+                                <rect key="frame" x="25" y="89" width="270" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="p5e-WB-yWm" customClass="DKTextField">
+                                <rect key="frame" x="25" y="123" width="270" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iay-ik-kFO">
+                                <rect key="frame" x="45" y="267" width="230" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="注册" backgroundImage="btn_reg_1">
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted" title="注册" backgroundImage="btn_regi_1.2">
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonAction:" destination="3Mi-rg-qyw" eventType="touchUpInside" id="jVf-Pv-7ZG"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8jD-Rh-CZZ">
+                                <rect key="frame" x="195" y="123" width="100" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="获取动态密码" backgroundImage="btn_code_1">
+                                    <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonAction:" destination="3Mi-rg-qyw" eventType="touchUpInside" id="HZ7-3L-HVn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VKC-zl-dHN">
+                                <rect key="frame" x="219" y="159" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="忘记密码?">
+                                    <color key="titleColor" red="0.1058823529" green="0.54901960780000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonAction:" destination="3Mi-rg-qyw" eventType="touchUpInside" id="SEs-1e-C2H"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gh5-T2-oFX"/>
+                    <connections>
+                        <outlet property="controlView" destination="6Fo-ly-a1Y" id="e0x-4i-ZeK"/>
+                        <outlet property="findPwdBtn" destination="VKC-zl-dHN" id="Zd2-Eb-s7d"/>
+                        <outlet property="getCodeBtn" destination="8jD-Rh-CZZ" id="AFx-O8-4YX"/>
+                        <outlet property="loginBtn" destination="VpD-9U-Vxk" id="Xc2-4S-tMN"/>
+                        <outlet property="passwordTextFiled" destination="p5e-WB-yWm" id="VbH-hy-h5K"/>
+                        <outlet property="telTextField" destination="cx0-IC-zjZ" id="Bw5-bh-Cfk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HMf-8K-spM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217" y="-377"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg_icon_1" width="121" height="50"/>
@@ -342,5 +427,6 @@
         <image name="btn_code_1" width="101" height="34"/>
         <image name="btn_reg_1" width="239" height="35"/>
         <image name="btn_regi_1.2" width="239" height="35"/>
+        <image name="change" width="261" height="32"/>
     </resources>
 </document>

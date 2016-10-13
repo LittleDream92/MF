@@ -133,7 +133,7 @@
     self.pushArray = @[@"外观颜色",@"内饰颜色",@"购车方式",@"购车时间"];
     self.celltitleArray = @[@[@"选择外观颜色",@"选择内饰颜色",@"新车或者置换",@"购车时间",@"上牌城市"],
                             @[@"我的姓名",@"我的手机",@"请输入验证码"]];
-    self.imgNameArray = @[@[@"icon_1",@"icon_2",@"icon_3",@"icon_4",@"icon_5"],
+    self.imgNameArray = @[@[@"icon_1",@"icon_2",@"icon_3",@"icon_4"],
                           @[@"sale_my", @"sale_tel", @"sale_code"]];
 }
 
@@ -156,6 +156,7 @@
     if (indexPath.section == 0) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CarNeedsGetCellID"];
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 20);
+
         cell.imageView.image = [UIImage imageNamed:self.imgNameArray[indexPath.section][indexPath.row]];
         
         NSString *keyString = _keyArray[indexPath.row];

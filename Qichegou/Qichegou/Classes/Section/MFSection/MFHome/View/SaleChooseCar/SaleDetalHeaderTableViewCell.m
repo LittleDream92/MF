@@ -109,7 +109,8 @@
 -(UILabel *)salePrice {
     if (!_salePrice) {
         _salePrice = [[UILabel alloc] init];
-        [_salePrice createLabelWithFontSize:13 color:ITEMCOLOR];
+#warning orange color
+//        [_salePrice createLabelWithFontSize:13 color:ITEMCOLOR];
     }
     return _salePrice;
 }

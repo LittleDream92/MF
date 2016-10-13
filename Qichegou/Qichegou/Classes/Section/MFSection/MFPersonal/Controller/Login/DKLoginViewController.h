@@ -6,8 +6,9 @@
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
+#import "DKBaseViewController.h"
 
-@interface DKLoginViewController : UIViewController
+@interface DKLoginViewController : DKBaseViewController
 
 @end

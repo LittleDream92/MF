@@ -67,7 +67,8 @@
     NSInteger orderStatus = [self.model.zt integerValue];
     if (orderStatus == 0) {
         //待付款
-        self.orderStatusLabel.textColor = ITEMCOLOR;
+#warning orange color
+//        self.orderStatusLabel.textColor = ITEMCOLOR;
         self.orderStatusLabel.text = [NSString stringWithFormat:@"－待付款"];
         
         self.operationBtn.frame = CGRectMake(115, 90 + 5, 90, 30);
