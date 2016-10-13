@@ -12,4 +12,10 @@
 
 @property (nonatomic, strong, readonly) RACCommand *carDetailCommand;
 
+
+//参数
+
+//图片
+
+
 @end
