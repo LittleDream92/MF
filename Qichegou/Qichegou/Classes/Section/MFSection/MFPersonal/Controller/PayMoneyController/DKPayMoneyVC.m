@@ -14,7 +14,7 @@
 #import "WXApi.h"
 #import "PaymoneyTopView.h"
 #import "PayMoneyFooterView.h"
-#import "ChooseCarModel.h"
+#import "CarOrderModel.h"
 
 @interface DKPayMoneyVC ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -57,14 +57,33 @@
 - (UIButton *)submitBtn {
     if (!_submitBtn) {
         _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_submitBtn createButtonWithBGImgName:@"btn_pay"
-                          bghighlightImgName:@"btn_pay.2"
-                                    titleStr:@"立即支付定金"
-                                    fontSize:16];
+//        [_submitBtn createButtonWithBGImgName:@"btn_pay"
+//                          bghighlightImgName:@"btn_pay.2"
+//                                    titleStr:@"立即支付定金"
+//                                    fontSize:16];
+        [_submitBtn setTitle:@"立即支付定金" forState:UIControlStateNormal];
+        _submitBtn.backgroundColor = ITEMCOLOR;
+        _submitBtn.layer.cornerRadius = 20;
         [_submitBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitBtn;
 }
+
+-(UITableView *)payOrderTV {
+    if (_payOrderTV == nil) {
+        //初始化表视图
+        _payOrderTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        
+        _payOrderTV.delegate = self;
+        _payOrderTV.dataSource = self;
+        
+        _payOrderTV.showsVerticalScrollIndicator = NO;
+        _payOrderTV.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _payOrderTV.scrollEnabled = NO;
+    }
+    return _payOrderTV;
+}
+
 
 #pragma mark - createViews
 - (void)createViews {
@@ -72,8 +91,10 @@
     WEAKSELF
     [self.view addSubview:self.submitBtn];
     [self.submitBtn makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(0);
-        make.height.equalTo(50);
+        make.left.equalTo(40);
+        make.right.equalTo(-40);
+        make.height.equalTo(40);
+        make.bottom.equalTo(-10);
     }];
     
     [self.view addSubview:self.payOrderTV];
@@ -84,7 +105,7 @@
     
     //初始化头视图
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"PaymoneyTopView" owner:self options:nil] lastObject];
-    self.headerView.frame = CGRectMake(0, 0, kScreenWidth, 302*kHeightSale);
+    self.headerView.frame = CGRectMake(0, 0, kScreenWidth, 260);    //302*kHeightSale
     self.payOrderTV.tableHeaderView = self.headerView;
     
     //初始化尾视图
@@ -95,25 +116,6 @@
     self.payOrderTV.tableFooterView = self.footerView;
 
 }
-
-#pragma mark - setting and getting
--(UITableView *)payOrderTV {
-    if (_payOrderTV == nil) {
-        //初始化表视图
-        _payOrderTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        
-        _payOrderTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        _payOrderTV.delegate = self;
-        _payOrderTV.dataSource = self;
-        
-        _payOrderTV.showsVerticalScrollIndicator = NO;
-        
-        _payOrderTV.scrollEnabled = NO;
-    }
-    return _payOrderTV;
-}
-
 
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -254,7 +256,7 @@
                                
                                NSLog(@"%@", jsonDic);
                                
-                               self.myModel = [[ChooseCarModel alloc] initContentWithDic:jsonDic];
+                               self.myModel = [[CarOrderModel alloc] initContentWithDic:jsonDic];
                                
                                [self.headerView createTopViewWithChooseCarModel:self.myModel];
                                [self.submitBtn setTitle:[NSString stringWithFormat:@"立即支付%@订金", self.myModel.ding_jin] forState:UIControlStateNormal];

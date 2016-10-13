@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="113" id="ooe-VR-Ypz" customClass="MyOrderCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="134" id="ooe-VR-Ypz" customClass="MyOrderCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ooe-VR-Ypz" id="2jf-mf-I1O">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号：3076891037" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-a4-X3G">
@@ -33,38 +33,53 @@
                             <constraint firstAttribute="height" constant="1" id="h7L-PP-WHR"/>
                         </constraints>
                     </view>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_default" translatesAutoresizingMaskIntoConstraints="NO" id="KEN-wE-NxL">
-                        <rect key="frame" x="20" y="51" width="75" height="50"/>
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_default" translatesAutoresizingMaskIntoConstraints="NO" id="KEN-wE-NxL">
+                        <rect key="frame" x="20" y="40" width="80" height="80"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="75" id="6FS-0S-muF"/>
-                            <constraint firstAttribute="height" constant="50" id="8CV-OP-fs9"/>
+                            <constraint firstAttribute="width" constant="80" id="6FS-0S-muF"/>
+                            <constraint firstAttribute="height" constant="80" id="8CV-OP-fs9"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015奥迪A3 Sportback 35 TFSI纪念舒享版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3o-49-vm8">
-                        <rect key="frame" x="115" y="51" width="219" height="14"/>
+                        <rect key="frame" x="120" y="50" width="190" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠期限：截止到2015年12月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGx-te-DnN">
-                        <rect key="frame" x="115" y="75" width="158" height="12"/>
+                        <rect key="frame" x="120" y="74" width="158" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" tag="2121" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQq-iV-1U6">
+                        <rect key="frame" x="120" y="91" width="150" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.37647058820000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="PLN-1d-6v6"/>
+                            <constraint firstAttribute="width" constant="150" id="zUH-xR-xZS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="完成订单">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kPv-pY-akC" secondAttribute="trailing" constant="15" id="4ox-4I-b4U"/>
+                    <constraint firstItem="i3o-49-vm8" firstAttribute="top" secondItem="kPv-pY-akC" secondAttribute="bottom" constant="10" id="9DJ-rB-xBc"/>
                     <constraint firstItem="kPv-pY-akC" firstAttribute="top" secondItem="kAs-ja-tnR" secondAttribute="bottom" constant="13" id="Cc9-oG-Bl4"/>
                     <constraint firstItem="cGx-te-DnN" firstAttribute="top" secondItem="i3o-49-vm8" secondAttribute="bottom" constant="10" id="HDQ-b6-lMy"/>
+                    <constraint firstAttribute="trailing" secondItem="i3o-49-vm8" secondAttribute="trailing" constant="10" id="K8s-ca-sNu"/>
                     <constraint firstItem="seh-a4-X3G" firstAttribute="leading" secondItem="2jf-mf-I1O" secondAttribute="leading" constant="15" id="NR6-oQ-lPk"/>
                     <constraint firstItem="kAs-ja-tnR" firstAttribute="leading" secondItem="seh-a4-X3G" secondAttribute="trailing" id="Odn-xT-fa2"/>
+                    <constraint firstItem="aQq-iV-1U6" firstAttribute="leading" secondItem="i3o-49-vm8" secondAttribute="leading" id="QDE-Pz-0Up"/>
                     <constraint firstItem="KEN-wE-NxL" firstAttribute="leading" secondItem="2jf-mf-I1O" secondAttribute="leading" constant="20" id="R9L-9f-4d9"/>
                     <constraint firstItem="seh-a4-X3G" firstAttribute="top" secondItem="2jf-mf-I1O" secondAttribute="top" constant="14" id="Rqr-bb-2Ja"/>
-                    <constraint firstItem="i3o-49-vm8" firstAttribute="top" secondItem="KEN-wE-NxL" secondAttribute="top" id="TIQ-6m-D8X"/>
                     <constraint firstItem="kAs-ja-tnR" firstAttribute="top" secondItem="seh-a4-X3G" secondAttribute="top" id="Wvi-Yd-7hm"/>
+                    <constraint firstItem="aQq-iV-1U6" firstAttribute="top" secondItem="cGx-te-DnN" secondAttribute="bottom" constant="5" id="fSd-VS-I81"/>
                     <constraint firstItem="i3o-49-vm8" firstAttribute="leading" secondItem="KEN-wE-NxL" secondAttribute="trailing" constant="20" id="jXu-6e-kNG"/>
-                    <constraint firstItem="KEN-wE-NxL" firstAttribute="top" secondItem="kPv-pY-akC" secondAttribute="bottom" constant="11" id="jcK-PX-APY"/>
+                    <constraint firstItem="KEN-wE-NxL" firstAttribute="top" secondItem="kPv-pY-akC" secondAttribute="bottom" id="jcK-PX-APY"/>
                     <constraint firstItem="cGx-te-DnN" firstAttribute="leading" secondItem="i3o-49-vm8" secondAttribute="leading" id="lL7-ZN-k6A"/>
                     <constraint firstItem="kPv-pY-akC" firstAttribute="leading" secondItem="2jf-mf-I1O" secondAttribute="leading" constant="15" id="uKN-ph-vTT"/>
                 </constraints>
@@ -72,11 +87,12 @@
             <connections>
                 <outlet property="carImgView" destination="KEN-wE-NxL" id="PPD-gP-fhE"/>
                 <outlet property="carTitleLabel" destination="i3o-49-vm8" id="nvj-1N-ISa"/>
+                <outlet property="completeBtn" destination="aQq-iV-1U6" id="ghr-p2-GNN"/>
                 <outlet property="offLineLabel" destination="cGx-te-DnN" id="zmb-1H-wnK"/>
                 <outlet property="orderIDLabel" destination="seh-a4-X3G" id="0vJ-Tr-gPe"/>
                 <outlet property="orderStatusLabel" destination="kAs-ja-tnR" id="1er-At-5hh"/>
             </connections>
-            <point key="canvasLocation" x="347" y="236"/>
+            <point key="canvasLocation" x="347" y="246.5"/>
         </tableViewCell>
     </objects>
     <resources>

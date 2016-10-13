@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ChooseCarModel;
+@class CarOrderModel;
 @interface PaymoneyTopView : UIView
 
 /*
  * 网络请求后调用此方法赋值
  */
-- (void)createTopViewWithChooseCarModel:(ChooseCarModel *)model;
+- (void)createTopViewWithChooseCarModel:(CarOrderModel *)model;
 
 
 @end

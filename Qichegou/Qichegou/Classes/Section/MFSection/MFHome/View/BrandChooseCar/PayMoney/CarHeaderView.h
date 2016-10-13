@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ChooseCarModel.h"
-
+@class CarOrderModel;
 @interface CarHeaderView : UIView
 
-
-
-- (void)createViewWithModel:(ChooseCarModel *)carModel;
+- (void)createViewWithModel:(CarOrderModel *)carModel;
 
 @end

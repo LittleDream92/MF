@@ -8,11 +8,11 @@
 
 #import "DKBaseViewController.h"
 
-@class ChooseCarModel;
+@class CarOrderModel;
 @interface DKPayMoneyVC : DKBaseViewController
 
 //数据源
-@property (nonatomic, strong) ChooseCarModel *myModel;
+@property (nonatomic, strong) CarOrderModel *myModel;
 
 //订单编号
 @property (nonatomic, copy) NSString *orderIDString;

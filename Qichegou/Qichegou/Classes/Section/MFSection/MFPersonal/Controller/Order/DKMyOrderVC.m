@@ -9,12 +9,17 @@
 #import "DKMyOrderVC.h"
 #import "AppDelegate.h"
 #import "MyOrderCell.h"
-#import "ChooseCarModel.h"
+
+#import "CarOrderModel.h"
+
 #import "DKPayMoneyVC.h"
 #import "DKDetailOrderVC.h"
 
 static NSString *const cellID = @"myOrderCell";
-@interface DKMyOrderVC ()<UITableViewDataSource, UITableViewDelegate>
+
+@interface DKMyOrderVC ()
+<UITableViewDataSource,
+UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UILabel *promtLabel;
@@ -29,15 +34,20 @@ static NSString *const cellID = @"myOrderCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self createViews];
+    [self setUpNav];
+    [self setUpViews];
+    
     [self requestData];
 }
 
-#pragma  mark - 初始化
-- (void)createViews {
-    
+#pragma  mark - setUp
+- (void)setUpNav {
     [self navBack:YES];
     self.title = @"我的订单";
+}
+
+- (void)setUpViews {
+    
     [self.view addSubview:self.promtLabel];
     [self.promtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).with.offset(100);
@@ -85,38 +95,36 @@ static NSString *const cellID = @"myOrderCell";
     operationBtn.tag = indexPath.section + 10;
     [operationBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    ChooseCarModel *myOrderModel = self.dataArr[indexPath.section];
+    CarOrderModel *myOrderModel = self.dataArr[indexPath.section];
     //传值
     cell.model = myOrderModel;
     
     return cell;
 }
 
-#pragma mark - delegate
+#pragma mark - UITableView  delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"订单详情!");
+//    NSLog(@"订单详情!");
     DKDetailOrderVC *detailOrderVC = [[DKDetailOrderVC alloc] init];
     
-    ChooseCarModel *model = self.dataArr[indexPath.section];
+    CarOrderModel *model = self.dataArr[indexPath.section];
     detailOrderVC.orderIDString = model.order_id;
     
     [self.navigationController pushViewController:detailOrderVC animated:YES];
 }
 
-#pragma mark - 自定义 click Action methods
-- (void)buttonAction:(UIButton *)button
-{
+#pragma mark - action
+- (void)buttonAction:(UIButton *)button {
     NSLog(@"完成订单");
     
     NSInteger sectionNumber = button.tag - 10;
-    ChooseCarModel *model = self.dataArr[sectionNumber];
+    CarOrderModel *model = self.dataArr[sectionNumber];
     
     DKPayMoneyVC *paymoneyVC = [[DKPayMoneyVC alloc] init];
     paymoneyVC.title = @"支付订金";
     paymoneyVC.orderIDString = model.order_id;
     [self.navigationController pushViewController:paymoneyVC animated:YES];
-    
 }
 
 #pragma mark - view methods
@@ -156,7 +164,7 @@ static NSString *const cellID = @"myOrderCell";
                                
                                NSMutableArray *mArr = [NSMutableArray array];
                                for (NSDictionary *jsonDic in jsonArr) {
-                                   ChooseCarModel *model = [[ChooseCarModel alloc] initContentWithDic:jsonDic];
+                                   CarOrderModel *model = [[CarOrderModel alloc] initContentWithDic:jsonDic];
                                    [mArr addObject:model];
                                }
                                resultArr = [NSArray arrayWithArray:mArr];

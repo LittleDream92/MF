@@ -97,7 +97,6 @@
 		A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123721DAC915B0040344A /* SaleDetailCell.m */; };
 		A87123A71DAC915B0040344A /* SaleDetalHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123741DAC915B0040344A /* SaleDetalHeaderTableViewCell.m */; };
 		A87123B91DAC91A60040344A /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123AC1DAC91A60040344A /* CarModel.m */; };
-		A87123BA1DAC91A60040344A /* ChooseCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123AE1DAC91A60040344A /* ChooseCarModel.m */; };
 		A87123BB1DAC91A60040344A /* CityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B01DAC91A60040344A /* CityDetailModel.m */; };
 		A87123BC1DAC91A60040344A /* InsuranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B21DAC91A60040344A /* InsuranceModel.m */; };
 		A87123BD1DAC91A60040344A /* OtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B41DAC91A60040344A /* OtherModel.m */; };
@@ -120,8 +119,6 @@
 		A87124051DAC92770040344A /* MFBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123E91DAC92770040344A /* MFBrandViewController.m */; };
 		A87124061DAC92770040344A /* MFCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123EB1DAC92770040344A /* MFCarDetailViewController.m */; };
 		A87124071DAC92770040344A /* ParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123ED1DAC92770040344A /* ParamsViewController.m */; };
-		A87124081DAC92770040344A /* DKDetailOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123F01DAC92770040344A /* DKDetailOrderVC.m */; };
-		A87124091DAC92770040344A /* DKPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123F21DAC92770040344A /* DKPayMoneyVC.m */; };
 		A871240B1DAC92770040344A /* MFSaleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123F71DAC92770040344A /* MFSaleDetailViewController.m */; };
 		A871240C1DAC92770040344A /* MFSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123F91DAC92770040344A /* MFSaleViewController.m */; };
 		A87124101DAC93020040344A /* MFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A871240F1DAC93020040344A /* MFHomeViewController.m */; };
@@ -191,6 +188,9 @@
 		A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF31D926A220028F102 /* UILabel+Extension.m */; };
 		A886FFFC1D926A220028F102 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF51D926A220028F102 /* UIView+ViewController.m */; };
 		A886FFFD1D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */; };
+		A8CECB7D1DAF69BE0039DBF8 /* CarOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB7C1DAF69BE0039DBF8 /* CarOrderModel.m */; };
+		A8CECB831DAF72E00039DBF8 /* DKDetailOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */; };
+		A8CECB871DAF847B0039DBF8 /* DKPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */; };
 		A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D226E91DAF3D610067AC12 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -334,8 +334,6 @@
 		A87123741DAC915B0040344A /* SaleDetalHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaleDetalHeaderTableViewCell.m; sourceTree = "<group>"; };
 		A87123AB1DAC91A60040344A /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
 		A87123AC1DAC91A60040344A /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
-		A87123AD1DAC91A60040344A /* ChooseCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCarModel.h; sourceTree = "<group>"; };
-		A87123AE1DAC91A60040344A /* ChooseCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCarModel.m; sourceTree = "<group>"; };
 		A87123AF1DAC91A60040344A /* CityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDetailModel.h; sourceTree = "<group>"; };
 		A87123B01DAC91A60040344A /* CityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDetailModel.m; sourceTree = "<group>"; };
 		A87123B11DAC91A60040344A /* InsuranceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceModel.h; sourceTree = "<group>"; };
@@ -378,10 +376,6 @@
 		A87123EB1DAC92770040344A /* MFCarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCarDetailViewController.m; sourceTree = "<group>"; };
 		A87123EC1DAC92770040344A /* ParamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamsViewController.h; sourceTree = "<group>"; };
 		A87123ED1DAC92770040344A /* ParamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamsViewController.m; sourceTree = "<group>"; };
-		A87123EF1DAC92770040344A /* DKDetailOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKDetailOrderVC.h; sourceTree = "<group>"; };
-		A87123F01DAC92770040344A /* DKDetailOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDetailOrderVC.m; sourceTree = "<group>"; };
-		A87123F11DAC92770040344A /* DKPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPayMoneyVC.h; sourceTree = "<group>"; };
-		A87123F21DAC92770040344A /* DKPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPayMoneyVC.m; sourceTree = "<group>"; };
 		A87123F61DAC92770040344A /* MFSaleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSaleDetailViewController.h; sourceTree = "<group>"; };
 		A87123F71DAC92770040344A /* MFSaleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSaleDetailViewController.m; sourceTree = "<group>"; };
 		A87123F81DAC92770040344A /* MFSaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSaleViewController.h; sourceTree = "<group>"; };
@@ -580,6 +574,12 @@
 		A886FFF71D926A220028F102 /* UIViewController+WeChatAndAliPayMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WeChatAndAliPayMethod.m"; sourceTree = "<group>"; };
 		A886FFFE1D926B850028F102 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A886FFFF1D926B850028F102 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A8CECB7B1DAF69BE0039DBF8 /* CarOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarOrderModel.h; sourceTree = "<group>"; };
+		A8CECB7C1DAF69BE0039DBF8 /* CarOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarOrderModel.m; sourceTree = "<group>"; };
+		A8CECB811DAF72E00039DBF8 /* DKDetailOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKDetailOrderVC.h; sourceTree = "<group>"; };
+		A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDetailOrderVC.m; sourceTree = "<group>"; };
+		A8CECB851DAF847B0039DBF8 /* DKPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPayMoneyVC.h; sourceTree = "<group>"; };
+		A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPayMoneyVC.m; sourceTree = "<group>"; };
 		A8D226E81DAF3D610067AC12 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A8D226E91DAF3D610067AC12 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
@@ -778,8 +778,6 @@
 			children = (
 				A87123AB1DAC91A60040344A /* CarModel.h */,
 				A87123AC1DAC91A60040344A /* CarModel.m */,
-				A87123AD1DAC91A60040344A /* ChooseCarModel.h */,
-				A87123AE1DAC91A60040344A /* ChooseCarModel.m */,
 				A87123AF1DAC91A60040344A /* CityDetailModel.h */,
 				A87123B01DAC91A60040344A /* CityDetailModel.m */,
 				A87123B11DAC91A60040344A /* InsuranceModel.h */,
@@ -906,20 +904,8 @@
 				A87123EB1DAC92770040344A /* MFCarDetailViewController.m */,
 				A87123EC1DAC92770040344A /* ParamsViewController.h */,
 				A87123ED1DAC92770040344A /* ParamsViewController.m */,
-				A87123EE1DAC92770040344A /* PayMoneyController */,
 			);
 			path = BrandChooseCar;
-			sourceTree = "<group>";
-		};
-		A87123EE1DAC92770040344A /* PayMoneyController */ = {
-			isa = PBXGroup;
-			children = (
-				A87123EF1DAC92770040344A /* DKDetailOrderVC.h */,
-				A87123F01DAC92770040344A /* DKDetailOrderVC.m */,
-				A87123F11DAC92770040344A /* DKPayMoneyVC.h */,
-				A87123F21DAC92770040344A /* DKPayMoneyVC.m */,
-			);
-			path = PayMoneyController;
 			sourceTree = "<group>";
 		};
 		A87123F51DAC92770040344A /* SaleChooseCar */ = {
@@ -987,6 +973,7 @@
 				A87124211DAC96910040344A /* Login */,
 				A87124291DAC96910040344A /* Order */,
 				A87124321DAC96910040344A /* Setting */,
+				A8CECB841DAF847B0039DBF8 /* PayMoneyController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1015,6 +1002,8 @@
 				A871242C1DAC96910040344A /* DKMyOrderVC.h */,
 				A871242D1DAC96910040344A /* DKMyOrderVC.m */,
 				A871242E1DAC96910040344A /* DKMyOrderVC.xib */,
+				A8CECB811DAF72E00039DBF8 /* DKDetailOrderVC.h */,
+				A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1064,6 +1053,8 @@
 		A871243D1DAC96910040344A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				A8CECB7B1DAF69BE0039DBF8 /* CarOrderModel.h */,
+				A8CECB7C1DAF69BE0039DBF8 /* CarOrderModel.m */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1635,6 +1626,15 @@
 			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
+		A8CECB841DAF847B0039DBF8 /* PayMoneyController */ = {
+			isa = PBXGroup;
+			children = (
+				A8CECB851DAF847B0039DBF8 /* DKPayMoneyVC.h */,
+				A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */,
+			);
+			path = PayMoneyController;
+			sourceTree = "<group>";
+		};
 		D39468F114516C8CBCCD05AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1846,7 +1846,6 @@
 				A87123811DAC915B0040344A /* BrandView.m in Sources */,
 				A87124071DAC92770040344A /* ParamsViewController.m in Sources */,
 				A821E0B51D9A5EB500CDF409 /* PayOrderCell.m in Sources */,
-				A87123BA1DAC91A60040344A /* ChooseCarModel.m in Sources */,
 				A87123821DAC915B0040344A /* BuyCarNeedsFooterView.m in Sources */,
 				A87123921DAC915B0040344A /* CondationCollectionCell.m in Sources */,
 				A87124041DAC92770040344A /* ImageViewController.m in Sources */,
@@ -1858,6 +1857,7 @@
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */,
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
+				A8CECB7D1DAF69BE0039DBF8 /* CarOrderModel.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
 				A886FFB21D9238300028F102 /* DataVerifier.m in Sources */,
 				A87123781DAC915B0040344A /* BaoDetailCell.m in Sources */,
@@ -1894,6 +1894,7 @@
 				A87123951DAC915B0040344A /* HotCarCollectionCell.m in Sources */,
 				A87123901DAC915B0040344A /* PhotoCollectionView.m in Sources */,
 				A871245D1DAC96910040344A /* MFFeedBackViewController.m in Sources */,
+				A8CECB871DAF847B0039DBF8 /* DKPayMoneyVC.m in Sources */,
 				A87124031DAC92770040344A /* DKNeedsTableViewController.m in Sources */,
 				A871239D1DAC915B0040344A /* PriceCell.m in Sources */,
 				A871245F1DAC96910040344A /* MFSettingViewController.m in Sources */,
@@ -1903,7 +1904,6 @@
 				A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
 				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,
-				A87124081DAC92770040344A /* DKDetailOrderVC.m in Sources */,
 				A871241D1DAC93180040344A /* HomeMenuCell.m in Sources */,
 				A87124001DAC92770040344A /* BigCarImgVC.m in Sources */,
 				A87123A21DAC915B0040344A /* CarDetailFourCell.m in Sources */,
@@ -1930,12 +1930,12 @@
 				A871245A1DAC96910040344A /* MFPersonalViewController.m in Sources */,
 				A87123941DAC915B0040344A /* HotCarCell.m in Sources */,
 				A857ED991D9CA7170003C0FF /* DKTextField.m in Sources */,
-				A87124091DAC92770040344A /* DKPayMoneyVC.m in Sources */,
 				A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */,
 				A87124671DAC989B0040344A /* HomeViewModel.m in Sources */,
 				A871238A1DAC915B0040344A /* CarProTableViewCell.m in Sources */,
 				A821E0BD1D9A60A400CDF409 /* ActivityOrderHeaderView.m in Sources */,
 				A87123991DAC915B0040344A /* PayMoneyFooterView.m in Sources */,
+				A8CECB831DAF72E00039DBF8 /* DKDetailOrderVC.m in Sources */,
 				A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */,
 				A87123931DAC915B0040344A /* CondationView.m in Sources */,
 				A857EDB41D9CEA8E0003C0FF /* DKCityTableViewController.m in Sources */,

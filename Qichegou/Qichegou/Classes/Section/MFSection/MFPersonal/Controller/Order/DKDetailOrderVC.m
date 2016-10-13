@@ -12,10 +12,14 @@
 #import "CarHeaderView.h"
 #import "AppDelegate.h"
 
-@interface DKDetailOrderVC ()<UITableViewDataSource, UITableViewDelegate>
+#import "CarOrderModel.h"
+
+@interface DKDetailOrderVC ()
+<UITableViewDataSource,
+UITableViewDelegate>
 
 @property (nonatomic, strong) UIButton *continueBtn;
-@property (nonatomic, strong) UITableView *detailOrderTV;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -27,8 +31,6 @@
     
     [self setUpNav];
     [self setUpViews];
-    
-//    [self showHUD:@"正在加载"];
     
     [self dataRequest];
 }
@@ -48,12 +50,14 @@
     WEAKSELF
     [self.view addSubview:self.continueBtn];
     [self.continueBtn makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(0);
-        make.height.equalTo(50);
+        make.bottom.equalTo(-10);
+        make.height.equalTo(Button_H);
+        make.left.equalTo(40);
+        make.right.equalTo(-40);
     }];
     
-    [self.view addSubview:self.detailOrderTV];
-    [self.detailOrderTV makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.tableView];
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(0);
         make.bottom.equalTo(weakSelf.continueBtn.mas_top);
     }];
@@ -63,27 +67,26 @@
 -(UIButton *)continueBtn {
     if (!_continueBtn) {
         _continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_continueBtn createButtonWithBGImgName:@"btn_big_continue"
-                            bghighlightImgName:@"btn_big_continue.2"
-                                      titleStr:@"继续完成订单"
-                                      fontSize:16];
+        _continueBtn.layer.cornerRadius = Button_H/2;
+        [_continueBtn setTitle:@"继续完成订单" forState:UIControlStateNormal];
+        _continueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        _continueBtn.backgroundColor = ITEMCOLOR;
         [_continueBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _continueBtn;
 }
 
--(UITableView *)detailOrderTV {
-    if (!_detailOrderTV) {
-        _detailOrderTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+-(UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         
-        _detailOrderTV.delegate = self;
-        _detailOrderTV.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
         
-        _detailOrderTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        _detailOrderTV.scrollEnabled = NO;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.scrollEnabled = NO;
     }
-    return _detailOrderTV;
+    return _tableView;
 }
 
 #pragma mark - buttonAction
@@ -92,9 +95,7 @@
         [self presentAlertViewWithString:@"请联系客服退款：400-169-0399"];
     }else if ([btn.titleLabel.text isEqualToString:@"取消订单"]) {
         [self cancelOrder];
-        
     }
-    
 }
 
 //弹出确定取消订单
@@ -150,26 +151,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *detailOrderCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DetailOrderCellID"];
-    detailOrderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DetailOrderCellID"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
-        //
+        
         CarHeaderView *carView = [[CarHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 80)];
         carView.backgroundColor = [UIColor whiteColor];
         [carView createViewWithModel:self.myModel];
-        [detailOrderCell.contentView addSubview:carView];
+        [cell.contentView addSubview:carView];
         
     }if (indexPath.section == 1) {
         CarInformationView *carView = [[[NSBundle mainBundle] loadNibNamed:@"CarInformationView" owner:nil options:nil] lastObject];
+        carView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-50-80-20);
         [carView createCellViewWithModel:self.myModel];
         
         UIButton *cancelBtn = [carView viewWithTag:2323];
         [cancelBtn addTarget:self action:@selector(buttonClickAction:) forControlEvents:UIControlEventTouchUpInside];
-        [detailOrderCell.contentView addSubview:carView];
+        [cell.contentView addSubview:carView];
     }
     
-    return detailOrderCell;
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -247,10 +249,10 @@
                            if ([responseObject objectForKey:@"data"] != NULL) {
                                NSDictionary *jsonDic = [responseObject objectForKey:@"data"];
                                
-                               self.myModel = [[ChooseCarModel alloc] initContentWithDic:jsonDic];
+                               self.myModel = [[CarOrderModel alloc] initContentWithDic:jsonDic];
                                
                                //刷新表视图
-                               [self.detailOrderTV reloadData];
+                               [self.tableView reloadData];
                                [self completeHUD:@"加载完成"];
                                
                                NSInteger index = [self.myModel.zt integerValue];
@@ -277,9 +279,7 @@
 }
 
 //取消订单
-- (void)cancelOrderRequest
-{
-
+- (void)cancelOrderRequest {
     //获取token值
     NSString *tokenStr = [AppDelegate APP].user.token;
     NSString *randomString = [BaseFunction ret32bitString];

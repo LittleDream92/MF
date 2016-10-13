@@ -7,6 +7,7 @@
 //
 
 #import "CarHeaderView.h"
+#import "CarOrderModel.h"
 
 @interface CarHeaderView ()
 
@@ -18,8 +19,7 @@
 
 @implementation CarHeaderView
 
--(instancetype)initWithFrame:(CGRect)frame
-{
+-(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         //
@@ -28,42 +28,17 @@
     return self;
 }
 
--(void)awakeFromNib
-{
+-(void)awakeFromNib {
     [self createViews];
 }
 
-#pragma mark - lazyloading
--(UIImageView *)carImgView {
-    if (!_carImgView) {
-        _carImgView = [[UIImageView alloc] init];
-    }
-    return _carImgView;
-}
 
--(UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        [_titleLabel createLabelWithFontSize:14 color:TEXTCOLOR];
-    }
-    return _titleLabel;
-}
-
--(UILabel *)guide_priceLabel {
-    if (!_guide_priceLabel) {
-        _guide_priceLabel = [[UILabel alloc] init];
-        [_guide_priceLabel createLabelWithFontSize:12 color:GRAYCOLOR];
-    }
-    return _guide_priceLabel;
-}
-
-- (void)createViews
-{
+- (void)createViews {
     WEAKSELF
     [self addSubview:self.carImgView];
     [self.carImgView makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(CGSizeMake(80, 40));
-        make.left.equalTo(20*kHeightSale);
+        make.size.equalTo(CGSizeMake(80, 70));
+        make.left.equalTo(20);
         make.centerY.equalTo(weakSelf);
     }];
     
@@ -84,8 +59,34 @@
     }];
 }
 
-- (void)createViewWithModel:(ChooseCarModel *)carModel
-{
+#pragma mark - lazyloading
+-(UIImageView *)carImgView {
+    if (!_carImgView) {
+        _carImgView = [[UIImageView alloc] init];
+        _carImgView.contentMode = UIViewContentModeScaleAspectFit;
+        _carImgView.image = [UIImage imageNamed:@"bg_default"];
+    }
+    return _carImgView;
+}
+
+-(UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        [_titleLabel createLabelWithFontSize:14 color:TEXTCOLOR];
+    }
+    return _titleLabel;
+}
+
+-(UILabel *)guide_priceLabel {
+    if (!_guide_priceLabel) {
+        _guide_priceLabel = [[UILabel alloc] init];
+        [_guide_priceLabel createLabelWithFontSize:12 color:GRAYCOLOR];
+    }
+    return _guide_priceLabel;
+}
+
+#pragma mark -
+- (void)createViewWithModel:(CarOrderModel *)carModel {
     //赋值
     if (carModel.main_photo.length > 0) {
         [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, carModel.main_photo]] placeholderImage:[UIImage imageNamed:@"bg_default"]];

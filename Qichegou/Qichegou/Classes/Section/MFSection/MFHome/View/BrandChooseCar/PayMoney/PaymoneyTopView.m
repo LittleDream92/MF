@@ -8,7 +8,7 @@
 
 #import "PaymoneyTopView.h"
 #import "UIView+Extension.h"
-#import "ChooseCarModel.h"
+#import "CarOrderModel.h"
 
 #define frameX 15
 
@@ -43,7 +43,7 @@
 }
 
 
-- (void)createTopViewWithChooseCarModel:(ChooseCarModel *)model
+- (void)createTopViewWithChooseCarModel:(CarOrderModel *)model
 {
     NSLog(@"ChooseCarModel赋值！");
     

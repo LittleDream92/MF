@@ -8,20 +8,11 @@
 /*我的订单*/
 #import <UIKit/UIKit.h>
 
-#import "ChooseCarModel.h"
-
+@class CarOrderModel;
 @interface MyOrderCell : UITableViewCell
-
-@property (nonatomic, strong) UIButton *operationBtn;
-
-@property (weak, nonatomic) IBOutlet UILabel *orderIDLabel;
-@property (weak, nonatomic) IBOutlet UILabel *orderStatusLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *carImgView;
-@property (weak, nonatomic) IBOutlet UILabel *carTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *offLineLabel;
 
 
 //数据源
-@property (nonatomic, strong) ChooseCarModel *model;
+@property (nonatomic, strong) CarOrderModel *model;
 
 @end
