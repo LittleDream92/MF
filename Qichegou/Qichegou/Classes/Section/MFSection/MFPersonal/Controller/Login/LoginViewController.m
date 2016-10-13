@@ -116,7 +116,6 @@
     }
 }
 
-#pragma mark - 自定义
 - (void)codeLogin {
     self.getCodeBtn.hidden = NO;
     
@@ -142,7 +141,8 @@
 #pragma mark - action
 //notification
 - (void)loginSuccess:(NSNotification *)notification {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)buttonAction:(UIButton *)sender {
@@ -153,7 +153,7 @@
             DKRegistViewController *registVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKRegistViewController"];
             DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:registVC];
             [self presentViewController:navCtrller animated:YES completion:nil];
-            
+//            [self.navigationController pushViewController:registVC animated:YES];
             break;
         }
         case 12:
@@ -168,7 +168,7 @@
             DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
             DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
             [self presentViewController:navCtrller animated:YES completion:nil];
-            
+//            [self.navigationController pushViewController:changePwdVC animated:YES];
             break;
         }
         case 14:
