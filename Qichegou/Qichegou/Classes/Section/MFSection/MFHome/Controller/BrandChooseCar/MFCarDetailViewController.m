@@ -53,8 +53,12 @@ static NSString *const cellID = @"commonCellID";
     WEAKSELF
     [self.view addSubview:self.nextBtn];
     [self.nextBtn makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(0);
-        make.height.equalTo(50);
+//        make.left.right.bottom.equalTo(0);
+//        make.height.equalTo(50);
+        make.left.equalTo(40);
+        make.right.equalTo(-40);
+        make.height.equalTo(40);
+        make.bottom.equalTo(-10);
     }];
     
     [self.view addSubview:self.tableView];
@@ -120,6 +124,7 @@ static NSString *const cellID = @"commonCellID";
         [_nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
         _nextBtn.titleLabel.font = H16;
         _nextBtn.backgroundColor = kskyBlueColor;
+        _nextBtn.layer.cornerRadius = 20;
 //        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next"] forState:UIControlStateNormal];
 //        [_nextBtn setBackgroundImage:[UIImage imageNamed:@"home_next_H"] forState:UIControlStateHighlighted];
     }
