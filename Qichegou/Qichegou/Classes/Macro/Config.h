@@ -16,10 +16,10 @@
 #define kScreenSize             [[UIScreen mainScreen] bounds].size
 #define kScreenWidth            [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight           [UIScreen mainScreen].bounds.size.height
-#define kWidthSale (kScreenWidth / 375.0)
-#define kHeightSale (kScreenHeight/667.0)
+#define kWidthSale              (kScreenWidth / 375.0)
+#define kHeightSale             (kScreenHeight/667.0)
 
-#define PromptWord @"网络开小差了，稍后试试吧"
+#define PromptWord              @"网络开小差了，稍后试试吧"
 
 // View 坐标(x,y)和宽高(width,height)
 #define X(v)                    (v).frame.origin.x
@@ -42,8 +42,6 @@
 #define kTopBarHeight           (44.f)
 #define kBottomBarHeight        (49.f)
 
-#define kCellDefaultHeight      (44.f)
-
 #define kEnglishKeyboardHeight  (216.f)
 #define kChineseKeyboardHeight  (252.f)
 
@@ -65,16 +63,16 @@
 #import "PromtView.h"
 
 // App
-#define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define APP_VERSION     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 // System Version
-#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define IOS_VERSION     [[[UIDevice currentDevice] systemVersion] floatValue]
 //全局应用
-#define MyApp ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define MyApp           ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 //判断是否为iOS7
-#define iOS7 ((floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1))
+#define iOS7            ((floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1))
 //判断是否为iPhone5
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone5         ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 
 
@@ -161,7 +159,6 @@
 #define gray_color      [UIColor grayColor]
 #define magenta_color   [UIColor magentaColor]
 
-#define kBackColor UIColorFromRGB(0xd81460)
 
 /* ************************************************************************************************* */
 

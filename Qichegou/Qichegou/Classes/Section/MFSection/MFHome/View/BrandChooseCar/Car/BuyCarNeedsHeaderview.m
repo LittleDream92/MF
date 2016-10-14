@@ -11,7 +11,7 @@
 @implementation BuyCarNeedsHeaderview
 
 -(void)awakeFromNib {
-    
+    [super awakeFromNib];
 }
 
 /*

@@ -8,7 +8,8 @@
 
 #import "DKCarListViewController.h"
 #import "CarListTableViewCell.h"
-#import "MFCarDetailViewController.h"
+//#import "MFCarDetailViewController.h"
+#import "MFDetailCarViewController.h"
 #import "CarModel.h"
 
 static NSString *const cellID = @"carListCellID";
@@ -103,7 +104,7 @@ static NSString *const cellID = @"carListCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //push进入详细选车页面
-    MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
+    MFDetailCarViewController *detailCarVC = [[MFDetailCarViewController alloc] init];
     CarModel *model = self.dataArr[indexPath.row];
     detailCarVC.cid = model.car_id;
     [self.navigationController pushViewController:detailCarVC animated:YES];
@@ -116,7 +117,7 @@ static NSString *const cellID = @"carListCellID";
     [self.dataArr removeAllObjects];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];;
+    params[@"cityid"] = [UserDefaults objectForKey:kLocationAction][@"cityid"];
     
     if (self.pid.length == 0) {
         params[@"min"] = self.minPrice;
@@ -191,7 +192,6 @@ static NSString *const cellID = @"carListCellID";
                                    [self.tableview.mj_footer endRefreshing];
                                    [PromtView showMessage:@"加载完毕" duration:1.5];
                                }
-                               
                            }else {
                                
                                [PromtView showMessage:@"没有更多数据" duration:1.5];

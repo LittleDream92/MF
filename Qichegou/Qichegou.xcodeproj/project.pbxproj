@@ -42,10 +42,12 @@
 		A821E1631D9A778B00CDF409 /* 外观按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A821E14F1D9A778B00CDF409 /* 外观按钮@3x.png */; };
 		A821E1651D9A77FC00CDF409 /* location.plist in Resources */ = {isa = PBXBuildFile; fileRef = A821E1641D9A77FC00CDF409 /* location.plist */; };
 		A82239751DAE1EEF00A87692 /* SubmmitOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A82239741DAE1EEF00A87692 /* SubmmitOrderViewModel.m */; };
+		A839788B1DB0CAA700CE20FC /* DetailCarInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A839788A1DB0CAA700CE20FC /* DetailCarInformationCell.m */; };
 		A84CF6671D9BCC9B00D096BF /* DKActivityPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */; };
 		A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D591D952268002DB7F4 /* DataService.m */; };
 		A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D5C1D952583002DB7F4 /* BaseModel.m */; };
 		A84F5D631D952BE3002DB7F4 /* CustomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */; };
+		A8551C6E1DB08CFB00A0F135 /* MFDetailCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8551C6D1DB08CFB00A0F135 /* MFDetailCarViewController.m */; };
 		A857ED991D9CA7170003C0FF /* DKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ED981D9CA7170003C0FF /* DKTextField.m */; };
 		A857EDAD1D9CC8E10003C0FF /* HomeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDAA1D9CC8E10003C0FF /* HomeBtn.m */; };
 		A857EDB11D9CE9640003C0FF /* CityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A857EDB01D9CE9640003C0FF /* CityControl.m */; };
@@ -240,6 +242,8 @@
 		A821E1641D9A77FC00CDF409 /* location.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = location.plist; sourceTree = "<group>"; };
 		A82239731DAE1EEF00A87692 /* SubmmitOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmmitOrderViewModel.h; sourceTree = "<group>"; };
 		A82239741DAE1EEF00A87692 /* SubmmitOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmmitOrderViewModel.m; sourceTree = "<group>"; };
+		A83978891DB0CAA700CE20FC /* DetailCarInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCarInformationCell.h; sourceTree = "<group>"; };
+		A839788A1DB0CAA700CE20FC /* DetailCarInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCarInformationCell.m; sourceTree = "<group>"; };
 		A84CF6651D9BCC9B00D096BF /* DKActivityPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKActivityPayMoneyVC.h; sourceTree = "<group>"; };
 		A84CF6661D9BCC9B00D096BF /* DKActivityPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKActivityPayMoneyVC.m; sourceTree = "<group>"; };
 		A84F5D581D952268002DB7F4 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 		A84F5D5C1D952583002DB7F4 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A84F5D611D952BE3002DB7F4 /* CustomButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButtonView.h; sourceTree = "<group>"; };
 		A84F5D621D952BE3002DB7F4 /* CustomButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButtonView.m; sourceTree = "<group>"; };
+		A8551C6C1DB08CFB00A0F135 /* MFDetailCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDetailCarViewController.h; sourceTree = "<group>"; };
+		A8551C6D1DB08CFB00A0F135 /* MFDetailCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDetailCarViewController.m; sourceTree = "<group>"; };
 		A857ED971D9CA7170003C0FF /* DKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKTextField.h; sourceTree = "<group>"; };
 		A857ED981D9CA7170003C0FF /* DKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKTextField.m; sourceTree = "<group>"; };
 		A857EDA91D9CC8E10003C0FF /* HomeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBtn.h; sourceTree = "<group>"; };
@@ -691,6 +697,8 @@
 				A87123381DAC915B0040344A /* BuyCarNeedsTVC.h */,
 				A87123391DAC915B0040344A /* BuyCarNeedsTVC.m */,
 				A871233A1DAC915B0040344A /* BuyCarNeedsTVC.xib */,
+				A83978891DB0CAA700CE20FC /* DetailCarInformationCell.h */,
+				A839788A1DB0CAA700CE20FC /* DetailCarInformationCell.m */,
 				A871233B1DAC915B0040344A /* CarListTableViewCell.h */,
 				A871233C1DAC915B0040344A /* CarListTableViewCell.m */,
 				A871233D1DAC915B0040344A /* CarListTableViewCell.xib */,
@@ -892,6 +900,10 @@
 				A87123E91DAC92770040344A /* MFBrandViewController.m */,
 				A87123E01DAC92770040344A /* DKCarListViewController.h */,
 				A87123E11DAC92770040344A /* DKCarListViewController.m */,
+				A8551C6C1DB08CFB00A0F135 /* MFDetailCarViewController.h */,
+				A8551C6D1DB08CFB00A0F135 /* MFDetailCarViewController.m */,
+				A87123EA1DAC92770040344A /* MFCarDetailViewController.h */,
+				A87123EB1DAC92770040344A /* MFCarDetailViewController.m */,
 				A87123DE1DAC92770040344A /* BigCarImgVC.h */,
 				A87123DF1DAC92770040344A /* BigCarImgVC.m */,
 				A87123E21DAC92770040344A /* DKCarNeedsVC.h */,
@@ -900,8 +912,6 @@
 				A87123E51DAC92770040344A /* DKNeedsTableViewController.m */,
 				A87123E61DAC92770040344A /* ImageViewController.h */,
 				A87123E71DAC92770040344A /* ImageViewController.m */,
-				A87123EA1DAC92770040344A /* MFCarDetailViewController.h */,
-				A87123EB1DAC92770040344A /* MFCarDetailViewController.m */,
 				A87123EC1DAC92770040344A /* ParamsViewController.h */,
 				A87123ED1DAC92770040344A /* ParamsViewController.m */,
 			);
@@ -1684,7 +1694,7 @@
 		A886FEE51D922A450028F102 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Meng Fan";
 				TargetAttributes = {
 					A886FEEC1D922A450028F102 = {
@@ -1852,6 +1862,7 @@
 				A871238C1DAC915B0040344A /* CarProView.m in Sources */,
 				A871241E1DAC93180040344A /* HomeOperationCell.m in Sources */,
 				A87124571DAC96910040344A /* DKMyActivityOrderVC.m in Sources */,
+				A839788B1DB0CAA700CE20FC /* DetailCarInformationCell.m in Sources */,
 				A87123881DAC915B0040344A /* CarListTableViewCell.m in Sources */,
 				A871241C1DAC93180040344A /* HomeHeaderView.m in Sources */,
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
@@ -1880,6 +1891,7 @@
 				A87123A41DAC915B0040344A /* CarDetailThirdCell.m in Sources */,
 				A871237E1DAC915B0040344A /* PurchesProcessView.m in Sources */,
 				A871240C1DAC92770040344A /* MFSaleViewController.m in Sources */,
+				A8551C6E1DB08CFB00A0F135 /* MFDetailCarViewController.m in Sources */,
 				A88600001D926B850028F102 /* UIView+Extension.m in Sources */,
 				A87123A71DAC915B0040344A /* SaleDetalHeaderTableViewCell.m in Sources */,
 				A87124531DAC96910040344A /* DKChangePWDViewController.m in Sources */,
@@ -1973,8 +1985,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2018,8 +2032,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

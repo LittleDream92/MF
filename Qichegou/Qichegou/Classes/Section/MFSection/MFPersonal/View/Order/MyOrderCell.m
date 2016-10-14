@@ -36,6 +36,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 //    //初始化操作按钮
 //    [self.contentView addSubview:self.operationBtn];

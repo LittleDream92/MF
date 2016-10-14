@@ -15,11 +15,15 @@
 #import "DKNeedsTableViewController.h"
 #import "AppDelegate.h"
 
-@interface DKCarNeedsVC ()<UIGestureRecognizerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface DKCarNeedsVC ()
+<UIGestureRecognizerDelegate,
+UITextFieldDelegate,
+UITableViewDelegate,
+UITableViewDataSource>
 {
     NSArray *_keyArray;
 }
-@property (nonatomic, strong) UITableView *needsTV;
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *imgNameArray;
 @property (nonatomic, strong) NSArray *celltitleArray;
@@ -28,6 +32,11 @@
 @property (nonatomic, strong) NSArray *pushTitleArr;
 @property (nonatomic, strong) BuyCarNeedsHeaderview *headerView;
 @property (nonatomic, strong) BuyCarNeedsFooterView *footerView;
+
+//参数的数据源
+@property (nonatomic, strong) NSArray *sectionTitleArray;
+@property (nonatomic, strong) NSArray *keyArray;
+@property (nonatomic, strong) NSArray *valueArray;
 
 @end
 
@@ -64,32 +73,32 @@
 
 - (void)setUpViews {
     
-    [self.view addSubview:self.needsTV];
-    [self.needsTV makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.tableView];
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
     //初始化表视图的头视图
-    self.needsTV.tableHeaderView = self.headerView;
+    self.tableView.tableHeaderView = self.headerView;
     
     //初始化表视图的尾视图
-    self.needsTV.tableFooterView = self.footerView;
+    self.tableView.tableFooterView = self.footerView;
     UIButton *subMitBtn = [self.footerView viewWithTag:121];
     [subMitBtn addTarget:self action:@selector(buttonClickAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - lazyloading
--(UITableView *)needsTV {
-    if (!_needsTV) {
-        _needsTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+-(UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         
-        _needsTV.delegate = self;
-        _needsTV.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
         
-        _needsTV.rowHeight = 49 *kHeightSale;
-        _needsTV.scrollEnabled = NO;
+        _tableView.rowHeight = 49 *kHeightSale;
+        _tableView.scrollEnabled = NO;
     }
-    return _needsTV;
+    return _tableView;
 }
 
 -(BuyCarNeedsHeaderview *)headerView {
@@ -140,9 +149,9 @@
 #pragma mark -  UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if ([AppDelegate APP].user) {
-        return 1;
-    }else {
         return 2;
+    }else {
+        return 3;
     }
 }
 
@@ -230,7 +239,7 @@
             NSLog(@"cishi:%@", _getBackChooseDictionary);
 
             //刷新tableView,此处可以优化
-            [self.needsTV reloadData];
+            [self.tableView reloadData];
         }];
         
         [self.navigationController pushViewController:needsVC animated:YES];
@@ -243,7 +252,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     //开始编辑时触发，文本字段将成为first responder
     //开始编辑时，移动tableView
-    CGRect frame = self.needsTV.frame;
+    CGRect frame = self.tableView.frame;
     
     if (frame.origin.y== 0) {
         frame.origin.y -= 250;
@@ -251,7 +260,7 @@
 
     [UIView beginAnimations:@"moveView" context:nil];
     [UIView setAnimationDuration:0.3];
-    self.needsTV.frame = frame;
+    self.tableView.frame = frame;
     [UIView commitAnimations];
 }
 
@@ -270,7 +279,7 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     
     //tableView回到原来的位置
-    CGRect frame = self.needsTV.frame;
+    CGRect frame = self.tableView.frame;
     if (frame.origin.y != 0) {
         frame.origin.y = 0;
     }else if (frame.origin.y == 0) {
@@ -279,7 +288,7 @@
     
     [UIView beginAnimations:@"moveView" context:nil];
     [UIView setAnimationDuration:0.3];
-    self.needsTV.frame = frame;
+    self.tableView.frame = frame;
     [UIView commitAnimations];
 }
 
@@ -287,7 +296,7 @@
 - (void)buttonAction:(UIButton *)button {   //验证码
     
     //拿到手机号的txtField
-    UITableViewCell *cell = [self.needsTV cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]];
     UITextField *telTxtField = [cell viewWithTag:7000];
     
     //判断手机号
@@ -343,7 +352,7 @@
     NSMutableArray *mArray = [NSMutableArray array];
     
     for (int i = 0; i < 3; i++) {
-        UITableViewCell *cell = [self.needsTV cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]];
         UITextField *mytf = [cell viewWithTag:7000];
         [mArray addObject:mytf.text];
     }
