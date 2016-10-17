@@ -11,7 +11,7 @@
 @class CarModel;
 @interface CarDetailViewModel : NSObject
 
-@property (nonatomic, assign) BOOL haveLogin;
+//@property (nonatomic, assign) BOOL haveLogin;
 
 /**
  *  ViewController中用到的具体数据
@@ -29,11 +29,14 @@
 @property (nonatomic, strong) RACCommand *carDetailCommand;
 @property (nonatomic, strong) CarModel *carModel;
 
-//车型颜色请求命令
-@property (nonatomic, strong) RACCommand *carColorCommand;
-
-//参数请求命令
+/** 参数请求命令 */
 @property (nonatomic, strong) RACCommand *carParamsCommand;
+//参数请求结果
+@property (nonatomic, strong) NSArray *keyArr;
+@property (nonatomic, strong) NSArray *valueArr;
+
+
+
 //图片请求命令
 @property (nonatomic, strong) RACCommand *carImagesCommand;
 
@@ -46,8 +49,12 @@
 
 
 
-//提交订单按钮对应的命令
+/** 提交订单按钮对应的命令 */
 @property (nonatomic, strong) RACCommand *submmitOrderCommand;
+//参数
+@property (nonatomic, copy) NSString *account;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *code;
 
 
 @end

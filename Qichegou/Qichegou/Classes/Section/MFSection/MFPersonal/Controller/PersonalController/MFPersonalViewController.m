@@ -418,7 +418,7 @@ UITableViewDelegate>
 - (void)ctrlClickAction:(HomeBtn *)ctrl
 {
     NSLog(@"浏览click");
-    NSString *carID = [NSString stringWithFormat:@"%ld",(ctrl.tag - 2016)];
+    NSString *carID = [NSString stringWithFormat:@"%d",(ctrl.tag - 2016)];
     NSLog(@"push cid:%@", carID);
     
     //push进入详细选车页面

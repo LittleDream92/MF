@@ -12,7 +12,7 @@
 
 @interface CarDetailViewModel ()
 
-@property (nonatomic, strong) RACSignal *submmitEnableSignal;
+//@property (nonatomic, strong) RACSignal *submmitEnableSignal;
 
 @end
 
@@ -41,6 +41,10 @@
 
 - (void)setUpCommand {
     [self carDetailCommandAction];
+    
+    [self.submmitOrderCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"x");
+    }];
 }
 
 #pragma mark - request action
@@ -72,6 +76,8 @@
                                            NSString *colorStr = jsonDic[@"color"];
                                            [mArr2 addObject:colorStr];
                                        }
+                                   }else {
+                                       [PromtView showAlert:@"此车暂无可选的颜色" duration:1.5];
                                    }
                                    
                                    detailModel.color_imgs = (NSArray *)mArr;
@@ -102,28 +108,24 @@
 
 
 #pragma mark - 
--(BOOL)haveLogin {
-    if (!_haveLogin) {
-        if ([AppDelegate APP].user) {
-            _haveLogin = YES;
-        }else {
-            _haveLogin = NO;
-        }
-    }
-    return _haveLogin;
-}
+//-(BOOL)haveLogin {
+//    if (!_haveLogin) {
+//        if ([AppDelegate APP].user) {
+//            _haveLogin = YES;
+//        }else {
+//            _haveLogin = NO;
+//        }
+//    }
+//    return _haveLogin;
+//}
 
 //参数的网络请求
 -(RACCommand *)carParamsCommand {
     if (!_carParamsCommand) {
-        @weakify(self);
         _carParamsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            @strongify(self);
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID ,@"cid", nil];
                 
-                [DataService http_Post:PARAMSLIST parameters:params success:^(id responseObject) {
+                [DataService http_Post:PARAMSLIST parameters:input success:^(id responseObject) {
                     if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
                         NSArray *responsArr = [responseObject objectForKey:@"params"];
                         if ([responsArr isKindOfClass:[NSArray class]] && responsArr.count > 0) {
@@ -149,6 +151,9 @@
                                 [valueArray addObject:valueArr];
                             }
                             
+                            self.keyArr = keyArray;
+                            self.valueArr = valueArray;
+                            
                             //把组名，key、value发送出去
                             NSArray *nextArr = @[mArrTitle, keyArray, valueArray];
                             [subscriber sendNext:nextArr];
@@ -172,70 +177,28 @@
     return _carParamsCommand;
 }
 
--(RACCommand *)carColorCommand {
-    if (!_carColorCommand) {
-        @weakify(self);
-        _carColorCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            @strongify(self);
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                
-                [DataService http_Post:CHOOSE_COLOR parameters:input success:^(id responseObject) {
-                    NSLog(@"car colors:%@", responseObject);
-                    if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                        
-                        if ([[responseObject objectForKey:@"colors"] isKindOfClass:[NSArray class]] && [[responseObject objectForKey:@"colors"] count] > 0) {
-                            
-                            NSArray *jsonArr = [responseObject objectForKey:@"colors"];
-                            
-                            NSMutableArray *mArr = [NSMutableArray array];
-                            for (NSDictionary *jsonDic in jsonArr) {
-                                NSString *colorText = [jsonDic objectForKey:@"color"];
-                                [mArr addObject:colorText];
-                            }
-                            self.colorArray = mArr;
-                            [subscriber sendNext:mArr];
-                            [subscriber sendCompleted];
-                        }else {
-                            [subscriber sendCompleted];
-                            [PromtView showAlert:@"此车还没有颜色可选" duration:1.5];
-                        }
-                        
-                    }else {
-                        [subscriber sendCompleted];
-                        [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
-                    }
-                } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
-                    [PromtView showAlert:PromptWord duration:1.5];
-                }];
-                
-                return nil;
-            }];
-        }];
-    }
-    return _carColorCommand;
-}
-
--(RACSignal *)submmitEnableSignal {
-    if (!_submmitEnableSignal) {
-        _submmitEnableSignal = [RACSignal combineLatest:@[RACObserve(self, getBackChooseDictionary)] reduce:^id(NSMutableDictionary *dict){
-            NSLog(@"dict :%d", [dict allKeys].count);
-            return @([dict allKeys].count > 4);
-        }];
-    }
-    return _submmitEnableSignal;
-}
+//-(RACSignal *)submmitEnableSignal {
+//    if (!_submmitEnableSignal) {
+//        _submmitEnableSignal = [RACSignal combineLatest:@[RACObserve(self, getBackChooseDictionary)] reduce:^id(NSMutableDictionary *dict){
+//            NSLog(@"dict :%@", dict);
+////            return @([dict allKeys].count > 4);
+//            return @(YES);
+//        }];
+//    }
+//    return _submmitEnableSignal;
+//}
 
 -(RACCommand *)submmitOrderCommand {
     if (!_submmitOrderCommand) {
-        _submmitOrderCommand = [[RACCommand alloc] initWithEnabled:self.submmitEnableSignal signalBlock:^RACSignal *(id input) {
+        _submmitOrderCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 NSLog(@"即将提交订单");
                 [subscriber sendCompleted];
                 return nil;
             }];
         }];
+//                                initWithEnabled:self.submmitEnableSignal signalBlock:^RACSignal *(id input) {
+//                    }];
     }
     return _submmitOrderCommand;
 }

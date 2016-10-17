@@ -187,8 +187,8 @@
         NSLog(@"nowLeftW : %f", nowLeftW);
         
         NSInteger number = nowLeftW / perWidth;
-        NSLog(@"shang : %ld, yushu : ", number);
-        self.minPrice = [NSString stringWithFormat:@"%ld", number * 10];
+        NSLog(@"shang : %ld, yushu : ", (long)number);
+        self.minPrice = [NSString stringWithFormat:@"%d", number * 10];
         
         if (self.thumbMoveAction) {
             self.thumbMoveAction(self.minPrice, self.maxPrice);
@@ -234,8 +234,8 @@
         NSLog(@"nowRightW : %f", nowRightW);
         
         NSInteger number = nowRightW / perWidth;
-        NSLog(@"sh: %ld, yushu : ", number);
-        self.maxPrice = [NSString stringWithFormat:@"%ld", number * 10];
+        NSLog(@"sh: %ld, yushu : ", (long)number);
+        self.maxPrice = [NSString stringWithFormat:@"%d", number * 10];
         
         if (self.thumbMoveAction) {
             self.thumbMoveAction(self.minPrice, self.maxPrice);

@@ -46,7 +46,7 @@
     
     
     NSInteger leftX1 = 15;
-    NSInteger leftX2 = 52;
+    NSInteger leftX2 = 50;
     if (kScreenHeight > 667) {
         leftX1 = 20;
         leftX2 = 52;
@@ -74,7 +74,8 @@
     [self.writeTF makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.equalTo(weakSelf.iconImgView.mas_right).offset(15);
         make.left.equalTo(leftX2);
-        make.top.bottom.right.equalTo(0);
+        make.top.bottom.equalTo(0);
+        make.right.equalTo(weakSelf.lineView.mas_left);
     }];
     
     [self.line makeConstraints:^(MASConstraintMaker *make) {
@@ -113,6 +114,8 @@
 -(UITextField *)writeTF {
     if (!_writeTF) {
         _writeTF = [UITextField new];
+        _writeTF.font = H15;
+//        [_writeTF setValue:GRAYCOLOR forKeyPath:@"_placeholderLabel.textColor"];
     }
     return _writeTF;
 }
