@@ -8,7 +8,7 @@
 
 #import "MFActivityDetailViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "DKLoginViewController.h"
+#import "LoginViewController.h"
 #import "MFThirdActivityViewController.h"
 #import "AppDelegate.h"
 
@@ -79,8 +79,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //登录
-            DKLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKLoginViewController"];
-            [self presentViewController:loginVC animated:YES completion:nil];
+            LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            [self.navigationController pushViewController:loginVC animated:YES];
         });
         
         NSLog(@"+++++++end toLoginByAPP+++++++");

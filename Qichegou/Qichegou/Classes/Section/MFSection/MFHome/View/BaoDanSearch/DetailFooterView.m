@@ -11,7 +11,7 @@
 @implementation DetailFooterView
 
 -(void)awakeFromNib {
-    
+    [super awakeFromNib];
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {

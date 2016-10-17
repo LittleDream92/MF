@@ -13,6 +13,7 @@
 @implementation BuyCarNeedsFooterView
 
 -(void)awakeFromNib {
+    [super awakeFromNib];
     self.submmitBtn.layer.cornerRadius = 20;
 }
 

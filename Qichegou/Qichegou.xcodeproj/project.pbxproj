@@ -129,7 +129,6 @@
 		A871241D1DAC93180040344A /* HomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124181DAC93180040344A /* HomeMenuCell.m */; };
 		A871241E1DAC93180040344A /* HomeOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A871241A1DAC93180040344A /* HomeOperationCell.m */; };
 		A87124531DAC96910040344A /* DKChangePWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124231DAC96910040344A /* DKChangePWDViewController.m */; };
-		A87124541DAC96910040344A /* DKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124251DAC96910040344A /* DKLoginViewController.m */; };
 		A87124551DAC96910040344A /* DKRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124271DAC96910040344A /* DKRegistViewController.m */; };
 		A87124561DAC96910040344A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87124281DAC96910040344A /* Login.storyboard */; };
 		A87124571DAC96910040344A /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */; };
@@ -398,8 +397,6 @@
 		A871241A1DAC93180040344A /* HomeOperationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeOperationCell.m; sourceTree = "<group>"; };
 		A87124221DAC96910040344A /* DKChangePWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKChangePWDViewController.h; sourceTree = "<group>"; };
 		A87124231DAC96910040344A /* DKChangePWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKChangePWDViewController.m; sourceTree = "<group>"; };
-		A87124241DAC96910040344A /* DKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLoginViewController.h; sourceTree = "<group>"; };
-		A87124251DAC96910040344A /* DKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLoginViewController.m; sourceTree = "<group>"; };
 		A87124261DAC96910040344A /* DKRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRegistViewController.h; sourceTree = "<group>"; };
 		A87124271DAC96910040344A /* DKRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRegistViewController.m; sourceTree = "<group>"; };
 		A87124281DAC96910040344A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -996,8 +993,6 @@
 				A87124231DAC96910040344A /* DKChangePWDViewController.m */,
 				A8D226E81DAF3D610067AC12 /* LoginViewController.h */,
 				A8D226E91DAF3D610067AC12 /* LoginViewController.m */,
-				A87124241DAC96910040344A /* DKLoginViewController.h */,
-				A87124251DAC96910040344A /* DKLoginViewController.m */,
 				A87124261DAC96910040344A /* DKRegistViewController.h */,
 				A87124271DAC96910040344A /* DKRegistViewController.m */,
 			);
@@ -1880,7 +1875,6 @@
 				A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */,
 				A871238D1DAC915B0040344A /* DetailChooseCarHeader.m in Sources */,
 				A87124011DAC92770040344A /* DKCarListViewController.m in Sources */,
-				A87124541DAC96910040344A /* DKLoginViewController.m in Sources */,
 				A886FFB11D9238300028F102 /* DataSigner.m in Sources */,
 				A87123D01DAC91D90040344A /* SubmmitViewModel.m in Sources */,
 				A871238F1DAC915B0040344A /* PhotoCell.m in Sources */,
