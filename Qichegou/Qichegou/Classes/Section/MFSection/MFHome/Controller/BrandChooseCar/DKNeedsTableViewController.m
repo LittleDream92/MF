@@ -91,8 +91,7 @@ static NSString *const cellID = @"ChooseInformationCell";
 
 #pragma mark - view methods
 //视图即将消失
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     NSString *indexStr = [NSString stringWithFormat:@"%ld",(long)self.lastIndexPath.row];
@@ -100,8 +99,7 @@ static NSString *const cellID = @"ChooseInformationCell";
 }
 
 //block的调用
-- (void)returnText:(returnBlock)block
-{
+- (void)returnText:(returnBlock)block {
     self.returnBlock = block;
 }
 

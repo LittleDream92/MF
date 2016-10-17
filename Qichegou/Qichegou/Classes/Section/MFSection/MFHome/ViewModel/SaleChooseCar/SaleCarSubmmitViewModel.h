@@ -13,7 +13,7 @@
 //特价车详情
 @property (nonatomic, strong) RACCommand *saleCarDetailCommand;
 
-////提交订单
+//提交订单
 //@property (nonatomic, strong) RACCommand *saleCarSubmmitOrderCommand;
 
 

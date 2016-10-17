@@ -8,8 +8,7 @@
 
 #import "DKCarListViewController.h"
 #import "CarListTableViewCell.h"
-//#import "MFCarDetailViewController.h"
-#import "MFDetailCarViewController.h"
+#import "MFCarDetailViewController.h"
 #import "CarModel.h"
 
 static NSString *const cellID = @"carListCellID";
@@ -104,7 +103,7 @@ static NSString *const cellID = @"carListCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //push进入详细选车页面
-    MFDetailCarViewController *detailCarVC = [[MFDetailCarViewController alloc] init];
+    MFCarDetailViewController *detailCarVC = [[MFCarDetailViewController alloc] init];
     CarModel *model = self.dataArr[indexPath.row];
     detailCarVC.cid = model.car_id;
     [self.navigationController pushViewController:detailCarVC animated:YES];

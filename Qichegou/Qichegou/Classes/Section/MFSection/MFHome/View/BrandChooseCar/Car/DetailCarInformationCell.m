@@ -10,6 +10,7 @@
 
 @interface DetailCarInformationCell ()
 
+@property (nonatomic, strong) UIView *line;
 
 @end
 
@@ -41,6 +42,8 @@
     [self.contentView addSubview:self.getCodeBtn];
     [self.contentView addSubview:self.lineView];
     [self.contentView addSubview:self.writeTF];
+    [self.contentView addSubview:self.line];
+    
     
     NSInteger leftX1 = 15;
     NSInteger leftX2 = 52;
@@ -72,6 +75,11 @@
 //        make.left.equalTo(weakSelf.iconImgView.mas_right).offset(15);
         make.left.equalTo(leftX2);
         make.top.bottom.right.equalTo(0);
+    }];
+    
+    [self.line makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(0);
+        make.height.equalTo(1);
     }];
 }
 
@@ -107,6 +115,14 @@
         _writeTF = [UITextField new];
     }
     return _writeTF;
+}
+
+-(UIView *)line {
+    if (!_line) {
+        _line = [UIView new];
+        _line.backgroundColor = BGGRAYCOLOR;
+    }
+    return _line;
 }
 
 #pragma mark - action
