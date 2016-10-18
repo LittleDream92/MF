@@ -6,8 +6,9 @@
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface DKRegistViewController : UIViewController
+#import "DKBaseViewController.h"
+
+@interface DKRegistViewController : DKBaseViewController
 
 @end

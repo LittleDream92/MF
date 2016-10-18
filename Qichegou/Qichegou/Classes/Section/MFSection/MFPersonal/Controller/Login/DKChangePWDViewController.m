@@ -9,6 +9,7 @@
 #import "DKChangePWDViewController.h"
 #import "DKTextField.h"
 #import "UIButton+Extension.h"
+#import "RegistViewModel.h"
 
 @interface DKChangePWDViewController ()
 {
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet DKTextField *reNewPwdTF;
 @property (weak, nonatomic) IBOutlet DKTextField *codeTF;
 
+@property (nonatomic, strong) RegistViewModel *viewModel;
+
 @end
 
 @implementation DKChangePWDViewController
@@ -26,41 +29,56 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpNav];
+    [self setUpViews];
+    [self bindViewModel];
+}
+
+#pragma mark - setUpViews
+- (void)setUpNav {
     self.title = @"重置密码";
-    
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
-    [backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateHighlighted];
-    [backBtn createButtonWithBGImgName:nil bghighlightImgName:nil titleStr:@"返回" fontSize:17];
-    
-    backBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
-    [backBtn sizeToFit];
-    [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    
+    [self navBack:YES];
+    self.viewModel = [RegistViewModel new];
+}
+
+- (void)setUpViews {
     self.telTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tel"]];
     self.telTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.setPWD.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.setPWD.leftViewMode = UITextFieldViewModeAlways;
+    
     self.reNewPwdTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.reNewPwdTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.codeTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.codeTF.leftViewMode = UITextFieldViewModeAlways;
 }
 
+- (void)bindViewModel {
+    RAC(self.viewModel, account) = self.telTF.rac_textSignal;
+    RAC(self.viewModel, pwd) = self.setPWD.rac_textSignal;
+    RAC(self.viewModel, rePwd) = self.reNewPwdTF.rac_textSignal;
+    RAC(self.viewModel, code) = self.codeTF.rac_textSignal;
+    
+    _changeBtn.rac_command = self.viewModel.changePwdCommand;
+    
+    [self.viewModel.changePwdCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"网络请求返回了数据");
+        if ([x isEqualToString:@"修改成功"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+
+}
+
+#pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Click Action Methods
-//返回按钮触发事件
-- (void)backAction:(UIButton *)backCtrl {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - button methods
+#pragma mark - action
 - (IBAction)buttonAction:(UIButton *)sender {
     
     switch (sender.tag) {
@@ -68,12 +86,6 @@
         {
             NSLog(@"获取验证码");
             [self codeJudgebtn:sender];
-            break;
-        }
-        case 31:
-        {
-            NSLog(@"确认修改");
-            [self changePWDJudge];
             break;
         }
         case 32:
@@ -88,28 +100,6 @@
 }
 
 #pragma mark - judge if it‘s null
-- (void)changePWDJudge {
-
-    if (_telTF.text.length == 0) {
-        
-        NSLog(@"手机号不能为空！");
-        [PromtView showAlert:@"手机号不能为空!" duration:1.5];
-    }else if (_codeTF.text.length == 0) {
-        
-        NSLog(@"验证码不能为空！");
-        [PromtView showAlert:@"验证码不能为空！" duration:1.5];
-    }else if (self.setPWD.text.length == 0) {
-        
-        NSLog(@"新密码不能为空！");
-        [PromtView showAlert:@"新密码不能为空！" duration:1.5];
-    }else if (![_reNewPwdTF.text isEqualToString:self.setPWD.text]) {
-        
-        NSLog(@"两次密码不一致");
-        [PromtView showAlert:@"两次密码不一致！" duration:1.5];
-    }else {
-        [self changePwdAction];
-    }
-}
 
 - (void)codeJudgebtn:(UIButton *)button {
     if (_telTF.text.length == 11) {
@@ -125,41 +115,41 @@
 }
 
 #pragma mark - 网络请求
-- (void)changePwdAction {
-
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                            timeSp, @"time",
-                         md5String, @"sign",
-                       _telTF.text,@"tel",
-                      _codeTF.text, @"code",
-                  self.setPWD.text, @"pass", nil];
-    
-    [DataService http_Post:RESET_PWD
-                parameters:params
-                   success:^(id responseObject) {
-                       
-                       NSLog(@"reset pwd:%@-%@", responseObject, [responseObject objectForKey:@"msg"]);
-                       
-                       NSDictionary *jsonDic = responseObject;
-                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
-                           //请求成功
-                           NSLog(@"修改密码成功！");
-                           [self dismissViewControllerAnimated:YES completion:nil];
-                           
-                       }else {
-                           //提示修改密码失败
-                           [PromtView showAlert:@"密码修改失败!" duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       NSLog(@"请求修改密码失败！error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-}
+//- (void)changePwdAction {
+//
+//    NSString *randomString = [BaseFunction ret32bitString];
+//    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
+//    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
+//    
+//    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
+//                            timeSp, @"time",
+//                         md5String, @"sign",
+//                       _telTF.text,@"tel",
+//                      _codeTF.text, @"code",
+//                  self.setPWD.text, @"pass", nil];
+//    
+//    [DataService http_Post:RESET_PWD
+//                parameters:params
+//                   success:^(id responseObject) {
+//                       
+//                       NSLog(@"reset pwd:%@-%@", responseObject, [responseObject objectForKey:@"msg"]);
+//                       
+//                       NSDictionary *jsonDic = responseObject;
+//                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
+//                           //请求成功
+//                           NSLog(@"修改密码成功！");
+//                           [self dismissViewControllerAnimated:YES completion:nil];
+//                           
+//                       }else {
+//                           //提示修改密码失败
+//                           [PromtView showAlert:@"密码修改失败!" duration:1.5];
+//                       }
+//                       
+//                   } failure:^(NSError *error) {
+//                       NSLog(@"请求修改密码失败！error:%@", error);
+//                       [PromtView showAlert:PromptWord duration:1.5];
+//                   }];
+//}
 
 #pragma mark - keyBoard methods
 - (IBAction)view_touchDown:(id)sender {

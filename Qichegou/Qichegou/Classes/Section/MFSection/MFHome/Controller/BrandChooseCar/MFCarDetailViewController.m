@@ -23,7 +23,8 @@ static NSString *const informationCell = @"informationcellID";
 static NSString *const commonCell = @"CommonCellID";
 @interface MFCarDetailViewController ()
 <UITableViewDelegate,
-UITableViewDataSource>
+UITableViewDataSource,
+UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 //控件
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *submmitButton;
@@ -136,24 +137,15 @@ UITableViewDataSource>
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if ([AppDelegate APP].user) {
-        if (section == 0) {
-            return 4;
-        }else if (section == 1) {
-            return [self.viewModel.keyArr[0] count] +1;
-        }else {
-            return 1;
-        }
+    NSInteger index = [AppDelegate APP].user ? 0 : 1;
+    if (section == (index-1)) {
+        return 3;
+    }else if (section == index) {
+        return 4;
+    }else if(section == (index+1)) {
+        return [self.viewModel.keyArr[0] count] +1;
     }else {
-        if (section == 0) {
-            return 3;
-        }else if (section == 1) {
-            return 4;
-        }else if(section == 2) {
-            return [self.viewModel.keyArr[0] count] +1;
-        }else {
-            return 1;
-        }
+        return 2;
     }
 }
 
@@ -226,8 +218,47 @@ UITableViewDataSource>
         }
         
         return cell;
-    }
-    else {
+    }else if (indexPath.section == (index+2)) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imagesCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"imagesCell"];
+            
+            UIView *line = [UIView new];
+            line.backgroundColor = BGGRAYCOLOR;
+            [cell.contentView addSubview:line];
+            [line makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.bottom.equalTo(0);
+                make.height.equalTo(1);
+            }];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = H15;
+        cell.detailTextLabel.font = H15;
+        
+        if (indexPath.row == 0) {
+            cell.textLabel.textColor = TEXTCOLOR;
+            cell.textLabel.text = @"车型图片";
+            cell.detailTextLabel.text = @"";
+        }else {
+            UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
+            [flowlayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+            flowlayout.minimumInteritemSpacing = 0;
+            
+            UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300) collectionViewLayout:flowlayout];
+            collectionView.backgroundColor = BGGRAYCOLOR;
+            
+            collectionView.delegate = self;
+            collectionView.dataSource = self;
+            
+            [cell addSubview:collectionView];
+            
+            //注册单元格
+            [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionCell"];
+        }
+        
+        return cell;
+
+    }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -252,6 +283,19 @@ UITableViewDataSource>
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = [AppDelegate APP].user ? 0 : 1;
+    if (indexPath.section == (index+2)) {
+        if (indexPath.row == 1) {
+            return 300;
+        }else {
+            return 44;
+        }
+    }else {
+        return 44;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -320,6 +364,51 @@ UITableViewDataSource>
         [PromtView showAlert:@"手机号格式错误" duration:1.5];
     }
 }
+
+
+#pragma mark - UICollectionView 方法
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 4;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
+//    return [self.dataArray count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
+    
+     cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+    
+//    UIImageView *imgView = (UIImageView *)[cell.contentView viewWithTag:111];
+//    if (!imgView) {
+//        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, IMG_CELL_W, IMG_CELL_H)];
+//        imgView.tag = 111;
+//        [cell.contentView addSubview:imgView];
+//    }else {
+//        imgView.image = nil;
+//    }
+    
+//    OtherModel *model = self.dataArray[indexPath.row];
+    //    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]);
+//    [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
+    
+    return cell;
+}
+
+
+#pragma mark
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    return CGSizeMake(50, 50);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(8, 15, 8, 15);
+}
+
+
 
 #pragma mark - 可以优化到View Model里的
 - (void)submmitButtonAction:(UIButton *)sender {

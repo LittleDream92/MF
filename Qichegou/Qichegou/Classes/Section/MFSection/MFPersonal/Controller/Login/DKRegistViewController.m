@@ -9,6 +9,7 @@
 #import "DKRegistViewController.h"
 #import "DKTextField.h"
 #import "UIButton+Extension.h"
+#import "RegistViewModel.h"
 
 @interface DKRegistViewController ()
 {
@@ -18,8 +19,11 @@
 @property (weak, nonatomic) IBOutlet DKTextField *telTF;
 @property (weak, nonatomic) IBOutlet DKTextField *pwdTF;
 @property (weak, nonatomic) IBOutlet DKTextField *rePwdTF;
-@property (weak, nonatomic) IBOutlet UITextField *nameTF;
-@property (weak, nonatomic) IBOutlet UITextField *codeTF;
+@property (weak, nonatomic) IBOutlet DKTextField *nameTF;
+@property (weak, nonatomic) IBOutlet DKTextField *codeTF;
+@property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
+
+@property (nonatomic, strong) RegistViewModel *viewModel;
 
 @end
 
@@ -30,65 +34,61 @@
     
     [self setUpNav];
     [self setUpView];
+    [self bindWithViewModel];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - setUp
 - (void)setUpNav {
     self.title = @"注册账号";
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
-    [backBtn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateHighlighted];
-    [backBtn createButtonWithBGImgName:nil bghighlightImgName:nil titleStr:@"返回" fontSize:17];
-    
-    backBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
-    [backBtn sizeToFit];
-    [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    [self navBack:YES];
+    self.viewModel = [RegistViewModel new];
 }
 
 - (void)setUpView {
     self.telTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tel"]];
     self.telTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.pwdTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.pwdTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.rePwdTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.rePwdTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.nameTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_my"]];
     self.nameTF.leftViewMode = UITextFieldViewModeAlways;
+    
     self.codeTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_pwd"]];
     self.codeTF.leftViewMode = UITextFieldViewModeAlways;
 }
 
-#pragma mark - Click Action Methods
-//返回按钮触发事件
-- (void)backAction:(UIButton *)backCtrl {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)bindWithViewModel {
+    RAC(self.viewModel, account) = self.telTF.rac_textSignal;
+    RAC(self.viewModel, pwd) = self.pwdTF.rac_textSignal;
+    RAC(self.viewModel, rePwd) = self.rePwdTF.rac_textSignal;
+    RAC(self.viewModel, name) = self.nameTF.rac_textSignal;
+    RAC(self.viewModel, code) = self.codeTF.rac_textSignal;
+    
+    _registBtn.rac_command = self.viewModel.registCommand;
+    
+    [self.viewModel.registCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"网络请求返回了数据");
+        if ([x isEqualToString:@"注册成功"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
+
+#pragma mark - action
 
 - (IBAction)buttonAction:(UIButton *)sender {
     
     switch (sender.tag) {
-        case 20:
-        {
+        case 20: {
             NSLog(@"获取验证码");
             [self codeJudgeBtn:sender];
             break;
         }
-        case 21:
-        {
-            NSLog(@"完成注册");
-            [self registJudge];
-            break;
-        }
-        case 22:
-        {
+        case 22: {
             NSLog(@"直接登录");
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
@@ -99,28 +99,6 @@
 }
 
 #pragma mark - judge if it‘s null
-- (void)registJudge {
-    if (_telTF.text.length != 11) {
-        NSLog(@"手机号不正确！");
-        [PromtView showAlert:@"手机号不正确！" duration:1.5];
-    }else if (_pwdTF.text.length == 0) {
-        NSLog(@"密码不能为空！");
-        [PromtView showAlert:@"密码不能为空！" duration:1.5];
-    }else if (![_rePwdTF.text isEqualToString:_pwdTF.text]) {
-        NSLog(@"两次密码不一致");
-        [PromtView showAlert:@"两次密码不一致" duration:1.5];
-    }else if (_nameTF.text.length == 0) {
-        NSLog(@"姓名不能为空！");
-        [PromtView showAlert:@"姓名不能为空！" duration:1.5];
-    }else if (_codeTF.text.length == 0) {
-        NSLog(@"验证码不能为空！");
-        [PromtView showAlert:@"验证码不能为空！" duration:1.5];
-    }else {
-        [self registAction];
-    }
-}
-
-
 - (void)codeJudgeBtn:(UIButton *)button {
     if (self.telTF.text.length == 11) {
         
@@ -135,39 +113,6 @@
         [PromtView showAlert:@"手机号格式错误！" duration:1.5];
     }
 }
-
-#pragma mark - #pragma mark - 网络请求
-- (void)registAction {
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_telTF.text,@"tel",
-                            _codeTF.text,@"code",
-                            _nameTF.text,@"name",
-                            _pwdTF.text,@"pass",nil];
-    
-    [DataService http_Post:REGIST
-                parameters:params
-                   success:^(id responseObject) {
-                       
-                       NSLog(@"register result:%@ __ msg:%@", responseObject, [responseObject objectForKey:@"msg"]);
-                       
-                       NSDictionary *jsonDic = responseObject;
-                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
-                           NSLog(@"注册成功！");
-                           //去登录
-                           [self dismissViewControllerAnimated:YES completion:nil];
-                           
-                       }else {
-                           //提示失败
-                           NSLog(@"%@", [jsonDic objectForKey:@"msg"]);
-                           [PromtView showAlert:[jsonDic objectForKey:@"msg"] duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       NSLog(@"regist error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-}
-
 #pragma mark - keyBoard methods
 - (IBAction)telTextField_DidEndOnExit:(id)sender {
     
@@ -210,5 +155,11 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
+
+#pragma mark -
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

@@ -10,12 +10,13 @@
 
 @interface LoginViewModel : NSObject
 
-//登录
-@property (nonatomic, strong) RACCommand *loginCommand;
+@property (nonatomic, assign) BOOL isPwdLogin;
+
 
 @property (nonatomic, copy) NSString *account;
 @property (nonatomic, copy) NSString *pwd;
 
-@property (nonatomic, assign) BOOL isPwdLogin;
+//登录
+@property (nonatomic, strong) RACCommand *loginCommand;
 
 @end

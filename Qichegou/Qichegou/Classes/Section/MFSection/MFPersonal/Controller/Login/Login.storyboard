@@ -67,9 +67,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted" title="完成注册"/>
-                                <connections>
-                                    <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="hfB-sj-HOX"/>
-                                </connections>
                             </button>
                             <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mhv-WT-po4">
                                 <frame key="frameInset" minX="64.53%" minY="38.14%" width="30.67%" height="6.47%"/>
@@ -78,7 +75,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="tpu-EW-GsO"/>
+                                    <action selector="buttonAction:" destination="RNF-bp-tCV" eventType="touchUpInside" id="vUM-27-SYe"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" id="wMx-eB-Ba5">
@@ -116,6 +113,7 @@
                     <connections>
                         <outlet property="_registBtn" destination="iNN-l0-c2V" id="hMs-EI-9c8"/>
                         <outlet property="codeTF" destination="XNG-bz-D3Y" id="kCw-Wf-NSA"/>
+                        <outlet property="getCodeBtn" destination="mhv-WT-po4" id="yb2-Yg-j1Q"/>
                         <outlet property="nameTF" destination="XlN-Ef-7FJ" id="f6g-nJ-es0"/>
                         <outlet property="pwdTF" destination="NoE-ne-Gnu" id="smp-jk-6sm"/>
                         <outlet property="rePwdTF" destination="BI3-Kq-7NZ" id="5gJ-5U-emx"/>
@@ -178,9 +176,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted" title="确认修改"/>
-                                <connections>
-                                    <action selector="buttonAction:" destination="hcf-Dx-Dl0" eventType="touchUpInside" id="MA3-5T-80V"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="mFk-MJ-2z1">
                                 <frame key="frameInset" minX="49.79%" minY="51.63%" width="140" height="20"/>

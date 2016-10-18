@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Meng Fan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DKBaseViewController.h"
 
-@interface DKChangePWDViewController : UIViewController
+@interface DKChangePWDViewController : DKBaseViewController
 
 @end

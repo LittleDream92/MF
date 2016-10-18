@@ -34,6 +34,8 @@
     
     [self.loginCommand.executionSignals.switchToLatest subscribeNext:^(NSArray *subscriberArr) {
         
+        NSLog(@"%@", subscriberArr);
+        
         if ([subscriberArr isKindOfClass:[NSArray class]] && subscriberArr.count > 0) {
             //存储
             NSDictionary *jsonDic = [subscriberArr firstObject];
@@ -45,9 +47,7 @@
             //发送登录成功通知
             [NotificationCenters postNotificationName:LOGIN_SUCCESS object:nil userInfo:nil];
         }
-
     }];
-    
 }
 
 
@@ -61,44 +61,13 @@
     if (!_loginCommand) {
         
         @weakify(self);
-        
         _loginCommand = [[RACCommand alloc] initWithEnabled:self.loginEnableSignal signalBlock:^RACSignal *(id input) {
             @strongify(self);
-            
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                
-                NSDictionary *params = [self getParamsWithToken:nil];
-                
-                
-                [DataService http_Post:USERLOGIN parameters:params success:^(id responseObject) {
-                    
-                    NSDictionary *dict = (NSDictionary *)responseObject;
-                    
-                    NSDictionary *userParams = [self getParamsWithToken:dict[@"token"]];
-//                    NSLog(@"我要进行网络请求啦,参数是:%@", userParams);
-                    [DataService http_Post:USER_INFORMATION parameters:userParams success:^(id responseObject2) {
-                        
-                        NSArray *subscriberArr = @[responseObject2, dict[@"token"]];
-                        [subscriber sendNext:subscriberArr];
-                        [subscriber sendCompleted];
-                    
-                    } failure:^(NSError *error) {
-                        [subscriber sendCompleted];
-                        [PromtView showAlert:PromptWord duration:1.5];
-                    }];
-                } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
-                    [PromtView showAlert:PromptWord duration:1.5];
-                }];
-                
-                return nil;
-            }];
+            return [self requestLogin];
         }];
     }
     return _loginCommand;
 }
-
 
 /**
  *  登录命令的触发条件
@@ -108,7 +77,7 @@
     if (!_loginEnableSignal) {
     
         _loginEnableSignal = [RACSignal combineLatest:@[RACObserve(self, account), RACObserve(self, pwd)] reduce:^id(NSString *account, NSString *pwd){
-            return @((account.length == 11) && (pwd.length > 0));
+            return @((account.length == 11) && pwd.length);
         }];
     }
     return _loginEnableSignal;
@@ -149,6 +118,46 @@
     }
     
     return params;
+}
+
+
+#pragma mark - request
+- (RACSignal *)requestLogin {
+
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        
+        NSDictionary *params = [self getParamsWithToken:nil];
+        NSLog(@"登录参数：%@", params);
+        [DataService http_Post:USERLOGIN parameters:params success:^(id responseObject) {
+            NSLog(@"登录结果:%@", responseObject);
+            NSDictionary *dict = (NSDictionary *)responseObject;
+            
+            if ([responseObject[@"status"] integerValue] == 1) {
+                NSDictionary *userParams = [self getParamsWithToken:dict[@"token"]];
+                NSLog(@"用户参数：%@", userParams);
+                [DataService http_Post:USER_INFORMATION parameters:userParams success:^(id responseObject2) {
+                    NSLog(@"用户结果:%@", responseObject2);
+                    NSArray *subscriberArr = @[responseObject2, dict[@"token"]];
+                    [subscriber sendNext:subscriberArr];
+                    [subscriber sendCompleted];
+                } failure:^(NSError *error) {
+                    NSLog(@"error:%@", error);
+                    [subscriber sendCompleted];
+                    [PromtView showAlert:PromptWord duration:1.5];
+                }];
+            }else {
+                [subscriber sendCompleted];
+                [PromtView showAlert:responseObject[@"msg"] duration:1.5];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendCompleted];
+            [PromtView showAlert:PromptWord duration:1.5];
+        }];
+        
+        return nil;
+    }];
 }
 
 @end
