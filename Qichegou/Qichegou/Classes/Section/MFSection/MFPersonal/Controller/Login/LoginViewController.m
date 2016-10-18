@@ -151,9 +151,7 @@
         {
             NSLog(@"注册");
             DKRegistViewController *registVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKRegistViewController"];
-            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:registVC];
-            [self presentViewController:navCtrller animated:YES completion:nil];
-//            [self.navigationController pushViewController:registVC animated:YES];
+            [self.navigationController pushViewController:registVC animated:YES];
             break;
         }
         case 12:
@@ -166,9 +164,7 @@
         {
             NSLog(@"忘记密码");
             DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
-            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
-            [self presentViewController:navCtrller animated:YES completion:nil];
-//            [self.navigationController pushViewController:changePwdVC animated:YES];
+            [self.navigationController pushViewController:changePwdVC animated:YES];
             break;
         }
         case 14:

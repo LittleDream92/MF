@@ -66,7 +66,7 @@
     [self.viewModel.changePwdCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"网络请求返回了数据");
         if ([x isEqualToString:@"修改成功"]) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }];
 
@@ -91,7 +91,7 @@
         case 32:
         {
             NSLog(@"直接登录");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         default:
@@ -113,43 +113,6 @@
         [PromtView showAlert:@"手机号格式错误" duration:1.5];
     }
 }
-
-#pragma mark - 网络请求
-//- (void)changePwdAction {
-//
-//    NSString *randomString = [BaseFunction ret32bitString];
-//    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-//    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-//    
-//    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-//                            timeSp, @"time",
-//                         md5String, @"sign",
-//                       _telTF.text,@"tel",
-//                      _codeTF.text, @"code",
-//                  self.setPWD.text, @"pass", nil];
-//    
-//    [DataService http_Post:RESET_PWD
-//                parameters:params
-//                   success:^(id responseObject) {
-//                       
-//                       NSLog(@"reset pwd:%@-%@", responseObject, [responseObject objectForKey:@"msg"]);
-//                       
-//                       NSDictionary *jsonDic = responseObject;
-//                       if ([[jsonDic objectForKey:@"status"] integerValue] == 1) {
-//                           //请求成功
-//                           NSLog(@"修改密码成功！");
-//                           [self dismissViewControllerAnimated:YES completion:nil];
-//                           
-//                       }else {
-//                           //提示修改密码失败
-//                           [PromtView showAlert:@"密码修改失败!" duration:1.5];
-//                       }
-//                       
-//                   } failure:^(NSError *error) {
-//                       NSLog(@"请求修改密码失败！error:%@", error);
-//                       [PromtView showAlert:PromptWord duration:1.5];
-//                   }];
-//}
 
 #pragma mark - keyBoard methods
 - (IBAction)view_touchDown:(id)sender {

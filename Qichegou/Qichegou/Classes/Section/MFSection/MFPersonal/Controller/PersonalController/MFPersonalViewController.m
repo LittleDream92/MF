@@ -374,17 +374,14 @@ UITableViewDelegate>
         }else if (indexPath.section == 2) {     //修改密码
             
             DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
-            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
-            [self presentViewController:navCtrller animated:YES completion:nil];
-            
+            [self.navigationController pushViewController:changePwdVC animated:YES];
         }
         
     }else {     //unLogin
         if (indexPath.section == 2) {     //修改密码
             
             DKChangePWDViewController *changePwdVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"DKChangePWDViewController"];
-            DKBaseNaviController *navCtrller = [[DKBaseNaviController alloc] initWithRootViewController:changePwdVC];
-            [self presentViewController:navCtrller animated:YES completion:nil];
+            [self.navigationController pushViewController:changePwdVC animated:YES];
             
         }else if (indexPath.section != 3) {
             

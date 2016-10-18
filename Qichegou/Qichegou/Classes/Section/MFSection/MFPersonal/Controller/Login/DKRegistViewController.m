@@ -73,7 +73,7 @@
     [self.viewModel.registCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"网络请求返回了数据");
         if ([x isEqualToString:@"注册成功"]) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }];
 }
@@ -90,7 +90,7 @@
         }
         case 22: {
             NSLog(@"直接登录");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         default:
