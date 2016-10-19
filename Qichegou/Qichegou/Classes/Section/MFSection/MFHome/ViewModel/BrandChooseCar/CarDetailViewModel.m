@@ -7,6 +7,7 @@
 //
 
 #import "CarDetailViewModel.h"
+#import "OtherModel.h"
 #import "CarModel.h"
 #import "AppDelegate.h"
 
@@ -18,9 +19,12 @@
 
 @implementation CarDetailViewModel
 
--(instancetype)init {
+
+-(instancetype)initWithCarID:(NSString *)carID {
     self = [super init];
     if (self) {
+        self.carID = carID;
+        
         [self setUpData];
         [self setUpCommand];
     }
@@ -40,167 +44,263 @@
 }
 
 - (void)setUpCommand {
-    [self carDetailCommandAction];
-    
-    [self.submmitOrderCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
-        NSLog(@"x");
-    }];
+//    NSLog(@"model view : %@", self.carID);
 }
 
-#pragma mark - request action
-- (void)carDetailCommandAction {
-    @weakify(self);
-    _carDetailCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+#pragma mark -
+
+//具体车型的网络请求
+-(RACCommand *)carDetailCommand {
+    if (!_carDetailCommand) {
+        @weakify(self);
+        _carDetailCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             @strongify(self);
-            //网络请求
-            [DataService http_Post:DETAIL_CAR
-                        parameters:input
-                           success:^(id responseObject) {
-                               NSLog(@"detail Car:%@", responseObject);
-                               
-                               if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                                   NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
-                                   CarModel *detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
-                                   
-                                   NSMutableArray *mArr = [NSMutableArray array];
-                                   NSMutableArray *mArr2 = [NSMutableArray array];
-                                   NSArray *carImgs = [jsonDic objectForKey:@"car_imgs"];
-                                   if ([carImgs isKindOfClass:[NSArray class]] && carImgs.count > 0) {
-                                       
-                                       for (NSDictionary *jsonDic in carImgs) {
-                                           NSString *imgURL = jsonDic[@"img"];
-                                           [mArr addObject:imgURL];
-                                           
-                                           NSString *colorStr = jsonDic[@"color"];
-                                           [mArr2 addObject:colorStr];
-                                       }
-                                   }else {
-                                       [PromtView showAlert:@"此车暂无可选的颜色" duration:1.5];
-                                   }
-                                   
-                                   detailModel.color_imgs = (NSArray *)mArr;
-                                   self.colorArray = (NSArray *)mArr2;
-                                   
-                                   self.carModel = detailModel;
-                                   [subscriber sendNext:nil];
-                                   [subscriber sendCompleted];
-                               }else {
-                                   
-                                   NSLog(@"%@", [responseObject objectForKey:@"msg"]);
-                                   [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
-                                   [subscriber sendCompleted];
-                               }
-                               
-                           } failure:^(NSError *error) {
-                               [PromtView showAlert:PromptWord duration:1.5];
-                               [subscriber sendCompleted];
-                           }];
-
-            
-            return nil;
+            return [self requestDetailCarWithParams:input];
         }];
-        
-        return signal;
-    }];
+    }
+    return _carDetailCommand;
 }
-
-
-#pragma mark - 
-//-(BOOL)haveLogin {
-//    if (!_haveLogin) {
-//        if ([AppDelegate APP].user) {
-//            _haveLogin = YES;
-//        }else {
-//            _haveLogin = NO;
-//        }
-//    }
-//    return _haveLogin;
-//}
 
 //参数的网络请求
 -(RACCommand *)carParamsCommand {
     if (!_carParamsCommand) {
         _carParamsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                
-                [DataService http_Post:PARAMSLIST parameters:input success:^(id responseObject) {
-                    if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                        NSArray *responsArr = [responseObject objectForKey:@"params"];
-                        if ([responsArr isKindOfClass:[NSArray class]] && responsArr.count > 0) {
-                            
-                            //处理参数
-                            NSMutableArray *mArrTitle = [NSMutableArray array];
-                            NSMutableArray *keyArray = [NSMutableArray array];
-                            NSMutableArray *valueArray = [NSMutableArray array];
-                            
-                            for (NSDictionary *dic in responsArr) {
-                                NSString *groupTitle = dic[@"group_name"];
-                                [mArrTitle addObject:groupTitle];
-                                
-                                NSArray *keyValueArr = dic[@"params"];
-                                NSMutableArray *keyArr = [NSMutableArray array];
-                                NSMutableArray *valueArr = [NSMutableArray array];
-                                for (NSDictionary *jsonDic in keyValueArr) {
-                                    [keyArr addObject:jsonDic[@"param"]];
-                                    [valueArr addObject:jsonDic[@"value"]];
-                                }
-                                
-                                [keyArray addObject:keyArr];
-                                [valueArray addObject:valueArr];
-                            }
-                            
-                            self.keyArr = keyArray;
-                            self.valueArr = valueArray;
-                            
-                            //把组名，key、value发送出去
-                            NSArray *nextArr = @[mArrTitle, keyArray, valueArray];
-                            [subscriber sendNext:nextArr];
-                            [subscriber sendCompleted];
-
-                        }else {
-                            [subscriber sendCompleted];
-                        }
-                    }else {
-                        [subscriber sendCompleted];
-                    }
-                } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
-                    [PromtView showAlert:PromptWord duration:1.5];
-                }];
-                
-                return nil;
-            }];
+            return [self requestParamsWithParams:input];
         }];
     }
     return _carParamsCommand;
 }
 
-//-(RACSignal *)submmitEnableSignal {
-//    if (!_submmitEnableSignal) {
-//        _submmitEnableSignal = [RACSignal combineLatest:@[RACObserve(self, getBackChooseDictionary)] reduce:^id(NSMutableDictionary *dict){
-//            NSLog(@"dict :%@", dict);
-////            return @([dict allKeys].count > 4);
-//            return @(YES);
-//        }];
-//    }
-//    return _submmitEnableSignal;
+//图片的网络请求
+-(RACCommand *)carImagesCommand {
+    if (!_carImagesCommand) {
+        _carImagesCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [self requestCarImagesWithParams:input];
+        }];
+    }
+    return _carImagesCommand;
+}
+
+#pragma mark - RAC request
+//具体车型数据的网络请求
+- (RACSignal *)requestDetailCarWithParams:(NSDictionary *)params {
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [DataService http_Post:DETAIL_CAR parameters:params success:^(id responseObject) {
+            if ([responseObject[@"status"] integerValue] == 1) {
+                NSDictionary *jsonDic = [responseObject objectForKey:@"car"];
+                CarModel *detailModel = [[CarModel alloc] initContentWithDic:jsonDic];
+                
+                NSMutableArray *mArr = [NSMutableArray array];
+                NSMutableArray *mArr2 = [NSMutableArray array];
+              
+                NSArray *carImgs = [jsonDic objectForKey:@"car_imgs"];
+                if ([carImgs isKindOfClass:[NSArray class]] && carImgs.count > 0) {
+                    
+                    for (NSDictionary *jsonDic in carImgs) {
+                        NSString *imgURL = jsonDic[@"img"];
+                        [mArr addObject:imgURL];
+                        
+                        NSString *colorStr = jsonDic[@"color"];
+                        [mArr2 addObject:colorStr];
+                    }
+                    self.colorArray = (NSArray *)mArr2;
+                    
+                }else {
+                    self.colorArray = (NSArray *)@[@"默认"];
+                    [PromtView showAlert:@"此车暂无可选的外观颜色" duration:1.5];
+                }
+                
+                detailModel.color_imgs = (NSArray *)mArr;
+                
+                self.carModel = detailModel;
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            }else {
+                [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
+                [subscriber sendCompleted];
+            }
+
+        } failure:^(NSError *error) {
+            [PromtView showAlert:PromptWord duration:1.5];
+            [subscriber sendCompleted];
+        }];
+        
+        return nil;
+    }];
+}
+
+//参数的网络请求
+- (RACSignal *)requestParamsWithParams:(NSDictionary *)params {
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        
+        [DataService http_Post:PARAMSLIST parameters:params success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                NSArray *responsArr = [responseObject objectForKey:@"params"];
+                if ([responsArr isKindOfClass:[NSArray class]] && responsArr.count > 0) {
+                    
+                    //处理参数
+                    NSMutableArray *mArrTitle = [NSMutableArray array];
+                    NSMutableArray *keyArray = [NSMutableArray array];
+                    NSMutableArray *valueArray = [NSMutableArray array];
+                    
+                    for (NSDictionary *dic in responsArr) {
+                        NSString *groupTitle = dic[@"group_name"];
+                        [mArrTitle addObject:groupTitle];
+                        
+                        NSArray *keyValueArr = dic[@"params"];
+                        NSMutableArray *keyArr = [NSMutableArray array];
+                        NSMutableArray *valueArr = [NSMutableArray array];
+                        for (NSDictionary *jsonDic in keyValueArr) {
+                            [keyArr addObject:jsonDic[@"param"]];
+                            [valueArr addObject:jsonDic[@"value"]];
+                        }
+                        
+                        [keyArray addObject:keyArr];
+                        [valueArray addObject:valueArr];
+                    }
+                    
+                    self.keyArr = keyArray;
+                    self.valueArr = valueArray;
+                    
+                    //把组名，key、value发送出去
+                    NSArray *nextArr = @[mArrTitle, keyArray, valueArray];
+                    [subscriber sendNext:nextArr];
+                    [subscriber sendCompleted];
+                    
+                }else {
+                    [subscriber sendCompleted];
+                }
+            }else {
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendCompleted];
+            [PromtView showAlert:PromptWord duration:1.5];
+        }];
+        
+        return nil;
+    }];
+}
+
+
+//车型图片的网络请求
+- (RACSignal *)requestCarImagesWithParams:(NSDictionary *)params {
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        
+        [DataService http_Post:IMGS parameters:params success:^(id responseObject) {
+            NSLog(@"car images :%@", responseObject);
+            
+            if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                NSArray *jsonArr = [responseObject objectForKey:@"images"];
+                if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+                    NSMutableArray *mArr = [NSMutableArray array];
+                    for (NSDictionary *jsonDic in jsonArr) {
+
+                        OtherModel *model = [[OtherModel alloc] initContentWithDic:jsonDic];
+                        [mArr addObject:model];
+                    }
+                    
+                    [subscriber sendNext:mArr];
+                    [subscriber sendCompleted];
+                }else {
+                    [PromtView showMessage:@"暂无图片" duration:1.5];
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }
+            }else {
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+                [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+            }
+
+        } failure:^(NSError *error) {
+            NSLog(@"car images error:%@", error);
+            [subscriber sendCompleted];
+            [PromtView showMessage:PromptWord duration:1.5];
+        }];
+        
+        return nil;
+    }];
+}
+
+
+#pragma mark - 非RAC的网络请求图片
+//- (void)requestImagesWithIndex:(NSInteger)index {
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.carID,@"cid",
+//                            [NSString stringWithFormat:@"%ld", index], @"type", nil];
+//    
+//    [DataService http_Post:IMGS parameters:params success:^(id responseObject) {
+////        NSLog(@"%ld car images :%@", index , responseObject);
+//        
+//        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+//            NSArray *jsonArr = [responseObject objectForKey:@"images"];
+//            if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+//                NSMutableArray *mArr = [NSMutableArray array];
+//                [mArr removeAllObjects];
+//                for (NSDictionary *jsonDic in jsonArr) {
+//                    
+//                    OtherModel *model = [[OtherModel alloc] initContentWithDic:jsonDic];
+//                    [mArr addObject:model];
+//                }
+//                if (index == 1) {
+//                    self.img1_arr = mArr;
+//                }else if (index == 2) {
+//                    self.img2_arr = mArr;
+//                }else if (index == 3) {
+//                    self.img3_arr = mArr;
+//                }else if (index == 4) {
+//                    self.img4_arr = mArr;
+//                }
+//                
+//            }else {
+//                if (index == 1) {
+//                    self.img1_arr = @[@"暂无图片"];
+//                }else if (index == 2) {
+//                    self.img2_arr = @[@"暂无图片"];
+//                }else if (index == 3) {
+//                    self.img3_arr = @[@"暂无图片"];
+//                }else if (index == 4) {
+//                    self.img4_arr = @[@"暂无图片"];
+//                }
+//                [PromtView showMessage:@"暂无图片" duration:1.5];
+//            }
+//        }else {
+//            if (index == 1) {
+//                self.img1_arr = @[@"暂无图片"];
+//            }else if (index == 2) {
+//                self.img2_arr = @[@"暂无图片"];
+//            }else if (index == 3) {
+//                self.img3_arr = @[@"暂无图片"];
+//            }else if (index == 4) {
+//                self.img4_arr = @[@"暂无图片"];
+//            }
+//            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+//        }
+//        
+////        NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
+//        
+//        
+//    } failure:^(NSError *error) {
+////        NSLog(@"car images error:%@", error);
+//        if (index == 1) {
+//            self.img1_arr = @[PromptWord];
+//        }else if (index == 2) {
+//            self.img2_arr = @[PromptWord];
+//        }else if (index == 3) {
+//            self.img3_arr = @[PromptWord];
+//        }else if (index == 4) {
+//            self.img4_arr = @[PromptWord];
+//        }
+//        [PromtView showMessage:PromptWord duration:1.5];
+//    }];
 //}
 
--(RACCommand *)submmitOrderCommand {
-    if (!_submmitOrderCommand) {
-        _submmitOrderCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                NSLog(@"即将提交订单");
-                [subscriber sendCompleted];
-                return nil;
-            }];
-        }];
-//                                initWithEnabled:self.submmitEnableSignal signalBlock:^RACSignal *(id input) {
-//                    }];
-    }
-    return _submmitOrderCommand;
-}
+
 
 @end

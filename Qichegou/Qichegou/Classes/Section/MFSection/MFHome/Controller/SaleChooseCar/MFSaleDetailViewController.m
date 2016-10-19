@@ -198,8 +198,18 @@ static NSString *const headerCell = @"HeaderCellID";
 
 - (void)buyCarAction:(UIButton *)sender {
     NSLog(@"下单");
+    NSLog(@"self.tableView.contentOffset.y:%f", self.tableView.contentOffset.y);
     
-    [self textFieldStringIsNull];
+#warning - crash
+    //此处应该获取输入框对应在self view上的Y
+    if (self.tableView.contentOffset.y > 151) {
+        self.tableView.contentOffset = CGPointMake(0, 35);
+        [self textFieldStringIsNull];
+    }else {
+        [self textFieldStringIsNull];
+    }
+    
+    
 }
 
 

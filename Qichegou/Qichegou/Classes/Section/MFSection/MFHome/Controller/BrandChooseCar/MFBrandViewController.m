@@ -17,7 +17,10 @@
 #import "CarModel.h"
 #import "BrandViewModel.h"
 
-@interface MFBrandViewController ()<CustomButtonProtocol, UIScrollViewDelegate, BrandClickProtocol>
+@interface MFBrandViewController ()
+<CustomButtonProtocol,
+UIScrollViewDelegate,
+BrandClickProtocol>
 {
     BOOL _index;
 }

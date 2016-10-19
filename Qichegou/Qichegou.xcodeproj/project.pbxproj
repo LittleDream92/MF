@@ -10,7 +10,6 @@
 		2F62E1CFBC5964947920D585 /* libPods-Qichegou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D718CDC39F41408C334BA9 /* libPods-Qichegou.a */; };
 		A81376B01DB4829800E3E20D /* MFCarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81376AF1DB4829800E3E20D /* MFCarDetailViewController.m */; };
 		A81376B61DB4A21200E3E20D /* ChooseCarCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A81376B51DB4A21200E3E20D /* ChooseCarCommonCell.m */; };
-		A81FF0291DB5BAA100E8B66B /* ImagesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A81FF0281DB5BAA100E8B66B /* ImagesCollectionView.m */; };
 		A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */; };
 		A821E0A71D9A406700CDF409 /* MFThirdActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A61D9A406700CDF409 /* MFThirdActivityViewController.m */; };
 		A821E0AA1D9A426E00CDF409 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A821E0A91D9A426E00CDF409 /* UserModel.m */; };
@@ -193,6 +192,7 @@
 		A8CECB831DAF72E00039DBF8 /* DKDetailOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */; };
 		A8CECB871DAF847B0039DBF8 /* DKPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */; };
 		A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D226E91DAF3D610067AC12 /* LoginViewController.m */; };
+		A8E224EF1DB7698C0023FFDB /* CarImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E224EE1DB7698C0023FFDB /* CarImagesView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,8 +202,6 @@
 		A81376AF1DB4829800E3E20D /* MFCarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCarDetailViewController.m; sourceTree = "<group>"; };
 		A81376B41DB4A21200E3E20D /* ChooseCarCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCarCommonCell.h; sourceTree = "<group>"; };
 		A81376B51DB4A21200E3E20D /* ChooseCarCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCarCommonCell.m; sourceTree = "<group>"; };
-		A81FF0271DB5BAA100E8B66B /* ImagesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesCollectionView.h; sourceTree = "<group>"; };
-		A81FF0281DB5BAA100E8B66B /* ImagesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesCollectionView.m; sourceTree = "<group>"; };
 		A821E0A21D9A3ECF00CDF409 /* MFActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActivityDetailViewController.h; sourceTree = "<group>"; };
 		A821E0A31D9A3ECF00CDF409 /* MFActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityDetailViewController.m; sourceTree = "<group>"; };
 		A821E0A51D9A406700CDF409 /* MFThirdActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFThirdActivityViewController.h; sourceTree = "<group>"; };
@@ -585,6 +583,8 @@
 		A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPayMoneyVC.m; sourceTree = "<group>"; };
 		A8D226E81DAF3D610067AC12 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A8D226E91DAF3D610067AC12 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A8E224ED1DB7698C0023FFDB /* CarImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarImagesView.h; sourceTree = "<group>"; };
+		A8E224EE1DB7698C0023FFDB /* CarImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarImagesView.m; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -901,8 +901,8 @@
 				A87123E11DAC92770040344A /* DKCarListViewController.m */,
 				A81376AE1DB4829800E3E20D /* MFCarDetailViewController.h */,
 				A81376AF1DB4829800E3E20D /* MFCarDetailViewController.m */,
-				A81FF0271DB5BAA100E8B66B /* ImagesCollectionView.h */,
-				A81FF0281DB5BAA100E8B66B /* ImagesCollectionView.m */,
+				A8E224ED1DB7698C0023FFDB /* CarImagesView.h */,
+				A8E224EE1DB7698C0023FFDB /* CarImagesView.m */,
 				A87123E41DAC92770040344A /* DKNeedsTableViewController.h */,
 				A87123E51DAC92770040344A /* DKNeedsTableViewController.m */,
 				A87123DE1DAC92770040344A /* BigCarImgVC.h */,
@@ -1830,7 +1830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A81FF0291DB5BAA100E8B66B /* ImagesCollectionView.m in Sources */,
 				A871245B1DAC96910040344A /* MFAboutViewController.m in Sources */,
 				A87123CE1DAC91D90040344A /* BrandViewModel.m in Sources */,
 				A87123911DAC915B0040344A /* PhotoScrollView.m in Sources */,
@@ -1908,6 +1907,7 @@
 				A87124601DAC96910040344A /* MyOrderCell.m in Sources */,
 				A886FFB61D9238300028F102 /* RSADataSigner.m in Sources */,
 				A87123BD1DAC91A60040344A /* OtherModel.m in Sources */,
+				A8E224EF1DB7698C0023FFDB /* CarImagesView.m in Sources */,
 				A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
 				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,

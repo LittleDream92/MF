@@ -13,7 +13,5 @@
 @property (nonatomic, strong) NSArray *titleArr;
 @property (nonatomic, strong) NSArray *imgNamesArr;
 
-//命令
-//@property (nonatomic, strong, readonly) RACCommand *loginCommand;
 
 @end

@@ -13,7 +13,8 @@
 #import "UIView+Extension.h"
 #import "AppDelegate.h"
 
-@interface DKMyActivityOrderVC ()<UIWebViewDelegate>
+@interface DKMyActivityOrderVC ()
+<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *myListWebView;
 
@@ -117,11 +118,6 @@
 
 #pragma mark - dataRequest
 - (void)dataRequest {
-//    [HttpTool requestActivityListblock:^(NSString *result) {
-//        if (self.myListWebView) {
-//            [self.myListWebView loadHTMLString:result baseURL:[NSURL URLWithString:URL_String]];
-//        }
-//    }];
     
     /*
      HTML5网页
@@ -147,7 +143,6 @@
                             } failure:^(NSError *error) {
                                 [PromtView showAlert:PromptWord duration:1.5];
                             }];
-    
 }
 
 

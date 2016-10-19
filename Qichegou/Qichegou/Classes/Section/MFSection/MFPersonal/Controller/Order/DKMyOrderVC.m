@@ -103,20 +103,16 @@ UITableViewDelegate>
 }
 
 #pragma mark - UITableView  delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NSLog(@"订单详情!");
-    DKDetailOrderVC *detailOrderVC = [[DKDetailOrderVC alloc] init];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    DKDetailOrderVC *detailOrderVC = [[DKDetailOrderVC alloc] init];
     CarOrderModel *model = self.dataArr[indexPath.section];
     detailOrderVC.orderIDString = model.order_id;
-    
     [self.navigationController pushViewController:detailOrderVC animated:YES];
 }
 
 #pragma mark - action
 - (void)buttonAction:(UIButton *)button {
-    NSLog(@"完成订单");
     
     NSInteger sectionNumber = button.tag - 10;
     CarOrderModel *model = self.dataArr[sectionNumber];

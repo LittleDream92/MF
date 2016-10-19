@@ -10,7 +10,6 @@
 #import "CarDetailViewModel.h"
 
 #import "DetailChooseCarHeader.h"
-
 #import "DetailCarInformationCell.h"
 #import "ChooseCarCommonCell.h"
 
@@ -19,12 +18,18 @@
 #import "DKMyOrderVC.h"
 #import "AppDelegate.h"
 
+#import "OtherModel.h"
+
+#import "BigCarImgVC.h"
+
 static NSString *const informationCell = @"informationcellID";
 static NSString *const commonCell = @"CommonCellID";
 @interface MFCarDetailViewController ()
 <UITableViewDelegate,
 UITableViewDataSource,
-UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+UICollectionViewDelegateFlowLayout,
+UICollectionViewDataSource>
+
 //控件
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *submmitButton;
@@ -33,6 +38,12 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 //viewModel
 @property (nonatomic, strong) CarDetailViewModel *viewModel;
+
+//图片的数据源
+@property (nonatomic, strong) NSArray *img1_arr;
+@property (nonatomic, strong) NSArray *img2_arr;
+@property (nonatomic, strong) NSArray *img3_arr;
+@property (nonatomic, strong) NSArray *img4_arr;
 
 @end
 
@@ -47,6 +58,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.viewModel = [[CarDetailViewModel alloc] initWithCarID:self.cid];
+    
+
     
     [self setUpNav];
     [self setUpViews];
@@ -91,12 +106,6 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 }
 
 #pragma mark - lazyloading
--(CarDetailViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [CarDetailViewModel new];
-    }
-    return _viewModel;
-}
 
 -(UIButton *)submmitButton {
     if (!_submmitButton) {
@@ -154,6 +163,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
     NSInteger index = [AppDelegate APP].user ? 0 : 1;
     
     if (indexPath.section == (index-1)) {
+        //填写信息
         DetailCarInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:informationCell];
         if (cell == nil) {
             cell = [[DetailCarInformationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:informationCell];
@@ -240,11 +250,14 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
             cell.textLabel.text = @"车型图片";
             cell.detailTextLabel.text = @"";
         }else {
+            
+            NSLog(@"这里是imagescollectionview");
+            
             UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
             [flowlayout setScrollDirection:UICollectionViewScrollDirectionVertical];
             flowlayout.minimumInteritemSpacing = 0;
             
-            UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300) collectionViewLayout:flowlayout];
+            UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1200) collectionViewLayout:flowlayout];
             collectionView.backgroundColor = BGGRAYCOLOR;
             
             collectionView.delegate = self;
@@ -254,6 +267,8 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
             
             //注册单元格
             [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionCell"];
+            
+            [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];//注册头/尾视图，视图类型必须为UICollectionReusableView或者其子类，kind设置为UICollectionElementKindSectionHeader或者UICollectionElementKindSectionFooter，最后设置标识
         }
         
         return cell;
@@ -289,7 +304,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
     NSInteger index = [AppDelegate APP].user ? 0 : 1;
     if (indexPath.section == (index+2)) {
         if (indexPath.row == 1) {
-            return 300;
+            return 1200;
         }else {
             return 44;
         }
@@ -328,25 +343,31 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 #pragma mark - action
 - (void)combineViewModel {
+
+    NSInteger index = [AppDelegate APP].user ? 1 : 2;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cid, @"cid", nil];
-    RACSignal *signal = [self.viewModel.carDetailCommand execute:params];
-    [signal subscribeNext:^(id x) {
+    
+    //请求具体车型
+    RACSignal *carDetailSignal = [self.viewModel.carDetailCommand execute:params];
+    [carDetailSignal subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.headerView createHeaderScrollViewWithModel:self.viewModel.carModel];
         });
     }];
     
-//    self.submmitButton.rac_command = self.viewModel.submmitOrderCommand;
-    
-    NSInteger index = [AppDelegate APP].user ? 1 : 2;
-    //参数
+    //请求参数
     RACSignal *paramSignal = [self.viewModel.carParamsCommand execute:params];
     [paramSignal subscribeNext:^(NSArray *result) {
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-        
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
-//        });
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
     }];
+    
+    //请求图片
+    [self requestImagesWithIndex:1];
+    [self requestImagesWithIndex:2];
+    [self requestImagesWithIndex:3];
+    [self requestImagesWithIndex:4];
+
+//    self.submmitButton.rac_command = self.viewModel.submmitOrderCommand;
 }
 
 - (void)getCodeAction:(UIButton *)sender {
@@ -372,8 +393,22 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+//    return 10;
 //    return [self.dataArray count];
+    
+    NSArray *dataArray = [NSArray array];
+    
+    if (section == 0) {
+        dataArray = self.img1_arr;
+    }else if(section == 1) {
+        dataArray = self.img2_arr;
+    }else if (section == 2) {
+        dataArray = self.img3_arr;
+    }else {
+        dataArray = self.img4_arr;
+    }
+    
+    return dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -382,36 +417,107 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
     
      cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     
-//    UIImageView *imgView = (UIImageView *)[cell.contentView viewWithTag:111];
-//    if (!imgView) {
-//        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, IMG_CELL_W, IMG_CELL_H)];
-//        imgView.tag = 111;
-//        [cell.contentView addSubview:imgView];
-//    }else {
-//        imgView.image = nil;
-//    }
+    UIImageView *imgView = (UIImageView *)[cell.contentView viewWithTag:111];
+    if (!imgView) {
+        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+        imgView.tag = 111;
+        [cell.contentView addSubview:imgView];
+    }else {
+        imgView.image = nil;
+    }
     
-//    OtherModel *model = self.dataArray[indexPath.row];
-    //    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]);
-//    [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
+    NSArray *dataArray = [NSArray array];
+    
+    if (indexPath.section == 0) {
+        dataArray = self.img1_arr;
+    }else if(indexPath.section == 1) {
+        dataArray = self.img2_arr;
+    }else if (indexPath.section == 2) {
+        dataArray = self.img3_arr;
+    }else {
+        dataArray = self.img4_arr;
+    }
+    
+    OtherModel *model = dataArray[indexPath.row];
+        NSLog(@"%@", [NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]);
+    [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
     
     return cell;
 }
 
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"正在点击单元格");
+    //点击单元格 push
+    BigCarImgVC *bigImgVC = [[BigCarImgVC alloc] init];
+    
+    NSArray *dataArray = [NSArray array];
+    
+    if (indexPath.section == 0) {
+        dataArray = self.img1_arr;
+    }else if(indexPath.section == 1) {
+        dataArray = self.img2_arr;
+    }else if (indexPath.section == 2) {
+        dataArray = self.img3_arr;
+    }else {
+        dataArray = self.img4_arr;
+    }
+    
+    bigImgVC.data = dataArray;
+    bigImgVC.index = indexPath.row;
+    bigImgVC.title = @"车型图片";
+//    bigImgVC.title = titleArr[index - 1];
+    [self.navigationController pushViewController:bigImgVC animated:NO];
+}
+
 #pragma mark
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return CGSizeMake(50, 50);
+    return CGSizeMake(100, 100);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(8, 15, 8, 15);
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    
+    return CGSizeMake(kScreenWidth, 37);
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    //根据类型以及标识获取注册过的头视图,注意重用机制导致的bug
+    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
+    
+    for (UIView *view in headerView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, headerView.frame.size.width - 15, headerView.frame.size.height)];
+    
+    [label createLabelWithFontSize:16 color:TEXTCOLOR];
+    if (indexPath.section == 0) {
+        label.text = @"外观颜色";
+    }else if(indexPath.section == 1) {
+        label.text = @"内饰颜色";
+    }else if(indexPath.section == 2) {
+        label.text = @"空间";
+    }else {
+        label.text = @"官方图";
+    }
+    
+    [headerView addSubview:label];
+    
+    return headerView;
+}
 
 
 #pragma mark - 可以优化到View Model里的
 - (void)submmitButtonAction:(UIButton *)sender {
+    
+    if (self.tableView.contentOffset.y > 151) {
+        self.tableView.contentOffset = CGPointMake(0, 0);
+    }
+    
     if ([AppDelegate APP].user) { //已登录，判断是否有未完成订单
         [self isHavintOrderComplete];
     }else { //先获取token值
@@ -620,6 +726,81 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+
+#pragma mark - images
+- (void)requestImagesWithIndex:(NSInteger)index {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cid,@"cid",
+                            [NSString stringWithFormat:@"%ld", index], @"type", nil];
+    
+    [DataService http_Post:IMGS parameters:params success:^(id responseObject) {
+        NSLog(@"%ld car images :%@", index , responseObject);
+        
+        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            NSArray *jsonArr = [responseObject objectForKey:@"images"];
+            if ([jsonArr isKindOfClass:[NSArray class]] && jsonArr.count > 0) {
+                NSMutableArray *mArr = [NSMutableArray array];
+                [mArr removeAllObjects];
+                for (NSDictionary *jsonDic in jsonArr) {
+                    
+                    OtherModel *model = [[OtherModel alloc] initContentWithDic:jsonDic];
+                    [mArr addObject:model];
+                }
+                if (index == 1) {
+                    self.img1_arr = mArr;
+                }else if (index == 2) {
+                    self.img2_arr = mArr;
+                }else if (index == 3) {
+                    self.img3_arr = mArr;
+                }else if (index == 4) {
+                    self.img4_arr = mArr;
+                }
+                
+//                [self.tableView reloadData];
+                
+            }else {
+                if (index == 1) {
+                    self.img1_arr = @[@"暂无图片"];
+                }else if (index == 2) {
+                    self.img2_arr = @[@"暂无图片"];
+                }else if (index == 3) {
+                    self.img3_arr = @[@"暂无图片"];
+                }else if (index == 4) {
+                    self.img4_arr = @[@"暂无图片"];
+                }
+                [PromtView showMessage:@"暂无图片" duration:1.5];
+            }
+        }else {
+            if (index == 1) {
+                self.img1_arr = @[@"暂无图片"];
+            }else if (index == 2) {
+                self.img2_arr = @[@"暂无图片"];
+            }else if (index == 3) {
+                self.img3_arr = @[@"暂无图片"];
+            }else if (index == 4) {
+                self.img4_arr = @[@"暂无图片"];
+            }
+            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
+        }
+        
+        NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"car images error:%@", error);
+        if (index == 1) {
+            self.img1_arr = @[PromptWord];
+        }else if (index == 2) {
+            self.img2_arr = @[PromptWord];
+        }else if (index == 3) {
+            self.img3_arr = @[PromptWord];
+        }else if (index == 4) {
+            self.img4_arr = @[PromptWord];
+        }
+        [PromtView showMessage:PromptWord duration:1.5];
+    }];
+}
+
 
 
 @end

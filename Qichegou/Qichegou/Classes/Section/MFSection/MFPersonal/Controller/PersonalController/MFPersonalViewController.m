@@ -408,14 +408,13 @@ UITableViewDelegate>
 
 #pragma mark - action
 - (void)loginSuccess:(NSNotification *)notification {
-    //由于每次view will appear的时候都会判断，因此这里可不做赋值
+    //由于每次view will appear的时候都会判断，因此这里可不做操作
 }
 
 //点击最近浏览控件触发的
-- (void)ctrlClickAction:(HomeBtn *)ctrl
-{
+- (void)ctrlClickAction:(HomeBtn *)ctrl {
     NSLog(@"浏览click");
-    NSString *carID = [NSString stringWithFormat:@"%d",(ctrl.tag - 2016)];
+    NSString *carID = [NSString stringWithFormat:@"%ld",(ctrl.tag - 2016)];
     NSLog(@"push cid:%@", carID);
     
     //push进入详细选车页面

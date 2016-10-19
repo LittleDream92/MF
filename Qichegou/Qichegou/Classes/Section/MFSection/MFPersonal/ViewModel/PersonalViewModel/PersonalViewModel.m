@@ -14,7 +14,6 @@
     if (self = [super init]) {
         [self setData];
         
-        [self setUpCommand];
     }
     return self;
 }
@@ -24,10 +23,8 @@
     self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"最近浏览"];
 }
 
+#pragma mark - 
 
-- (void)setUpCommand {
-    
-}
 
 
 @end
