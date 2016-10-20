@@ -18,6 +18,7 @@
 #import "DKMyOrderVC.h"
 #import "AppDelegate.h"
 
+#import "CarImagesView.h"
 #import "OtherModel.h"
 
 #import "BigCarImgVC.h"
@@ -26,9 +27,8 @@ static NSString *const informationCell = @"informationcellID";
 static NSString *const commonCell = @"CommonCellID";
 @interface MFCarDetailViewController ()
 <UITableViewDelegate,
-UITableViewDataSource,
-UICollectionViewDelegateFlowLayout,
-UICollectionViewDataSource>
+UITableViewDataSource>
+
 
 //控件
 @property (nonatomic, strong) UITableView *tableView;
@@ -60,7 +60,10 @@ UICollectionViewDataSource>
     [super viewDidLoad];
     
     self.viewModel = [[CarDetailViewModel alloc] initWithCarID:self.cid];
-    
+    self.img1_arr = nil;
+    self.img2_arr = nil;
+    self.img3_arr = nil;
+    self.img4_arr = nil;
 
     
     [self setUpNav];
@@ -229,50 +232,56 @@ UICollectionViewDataSource>
         
         return cell;
     }else if (indexPath.section == (index+2)) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imagesCell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"imagesCell"];
-            
-            UIView *line = [UIView new];
-            line.backgroundColor = BGGRAYCOLOR;
-            [cell.contentView addSubview:line];
-            [line makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.bottom.equalTo(0);
-                make.height.equalTo(1);
-            }];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = H15;
-        cell.detailTextLabel.font = H15;
         
         if (indexPath.row == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imgCell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"imgCell"];
+                
+                UIView *line = [UIView new];
+                line.backgroundColor = BGGRAYCOLOR;
+                [cell.contentView addSubview:line];
+                [line makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.bottom.equalTo(0);
+                    make.height.equalTo(1);
+                }];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.font = H15;
             cell.textLabel.textColor = TEXTCOLOR;
             cell.textLabel.text = @"车型图片";
-            cell.detailTextLabel.text = @"";
+            
+            return cell;
         }else {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imagesCell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"imagesCell"];
+                
+                UIView *line = [UIView new];
+                line.backgroundColor = BGGRAYCOLOR;
+                [cell.contentView addSubview:line];
+                [line makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.bottom.equalTo(0);
+                    make.height.equalTo(1);
+                }];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             NSLog(@"这里是imagescollectionview");
+            if ([self.img1_arr isKindOfClass:[NSArray class]] && self.img1_arr.count > 0) {
+                CarImagesView *carImagesView = [[CarImagesView alloc] initWithArr1:self.img1_arr arr2:self.img2_arr arr3:self.img3_arr arr4:self.img4_arr];
+                [cell addSubview:carImagesView];
+                [carImagesView makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.top.bottom.equalTo(0);
+                }];
+                
+            }else {
+                [cell.textLabel createLabelWithFontSize:13 color:GRAYCOLOR];
+                cell.textLabel.text = @"暂无图片";
+            }
             
-            UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
-            [flowlayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-            flowlayout.minimumInteritemSpacing = 0;
-            
-            UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1200) collectionViewLayout:flowlayout];
-            collectionView.backgroundColor = BGGRAYCOLOR;
-            
-            collectionView.delegate = self;
-            collectionView.dataSource = self;
-            
-            [cell addSubview:collectionView];
-            
-            //注册单元格
-            [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionCell"];
-            
-            [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];//注册头/尾视图，视图类型必须为UICollectionReusableView或者其子类，kind设置为UICollectionElementKindSectionHeader或者UICollectionElementKindSectionFooter，最后设置标识
+            return cell;
         }
-        
-        return cell;
-
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (cell == nil) {
@@ -302,9 +311,18 @@ UICollectionViewDataSource>
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = [AppDelegate APP].user ? 0 : 1;
+    CGFloat imagesHeight = 0;
+//    NSLog(@"img1_arr ： %@", self.img1_arr);
+    if ([self.img1_arr isKindOfClass:[NSArray class]] && self.img1_arr.count > 0) {
+        imagesHeight = [self getTheHeightForImages];
+    }else {
+        imagesHeight = 44.0;
+    }
+    
     if (indexPath.section == (index+2)) {
         if (indexPath.row == 1) {
-            return 1200;
+            NSLog(@"imagesHeight : %f", imagesHeight);
+            return imagesHeight;
         }else {
             return 44;
         }
@@ -387,135 +405,14 @@ UICollectionViewDataSource>
 }
 
 
-#pragma mark - UICollectionView 方法
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 4;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return 10;
-//    return [self.dataArray count];
-    
-    NSArray *dataArray = [NSArray array];
-    
-    if (section == 0) {
-        dataArray = self.img1_arr;
-    }else if(section == 1) {
-        dataArray = self.img2_arr;
-    }else if (section == 2) {
-        dataArray = self.img3_arr;
-    }else {
-        dataArray = self.img4_arr;
-    }
-    
-    return dataArray.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
-    
-     cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-    
-    UIImageView *imgView = (UIImageView *)[cell.contentView viewWithTag:111];
-    if (!imgView) {
-        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        imgView.tag = 111;
-        [cell.contentView addSubview:imgView];
-    }else {
-        imgView.image = nil;
-    }
-    
-    NSArray *dataArray = [NSArray array];
-    
-    if (indexPath.section == 0) {
-        dataArray = self.img1_arr;
-    }else if(indexPath.section == 1) {
-        dataArray = self.img2_arr;
-    }else if (indexPath.section == 2) {
-        dataArray = self.img3_arr;
-    }else {
-        dataArray = self.img4_arr;
-    }
-    
-    OtherModel *model = dataArray[indexPath.row];
-        NSLog(@"%@", [NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]);
-    [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_String, model.thumb_sm]] placeholderImage:[UIImage imageNamed:@"bg_default"]];
-    
-    return cell;
-}
-
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"正在点击单元格");
-    //点击单元格 push
-    BigCarImgVC *bigImgVC = [[BigCarImgVC alloc] init];
-    
-    NSArray *dataArray = [NSArray array];
-    
-    if (indexPath.section == 0) {
-        dataArray = self.img1_arr;
-    }else if(indexPath.section == 1) {
-        dataArray = self.img2_arr;
-    }else if (indexPath.section == 2) {
-        dataArray = self.img3_arr;
-    }else {
-        dataArray = self.img4_arr;
-    }
-    
-    bigImgVC.data = dataArray;
-    bigImgVC.index = indexPath.row;
-    bigImgVC.title = @"车型图片";
-//    bigImgVC.title = titleArr[index - 1];
-    [self.navigationController pushViewController:bigImgVC animated:NO];
-}
-
-#pragma mark
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(8, 15, 8, 15);
-}
-
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    
-    return CGSizeMake(kScreenWidth, 37);
-}
-
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    //根据类型以及标识获取注册过的头视图,注意重用机制导致的bug
-    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
-    
-    for (UIView *view in headerView.subviews) {
-        [view removeFromSuperview];
-    }
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, headerView.frame.size.width - 15, headerView.frame.size.height)];
-    
-    [label createLabelWithFontSize:16 color:TEXTCOLOR];
-    if (indexPath.section == 0) {
-        label.text = @"外观颜色";
-    }else if(indexPath.section == 1) {
-        label.text = @"内饰颜色";
-    }else if(indexPath.section == 2) {
-        label.text = @"空间";
-    }else {
-        label.text = @"官方图";
-    }
-    
-    [headerView addSubview:label];
-    
-    return headerView;
-}
-
-
 #pragma mark - 可以优化到View Model里的
 - (void)submmitButtonAction:(UIButton *)sender {
     
     if (self.tableView.contentOffset.y > 151) {
-        self.tableView.contentOffset = CGPointMake(0, 0);
+        
+//        [UIView animateWithDuration:1.5 animations:^{
+            self.tableView.contentOffset = CGPointMake(0, 0);
+//        }];
     }
     
     if ([AppDelegate APP].user) { //已登录，判断是否有未完成订单
@@ -578,7 +475,6 @@ UICollectionViewDataSource>
                        NSLog(@"order login error:%@", error);
                        [PromtView showAlert:PromptWord duration:1.5];
                    }];
-
 }
 
 //判断未完成订单
@@ -733,8 +629,10 @@ UICollectionViewDataSource>
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cid,@"cid",
                             [NSString stringWithFormat:@"%ld", index], @"type", nil];
     
+    NSInteger section = [AppDelegate APP].user ? 0 : 1;
+    
     [DataService http_Post:IMGS parameters:params success:^(id responseObject) {
-        NSLog(@"%ld car images :%@", index , responseObject);
+//        NSLog(@"%ld car images :%@", index , responseObject);
         
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
             NSArray *jsonArr = [responseObject objectForKey:@"images"];
@@ -754,53 +652,46 @@ UICollectionViewDataSource>
                     self.img3_arr = mArr;
                 }else if (index == 4) {
                     self.img4_arr = mArr;
+                    NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:(section+2)] withRowAnimation:UITableViewRowAnimationNone];
                 }
-                
-//                [self.tableView reloadData];
-                
-            }else {
-                if (index == 1) {
-                    self.img1_arr = @[@"暂无图片"];
-                }else if (index == 2) {
-                    self.img2_arr = @[@"暂无图片"];
-                }else if (index == 3) {
-                    self.img3_arr = @[@"暂无图片"];
-                }else if (index == 4) {
-                    self.img4_arr = @[@"暂无图片"];
-                }
-                [PromtView showMessage:@"暂无图片" duration:1.5];
             }
-        }else {
-            if (index == 1) {
-                self.img1_arr = @[@"暂无图片"];
-            }else if (index == 2) {
-                self.img2_arr = @[@"暂无图片"];
-            }else if (index == 3) {
-                self.img3_arr = @[@"暂无图片"];
-            }else if (index == 4) {
-                self.img4_arr = @[@"暂无图片"];
-            }
-            [PromtView showMessage:responseObject[@"msg"] duration:1.5];
         }
-        
-        NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
-        
-        
     } failure:^(NSError *error) {
         NSLog(@"car images error:%@", error);
-        if (index == 1) {
-            self.img1_arr = @[PromptWord];
-        }else if (index == 2) {
-            self.img2_arr = @[PromptWord];
-        }else if (index == 3) {
-            self.img3_arr = @[PromptWord];
-        }else if (index == 4) {
-            self.img4_arr = @[PromptWord];
-        }
-        [PromtView showMessage:PromptWord duration:1.5];
     }];
 }
 
+//计算图片的高度
+- (CGFloat)getTheHeightForImages {
+    
+    //组的高度：37； 一张图片的高度：100； 上下各15
+    NSInteger c1 = self.img1_arr.count / 3;
+    NSInteger c2 = self.img2_arr.count / 3;
+    NSInteger c3 = self.img3_arr.count / 3;
+    NSInteger c4 = self.img4_arr.count / 3;
+    
+    NSLog(@"%ld + %ld + %ld + %ld = %ld", c1, c2, c3, c4, (c1+c2+c3+c4));
+    
+    NSInteger count1 = self.img1_arr.count % 3;
+    NSInteger count2 = self.img2_arr.count % 3;
+    NSInteger count3 = self.img3_arr.count % 3;
+    NSInteger count4 = self.img4_arr.count % 3;
+    
+    NSInteger co1 = (count1 == 0 ? 0 : 1);
+    NSInteger co2 = (count2 == 0 ? 0 : 1);
+    NSInteger co3 = (count3 == 0 ? 0 : 1);
+    NSInteger co4 = (count4 == 0 ? 0 : 1);
+    
+    NSLog(@"%ld + %ld + %ld + %ld = %ld", count1, count2, count3, count4, (count1+count2+count3+count4));
+    
+    NSInteger total = c1 + c2 + c3 + c4 + co1 + co2 + co3 + co4;
+    NSLog(@"total : %ld", total);
+    
+    CGFloat height = 100 *total + 37*4 + 15*(total);
+    
+    return height;
+}
 
 
 @end
