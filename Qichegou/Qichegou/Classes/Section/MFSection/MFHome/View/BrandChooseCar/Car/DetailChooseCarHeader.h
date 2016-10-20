@@ -10,18 +10,18 @@
 #import "CarModel.h"
 
 @interface DetailChooseCarHeader : UIView<UIScrollViewDelegate>
-{
-    NSTimer *_timer;
-}
+//{
+//    NSTimer *_timer;
+//}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet UIPageControl *pageContrl;
-
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *guidPrice;
-
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+//计时器
+@property (nonatomic, strong) NSTimer *scrollTimer;
 
 @property (nonatomic, strong) CarModel *model;
 

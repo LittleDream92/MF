@@ -7,21 +7,19 @@
 //
 
 #import "MFCarDetailViewController.h"
-#import "CarDetailViewModel.h"
+#import "SubmmitOrderViewModel.h"
 
 #import "DetailChooseCarHeader.h"
 #import "DetailCarInformationCell.h"
 #import "ChooseCarCommonCell.h"
+#import "CarImagesView.h"
 
 #import "DKNeedsTableViewController.h"
 #import "DKPayMoneyVC.h"
 #import "DKMyOrderVC.h"
-#import "AppDelegate.h"
 
-#import "CarImagesView.h"
 #import "OtherModel.h"
-
-#import "BigCarImgVC.h"
+#import "AppDelegate.h"
 
 static NSString *const informationCell = @"informationcellID";
 static NSString *const commonCell = @"CommonCellID";
@@ -37,7 +35,7 @@ UITableViewDataSource>
 @property (nonatomic, strong) DetailChooseCarHeader *headerView;
 
 //viewModel
-@property (nonatomic, strong) CarDetailViewModel *viewModel;
+@property (nonatomic, strong) SubmmitOrderViewModel *submmitOrderViewModel;
 
 //图片的数据源
 @property (nonatomic, strong) NSArray *img1_arr;
@@ -51,15 +49,18 @@ UITableViewDataSource>
 
 -(void)dealloc {
     //注销其他选项
-    for (NSString *keyStr in self.viewModel.pushArray) {
+    for (NSString *keyStr in self.submmitOrderViewModel.pushArray) {
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:keyStr];
+        NSLog(@"reset : %@", [[NSUserDefaults standardUserDefaults] objectForKey:keyStr]);
+//        NSLog(@"reset dict : %@", self.submmitOrderViewModel.getBackChooseDictionary);
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.viewModel = [[CarDetailViewModel alloc] initWithCarID:self.cid];
+//    NSLog(@"re getDict:%@", self.submmitOrderViewModel.getBackChooseDictionary);
+    
     self.img1_arr = nil;
     self.img2_arr = nil;
     self.img3_arr = nil;
@@ -109,6 +110,12 @@ UITableViewDataSource>
 }
 
 #pragma mark - lazyloading
+-(SubmmitOrderViewModel *)submmitOrderViewModel {
+    if (!_submmitOrderViewModel) {
+        _submmitOrderViewModel = [[SubmmitOrderViewModel alloc] initWithCarID:self.cid];
+    }
+    return _submmitOrderViewModel;
+}
 
 -(UIButton *)submmitButton {
     if (!_submmitButton) {
@@ -155,7 +162,7 @@ UITableViewDataSource>
     }else if (section == index) {
         return 4;
     }else if(section == (index+1)) {
-        return [self.viewModel.keyArr[0] count] +1;
+        return [self.submmitOrderViewModel.keyArr[0] count] +1;
     }else {
         return 2;
     }
@@ -178,8 +185,8 @@ UITableViewDataSource>
         }
         
         [cell.getCodeBtn addTarget:self action:@selector(getCodeAction:) forControlEvents:UIControlEventTouchUpInside];
-        cell.iconImgView.image = [UIImage imageNamed:self.viewModel.imgNameArray[indexPath.row]];
-        cell.writeTF.placeholder = self.viewModel.chooseTitleArray[indexPath.row];
+        cell.iconImgView.image = [UIImage imageNamed:self.submmitOrderViewModel.imgNameArray[indexPath.row]];
+        cell.writeTF.placeholder = self.submmitOrderViewModel.chooseTitleArray[indexPath.row];
         [cell.writeTF setValue:GRAYCOLOR forKeyPath:@"_placeholderLabel.textColor"];
         
         return cell;
@@ -190,16 +197,16 @@ UITableViewDataSource>
             cell = [[ChooseCarCommonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:commonCell];
         }
         
-        cell.imageView.image = [UIImage imageNamed:self.viewModel.imgNameArray[indexPath.row+3]];
-        cell.textLabel.text = self.viewModel.chooseTitleArray[indexPath.row+3];
+        cell.imageView.image = [UIImage imageNamed:self.submmitOrderViewModel.imgNameArray[indexPath.row+3]];
+        cell.textLabel.text = self.submmitOrderViewModel.chooseTitleArray[indexPath.row+3];
         
-        NSString *keyString = self.viewModel.keyArray[indexPath.row];
-        if ([[self.viewModel.getBackChooseDictionary allKeys] containsObject:keyString]) {
+        NSString *keyString = self.submmitOrderViewModel.keyArr[indexPath.row];
+        if ([[self.submmitOrderViewModel.getBackChooseDictionary allKeys] containsObject:keyString]) {
             [cell.textLabel createLabelWithFontSize:15 color:TEXTCOLOR];
-            cell.textLabel.text = [self.viewModel.getBackChooseDictionary objectForKey:keyString];
+            cell.textLabel.text = [self.submmitOrderViewModel.getBackChooseDictionary objectForKey:keyString];
         }else {
             [cell.textLabel createLabelWithFontSize:15 color:GRAYCOLOR];
-            cell.textLabel.text = self.viewModel.chooseTitleArray[indexPath.row+3];
+            cell.textLabel.text = self.submmitOrderViewModel.chooseTitleArray[indexPath.row+3];
         }
         
         return cell;
@@ -226,8 +233,8 @@ UITableViewDataSource>
             cell.detailTextLabel.text = @"";
         }else {
             cell.textLabel.textColor = GRAYCOLOR;
-            cell.textLabel.text = self.viewModel.keyArr[0][indexPath.row-1];
-            cell.detailTextLabel.text = self.viewModel.valueArr[0][indexPath.row-1];
+            cell.textLabel.text = self.submmitOrderViewModel.keyArr[0][indexPath.row-1];
+            cell.detailTextLabel.text = self.submmitOrderViewModel.valueArr[0][indexPath.row-1];
         }
         
         return cell;
@@ -267,7 +274,6 @@ UITableViewDataSource>
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            NSLog(@"这里是imagescollectionview");
             if ([self.img1_arr isKindOfClass:[NSArray class]] && self.img1_arr.count > 0) {
                 CarImagesView *carImagesView = [[CarImagesView alloc] initWithArr1:self.img1_arr arr2:self.img2_arr arr3:self.img3_arr arr4:self.img4_arr];
                 [cell addSubview:carImagesView];
@@ -287,8 +293,7 @@ UITableViewDataSource>
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
-        
-        cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//        cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
         
         return cell;
     }
@@ -321,7 +326,7 @@ UITableViewDataSource>
     
     if (indexPath.section == (index+2)) {
         if (indexPath.row == 1) {
-            NSLog(@"imagesHeight : %f", imagesHeight);
+//            NSLog(@"imagesHeight : %f", imagesHeight);
             return imagesHeight;
         }else {
             return 44;
@@ -338,18 +343,18 @@ UITableViewDataSource>
     if (indexPath.section == index) {       //选择
         DKNeedsTableViewController *needsVC = [[DKNeedsTableViewController alloc] init];
         
-        needsVC.title = self.viewModel.pushArray[indexPath.row];
+        needsVC.title = self.submmitOrderViewModel.pushArray[indexPath.row];
         
         if (indexPath.row == 0) {
-            needsVC.dataArray = (NSMutableArray *)self.viewModel.colorArray;
+            needsVC.dataArray = (NSMutableArray *)self.submmitOrderViewModel.colorArray;
         }else {
-            needsVC.dataArray = self.viewModel.pushTitleArr[indexPath.row-1];
+            needsVC.dataArray = self.submmitOrderViewModel.pushTitleArr[indexPath.row-1];
         }
         
         [needsVC returnText:^(NSString *chooseColor) {
             
-            NSString *keyString = self.viewModel.keyArray[indexPath.row];
-            [self.viewModel.getBackChooseDictionary setValue:chooseColor forKey:keyString];
+            NSString *keyString = self.submmitOrderViewModel.keyArr[indexPath.row];
+            [self.submmitOrderViewModel.getBackChooseDictionary setValue:chooseColor forKey:keyString];
             
             //刷新tableView,
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
@@ -366,15 +371,15 @@ UITableViewDataSource>
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cid, @"cid", nil];
     
     //请求具体车型
-    RACSignal *carDetailSignal = [self.viewModel.carDetailCommand execute:params];
+    RACSignal *carDetailSignal = [self.submmitOrderViewModel.carDetailCommand execute:params];
     [carDetailSignal subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.headerView createHeaderScrollViewWithModel:self.viewModel.carModel];
+            [self.headerView createHeaderScrollViewWithModel:self.submmitOrderViewModel.carModel];
         });
     }];
     
     //请求参数
-    RACSignal *paramSignal = [self.viewModel.carParamsCommand execute:params];
+    RACSignal *paramSignal = [self.submmitOrderViewModel.carParamsCommand execute:params];
     [paramSignal subscribeNext:^(NSArray *result) {
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
     }];
@@ -384,8 +389,19 @@ UITableViewDataSource>
     [self requestImagesWithIndex:2];
     [self requestImagesWithIndex:3];
     [self requestImagesWithIndex:4];
-
-//    self.submmitButton.rac_command = self.viewModel.submmitOrderCommand;
+    
+    @weakify(self);
+    [self.submmitOrderViewModel.submmitOrderCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"submmitOrder ViewModel : %@", x);
+        
+        @strongify(self);
+        if ([x isEqualToString:@"YES"]) {       //有未完成订单
+            [self payPromoutView];
+        }else {     //提交订单成功
+            NSString *orderIDStr = x;
+            [self submitOrderSuccessWithOrderID:orderIDStr];
+        }
+    }];
 }
 
 - (void)getCodeAction:(UIButton *)sender {
@@ -404,8 +420,7 @@ UITableViewDataSource>
     }
 }
 
-
-#pragma mark - 可以优化到View Model里的
+/** 提交订单 */
 - (void)submmitButtonAction:(UIButton *)sender {
     
     if (self.tableView.contentOffset.y > 151) {
@@ -415,164 +430,42 @@ UITableViewDataSource>
 //        }];
     }
     
-    if ([AppDelegate APP].user) { //已登录，判断是否有未完成订单
-        [self isHavintOrderComplete];
-    }else { //先获取token值
-        [self loginForToken];
-    }
-}
-
-//登录
-- (void)loginForToken {
-    
+    NSInteger index = [AppDelegate APP].user ? 0 : 1;
     NSMutableArray *mArray = [NSMutableArray array];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
-    for (int i = 0; i < 3; i++) {
-        DetailCarInformationCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
-//        UITextField *mytf = [cell viewWithTag:7000];
-        NSString *text = cell.writeTF.text;
-        [mArray addObject:text];
-    }
-    
-    for (NSString *tfString in mArray) {
-        if (tfString.length <= 0) {
-            [PromtView showAlert:@"信息不完全" duration:1.5];
-            return;
+    if (index) {
+        
+        for (int i = 0; i < 3; i++) {
+            DetailCarInformationCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+            //        UITextField *mytf = [cell viewWithTag:7000];
+            NSString *text = cell.writeTF.text;
+            [mArray addObject:text];
         }
+        for (NSString *tfString in mArray) {
+            if (tfString.length <= 0) {
+                [PromtView showAlert:@"信息不完全" duration:1.5];
+                return;
+            }
+        }
+        
+        dic[@"name"] = mArray[0];
+        dic[@"tel"] = mArray[1];
+        dic[@"code"] = mArray[2];
     }
     
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                            timeSp, @"time",
-                            md5String, @"sign",
-                            mArray[1],@"tel",
-                            mArray[2], @"code",
-                            mArray[0], @"name", nil];
-    
-    [DataService http_Post:ORDER_REGIST
-                parameters:params
-                   success:^(id responseObject) {
-                       NSLog(@"order login:%@", responseObject);
-                       if ([responseObject[@"status"] integerValue] == 1) {
-                           
-                           //存储
-                           UserModel *userModel = [[UserModel alloc] initContentWithDic:responseObject];
-                           userModel.sjhm = mArray[1];
-                           userModel.zsxm = mArray[0];
-                           userModel.token = responseObject[@"token"];
-                           [AppDelegate APP].user = userModel;
-                           //发送登录成功通知
-                           [NotificationCenters postNotificationName:LOGIN_SUCCESS object:nil userInfo:nil];
-                           
-                           [self isHavintOrderComplete];
-                       }else {
-                           [PromtView showAlert:@"注册登录失败" duration:1.5];
-                       }
-                   } failure:^(NSError *error) {
-                       NSLog(@"order login error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-}
-
-//判断未完成订单
-- (void)isHavintOrderComplete {
-    //拿到token值
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [AppDelegate APP].user.token, @"token",nil];
-    
-    [DataService http_Post:UNCOMPLETE_ORDER
-                parameters:params
-                   success:^(id responseObject) {
-                       
-                       NSLog(@"%@:%@", responseObject, [responseObject objectForKey:@"msg"]);
-                       
-                       //判断有没有未完成订单
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           
-                           //有未完成订单
-                           [self payPromoutView];
-                           
-                       }else if ([[responseObject objectForKey:@"status"] integerValue] == 0){
-                           
-                           //没有待付款订单，提交订单
-                           [self LabelTextIsNull];
-                           
-                       }else {
-                           //其他
-                           [PromtView showAlert:@"请求失败" duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       //
-                       NSLog(@"order status error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
-}
-
-//判断第一组选择的选项是否为空
-- (void)LabelTextIsNull {
-
-    if ([self.viewModel.getBackChooseDictionary allKeys].count < 4) {
+    if ([self.submmitOrderViewModel.getBackChooseDictionary allKeys].count < 4) {
         [PromtView showAlert:@"有选项为空" duration:1.5];
-    }else {
-        //提交订单的网络请求
-        [self submmitOrder];
+        return;
     }
-}
-
-//提交订单
-- (void)submmitOrder {
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    /*_keyArray = @[@"WaiGuan", @"Neishi", @"Way", @"Time"];*/
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[UserDefaults objectForKey:kLocationAction][@"cityid"],@"cityid",
-                            
-                            self.cid,@"cid",
-                            
-                            [self.viewModel.getBackChooseDictionary objectForKey:@"WaiGuan"], @"color",
-                            
-                            [self.viewModel.getBackChooseDictionary objectForKey:@"Neishi"], @"neishi",
-                            
-                            [self.viewModel.getBackChooseDictionary objectForKey:@"Way"], @"gcsj",
-                            
-                            [self.viewModel.getBackChooseDictionary objectForKey:@"Time"], @"gcfs",
-                            
-                            [AppDelegate APP].user.token, @"token",
-                            
-                            md5String,@"sign",
-                            
-                            timeSp,@"time",
-                            
-                            randomString,@"nonce_str",nil];
+    dic[@"waiguan"] = self.submmitOrderViewModel.getBackChooseDictionary[@"WaiGuan"];
+    dic[@"neishi"] = self.submmitOrderViewModel.getBackChooseDictionary[@"Neishi"];
+    dic[@"gcfs"] = self.submmitOrderViewModel.getBackChooseDictionary[@"Way"];
+    dic[@"gcsj"] = self.submmitOrderViewModel.getBackChooseDictionary[@"Time"];
     
-    [DataService http_Post:ADD_ORDER
-                parameters:params
-                   success:^(id responseObject) {
-                       //
-                       NSLog(@"submmit order:%@", responseObject);
-                       
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           //获取订单号
-                           NSString *orderID = [responseObject objectForKey:@"oid"];
-                           NSString *orderIDStr = orderID;
-                           [self submitOrderSuccessWithOrderID:orderIDStr];
-                       }else {
-                           
-                           NSLog(@"%@",[responseObject objectForKey:@"msg"]);
-                           [PromtView showAlert:[responseObject objectForKey:@"msg"] duration:1.5];
-                       }
-                       
-                   } failure:^( NSError *error) {
-                       NSLog(@"submmit order error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
+    [self.submmitOrderViewModel.submmitOrderCommand execute:dic];
 }
-
 
 #pragma mark -提交订单成功
 - (void)submitOrderSuccessWithOrderID:(NSString *)orderID {
@@ -581,7 +474,6 @@ UITableViewDataSource>
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //点击按钮的响应事件；
         [self pushToPaymoneyVCWithOrderID:orderID];
-        
     }]];
     
     //弹出提示框；
@@ -610,10 +502,8 @@ UITableViewDataSource>
     
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"确定支付未完成订单");
-        
         DKMyOrderVC *myOrderVC = [[DKMyOrderVC alloc] init];
         [self.navigationController pushViewController:myOrderVC animated:YES];
-        
     }];
     
     // Add the actions.
@@ -652,7 +542,7 @@ UITableViewDataSource>
                     self.img3_arr = mArr;
                 }else if (index == 4) {
                     self.img4_arr = mArr;
-                    NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
+//                    NSLog(@"img1: %@\n img2:%@\n img3:%@\n img4:%@", self.img1_arr, self.img2_arr, self.img3_arr, self.img4_arr);
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:(section+2)] withRowAnimation:UITableViewRowAnimationNone];
                 }
             }
@@ -671,7 +561,7 @@ UITableViewDataSource>
     NSInteger c3 = self.img3_arr.count / 3;
     NSInteger c4 = self.img4_arr.count / 3;
     
-    NSLog(@"%ld + %ld + %ld + %ld = %ld", c1, c2, c3, c4, (c1+c2+c3+c4));
+//    NSLog(@"%ld + %ld + %ld + %ld = %ld", c1, c2, c3, c4, (c1+c2+c3+c4));
     
     NSInteger count1 = self.img1_arr.count % 3;
     NSInteger count2 = self.img2_arr.count % 3;
@@ -683,10 +573,10 @@ UITableViewDataSource>
     NSInteger co3 = (count3 == 0 ? 0 : 1);
     NSInteger co4 = (count4 == 0 ? 0 : 1);
     
-    NSLog(@"%ld + %ld + %ld + %ld = %ld", count1, count2, count3, count4, (count1+count2+count3+count4));
+//    NSLog(@"%ld + %ld + %ld + %ld = %ld", count1, count2, count3, count4, (count1+count2+count3+count4));
     
     NSInteger total = c1 + c2 + c3 + c4 + co1 + co2 + co3 + co4;
-    NSLog(@"total : %ld", total);
+//    NSLog(@"total : %ld", total);
     
     CGFloat height = 100 *total + 37*4 + 15*(total);
     

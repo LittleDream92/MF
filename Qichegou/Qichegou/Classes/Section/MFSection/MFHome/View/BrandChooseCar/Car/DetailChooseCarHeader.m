@@ -13,7 +13,8 @@
 
 -(void)dealloc {
     //销毁计时器
-    [_timer invalidate];
+    [self.scrollTimer invalidate];
+    self.scrollTimer = nil;
 }
 
 -(void)awakeFromNib {
@@ -49,17 +50,17 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     //开始拖拽时取消计时器
-    [_timer invalidate];
-    _timer = nil;
+    [self.scrollTimer invalidate];
+    self.scrollTimer = nil;
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     //使用计时器
-    _timer = [NSTimer timerWithTimeInterval:2.0
+    self.scrollTimer = [NSTimer timerWithTimeInterval:2.0
                                      target:self
                                    selector:@selector(timerStart)
                                    userInfo:nil
                                     repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] addTimer:self.scrollTimer forMode:NSDefaultRunLoopMode];
 }
 
 #pragma mark -
@@ -79,12 +80,12 @@
             [self.scrollView addSubview:imageView];
         }
         
-        _timer = [NSTimer timerWithTimeInterval:2.0
+        self.scrollTimer = [NSTimer timerWithTimeInterval:2.0
                                          target:self
                                        selector:@selector(timerStart)
                                        userInfo:nil
                                         repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] addTimer:self.scrollTimer forMode:NSDefaultRunLoopMode];
         self.scrollView.contentSize = CGSizeMake(count*kScreenWidth, 100);
         self.pageContrl.numberOfPages = model.color_imgs.count;
     }else {

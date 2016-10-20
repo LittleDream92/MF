@@ -21,6 +21,7 @@ static NSString *const cellID = @"ChooseInformationCell";
     
     //取到上次选中的
     NSInteger lastindexPathRow = [[[NSUserDefaults standardUserDefaults] objectForKey:self.title] integerValue];
+    NSLog(@" tableview :%ld", lastindexPathRow);
     if (lastindexPathRow == 0) {
         self.lastIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }else {
