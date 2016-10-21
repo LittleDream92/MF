@@ -10,9 +10,6 @@
 #import "CarModel.h"
 
 @interface DetailChooseCarHeader : UIView<UIScrollViewDelegate>
-//{
-//    NSTimer *_timer;
-//}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageContrl;

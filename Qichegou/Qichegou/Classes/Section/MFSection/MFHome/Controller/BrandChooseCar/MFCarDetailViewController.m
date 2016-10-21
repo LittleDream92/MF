@@ -59,8 +59,6 @@ UITableViewDataSource>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSLog(@"re getDict:%@", self.submmitOrderViewModel.getBackChooseDictionary);
-    
     self.img1_arr = nil;
     self.img2_arr = nil;
     self.img3_arr = nil;
@@ -467,31 +465,19 @@ UITableViewDataSource>
     [self.submmitOrderViewModel.submmitOrderCommand execute:dic];
 }
 
-#pragma mark -提交订单成功
+#pragma mark - 提交订单成功
 - (void)submitOrderSuccessWithOrderID:(NSString *)orderID {
-    //初始化提示框
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"提交订单成功" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击按钮的响应事件；
-        [self pushToPaymoneyVCWithOrderID:orderID];
+        DKPayMoneyVC *payMoneyVC = [[DKPayMoneyVC alloc] init];
+        payMoneyVC.title = @"支付订金";
+        payMoneyVC.orderIDString = orderID;
+        [self.navigationController pushViewController:payMoneyVC animated:YES];
     }]];
-    
-    //弹出提示框；
     [self presentViewController:alert animated:true completion:nil];
-    
 }
 
-//push到支付订金页面
-- (void)pushToPaymoneyVCWithOrderID:(NSString *)orderID {
-    DKPayMoneyVC *payMoeyVC = [[DKPayMoneyVC alloc] init];
-    
-    payMoeyVC.title = @"支付订金";
-    payMoeyVC.orderIDString = orderID;
-    
-    [self.navigationController pushViewController:payMoeyVC animated:YES];
-}
-
-#pragma mark -有未完成订单
+#pragma mark - 有未完成订单
 - (void)payPromoutView {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"您有未付款订单，请先付款" preferredStyle:UIAlertControllerStyleAlert];
     
@@ -563,15 +549,10 @@ UITableViewDataSource>
     
 //    NSLog(@"%ld + %ld + %ld + %ld = %ld", c1, c2, c3, c4, (c1+c2+c3+c4));
     
-    NSInteger count1 = self.img1_arr.count % 3;
-    NSInteger count2 = self.img2_arr.count % 3;
-    NSInteger count3 = self.img3_arr.count % 3;
-    NSInteger count4 = self.img4_arr.count % 3;
-    
-    NSInteger co1 = (count1 == 0 ? 0 : 1);
-    NSInteger co2 = (count2 == 0 ? 0 : 1);
-    NSInteger co3 = (count3 == 0 ? 0 : 1);
-    NSInteger co4 = (count4 == 0 ? 0 : 1);
+    NSInteger co1 = ((self.img1_arr.count % 3) == 0 ? 0 : 1);
+    NSInteger co2 = ((self.img2_arr.count % 3) == 0 ? 0 : 1);
+    NSInteger co3 = ((self.img3_arr.count % 3) == 0 ? 0 : 1);
+    NSInteger co4 = ((self.img4_arr.count % 3) == 0 ? 0 : 1);
     
 //    NSLog(@"%ld + %ld + %ld + %ld = %ld", count1, count2, count3, count4, (count1+count2+count3+count4));
     
