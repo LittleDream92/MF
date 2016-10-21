@@ -7,7 +7,6 @@
 //
 
 #import "MFPersonalViewController.h"
-#import "PersonalViewModel.h"
 #import "HomeBtn.h"
 #import "LoginViewController.h"
 
@@ -26,7 +25,8 @@ static NSString *const latestCell = @"latestCellID";
 <UITableViewDataSource,
 UITableViewDelegate>
 
-@property (nonatomic, strong) PersonalViewModel *viewModel;
+@property (nonatomic, strong) NSArray *titleArr;
+@property (nonatomic, strong) NSArray *imgNamesArr;
 
 //控件
 @property (nonatomic, strong) UIButton *naviRightBtn;
@@ -57,12 +57,15 @@ UITableViewDelegate>
     [super viewDidLoad];
     
     self.contrlArr = [NSMutableArray array];
+    self.imgNamesArr = @[@"icon_myOrder",@"icon_activity",@"icon_changePwd",@"icon_time"];
+    self.titleArr = @[@"我的订单",@"我的活动",@"修改密码",@"最近浏览"];
+    
+    
     //通知
     [NotificationCenters addObserver:self selector:@selector(loginSuccess:) name:LOGIN_SUCCESS object:nil];
     
     [self setUpnav];
     [self setUpViews];
-    [self combineViewModel];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -95,6 +98,7 @@ UITableViewDelegate>
     self.title = @"我的";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightBtn];
 }
+
 
 - (void)setUpViews {
     WEAKSELF
@@ -146,41 +150,15 @@ UITableViewDelegate>
     }];
 }
 
-- (void)combineViewModel {
-    [[self.naviRightBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MFSettingViewController *settingVC = [[MFSettingViewController alloc] init];
-            [self.navigationController pushViewController:settingVC animated:YES];
-        });
-    }];
-    
-    [[self.iconBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (![AppDelegate APP].user) {
-                LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-                [self.navigationController pushViewController:loginVC animated:YES];
-            }
-        });
-        
-    }];
-}
-
 #pragma mark - lazyloading
-- (PersonalViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[PersonalViewModel alloc] init];
-    }
-    return _viewModel;
-}
-
 -(UIButton *)naviRightBtn {
     if (_naviRightBtn == nil) {
         _naviRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_naviRightBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateHighlighted];
-        _naviRightBtn.size = CGSizeMake(20, 20);
+        _naviRightBtn.frame = CGRectMake(0, 0, 20, 20);
+        
+        [_naviRightBtn addTarget:self action:@selector(settinAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _naviRightBtn;
 }
@@ -233,6 +211,8 @@ UITableViewDelegate>
         
         _iconBtn.layer.masksToBounds = YES;
         _iconBtn.layer.cornerRadius = 96/2;
+        
+        [_iconBtn addTarget:self action:@selector(iconAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iconBtn;
 }
@@ -273,7 +253,7 @@ UITableViewDelegate>
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.titleArr.count;
+    return self.titleArr.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -342,10 +322,10 @@ UITableViewDelegate>
 }
 
 - (void)setCellWithCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
-    cell.imageView.image = [UIImage imageNamed:self.viewModel.imgNamesArr[indexPath.section]];
+    cell.imageView.image = [UIImage imageNamed:self.imgNamesArr[indexPath.section]];
     cell.textLabel.font = H16;
     cell.textLabel.textColor = TEXTCOLOR;
-    cell.textLabel.text = self.viewModel.titleArr[indexPath.section];
+    cell.textLabel.text = self.titleArr[indexPath.section];
 }
 
 #pragma mark - UITableViewDelegate
@@ -424,7 +404,22 @@ UITableViewDelegate>
 }
 
 
-#pragma mark - 
+- (void)settinAction:(UIButton *)sender {
+
+    NSLog(@"setting button");
+    MFSettingViewController *settingVC = [[MFSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
+    
+}
+
+- (void)iconAction:(UIButton *)sender {
+    if (![AppDelegate APP].user) {
+        LoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+}
+
+#pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

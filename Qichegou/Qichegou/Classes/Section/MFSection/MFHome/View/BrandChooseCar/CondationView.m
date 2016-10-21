@@ -184,7 +184,7 @@ static NSString *const identifier = @"CondationtvCollectionCell";
     CondationCollectionCell *newCell = (CondationCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
     newCell.carLabel.textColor = kskyBlueColor;
     
-    self.mid = [NSString stringWithFormat:@"%d", indexPath.item+1];
+    self.mid = [NSString stringWithFormat:@"%ld", indexPath.item+1];
     self.viewModel.midID = self.mid;
     [self combineViewModel];
     

@@ -84,10 +84,9 @@ static NSString *const cellID = @"ChooseInformationCell";
     if (self.returnBlock != nil) {
         NSString *color = self.dataArray[indexPath.row];
         self.returnBlock(color);
+        //关闭页面
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    
-    //关闭页面
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - view methods

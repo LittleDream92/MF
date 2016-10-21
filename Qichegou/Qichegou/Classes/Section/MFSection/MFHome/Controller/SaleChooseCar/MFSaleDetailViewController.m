@@ -95,10 +95,6 @@ static NSString *const headerCell = @"HeaderCellID";
         make.right.equalTo(-40);
         make.bottom.equalTo(-15);
         make.height.equalTo(40);
-//        make.left.equalTo(15);
-//        make.right.equalTo(-15);
-//        make.bottom.equalTo(-15);
-//        make.height.equalTo(40);
     }];
     
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
@@ -370,29 +366,19 @@ static NSString *const headerCell = @"HeaderCellID";
     /*_keyArray = @[@"WaiGuan", @"Neishi", @"Way", @"Time"];*/
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"6",@"cityid",
-                            
                             self.carID,@"cid",
-                            
                             @"", @"color",
-                            
                             @"", @"neishi",
-                            
                             @"", @"gcsj",
-                            
                             @"", @"gcfs",
-                            
                             tokenString, @"token",
-                            
                             md5String,@"sign",
-                            
                             timeSp,@"time",
-                            
                             randomString,@"nonce_str",nil];
     
     [DataService http_Post:ADD_ORDER
                 parameters:params
                    success:^(id responseObject) {
-                       //
                        NSLog(@"submmit order:%@", responseObject);
                        
                        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {

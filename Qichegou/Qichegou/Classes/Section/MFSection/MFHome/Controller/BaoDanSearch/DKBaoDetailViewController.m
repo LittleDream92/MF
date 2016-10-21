@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *baodanNumber;
 @property (weak, nonatomic) IBOutlet UITextField *idCard;
+@property (weak, nonatomic) IBOutlet UIButton *submmitButton;
 
 @end
 
@@ -23,6 +24,8 @@
     
     self.view.backgroundColor = BGGRAYCOLOR;
     [self navBack:YES];
+    
+    self.submmitButton.layer.cornerRadius = 20;
 }
 
 - (void)didReceiveMemoryWarning {

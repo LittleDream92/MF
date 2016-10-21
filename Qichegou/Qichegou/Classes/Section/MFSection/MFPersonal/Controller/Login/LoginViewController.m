@@ -18,7 +18,6 @@
 #import "LoginViewModel.h"
 
 @interface LoginViewController ()<CustomButtonProtocol>
-
 {
     NSArray *titleArr;
     CGFloat buttonW;

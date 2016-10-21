@@ -57,10 +57,6 @@
 - (UIButton *)submitBtn {
     if (!_submitBtn) {
         _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_submitBtn createButtonWithBGImgName:@"btn_pay"
-//                          bghighlightImgName:@"btn_pay.2"
-//                                    titleStr:@"立即支付定金"
-//                                    fontSize:16];
         [_submitBtn setTitle:@"立即支付定金" forState:UIControlStateNormal];
         _submitBtn.backgroundColor = ITEMCOLOR;
         _submitBtn.layer.cornerRadius = 20;
@@ -84,7 +80,6 @@
     return _payOrderTV;
 }
 
-
 #pragma mark - createViews
 - (void)createViews {
     
@@ -106,15 +101,16 @@
     //初始化头视图
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"PaymoneyTopView" owner:self options:nil] lastObject];
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, 260);    //302*kHeightSale
+//    self.headerView.height = 260;
     self.payOrderTV.tableHeaderView = self.headerView;
     
     //初始化尾视图
-    CGFloat footerViewH = kScreenHeight - 64 - self.headerView.height - 12*kHeightSale - 44*kHeightSale - 50*2;
+//    CGFloat footerViewH = kScreenHeight - 64 - self.headerView.height - 12*kHeightSale - 44*kHeightSale - 50*2;
+    CGFloat footerViewH = kScreenHeight - 64 - 260 - 12*kHeightSale - 44*kHeightSale - 50*2;
     
     self.footerView = [[[NSBundle mainBundle] loadNibNamed:@"PayMoneyFooterView" owner:self options:nil] lastObject];
     self.footerView.frame = CGRectMake(0, 0, kScreenWidth, footerViewH);
     self.payOrderTV.tableFooterView = self.footerView;
-
 }
 
 #pragma mark - UITableView DataSource
@@ -126,9 +122,7 @@
     if (indexPath.row == 0) {
         static NSString *identifier = @"OrderDetailCellID";
         UITableViewCell *orderCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    
         orderCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     
         [orderCell.textLabel createLabelWithFontSize:14 color:TEXTCOLOR];
         orderCell.textLabel.text = @"支付方式";
@@ -148,7 +142,6 @@
         
         return cell;
     }
-
 }
 
 #pragma mark - UITableView Delegate
@@ -196,32 +189,7 @@
 
 
 #pragma mark - http_request
-- (void)data_Request
-{
-    /*
-     返回JSON对象：
-     {
-         status:	状态
-         msg:		消息
-         data:[
-             {
-                 order_id:		订单ID
-                 create_time:	下单时间
-                 ding_jin:		订金
-                 guide_price:	指导价
-                 brand_name:	品牌
-                 pro_subject: 	车系名称
-                 main_photo:	车系图片
-                 car_subject:	车型名称
-                 color: 		外观颜色
-                 neishi: 		内饰颜色
-                 gcsj:			购车时间
-                 gcfs:			购车方式
-                 zt:			订单状态	0待付款，1已取消，2已支付，3已退款
-             }
-         ]
-     }
-     */
+- (void)data_Request {
     //获取token值
     NSString *tokenStr = [AppDelegate APP].user.token;
     
@@ -231,58 +199,56 @@
 
     NSLog(@"oid:%@", self.orderIDString);
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.orderIDString,@"oid",
-                            
                             tokenStr,@"token",
-                            
                             md5String,@"sign",
-                            
                             timeSp,@"time",
-                            
                             randomString,@"nonce_str",nil];
     
     //订单详情请求
-    [DataService http_Post:ORDER_DETAIL
-     
-                parameters:params
-     
-                   success:^(id responseObject) {
-                       //
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           NSLog(@"success%@", responseObject);
-                           
-                           //处理数据，封装 model
-                           if ([responseObject objectForKey:@"data"] != NULL) {
-                               NSDictionary *jsonDic = [responseObject objectForKey:@"data"];
-                               
-                               NSLog(@"%@", jsonDic);
-                               
-                               self.myModel = [[CarOrderModel alloc] initContentWithDic:jsonDic];
-                               
-                               [self.headerView createTopViewWithChooseCarModel:self.myModel];
-                               [self.submitBtn setTitle:[NSString stringWithFormat:@"立即支付%@订金", self.myModel.ding_jin] forState:UIControlStateNormal];
-                               
-                               [self completeHUD:@"加载完成"];
-                               
-                           }else {
-                               NSLog(@"返回数据出错！");
-                               [self completeHUD:@"加载出错"];
-                           }
-                           
-                       }else {
-                           NSLog(@"failt:%@", [responseObject objectForKey:@"msg"]);
-                           NSString *hudStr = [responseObject objectForKey:@"msg"];
-                           [self completeHUD:hudStr];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       //
-                       NSLog(@"error:%@", error);
-                       [self completeHUD:@"请检查网络"];
-                   }];
+    [DataService http_Post:ORDER_DETAIL parameters:params success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            NSLog(@"order detail result : %@", responseObject);
+            //处理数据，封装 model
+            if ([responseObject objectForKey:@"data"] != NULL) {
+                NSDictionary *jsonDic = [responseObject objectForKey:@"data"];
+                
+                NSLog(@"%@", jsonDic);
+                
+                self.myModel = [[CarOrderModel alloc] initContentWithDic:jsonDic];
+                if (!self.myModel.color.length) {
+                    self.myModel.color = @"默认";
+                }
+                if (!self.myModel.neishi.length) {
+                    self.myModel.neishi = @"默认";
+                }
+                if (!self.myModel.gcfs.length) {
+                    self.myModel.gcfs = @"默认";
+                }
+                if (!self.myModel.gcsj.length) {
+                    self.myModel.gcsj = @"默认";
+                }
+                
+                
+                [self.headerView createTopViewWithChooseCarModel:self.myModel];
+                [self.submitBtn setTitle:[NSString stringWithFormat:@"立即支付%@订金", self.myModel.ding_jin] forState:UIControlStateNormal];
+                
+                [self completeHUD:@"加载完成"];
+                
+            }else {
+                NSLog(@"返回数据出错！");
+                [self completeHUD:@"加载出错"];
+            }
+        }else {
+            NSString *hudStr = [responseObject objectForKey:@"msg"];
+            [self completeHUD:hudStr];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error:%@", error);
+        [self completeHUD:PromptWord];
+    }];
 }
 
-- (void)getData
-{
+- (void)getData {
     /*
      返回JSON对象：
      {
@@ -324,7 +290,7 @@
                        //
                        NSLog(@"error:%@", error);
                        //请求网络失败
-                       [PromtView showAlert:@"微信支付失败" duration:2];
+                       [PromtView showAlert:@"微信支付失败" duration:1.5f];
 
                    }];
 }
@@ -365,13 +331,13 @@
 -(void)AliPayResultNoti:(NSNotification *)noti {
     NSLog(@"%@",noti);
     if ([[noti object] isEqualToString:ALIPAY_SUCCESSED]) {
-        [PromtView showAlert:@"支付成功" duration:1];
+        [PromtView showAlert:@"支付成功" duration:1.5f];
         //在这里填写支付成功之后你要做的事情
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     }else{
-        [PromtView showAlert:@"支付宝支付失败" duration:1];
+        [PromtView showAlert:@"支付宝支付失败" duration:1.5f];
     }
     //上边添加了监听，这里记得移除
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ALI_PAY_RESULT object:nil];
@@ -392,7 +358,7 @@
         
     }else {
         //没安装
-        [PromtView showAlert:@"您没有安装微信" duration:1];
+        [PromtView showAlert:@"您没有安装微信" duration:1.5f];
     }
 
 }
@@ -401,13 +367,13 @@
 -(void)weChatPayResultNoti:(NSNotification *)noti {
     NSLog(@"%@",noti);
     if ([[noti object] isEqualToString:IS_SUCCESSED]) {
-        [PromtView showAlert:@"微信支付成功" duration:3];
+        [PromtView showAlert:@"微信支付成功" duration:1.5f];
         //在这里填写支付成功之后你要做的事情
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     }else{
-        [PromtView showAlert:@"微信支付失败" duration:3];
+        [PromtView showAlert:@"微信支付失败" duration:1.5f];
     }
     //上边添加了监听，这里记得移除
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WX_PAY_RESULT object:nil];

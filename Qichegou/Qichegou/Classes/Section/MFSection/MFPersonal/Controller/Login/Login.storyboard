@@ -252,7 +252,7 @@
                                 <frame key="frameInset" minX="7.73%" minY="8.70%" width="84.27%" height="6.15%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码作为登陆账号" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="cx0-IC-zjZ" customClass="DKTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号码" textAlignment="natural" minimumFontSize="17" background="border_login" clearButtonMode="whileEditing" id="cx0-IC-zjZ" customClass="DKTextField">
                                 <frame key="frameInset" minX="7.73%" minY="15.29%" width="84.27%" height="6.15%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>

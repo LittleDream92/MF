@@ -11,6 +11,7 @@
 @class CarOrderModel;
 @interface MyOrderCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *completeBtn;
 
 //数据源
 @property (nonatomic, strong) CarOrderModel *model;

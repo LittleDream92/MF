@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *carImgView;
 @property (weak, nonatomic) IBOutlet UILabel *carTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *offLineLabel;
-@property (weak, nonatomic) IBOutlet UIButton *completeBtn;
+
 
 @end
 

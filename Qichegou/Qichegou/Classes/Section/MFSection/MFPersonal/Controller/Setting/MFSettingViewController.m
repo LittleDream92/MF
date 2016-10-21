@@ -122,8 +122,7 @@ static NSString *const cellID = @"settingCellID";
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"loginOutCell"];
         }
-        
-        cell.frame = CGRectMake(0, 0, cell.contentView.width, cell.contentView.height);
+    
         cell.textLabel.font = H15;
         cell.textLabel.textColor = RGB(244, 0, 0);
         cell.textLabel.text = @"退出当前账号";

@@ -28,6 +28,7 @@
 }
 
 - (void)setUpData {
+    self.getBackChooseDictionary = nil;
     self.getBackChooseDictionary = [NSMutableDictionary dictionary];
     self.chooseTitleArray = @[@"请输入真实姓名", @"请输入11位手机号", @"请输入验证码", @"请选择外观颜色", @"请选择内饰颜色", @"请选择购车方式", @"请选择购车时间"];
     self.imgNameArray = self.imgNameArray = @[@"sale_my", @"sale_tel", @"sale_code",@"icon_1",@"icon_2",@"icon_3",@"icon_4"];
@@ -113,7 +114,7 @@
                     
                 }else {
                     self.colorArray = (NSArray *)@[@"默认"];
-                    [PromtView showAlert:@"此车暂无可选的外观颜色" duration:1.5];
+//                    [PromtView showAlert:@"此车暂无可选的外观颜色" duration:1.5];
                 }
                 
                 detailModel.color_imgs = (NSArray *)mArr;

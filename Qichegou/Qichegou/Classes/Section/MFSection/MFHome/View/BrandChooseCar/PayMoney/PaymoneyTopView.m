@@ -43,9 +43,8 @@
 }
 
 
-- (void)createTopViewWithChooseCarModel:(CarOrderModel *)model
-{
-    NSLog(@"ChooseCarModel赋值！");
+- (void)createTopViewWithChooseCarModel:(CarOrderModel *)model {
+//    NSLog(@"ChooseCarModel赋值！");
     
     self.carLabel.text = [NSString stringWithFormat:@"%@ %@ %@", model.brand_name, model.pro_subject, model.car_subject];
     self.guidePrice.text = [NSString stringWithFormat:@"厂家指导价：%@万", model.guide_price];

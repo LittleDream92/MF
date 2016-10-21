@@ -15,8 +15,8 @@
 
 //base url
 //#define URL_String @"http://test.tangxinzhuan.com"
-#define URL_String @"http://test.qichegou.com"
-//#define URL_String @"http://www.qichegou.com"
+//#define URL_String @"http://test.qichegou.com"
+#define URL_String @"http://www.qichegou.com"
 
 //服务协议
 #define PROTOCOL_QICHEGOU   @"http://www.qichegou.com/Wap/help/detail/catid/87"

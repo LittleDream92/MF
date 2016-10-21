@@ -71,6 +71,7 @@ UITableViewDelegate>
         [_continueBtn setTitle:@"继续完成订单" forState:UIControlStateNormal];
         _continueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         _continueBtn.backgroundColor = ITEMCOLOR;
+//        _continueBtn.hidden = YES;
         [_continueBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _continueBtn;

@@ -91,9 +91,10 @@ UITableViewDelegate>
 
     MyOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
-    UIButton *operationBtn = [cell viewWithTag:2121];
-    operationBtn.tag = indexPath.section + 10;
-    [operationBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    UIButton *operationBtn = [cell viewWithTag:2121];
+    cell.completeBtn.tag = indexPath.section + 10;
+    [cell.completeBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     CarOrderModel *myOrderModel = self.dataArr[indexPath.section];
     //传值
@@ -116,7 +117,7 @@ UITableViewDelegate>
     
     NSInteger sectionNumber = button.tag - 10;
     CarOrderModel *model = self.dataArr[sectionNumber];
-    
+    NSLog(@"tag : %ld, orderID : %@" ,button.tag, model.order_id);
     DKPayMoneyVC *paymoneyVC = [[DKPayMoneyVC alloc] init];
     paymoneyVC.title = @"支付订金";
     paymoneyVC.orderIDString = model.order_id;

@@ -8,16 +8,13 @@
 
 #import "MFCarDetailViewController.h"
 #import "SubmmitOrderViewModel.h"
-
 #import "DetailChooseCarHeader.h"
 #import "DetailCarInformationCell.h"
 #import "ChooseCarCommonCell.h"
 #import "CarImagesView.h"
-
 #import "DKNeedsTableViewController.h"
 #import "DKPayMoneyVC.h"
 #import "DKMyOrderVC.h"
-
 #import "OtherModel.h"
 #import "AppDelegate.h"
 
@@ -79,6 +76,10 @@ UITableViewDataSource>
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - setUpViews
@@ -198,7 +199,7 @@ UITableViewDataSource>
         cell.imageView.image = [UIImage imageNamed:self.submmitOrderViewModel.imgNameArray[indexPath.row+3]];
         cell.textLabel.text = self.submmitOrderViewModel.chooseTitleArray[indexPath.row+3];
         
-        NSString *keyString = self.submmitOrderViewModel.keyArr[indexPath.row];
+        NSString *keyString = self.submmitOrderViewModel.keyArray[indexPath.row];
         if ([[self.submmitOrderViewModel.getBackChooseDictionary allKeys] containsObject:keyString]) {
             [cell.textLabel createLabelWithFontSize:15 color:TEXTCOLOR];
             cell.textLabel.text = [self.submmitOrderViewModel.getBackChooseDictionary objectForKey:keyString];
@@ -351,9 +352,10 @@ UITableViewDataSource>
         
         [needsVC returnText:^(NSString *chooseColor) {
             
-            NSString *keyString = self.submmitOrderViewModel.keyArr[indexPath.row];
+            NSString *keyString = self.submmitOrderViewModel.keyArray[indexPath.row];
             [self.submmitOrderViewModel.getBackChooseDictionary setValue:chooseColor forKey:keyString];
-            
+            NSLog(@"key : %@, value : %@", keyString, chooseColor);
+            NSLog(@"back dict : %@", self.submmitOrderViewModel.getBackChooseDictionary);
             //刷新tableView,
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
         }];
@@ -369,10 +371,13 @@ UITableViewDataSource>
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.cid, @"cid", nil];
     
     //请求具体车型
+    @weakify(self);
     RACSignal *carDetailSignal = [self.submmitOrderViewModel.carDetailCommand execute:params];
     [carDetailSignal subscribeNext:^(id x) {
+        @strongify(self);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.headerView createHeaderScrollViewWithModel:self.submmitOrderViewModel.carModel];
+            [self nearlyLookCarWithModel:self.submmitOrderViewModel.carModel];
         });
     }];
     
@@ -388,7 +393,7 @@ UITableViewDataSource>
     [self requestImagesWithIndex:3];
     [self requestImagesWithIndex:4];
     
-    @weakify(self);
+//    @weakify(self);
     [self.submmitOrderViewModel.submmitOrderCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"submmitOrder ViewModel : %@", x);
         
@@ -462,6 +467,8 @@ UITableViewDataSource>
     dic[@"gcfs"] = self.submmitOrderViewModel.getBackChooseDictionary[@"Way"];
     dic[@"gcsj"] = self.submmitOrderViewModel.getBackChooseDictionary[@"Time"];
     
+    NSLog(@"getBackChooseDictionary : %@", self.submmitOrderViewModel.getBackChooseDictionary);
+    NSLog(@"dic : %@", dic);
     [self.submmitOrderViewModel.submmitOrderCommand execute:dic];
 }
 
@@ -559,9 +566,65 @@ UITableViewDataSource>
     NSInteger total = c1 + c2 + c3 + c4 + co1 + co2 + co3 + co4;
 //    NSLog(@"total : %ld", total);
     
-    CGFloat height = 100 *total + 37*4 + 15*(total);
+    CGFloat heightP = (kScreenWidth - 15*4)/3;
+    
+    CGFloat height = heightP *total + 37*4 + 15*(total);
     
     return height;
+}
+
+
+
+#pragma mark - 最近浏览
+- (void)nearlyLookCarWithModel:(CarModel *)detailModel {
+    //取出数组
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [[NSUserDefaults standardUserDefaults] objectForKey:MYLOOKCAR];
+    
+    if (array) {
+        NSLog(@"not nil");
+        
+        //存在此数组
+        NSMutableArray *mArr = [[NSMutableArray alloc] initWithArray:array];
+        
+        //保存成字典，包含CID、phono、title
+        NSDictionary *carDic = [NSDictionary dictionaryWithObjectsAndKeys:self.cid,@"cid",
+                                detailModel.main_photo,@"imgName",
+                                detailModel.car_subject,@"title",nil];
+        
+        if ([mArr containsObject:carDic]) {     //包含重复元素
+            
+            //删除重复元素
+            [mArr removeObject:carDic];
+        }
+        
+        if ([mArr count] >= 3) {    //>3
+            
+            //删除第一个元素
+            [mArr removeObjectAtIndex:0];
+        }
+        
+        [mArr addObject:carDic];
+        NSLog(@"这次的mArr:%@", mArr);
+        
+        //操作数组
+        [[NSUserDefaults standardUserDefaults] setObject:mArr forKey:MYLOOKCAR];
+        
+    }else {
+        NSLog(@"nil");
+        
+        //初始化mArr
+        NSMutableArray *mArr = [[NSMutableArray alloc] init];
+        
+        //保存成字典，包含CID、phono、title
+        NSDictionary *carDic = [NSDictionary dictionaryWithObjectsAndKeys:self.cid,@"cid",
+                                detailModel.main_photo,@"imgName",
+                                detailModel.car_subject,@"title",nil];
+        
+        [mArr addObject:carDic];
+        [[NSUserDefaults standardUserDefaults] setObject:mArr forKey:MYLOOKCAR];
+    }
+    
 }
 
 
