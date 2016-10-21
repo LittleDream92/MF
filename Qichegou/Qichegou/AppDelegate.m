@@ -79,6 +79,10 @@
     NSLog(@"app开始活动");
     //定位
     [self location];
+    
+    if (self.user) {    //have login    :判断登录是否过期
+        [self judgeTokenTime];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -251,6 +255,39 @@
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"定位失败");
     [PromtView showAlert:@"定位失败，使用默认城市长沙市" duration:1.5];
+}
+
+#pragma mark - 判断登录是否过期
+- (void)judgeTokenTime {
+    /*	status:	状态
+     msg:	消息内容
+     token:	新的用户token，保持用户登录状态，你懂的*/
+    
+    NSString *tokenStr = self.user.token;
+    
+    NSString *randomString = [BaseFunction ret32bitString];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
+    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:tokenStr,@"token",
+                            md5String,@"sign",
+                            timeSp,@"time",
+                            randomString,@"nonce_str",nil];
+    
+    [DataService http_Post:IS_USERFUL parameters:params success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            //替换token值
+            NSString *tokenString = [responseObject objectForKey:@"token"];
+            self.user.token = tokenString;
+        }else {
+            //改变登录状态,保存token值
+            self.user = nil;
+            [PromtView showMessage:@"登录已失效" duration:1.5];
+        }
+    } failure:^(NSError *error) {
+        self.user = nil;
+        [PromtView showMessage:@"似乎已断开与互联网的连接，请检查网络！" duration:1.5];
+    }];
 }
 
 
