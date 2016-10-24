@@ -20,6 +20,7 @@
     
     self.navigationBar.translucent = NO;
     //    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.interactivePopGestureRecognizer.delegate = (id)self;
     
     UIImage *image = [UIImage imageNamed:@"navBar"];
     
@@ -44,6 +45,11 @@
     }
     //如果在控制器有设置，就可以让后面设置的按钮可以覆盖它
     [super pushViewController:viewController animated:animated];
+}
+
+// 表示的意思是:当挡墙控制器是根控制器了,那么就不接收触摸事件,只有当不是根控制器时才需要接收事件.
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return self.childViewControllers.count > 1;
 }
 
 

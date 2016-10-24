@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>7</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
@@ -67,12 +67,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许此App使用你的相机？</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>始终允许</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>需要使用您的定位功能</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>是否允许此App使用你的麦克风？</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许此App访问你的媒体资料库？</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -90,5 +94,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

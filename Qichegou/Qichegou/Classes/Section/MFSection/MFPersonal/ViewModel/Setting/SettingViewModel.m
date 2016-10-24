@@ -27,9 +27,9 @@
 #pragma mark - loginOutAction
 
 - (void)loginOutAction {
-    @weakify(self);
+//    @weakify(self);
     _loginOutCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
+//        @strongify(self);
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             
             [DataService http_Post:CANCEL_LOGIN parameters:input success:^(id responseObject) {

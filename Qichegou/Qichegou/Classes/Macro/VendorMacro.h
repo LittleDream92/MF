@@ -15,20 +15,16 @@
 //************************ 支付宝 ************************
 //合作身份者id，以2088开头的16位纯数字（客户给）
 #define AliPartnerID @""
-//#define AliPartnerID @""
 
 //收款支付宝账号
 #define AliSellerID  @""
-//#define AliSellerID  @""
 
 //商户私钥，自助生成 (pkcs8格式的)（这个私钥需要自己手动生成，具体生成方法可以看支付宝的官方文档，下面给出大体格式）
 #define AliPartnerPrivKey @""
 
-//#define AliPartnerPrivKey @""
 
 //支付宝服务器主动通知商户 网站里指定的页面 http 路径。
 #define AliNotifyURL @""
-//#define AliNotifyURL @""
 
 //app id
 #define kAliPayURLScheme @""

@@ -8,7 +8,8 @@
 
 #import "DKBaseViewController.h"
 
-@interface DKBaseViewController ()<UIGestureRecognizerDelegate>
+@interface DKBaseViewController ()
+//<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIButton *backBtn;
 
@@ -20,25 +21,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     self.view.backgroundColor = white_color;
     
-    //**************方法一****************//
-    //设置滑动回退
-    __weak typeof(self) weakSelf = self;
-    self.navigationController.interactivePopGestureRecognizer.delegate = weakSelf;
-    //判断是否为第一个view
-    if (self.navigationController && [self.navigationController.viewControllers count] == 1) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
-
+    
 }
 
-#pragma mark- UIGestureRecognizerDelegate
-//**************方法一****************//
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    return YES;
-}
+
+
+//
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+//    return self.childViewControllers.count > 1;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,10 +46,6 @@
 - (void)navBack:(BOOL)back {
     if (back) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backBtn];
-//        
-//        [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }];
     }
 }
 

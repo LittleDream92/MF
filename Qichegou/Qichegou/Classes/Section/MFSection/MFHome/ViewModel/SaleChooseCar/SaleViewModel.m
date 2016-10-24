@@ -26,35 +26,42 @@
 
 #pragma mark - request action
 - (void)saleCommandAction {
-    _saleCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        
-        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
-            [DataService http_Post:SALECAR parameters:input success:^(id responseObject) {
-                if ([responseObject[@"status"] integerValue] == 1) {
-//                NSLog(@"hot:%@", responseObject);
-                    NSArray *saleCar = responseObject[@"tejiache"];
-                    if ([saleCar isKindOfClass:[NSArray class]] && saleCar.count>0) {
-                        
-                        NSMutableArray *mArr = [NSMutableArray array];
-                        for (NSDictionary *jsonDic in saleCar) {
-                            
-                            CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
-                            [mArr addObject:model];
-                        }
-                        [subscriber sendNext:mArr];
-                    }
-                }
-            } failure:^(NSError *error) {
-                
-            }];
-            
-            return nil;
-        }];
-        
-        return signal;
+    @weakify(self);
+    _saleCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *input) {
+        @strongify(self);
+        return [self requestSaleCarListWithParams:input];
     }];
+}
 
+#pragma mark - request
+- (RACSignal *)requestSaleCarListWithParams:(NSDictionary *)params {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        [DataService http_Post:SALECAR parameters:params success:^(id responseObject) {
+            if ([responseObject[@"status"] integerValue] == 1) {
+//                NSLog(@"hot:%@", responseObject);
+                NSArray *saleCar = responseObject[@"tejiache"];
+                if ([saleCar isKindOfClass:[NSArray class]] && saleCar.count>0) {
+                    
+                    NSMutableArray *mArr = [NSMutableArray array];
+                    for (NSDictionary *jsonDic in saleCar) {
+                        
+                        CarModel *model = [[CarModel alloc] initContentWithDic:jsonDic];
+                        [mArr addObject:model];
+                    }
+                    [subscriber sendNext:mArr];
+                    [subscriber sendCompleted];
+                }else {
+                    [subscriber sendCompleted];
+                }
+            }else {
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendCompleted];
+        }];
+        return nil;
+    }];
 }
 
 

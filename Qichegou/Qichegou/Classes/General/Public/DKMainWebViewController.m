@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [self navBack:YES];
     
     //初始化web View

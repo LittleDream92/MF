@@ -12,6 +12,7 @@
 #import "DetailCarInformationCell.h"
 #import "ChooseCarCommonCell.h"
 #import "CarImagesView.h"
+#import "CarDetailFourCell.h"
 #import "DKNeedsTableViewController.h"
 #import "DKPayMoneyVC.h"
 #import "DKMyOrderVC.h"
@@ -150,7 +151,8 @@ UITableViewDataSource>
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [AppDelegate APP].user ? 3 : 4;
+//    return [AppDelegate APP].user ? 3 : 4;
+    return [AppDelegate APP].user ? 4 : 5;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -162,8 +164,10 @@ UITableViewDataSource>
         return 4;
     }else if(section == (index+1)) {
         return [self.submmitOrderViewModel.keyArr[0] count] +1;
-    }else {
+    }else if(section == (index+2)) {
         return 2;
+    }else {
+        return 1;
     }
 }
 
@@ -288,11 +292,7 @@ UITableViewDataSource>
             return cell;
         }
     }else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
-//        cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+        CarDetailFourCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"CarDetailFourCell" owner:nil options:nil] lastObject];
         
         return cell;
     }
@@ -330,7 +330,9 @@ UITableViewDataSource>
         }else {
             return 44;
         }
-    }else {
+    }else if (indexPath.section == (index+3)) {
+        return 130;
+    } else {
         return 44;
     }
 }

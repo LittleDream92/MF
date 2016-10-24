@@ -51,6 +51,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJRefresh/MJRefresh.h>
 #import <MBProgressHUD.h>
+#import "IQKeyboardManager.h"
 
 #import "UILabel+Extension.h"
 #import "UIView+ViewController.h"
