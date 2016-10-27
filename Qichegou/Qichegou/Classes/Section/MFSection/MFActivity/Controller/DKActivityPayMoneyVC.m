@@ -31,12 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self navBack:YES];
-    self.title = @"活动支付";
-    
-    titleArr = @[@"支付宝",@"微信"];
-    imgNameArr = @[@"apliy_icon",@"wechat_icon"];
-    
+    [self setUpData];
+    [self setUpNav];
     [self createViews];
 }
 
@@ -67,23 +63,30 @@
                                          titleStr:@"立即支付活动诚意金"
                                          fontSize:16];
         [_payMoneyButton addTarget:self action:@selector(payMoneyAction:) forControlEvents:UIControlEventTouchUpInside];
-
     }
     return _payMoneyButton;
 }
 
 #pragma mark - createViews
+- (void)setUpData {
+    titleArr = @[@"支付宝",@"微信"];
+    imgNameArr = @[@"apliy_icon",@"wechat_icon"];
+}
+
+- (void)setUpNav {
+    [self navBack:YES];
+    self.title = @"活动支付";
+}
+
 - (void)createViews {
-    //初始化支付按钮
+    [self.view addSubview:self.payMoneyButton];
+    [self.view addSubview:self.payOrderTV];
 
     WEAKSELF
-    [self.view addSubview:self.payMoneyButton];
     [self.payMoneyButton makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(0);
         make.height.equalTo(50);
     }];
-    
-    [self.view addSubview:self.payOrderTV];
     [self.payOrderTV makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(0);
         make.bottom.equalTo(weakSelf.payMoneyButton.mas_top);
@@ -93,7 +96,6 @@
     headerView = [[[NSBundle mainBundle] loadNibNamed:@"ActivityOrderHeaderView" owner:nil options:nil] lastObject];
     [headerView createWithIDstring:self.array];
     self.payOrderTV.tableHeaderView = headerView;
-    
 }
 
 - (void)payMoneyAction:(UIButton *)button {
@@ -114,14 +116,9 @@
         NSLog(@"微信支付");
         [self payWithWechatPay];
     }
-
 }
 
 #pragma mark - UITableView DataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 4;
 }
@@ -165,7 +162,6 @@
         
         return cell;
     }
-    
 }
 
 #pragma mark - UITableView Delegate

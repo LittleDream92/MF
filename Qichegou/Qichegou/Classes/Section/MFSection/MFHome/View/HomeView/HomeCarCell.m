@@ -38,40 +38,37 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        WEAKSELF
         [self.contentView addSubview:self.carImgView];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.describeLabel];
+        [self.contentView addSubview:self.priceLabel];
+        [self.contentView addSubview:self.buyBtn];
+        
+        
+        WEAKSELF
         [self.carImgView makeConstraints:^(MASConstraintMaker *make) {
             make.size.equalTo(CGSizeMake(140, 100));
             make.centerY.equalTo(weakSelf);
             make.left.equalTo(10);
         }];
-        
-        [self.contentView addSubview:self.titleLabel];
         [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(weakSelf.carImgView.mas_top);
             make.left.equalTo(weakSelf.carImgView.mas_right).offset(13);
         }];
-        
-        [self.contentView addSubview:self.describeLabel];
         [self.describeLabel makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(weakSelf.titleLabel.mas_bottom).offset(5);
             make.left.equalTo(weakSelf.titleLabel);
             make.right.equalTo(-15);
         }];
-        
-        [self.contentView addSubview:self.priceLabel];
         [self.priceLabel makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf.titleLabel);
             make.top.equalTo(weakSelf.describeLabel.mas_bottom).offset(5);
         }];
-        
-        [self.contentView addSubview:self.buyBtn];
         [self.buyBtn makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf.titleLabel);
             make.right.equalTo(-15);
             make.bottom.equalTo(weakSelf.carImgView);
-        }];
-       
+        }]; 
     }
     return self;
 }

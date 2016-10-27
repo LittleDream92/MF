@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号：3076891037" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seh-a4-X3G">
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,7 +33,7 @@
                     </view>
                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_default" translatesAutoresizingMaskIntoConstraints="NO" id="KEN-wE-NxL">
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="6FS-0S-muF"/>
+                            <constraint firstAttribute="width" constant="100" id="6FS-0S-muF"/>
                             <constraint firstAttribute="height" constant="80" id="8CV-OP-fs9"/>
                         </constraints>
                     </imageView>
@@ -42,8 +42,7 @@
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="优惠期限：截止到2015年12月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGx-te-DnN">
-                        <frame key="frameInset" minX="120" minY="74" width="158" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠期限：截止到2015年12月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGx-te-DnN">
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -62,7 +61,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kPv-pY-akC" secondAttribute="trailing" constant="15" id="4ox-4I-b4U"/>
-                    <constraint firstItem="i3o-49-vm8" firstAttribute="top" secondItem="kPv-pY-akC" secondAttribute="bottom" constant="10" id="9DJ-rB-xBc"/>
+                    <constraint firstItem="i3o-49-vm8" firstAttribute="top" secondItem="kPv-pY-akC" secondAttribute="bottom" constant="20" id="9DJ-rB-xBc"/>
                     <constraint firstItem="kPv-pY-akC" firstAttribute="top" secondItem="kAs-ja-tnR" secondAttribute="bottom" constant="13" id="Cc9-oG-Bl4"/>
                     <constraint firstItem="cGx-te-DnN" firstAttribute="top" secondItem="i3o-49-vm8" secondAttribute="bottom" constant="10" id="HDQ-b6-lMy"/>
                     <constraint firstAttribute="trailing" secondItem="i3o-49-vm8" secondAttribute="trailing" constant="10" id="K8s-ca-sNu"/>
@@ -86,6 +85,7 @@
                 <outlet property="offLineLabel" destination="cGx-te-DnN" id="zmb-1H-wnK"/>
                 <outlet property="orderIDLabel" destination="seh-a4-X3G" id="0vJ-Tr-gPe"/>
                 <outlet property="orderStatusLabel" destination="kAs-ja-tnR" id="1er-At-5hh"/>
+                <outlet property="topContain" destination="9DJ-rB-xBc" id="5l2-Tj-e7m"/>
             </connections>
             <point key="canvasLocation" x="347" y="246.5"/>
         </tableViewCell>

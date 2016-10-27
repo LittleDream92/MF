@@ -31,16 +31,6 @@
     [backBtn addTarget:self action:@selector(BackCtrlAction:) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-
-    //**************方法一****************//
-    //设置滑动回退
-    __weak typeof(self) weakSelf = self;
-    self.navigationController.interactivePopGestureRecognizer.delegate = weakSelf;
-    //判断是否为第一个view
-    if (self.navigationController && [self.navigationController.viewControllers count] == 1) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
-    
 }
 
 - (void)setClose:(BOOL)close {
@@ -64,13 +54,6 @@
 - (void)closeAction:(UIButton *)closeBtn {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
-#pragma mark- UIGestureRecognizerDelegate
-//**************方法一****************//
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    return YES;
-}
-
 
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {

@@ -11,6 +11,7 @@
 #import "DKPayMoneyVC.h"
 #import "CarHeaderView.h"
 #import "AppDelegate.h"
+#import "OrderDetailViewModel.h"
 
 #import "CarOrderModel.h"
 
@@ -20,6 +21,7 @@ UITableViewDelegate>
 
 @property (nonatomic, strong) UIButton *continueBtn;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) OrderDetailViewModel *viewModel;
 
 @end
 
@@ -31,8 +33,9 @@ UITableViewDelegate>
     
     [self setUpNav];
     [self setUpViews];
+    [self bindViewModel];
     
-    [self dataRequest];
+//    [self dataRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,30 +43,57 @@ UITableViewDelegate>
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - createViews
+#pragma mark - setUp
 - (void)setUpNav {
     self.title = @"订单详情";
     [self navBack:YES];
 }
 
 - (void)setUpViews {
-    WEAKSELF
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.continueBtn];
+    
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(0);
+    }];
     [self.continueBtn makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(-10);
         make.height.equalTo(Button_H);
         make.left.equalTo(40);
         make.right.equalTo(-40);
     }];
-    
-    [self.view addSubview:self.tableView];
-    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(0);
-        make.bottom.equalTo(weakSelf.continueBtn.mas_top);
+}
+
+- (void)bindViewModel {
+    RACSignal *orderDetailSignal = [self.viewModel.orderDetailCommand execute:nil];
+    @weakify(self);
+    [orderDetailSignal subscribeNext:^(id x) {
+        NSLog(@"x:%@", x);
+        
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            if ([x isKindOfClass:[CarOrderModel class]]) {
+                self.myModel = x;
+                if ([self.myModel.zt integerValue] == 0) {    //待付款
+                    self.continueBtn.hidden = NO;
+                }else {
+                    self.continueBtn.hidden = YES;
+                }
+                [self.tableView reloadData];
+            }
+        });
     }];
 }
 
 #pragma mark - lazyloading
+-(OrderDetailViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[OrderDetailViewModel alloc] initWithOrderID:self.orderIDString];
+    }
+    return _viewModel;
+}
+
 -(UIButton *)continueBtn {
     if (!_continueBtn) {
         _continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -71,7 +101,7 @@ UITableViewDelegate>
         [_continueBtn setTitle:@"继续完成订单" forState:UIControlStateNormal];
         _continueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         _continueBtn.backgroundColor = ITEMCOLOR;
-//        _continueBtn.hidden = YES;
+        _continueBtn.hidden = YES;
         [_continueBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _continueBtn;
@@ -86,6 +116,8 @@ UITableViewDelegate>
         
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.scrollEnabled = NO;
+        
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
 }
@@ -135,11 +167,10 @@ UITableViewDelegate>
         
         //已支付
         //判断是否已经提车
-        [PromtView showAlert:@"订单已支付请提车" duration:2];
+        [PromtView showAlert:@"订单已支付请提车" duration:1.5];
     }else {
-        [PromtView showAlert:@"订单" duration:2];
+        [PromtView showAlert:@"订单" duration:1.5];
     }
-    
 }
 
 #pragma mark - UITableViewDataSource
@@ -185,100 +216,11 @@ UITableViewDelegate>
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat rowHeight = kScreenHeight - 64 - 50 - 12-80;
+    CGFloat rowHeight = kScreenHeight -64-12-80;
     return indexPath.section == 0 ? 80 : rowHeight;
 }
 
 #pragma mark - http_request
-//订单详情
-- (void)dataRequest
-{
-    //订单详情
-    /*
-     返回JSON对象：
-     {
-         status:	状态
-         msg:		消息
-         data:[
-             {
-                 order_id:		订单ID
-                 create_time:	下单时间
-                 ding_jin:		订金
-                 guide_price:	指导价
-                 brand_name:	品牌
-                 pro_subject: 	车系名称
-                 main_photo:	车系图片
-                 car_subject:	车型名称
-                 color: 		外观颜色
-                 neishi: 		内饰颜色
-                 gcsj:			购车时间
-                 gcfs:			购车方式
-                 zt:			订单状态	0待付款，1已取消，2已支付，3已退款
-                 rebate_zt int： 返现状态
-             }
-         ]
-     }
-     */
-    //获取token值
-    NSString *tokenStr = [AppDelegate APP].user.token;
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    
-//    NSLog(@"oid:%@", self.orderIDString);
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.orderIDString,@"oid",
-                            
-                            tokenStr,@"token",
-                            
-                            md5String,@"sign",
-                            
-                            timeSp,@"time",
-                            
-                            randomString,@"nonce_str",nil];
-    
-    //订单详情请求
-    [DataService http_Post:ORDER_DETAIL
-     
-                parameters:params
-     
-                   success:^(id responseObject) {
-                       //
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           NSLog(@"success%@", responseObject);
-
-                           //处理数据，封装 model
-                           if ([responseObject objectForKey:@"data"] != NULL) {
-                               NSDictionary *jsonDic = [responseObject objectForKey:@"data"];
-                               
-                               self.myModel = [[CarOrderModel alloc] initContentWithDic:jsonDic];
-                               
-                               //刷新表视图
-                               [self.tableView reloadData];
-                               [self completeHUD:@"加载完成"];
-                               
-                               NSInteger index = [self.myModel.zt integerValue];
-                               if (index == 1 || index == 3 || index == 4) {
-                                   self.continueBtn.hidden = YES;
-                               }
-                               
-                           }else {
-                               NSLog(@"返回数据出错！");
-                               [self completeHUD:@"加载出错"];
-                           }
-                           
-                       }else {
-                           NSLog(@"failt:%@", [responseObject objectForKey:@"msg"]);
-                           NSString *hudStr = [responseObject objectForKey:@"msg"];
-                           [self completeHUD:hudStr];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       //
-                       NSLog(@"error:%@", error);
-                       [self completeHUD:@"加载失败"];
-                   }];
-}
-
 //取消订单
 - (void)cancelOrderRequest {
     //获取token值

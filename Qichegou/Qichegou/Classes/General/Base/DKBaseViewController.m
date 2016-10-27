@@ -23,15 +23,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.view.backgroundColor = white_color;
     
-    
 }
-
-
-
-//
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-//    return self.childViewControllers.count > 1;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

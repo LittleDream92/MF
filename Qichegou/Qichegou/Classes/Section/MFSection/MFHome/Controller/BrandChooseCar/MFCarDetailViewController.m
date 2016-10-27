@@ -62,6 +62,9 @@ UITableViewDataSource>
     self.img3_arr = nil;
     self.img4_arr = nil;
 
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//    self.view.userInteractionEnabled = YES;
+//    [self.view addGestureRecognizer:tap];
     
     [self setUpNav];
     [self setUpViews];
@@ -79,9 +82,12 @@ UITableViewDataSource>
     // Dispose of any resources that can be recreated.
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
+//- (void)tapAction:(UITapGestureRecognizer *)gesture {
+//    [self.view endEditing:YES];
+//}
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [self.view endEditing:YES];
+//}
 
 #pragma mark - setUpViews
 - (void)setUpNav {
@@ -151,7 +157,6 @@ UITableViewDataSource>
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return [AppDelegate APP].user ? 3 : 4;
     return [AppDelegate APP].user ? 4 : 5;
 }
 

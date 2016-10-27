@@ -52,7 +52,6 @@
 - (void)setupView {
     
     //设置尾视图
-    
     self.footerView = [[[NSBundle mainBundle] loadNibNamed:@"DetailFooterView" owner:self options:nil]lastObject];
     UIButton *ruleBtn = (UIButton *)[self.footerView viewWithTag:112];
     [ruleBtn addTarget:self action:@selector(rulesAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -145,16 +144,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 3) {
-        return 640;
-    }else {
-        return 44;
-    }
-    
+    return (indexPath.section == 3) ? 640 : 44;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
     if (section == 3) {
         return nil;
     }

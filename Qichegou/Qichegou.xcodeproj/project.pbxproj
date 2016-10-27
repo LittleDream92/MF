@@ -97,10 +97,8 @@
 		A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123721DAC915B0040344A /* SaleDetailCell.m */; };
 		A87123A71DAC915B0040344A /* SaleDetalHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123741DAC915B0040344A /* SaleDetalHeaderTableViewCell.m */; };
 		A87123B91DAC91A60040344A /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123AC1DAC91A60040344A /* CarModel.m */; };
-		A87123BB1DAC91A60040344A /* CityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B01DAC91A60040344A /* CityDetailModel.m */; };
 		A87123BC1DAC91A60040344A /* InsuranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B21DAC91A60040344A /* InsuranceModel.m */; };
 		A87123BD1DAC91A60040344A /* OtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B41DAC91A60040344A /* OtherModel.m */; };
-		A87123BE1DAC91A60040344A /* AiCheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123B81DAC91A60040344A /* AiCheModel.m */; };
 		A87123CE1DAC91D90040344A /* BrandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123C31DAC91D90040344A /* BrandViewModel.m */; };
 		A87123D21DAC91D90040344A /* SaleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123CC1DAC91D90040344A /* SaleViewModel.m */; };
 		A87123FB1DAC92770040344A /* DKBaoDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87123D61DAC92770040344A /* DKBaoDanViewController.m */; };
@@ -124,7 +122,6 @@
 		A87124561DAC96910040344A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87124281DAC96910040344A /* Login.storyboard */; };
 		A87124571DAC96910040344A /* DKMyActivityOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */; };
 		A87124581DAC96910040344A /* DKMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A871242D1DAC96910040344A /* DKMyOrderVC.m */; };
-		A87124591DAC96910040344A /* DKMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A871242E1DAC96910040344A /* DKMyOrderVC.xib */; };
 		A871245A1DAC96910040344A /* MFPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124311DAC96910040344A /* MFPersonalViewController.m */; };
 		A871245B1DAC96910040344A /* MFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124341DAC96910040344A /* MFAboutViewController.m */; };
 		A871245C1DAC96910040344A /* MFAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87124351DAC96910040344A /* MFAboutViewController.xib */; };
@@ -186,6 +183,9 @@
 		A8CECB831DAF72E00039DBF8 /* DKDetailOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */; };
 		A8CECB871DAF847B0039DBF8 /* DKPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */; };
 		A8D226EA1DAF3D610067AC12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D226E91DAF3D610067AC12 /* LoginViewController.m */; };
+		A8EB6F381DBF44C9009C7DF0 /* OrderListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB6F371DBF44C9009C7DF0 /* OrderListViewModel.m */; };
+		A8EB6F3B1DBF46AB009C7DF0 /* OrderDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EB6F3A1DBF46AB009C7DF0 /* OrderDetailViewModel.m */; };
+		A8EB6F3D1DBF51FA009C7DF0 /* DKMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8EB6F3C1DBF51FA009C7DF0 /* DKMyOrderVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -330,14 +330,10 @@
 		A87123741DAC915B0040344A /* SaleDetalHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaleDetalHeaderTableViewCell.m; sourceTree = "<group>"; };
 		A87123AB1DAC91A60040344A /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
 		A87123AC1DAC91A60040344A /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
-		A87123AF1DAC91A60040344A /* CityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDetailModel.h; sourceTree = "<group>"; };
-		A87123B01DAC91A60040344A /* CityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDetailModel.m; sourceTree = "<group>"; };
 		A87123B11DAC91A60040344A /* InsuranceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceModel.h; sourceTree = "<group>"; };
 		A87123B21DAC91A60040344A /* InsuranceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceModel.m; sourceTree = "<group>"; };
 		A87123B31DAC91A60040344A /* OtherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherModel.h; sourceTree = "<group>"; };
 		A87123B41DAC91A60040344A /* OtherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherModel.m; sourceTree = "<group>"; };
-		A87123B71DAC91A60040344A /* AiCheModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiCheModel.h; sourceTree = "<group>"; };
-		A87123B81DAC91A60040344A /* AiCheModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiCheModel.m; sourceTree = "<group>"; };
 		A87123C21DAC91D90040344A /* BrandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandViewModel.h; sourceTree = "<group>"; };
 		A87123C31DAC91D90040344A /* BrandViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandViewModel.m; sourceTree = "<group>"; };
 		A87123CB1DAC91D90040344A /* SaleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaleViewModel.h; sourceTree = "<group>"; };
@@ -381,7 +377,6 @@
 		A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyActivityOrderVC.m; sourceTree = "<group>"; };
 		A871242C1DAC96910040344A /* DKMyOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMyOrderVC.h; sourceTree = "<group>"; };
 		A871242D1DAC96910040344A /* DKMyOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMyOrderVC.m; sourceTree = "<group>"; };
-		A871242E1DAC96910040344A /* DKMyOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMyOrderVC.xib; sourceTree = "<group>"; };
 		A87124301DAC96910040344A /* MFPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPersonalViewController.h; sourceTree = "<group>"; };
 		A87124311DAC96910040344A /* MFPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPersonalViewController.m; sourceTree = "<group>"; };
 		A87124331DAC96910040344A /* MFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAboutViewController.h; sourceTree = "<group>"; };
@@ -565,6 +560,11 @@
 		A8CECB861DAF847B0039DBF8 /* DKPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPayMoneyVC.m; sourceTree = "<group>"; };
 		A8D226E81DAF3D610067AC12 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A8D226E91DAF3D610067AC12 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A8EB6F361DBF44C9009C7DF0 /* OrderListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewModel.h; sourceTree = "<group>"; };
+		A8EB6F371DBF44C9009C7DF0 /* OrderListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewModel.m; sourceTree = "<group>"; };
+		A8EB6F391DBF46AB009C7DF0 /* OrderDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewModel.h; sourceTree = "<group>"; };
+		A8EB6F3A1DBF46AB009C7DF0 /* OrderDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewModel.m; sourceTree = "<group>"; };
+		A8EB6F3C1DBF51FA009C7DF0 /* DKMyOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMyOrderVC.xib; sourceTree = "<group>"; };
 		EE036131B665E4B94E8CA68D /* Pods-Qichegou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qichegou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qichegou/Pods-Qichegou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -764,8 +764,6 @@
 			children = (
 				A87123AB1DAC91A60040344A /* CarModel.h */,
 				A87123AC1DAC91A60040344A /* CarModel.m */,
-				A87123AF1DAC91A60040344A /* CityDetailModel.h */,
-				A87123B01DAC91A60040344A /* CityDetailModel.m */,
 				A87123B11DAC91A60040344A /* InsuranceModel.h */,
 				A87123B21DAC91A60040344A /* InsuranceModel.m */,
 				A87123B31DAC91A60040344A /* OtherModel.h */,
@@ -784,8 +782,6 @@
 		A87123B61DAC91A60040344A /* XiChe */ = {
 			isa = PBXGroup;
 			children = (
-				A87123B71DAC91A60040344A /* AiCheModel.h */,
-				A87123B81DAC91A60040344A /* AiCheModel.m */,
 			);
 			path = XiChe;
 			sourceTree = "<group>";
@@ -973,7 +969,7 @@
 				A871242B1DAC96910040344A /* DKMyActivityOrderVC.m */,
 				A871242C1DAC96910040344A /* DKMyOrderVC.h */,
 				A871242D1DAC96910040344A /* DKMyOrderVC.m */,
-				A871242E1DAC96910040344A /* DKMyOrderVC.xib */,
+				A8EB6F3C1DBF51FA009C7DF0 /* DKMyOrderVC.xib */,
 				A8CECB811DAF72E00039DBF8 /* DKDetailOrderVC.h */,
 				A8CECB821DAF72E00039DBF8 /* DKDetailOrderVC.m */,
 			);
@@ -1112,6 +1108,10 @@
 		A871244C1DAC96910040344A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				A8EB6F361DBF44C9009C7DF0 /* OrderListViewModel.h */,
+				A8EB6F371DBF44C9009C7DF0 /* OrderListViewModel.m */,
+				A8EB6F391DBF46AB009C7DF0 /* OrderDetailViewModel.h */,
+				A8EB6F3A1DBF46AB009C7DF0 /* OrderDetailViewModel.m */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1700,7 +1700,6 @@
 				A87124561DAC96910040344A /* Login.storyboard in Resources */,
 				A886FFAC1D9238300028F102 /* AlipaySDK.bundle in Resources */,
 				A821E15A1D9A778B00CDF409 /* 空间按钮@2x.png in Resources */,
-				A87124591DAC96910040344A /* DKMyOrderVC.xib in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
 				A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
@@ -1724,6 +1723,7 @@
 				A8A772C11DBA233D00EB6F2E /* PaymoneyTopView.xib in Resources */,
 				A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */,
 				A871245C1DAC96910040344A /* MFAboutViewController.xib in Resources */,
+				A8EB6F3D1DBF51FA009C7DF0 /* DKMyOrderVC.xib in Resources */,
 				A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */,
 				A821E1651D9A77FC00CDF409 /* location.plist in Resources */,
 				A821E1531D9A778B00CDF409 /* 2015按钮-点击状态@3x.png in Resources */,
@@ -1809,7 +1809,6 @@
 				A871237C1DAC915B0040344A /* DetailFooterView.m in Sources */,
 				A886FF1C1D922E960028F102 /* DKBaseViewController.m in Sources */,
 				A87124621DAC96910040344A /* LoginViewModel.m in Sources */,
-				A87123BB1DAC91A60040344A /* CityDetailModel.m in Sources */,
 				A886FFB51D9238300028F102 /* openssl_wrapper.m in Sources */,
 				A886FFB41D9238300028F102 /* NSDataEx.m in Sources */,
 				A871241B1DAC93180040344A /* HomeCarCell.m in Sources */,
@@ -1826,6 +1825,7 @@
 				A886FFFA1D926A220028F102 /* UIButton+Extension.m in Sources */,
 				A84F5D5A1D952268002DB7F4 /* DataService.m in Sources */,
 				A87673941DB5F84E0091C120 /* RegistViewModel.m in Sources */,
+				A8EB6F3B1DBF46AB009C7DF0 /* OrderDetailViewModel.m in Sources */,
 				A886FF3B1D9230490028F102 /* MFActivityViewController.m in Sources */,
 				A8CECB7D1DAF69BE0039DBF8 /* CarOrderModel.m in Sources */,
 				A886FFB71D9238300028F102 /* RSADataVerifier.m in Sources */,
@@ -1873,6 +1873,7 @@
 				A87123BD1DAC91A60040344A /* OtherModel.m in Sources */,
 				A87123A61DAC915B0040344A /* SaleDetailCell.m in Sources */,
 				A886FFB31D9238300028F102 /* MD5DataSigner.m in Sources */,
+				A8EB6F381DBF44C9009C7DF0 /* OrderListViewModel.m in Sources */,
 				A886FFFB1D926A220028F102 /* UILabel+Extension.m in Sources */,
 				A871241D1DAC93180040344A /* HomeMenuCell.m in Sources */,
 				A87124001DAC92770040344A /* BigCarImgVC.m in Sources */,
@@ -1883,7 +1884,6 @@
 				A886FF221D922ED80028F102 /* DKBaseTabbarController.m in Sources */,
 				A821E0B91D9A5FCE00CDF409 /* PromtView.m in Sources */,
 				A87123841DAC915B0040344A /* BuyCarNeedsHeaderview.m in Sources */,
-				A87123BE1DAC91A60040344A /* AiCheModel.m in Sources */,
 				A800C4B51DB89E2E0048CBF7 /* SubmmitOrderViewModel.m in Sources */,
 				A84F5D5D1D952583002DB7F4 /* BaseModel.m in Sources */,
 				A886FFB81D9238300028F102 /* UIViewExt.m in Sources */,

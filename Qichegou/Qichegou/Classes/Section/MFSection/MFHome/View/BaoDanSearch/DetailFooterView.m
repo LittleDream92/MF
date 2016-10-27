@@ -26,15 +26,12 @@
     
     self.button.imageEdgeInsets = UIEdgeInsetsMake(0, 115, 0, -115);
     self.button.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
-
 }
 
-/**/
+
 - (void)createFooterViewWithInsuranceModel:(InsuranceModel *)model {
     
-    
     if (model) {
-
         self.baoxianLabel.text = [NSString stringWithFormat:@"联系%@", model.com_name];
         self.baoxiantelLabel.text = model.com_phone;
     }

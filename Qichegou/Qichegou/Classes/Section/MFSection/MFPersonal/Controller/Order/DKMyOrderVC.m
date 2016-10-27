@@ -7,16 +7,14 @@
 //
 
 #import "DKMyOrderVC.h"
-#import "AppDelegate.h"
 #import "MyOrderCell.h"
-
+#import "OrderListViewModel.h"
 #import "CarOrderModel.h"
 
 #import "DKPayMoneyVC.h"
 #import "DKDetailOrderVC.h"
 
 static NSString *const cellID = @"myOrderCell";
-
 @interface DKMyOrderVC ()
 <UITableViewDataSource,
 UITableViewDelegate>
@@ -24,7 +22,7 @@ UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UILabel *promtLabel;
 
-//订单数据源
+@property (nonatomic, strong) OrderListViewModel *viewModel;
 @property (nonatomic, strong) NSArray *dataArr;
 
 @end
@@ -36,8 +34,6 @@ UITableViewDelegate>
     
     [self setUpNav];
     [self setUpViews];
-    
-    [self requestData];
 }
 
 #pragma  mark - setUp
@@ -48,14 +44,15 @@ UITableViewDelegate>
 
 - (void)setUpViews {
     
+    @weakify(self);
     [self.view addSubview:self.promtLabel];
     [self.promtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.equalTo(self.view.mas_top).with.offset(100);
         make.centerX.mas_equalTo(self.view.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(kScreenWidth, 21));
     }];
     
-    self.tableView.showsVerticalScrollIndicator = NO;
     //设置header和footer
     self.tableView.sectionFooterHeight = 0;
     self.tableView.sectionHeaderHeight = 12;
@@ -66,16 +63,23 @@ UITableViewDelegate>
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyOrderCell class]) bundle:nil] forCellReuseIdentifier:cellID];
 }
 
-#pragma mark - setting and getting
+#pragma mark - lazyloading
 -(UILabel *)promtLabel {
     if (_promtLabel == nil) {
-        _promtLabel = [[UILabel alloc] init];
+        _promtLabel = [UILabel new];
         _promtLabel.hidden = YES;
         _promtLabel.textAlignment = NSTextAlignmentCenter;
         [_promtLabel createLabelWithFontSize:16 color:RGB(221, 221, 221)];
         _promtLabel.text = @"您还没有订单呢，快去下单吧";
     }
     return _promtLabel;
+}
+
+-(OrderListViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[OrderListViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 #pragma mark - UITableView  Data  Source
@@ -91,13 +95,10 @@ UITableViewDelegate>
 
     MyOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
-    
-//    UIButton *operationBtn = [cell viewWithTag:2121];
     cell.completeBtn.tag = indexPath.section + 10;
     [cell.completeBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     CarOrderModel *myOrderModel = self.dataArr[indexPath.section];
-    //传值
     cell.model = myOrderModel;
     
     return cell;
@@ -105,7 +106,6 @@ UITableViewDelegate>
 
 #pragma mark - UITableView  delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     DKDetailOrderVC *detailOrderVC = [[DKDetailOrderVC alloc] init];
     CarOrderModel *model = self.dataArr[indexPath.section];
     detailOrderVC.orderIDString = model.order_id;
@@ -117,7 +117,7 @@ UITableViewDelegate>
     
     NSInteger sectionNumber = button.tag - 10;
     CarOrderModel *model = self.dataArr[sectionNumber];
-    NSLog(@"tag : %ld, orderID : %@" ,button.tag, model.order_id);
+    NSLog(@"tag : %ld, orderID : %@" , (long)sectionNumber, model.order_id);
     DKPayMoneyVC *paymoneyVC = [[DKPayMoneyVC alloc] init];
     paymoneyVC.title = @"支付订金";
     paymoneyVC.orderIDString = model.order_id;
@@ -128,66 +128,26 @@ UITableViewDelegate>
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    //更新订单状态，在订单详情取消或者其他操作后，回到这里来更新
-    if (self.tableView) {
-        [self requestData];
-    }
-}
-
-#pragma mark - http_request
-- (void)requestData {
-    
-    NSString *randomString = [BaseFunction ret32bitString];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", [BaseFunction getTimeSp]];
-    NSString *md5String = [[BaseFunction md5Digest:[NSString stringWithFormat:@"%@%@%@", timeSp, randomString, APPSIGN]] uppercaseString];
-    
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:randomString,@"nonce_str",
-                            timeSp, @"time",
-                            md5String, @"sign",
-                            [AppDelegate APP].user.token,@"token", nil];
-    NSLog(@"car orders params:%@", params);
-    
-    [DataService http_Post:MY_ORDER
-                parameters:params
-                   success:^(id responseObject) {
-                       NSLog(@"orders :%@", responseObject);
-                       if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-                           
-                           NSArray *resultArr;
-                           BOOL isOrders = NO;
-                           if ([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]] && [[responseObject objectForKey:@"data"] count]>0) {
-                               //说明有订单,处理数据
-                               NSArray *jsonArr = [responseObject objectForKey:@"data"];
-                               
-                               NSMutableArray *mArr = [NSMutableArray array];
-                               for (NSDictionary *jsonDic in jsonArr) {
-                                   CarOrderModel *model = [[CarOrderModel alloc] initContentWithDic:jsonDic];
-                                   [mArr addObject:model];
-                               }
-                               resultArr = [NSArray arrayWithArray:mArr];
-                               isOrders = YES;
-                           }
-                           
-                           if (isOrders) {
-                               self.promtLabel.hidden = YES;
-                               self.dataArr = resultArr;
-                               [self.tableView reloadData];
-                               
-                           }else {
-                               self.promtLabel.hidden = NO;
-                           }
-                            [self.tableView reloadData];
-                           
-                       }else {
-                           NSLog(@"%@", [responseObject objectForKey:@"msg"]);
-                           [PromtView showAlert:responseObject[@"msg"] duration:1.5];
-                       }
-                       
-                   } failure:^(NSError *error) {
-                       
-                       NSLog(@"error:%@", error);
-                       [PromtView showAlert:PromptWord duration:1.5];
-                   }];
+    RACSignal *orderListSignal = [self.viewModel.orderListCommand execute:nil];
+    @weakify(self);
+    [orderListSignal subscribeNext:^(id x) {
+        
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            NSArray *result = x;
+            if ([result isKindOfClass:[NSArray class]] && result.count > 0) {
+                self.tableView.hidden = NO;
+                self.promtLabel.hidden = YES;
+                
+                self.dataArr = x;
+                [self.tableView reloadData];
+            }else {
+                self.tableView.hidden = YES;
+                self.promtLabel.hidden = NO;
+            }
+        });
+    }];
 }
 
 @end

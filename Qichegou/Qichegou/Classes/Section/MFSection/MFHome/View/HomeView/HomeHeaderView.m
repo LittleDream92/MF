@@ -66,7 +66,6 @@
         _bannerView.showsVerticalScrollIndicator = NO;
         _bannerView.delegate = self;
         _bannerView.pagingEnabled = YES;//分页
-        
     }
     return _bannerView;
 }

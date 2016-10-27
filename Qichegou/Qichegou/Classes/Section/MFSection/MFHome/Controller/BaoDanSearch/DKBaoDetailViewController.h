@@ -11,7 +11,6 @@
 
 @interface DKBaoDetailViewController : DKBaseViewController
 
-
 /* 选择的保险种类 */
 @property (nonatomic, copy) NSString *titleStr;
 
