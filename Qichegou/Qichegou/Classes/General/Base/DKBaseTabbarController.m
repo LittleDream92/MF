@@ -14,6 +14,8 @@
 #import "MFActivityViewController.h"
 #import "MFPersonalViewController.h"
 
+#import "FirstOpenView.h"
+
 @interface DKBaseTabbarController ()
 
 @end
@@ -90,8 +92,8 @@
 #pragma mark - 开机启动图
 - (void)initFirstOpenView {
     NSLog(@"这是第一次启动app");
-    UIView *firstOpenView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    firstOpenView.backgroundColor = [UIColor redColor];
+    FirstOpenView *firstOpenView = [[FirstOpenView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    firstOpenView.backgroundColor = [UIColor redColor];
     [self.view addSubview:firstOpenView];
 }
 
