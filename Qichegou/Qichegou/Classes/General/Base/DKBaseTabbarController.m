@@ -22,9 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     self.tabBar.translucent = NO;
+    
+    //获取沙盒目录
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/qichegou.plist"];
+    //区分第一次启动还是以后启动的
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    if (dic == nil) {
+        //第一次运行
+        [self initFirstOpenView];
+        dic = @{@"first": @"YES"};
+        //把一个字典写入到文件
+        [dic writeToFile:filePath atomically:YES];
+    }
+
+    
     //初始化子控制器
     [self initialControllers];
 }
@@ -75,14 +87,12 @@
     [item setTitleTextAttributes:selectedAtts forState:UIControlStateSelected];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 开机启动图
+- (void)initFirstOpenView {
+    NSLog(@"这是第一次启动app");
+    UIView *firstOpenView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    firstOpenView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:firstOpenView];
 }
-*/
 
 @end

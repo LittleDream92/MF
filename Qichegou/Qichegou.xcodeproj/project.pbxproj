@@ -135,6 +135,17 @@
 		A87124671DAC989B0040344A /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124661DAC989B0040344A /* HomeViewModel.m */; };
 		A871246A1DACD5A20040344A /* CondationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87124691DACD5A20040344A /* CondationViewModel.m */; };
 		A87673941DB5F84E0091C120 /* RegistViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A87673931DB5F84E0091C120 /* RegistViewModel.m */; };
+		A87F21A31DD0652F00CBD185 /* FirstOpenView.m in Sources */ = {isa = PBXBuildFile; fileRef = A87F21A21DD0652F00CBD185 /* FirstOpenView.m */; };
+		A87F21AF1DD0667700CBD185 /* guide1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21A51DD0667700CBD185 /* guide1@2x.png */; };
+		A87F21B01DD0667700CBD185 /* guide2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21A61DD0667700CBD185 /* guide2@2x.png */; };
+		A87F21B11DD0667700CBD185 /* guide3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21A71DD0667700CBD185 /* guide3@2x.png */; };
+		A87F21B21DD0667700CBD185 /* guide4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21A81DD0667700CBD185 /* guide4@2x.png */; };
+		A87F21B31DD0667700CBD185 /* guide5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21A91DD0667700CBD185 /* guide5@2x.png */; };
+		A87F21B41DD0667700CBD185 /* guideProgress1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21AA1DD0667700CBD185 /* guideProgress1@2x.png */; };
+		A87F21B51DD0667700CBD185 /* guideProgress2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21AB1DD0667700CBD185 /* guideProgress2@2x.png */; };
+		A87F21B61DD0667700CBD185 /* guideProgress3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21AC1DD0667700CBD185 /* guideProgress3@2x.png */; };
+		A87F21B71DD0667700CBD185 /* guideProgress4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21AD1DD0667700CBD185 /* guideProgress4@2x.png */; };
+		A87F21B81DD0667700CBD185 /* guideProgress5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A87F21AE1DD0667700CBD185 /* guideProgress5@2x.png */; };
 		A88600001D926B850028F102 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FFFF1D926B850028F102 /* UIView+Extension.m */; };
 		A886FEF21D922A450028F102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF11D922A450028F102 /* main.m */; };
 		A886FEF51D922A450028F102 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FEF41D922A450028F102 /* AppDelegate.m */; };
@@ -400,6 +411,18 @@
 		A87124691DACD5A20040344A /* CondationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondationViewModel.m; sourceTree = "<group>"; };
 		A87673921DB5F84E0091C120 /* RegistViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewModel.h; sourceTree = "<group>"; };
 		A87673931DB5F84E0091C120 /* RegistViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewModel.m; sourceTree = "<group>"; };
+		A87F21A11DD0652F00CBD185 /* FirstOpenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstOpenView.h; sourceTree = "<group>"; };
+		A87F21A21DD0652F00CBD185 /* FirstOpenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstOpenView.m; sourceTree = "<group>"; };
+		A87F21A51DD0667700CBD185 /* guide1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide1@2x.png"; sourceTree = "<group>"; };
+		A87F21A61DD0667700CBD185 /* guide2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide2@2x.png"; sourceTree = "<group>"; };
+		A87F21A71DD0667700CBD185 /* guide3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide3@2x.png"; sourceTree = "<group>"; };
+		A87F21A81DD0667700CBD185 /* guide4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide4@2x.png"; sourceTree = "<group>"; };
+		A87F21A91DD0667700CBD185 /* guide5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide5@2x.png"; sourceTree = "<group>"; };
+		A87F21AA1DD0667700CBD185 /* guideProgress1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideProgress1@2x.png"; sourceTree = "<group>"; };
+		A87F21AB1DD0667700CBD185 /* guideProgress2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideProgress2@2x.png"; sourceTree = "<group>"; };
+		A87F21AC1DD0667700CBD185 /* guideProgress3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideProgress3@2x.png"; sourceTree = "<group>"; };
+		A87F21AD1DD0667700CBD185 /* guideProgress4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideProgress4@2x.png"; sourceTree = "<group>"; };
+		A87F21AE1DD0667700CBD185 /* guideProgress5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideProgress5@2x.png"; sourceTree = "<group>"; };
 		A886FEED1D922A450028F102 /* Qichegou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qichegou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FEF11D922A450028F102 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A886FEF31D922A450028F102 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1132,6 +1155,23 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		A87F21A41DD0667700CBD185 /* 开机动画图片 */ = {
+			isa = PBXGroup;
+			children = (
+				A87F21A51DD0667700CBD185 /* guide1@2x.png */,
+				A87F21A61DD0667700CBD185 /* guide2@2x.png */,
+				A87F21A71DD0667700CBD185 /* guide3@2x.png */,
+				A87F21A81DD0667700CBD185 /* guide4@2x.png */,
+				A87F21A91DD0667700CBD185 /* guide5@2x.png */,
+				A87F21AA1DD0667700CBD185 /* guideProgress1@2x.png */,
+				A87F21AB1DD0667700CBD185 /* guideProgress2@2x.png */,
+				A87F21AC1DD0667700CBD185 /* guideProgress3@2x.png */,
+				A87F21AD1DD0667700CBD185 /* guideProgress4@2x.png */,
+				A87F21AE1DD0667700CBD185 /* guideProgress5@2x.png */,
+			);
+			path = "开机动画图片";
+			sourceTree = "<group>";
+		};
 		A886FEE41D922A450028F102 = {
 			isa = PBXGroup;
 			children = (
@@ -1260,6 +1300,7 @@
 		A886FF101D922E020028F102 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A87F21A41DD0667700CBD185 /* 开机动画图片 */,
 				A821E13C1D9A778B00CDF409 /* 2014按钮-拷贝@2x.png */,
 				A821E13D1D9A778B00CDF409 /* 2014按钮-拷贝@3x.png */,
 				A821E13E1D9A778B00CDF409 /* 2015按钮-点击状态@2x.png */,
@@ -1320,6 +1361,8 @@
 				A886FF211D922ED80028F102 /* DKBaseTabbarController.m */,
 				A821E0F81D9A68B400CDF409 /* DKBaseTableViewController.h */,
 				A821E0F91D9A68B400CDF409 /* DKBaseTableViewController.m */,
+				A87F21A11DD0652F00CBD185 /* FirstOpenView.h */,
+				A87F21A21DD0652F00CBD185 /* FirstOpenView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1693,7 +1736,9 @@
 				A821E0BE1D9A60A400CDF409 /* ActivityOrderHeaderView.xib in Resources */,
 				A821E1521D9A778B00CDF409 /* 2015按钮-点击状态@2x.png in Resources */,
 				A871239A1DAC915B0040344A /* PayMoneyFooterView.xib in Resources */,
+				A87F21B51DD0667700CBD185 /* guideProgress2@2x.png in Resources */,
 				A871237F1DAC915B0040344A /* PurchesProcessView.xib in Resources */,
+				A87F21AF1DD0667700CBD185 /* guide1@2x.png in Resources */,
 				A87123A51DAC915B0040344A /* CarDetailThirdCell.xib in Resources */,
 				A871238B1DAC915B0040344A /* CarProTableViewCell.xib in Resources */,
 				A821E1611D9A778B00CDF409 /* 外观按钮-点击状态@3x.png in Resources */,
@@ -1702,6 +1747,8 @@
 				A821E15A1D9A778B00CDF409 /* 空间按钮@2x.png in Resources */,
 				A886FF001D922A450028F102 /* LaunchScreen.storyboard in Resources */,
 				A821E1581D9A778B00CDF409 /* 空间按钮-点击状态@2x.png in Resources */,
+				A87F21B41DD0667700CBD185 /* guideProgress1@2x.png in Resources */,
+				A87F21B01DD0667700CBD185 /* guide2@2x.png in Resources */,
 				A886FEFD1D922A450028F102 /* Images.xcassets in Resources */,
 				A821E1591D9A778B00CDF409 /* 空间按钮-点击状态@3x.png in Resources */,
 				A821E1511D9A778B00CDF409 /* 2014按钮-拷贝@3x.png in Resources */,
@@ -1715,19 +1762,25 @@
 				A87123831DAC915B0040344A /* BuyCarNeedsFooterView.xib in Resources */,
 				A821E15D1D9A778B00CDF409 /* 内饰按钮-点击状态@3x.png in Resources */,
 				A821E0B61D9A5EB500CDF409 /* PayOrderCell.xib in Resources */,
+				A87F21B81DD0667700CBD185 /* guideProgress5@2x.png in Resources */,
+				A87F21B21DD0667700CBD185 /* guide4@2x.png in Resources */,
+				A87F21B11DD0667700CBD185 /* guide3@2x.png in Resources */,
 				A87123791DAC915B0040344A /* BaoDetailCell.xib in Resources */,
 				A87123851DAC915B0040344A /* BuyCarNeedsHeaderview.xib in Resources */,
 				A821E15E1D9A778B00CDF409 /* 内饰按钮@2x.png in Resources */,
 				A871245E1DAC96910040344A /* MFFeedBackViewController.xib in Resources */,
+				A87F21B71DD0667700CBD185 /* guideProgress4@2x.png in Resources */,
 				A87123891DAC915B0040344A /* CarListTableViewCell.xib in Resources */,
 				A8A772C11DBA233D00EB6F2E /* PaymoneyTopView.xib in Resources */,
 				A821E1621D9A778B00CDF409 /* 外观按钮@2x.png in Resources */,
 				A871245C1DAC96910040344A /* MFAboutViewController.xib in Resources */,
+				A87F21B31DD0667700CBD185 /* guide5@2x.png in Resources */,
 				A8EB6F3D1DBF51FA009C7DF0 /* DKMyOrderVC.xib in Resources */,
 				A821E1561D9A778B00CDF409 /* 官方图按钮@2x.png in Resources */,
 				A821E1651D9A77FC00CDF409 /* location.plist in Resources */,
 				A821E1531D9A778B00CDF409 /* 2015按钮-点击状态@3x.png in Resources */,
 				A87123771DAC915B0040344A /* BaoDanTableViewCell.xib in Resources */,
+				A87F21B61DD0667700CBD185 /* guideProgress3@2x.png in Resources */,
 				A821E13B1D9A765100CDF409 /* 37x-Checkmark@2x.png in Resources */,
 				A821E13A1D9A765100CDF409 /* 37x-Checkmark.png in Resources */,
 				A87123FD1DAC92770040344A /* DKBaoDetailViewController.xib in Resources */,
@@ -1801,6 +1854,7 @@
 				A87123CE1DAC91D90040344A /* BrandViewModel.m in Sources */,
 				A87123911DAC915B0040344A /* PhotoScrollView.m in Sources */,
 				A886FFB01D9238300028F102 /* base64.m in Sources */,
+				A87F21A31DD0652F00CBD185 /* FirstOpenView.m in Sources */,
 				A87124581DAC96910040344A /* DKMyOrderVC.m in Sources */,
 				A886FEF51D922A450028F102 /* AppDelegate.m in Sources */,
 				A821E0A41D9A3ECF00CDF409 /* MFActivityDetailViewController.m in Sources */,
